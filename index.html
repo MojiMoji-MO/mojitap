@@ -3,181 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Decorator Pro - Smart Text & Emoji Palette</title>
+    <title>사이트 점검 중 - Emoji Decorator</title>
     <style>
-        /* 기본 스타일 세팅 */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-        h1, h2, h3 { color: #2c3e50; text-align: center; }
-        
-        /* 메인 컨테이너 (자동 변환기 & 팔레트) */
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); margin-bottom: 30px; }
-        
-        /* 입력/출력 창 */
-        textarea { width: 100%; height: 120px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; box-sizing: border-box; resize: vertical; }
-        textarea:focus { outline: none; border-color: #3498db; }
-        
-        /* 버튼 스타일 */
-        .btn-group { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        button { flex: 1; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: bold; transition: 0.2s; color: white; min-width: 120px; }
-        button:hover { opacity: 0.9; transform: translateY(-2px); }
-        
-        .btn-biz { background-color: #2980b9; } /* 비즈니스 */
-        .btn-aes { background-color: #d35400; } /* 감성 */
-        .btn-copy-main { background-color: #27ae60; width: 100%; font-size: 18px; padding: 15px; margin-top: 10px; }
-        
-        /* 수동 이모지 팔레트 영역 */
-        .palette-tabs { display: flex; gap: 10px; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px; overflow-x: auto; }
-        .tab-btn { background: none; color: #555; border: 2px solid transparent; padding: 8px 15px; cursor: pointer; font-weight: bold; border-radius: 20px; }
-        .tab-btn.active { background: #f1f2f6; color: #2c3e50; border: 2px solid #ddd; }
-        
-        .emoji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; }
-        .emoji-item { font-size: 24px; text-align: center; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: 0.2s; border: 1px solid #eee; }
-        .emoji-item:hover { background: #e8f6f3; transform: scale(1.1); }
-        
-        /* 알림창 (토스트) */
-        #toast { visibility: hidden; min-width: 200px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px; position: fixed; z-index: 1; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 15px; }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
-
-        /* 애드센스 승인용 하단 SEO 텍스트 */
-        .seo-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); color: #555; font-size: 15px; }
-        .seo-section h3 { text-align: left; margin-top: 25px; }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 400px;
+            width: 85%;
+        }
+        .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0 0 12px 0;
+            color: #2c3e50;
+            font-weight: 800;
+        }
+        p {
+            font-size: 15px;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin: 0;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
-
-    <h1>✨ Emoji Decorator Pro</h1>
-    <p style="text-align: center; color: #666;">글을 자동으로 꾸미고, 필요한 이모지를 원클릭으로 복사하세요.</p>
-
-    <div class="card">
-        <h2>1. Auto Text Decorator</h2>
-        <textarea id="inputText" placeholder="- 오늘 수익이 발생했습니다.&#10;- 점심으로 커피를 마셨습니다.&#10;처럼 리스트나 단어를 적고 테마 버튼을 눌러보세요!"></textarea>
-        
-        <div class="btn-group">
-            <button class="btn-biz" onclick="applySmartEmoji('biz')">💼 비즈니스/링크드인 변환</button>
-            <button class="btn-aes" onclick="applySmartEmoji('aes')">✨ 인스타 감성 변환</button>
-        </div>
-
-        <textarea id="outputText" placeholder="자동으로 이모지가 입혀진 결과물이 이곳에 나옵니다." readonly></textarea>
-        <button class="btn-copy-main" onclick="copyMainText()">📋 완성된 글 전체 복사하기</button>
+    <div class="container">
+        <div class="icon">🚧</div>
+        <h1>현재 사이트 단장 중입니다</h1>
+        <p>더 나은 서비스를 제공하기 위해<br>잠시 점검 및 업데이트를 진행하고 있습니다.<br>멋진 모습으로 곧 찾아뵙겠습니다!</p>
     </div>
-
-    <div class="card">
-        <h2>2. Quick Emoji Palette</h2>
-        <p style="font-size: 14px; color: #7f8c8d;">부족한 이모지는 아래에서 클릭하여 바로 복사하세요!</p>
-        
-        <div class="palette-tabs" id="tabs">
-            <button class="tab-btn active" onclick="renderPalette('business', this)">📊 Business</button>
-            <button class="tab-btn" onclick="renderPalette('aesthetic', this)">✨ Aesthetic</button>
-            <button class="tab-btn" onclick="renderPalette('reaction', this)">🔥 Reactions</button>
-        </div>
-
-        <div class="emoji-grid" id="emojiGrid">
-            </div>
-    </div>
-
-    <div id="toast">복사 완료! 📋</div>
-
-    <div class="seo-section">
-        <h3>Why You Need the Best Emoji Decorator Tool</h3>
-        <p>Enhance your social media presence, LinkedIn posts, and professional emails instantly with our advanced Emoji Decorator Pro. A well-placed emoji can increase reading rates by over 40% and convey emotions that plain text cannot. Whether you need a corporate style with checkmarks (✅) and charts (📈), or a soft aesthetic vibe with sparkles (✨) and clouds (☁️), our intelligent algorithm finds the perfect spot for your emojis.</p>
-        
-        <h3>How to Combine Auto-Generation with the Manual Palette</h3>
-        <p>Our hybrid system offers the best of both worlds. First, paste your plain draft into the Auto Text Decorator. Click your preferred theme, and watch as our rule-based system intelligently restructures your bullet points and inserts context-aware emojis. Next, use the Quick Emoji Palette below to fine-tune your post. Simply click any emoji from our highly curated lists (Business, Aesthetic, Reactions) to copy it directly to your clipboard. No more searching through tiny mobile keyboards or dealing with slow desktop emoji pickers!</p>
-    </div>
-
-    <script>
-        /* === 1. 자동 변환기 로직 === */
-        const dictBiz = { "수익": "📈", "완료": "✅", "목표": "🎯", "돈": "💰", "주의": "🚨", "커피": "☕" };
-        const dictAes = { "수익": "🤍", "완료": "✨", "목표": "🎀", "돈": "💸", "주의": "👀", "커피": "🧋", "오늘": "☁️" };
-
-        function applySmartEmoji(theme) {
-            let text = document.getElementById('inputText').value;
-            if(!text) return showToast("텍스트를 먼저 입력해주세요!");
-
-            let currentDict = (theme === 'biz') ? dictBiz : dictAes;
-            let listStyle = (theme === 'biz') ? "✅ " : "✨ ";
-            let usedEmojis = new Set();
-            let lines = text.split('\n');
-            let resultLines = [];
-
-            for (let line of lines) {
-                let trimmedLine = line.trim();
-                
-                // 패턴 1: 하이픈(-)으로 시작하는 리스트 구조화
-                if (trimmedLine.startsWith("- ")) {
-                    trimmedLine = trimmedLine.replace("- ", listStyle);
-                }
-
-                // 패턴 2: 사전 단어 매칭 및 중복 방지
-                for (let word in currentDict) {
-                    let emoji = currentDict[word];
-                    if (trimmedLine.includes(word) && !usedEmojis.has(emoji)) {
-                        let regex = new RegExp(word); 
-                        trimmedLine = trimmedLine.replace(regex, word + emoji);
-                        usedEmojis.add(emoji);
-                    }
-                }
-                resultLines.push(trimmedLine);
-            }
-
-            document.getElementById('outputText').value = resultLines.join('\n');
-        }
-
-        /* === 2. 수동 이모지 팔레트 로직 === */
-        const palettes = {
-            business: ["✅", "📈", "💼", "🤝", "📊", "🎯", "💡", "💰", "📌", "🚀", "📁", "🔔", "🗓️", "✏️"],
-            aesthetic: ["✨", "☁️", "🤍", "🌿", "🦋", "🎧", "☕", "🎀", "🧸", "🌷", "🩰", "💿", "🫧", "💌"],
-            reaction: ["🔥", "😂", "😭", "👀", "💀", "❤️", "👍", "🙏", "🎉", "💯", "😎", "🤔", "🙌", "👏"]
-        };
-
-        function renderPalette(category, btnElement) {
-            // 탭 버튼 색상 변경
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
-
-            // 이모지 그리드 렌더링
-            const grid = document.getElementById('emojiGrid');
-            grid.innerHTML = ""; // 기존 내용 비우기
-            
-            palettes[category].forEach(emoji => {
-                let div = document.createElement('div');
-                div.className = 'emoji-item';
-                div.textContent = emoji;
-                div.onclick = () => copySingleEmoji(emoji);
-                grid.appendChild(div);
-            });
-        }
-
-        /* === 3. 복사 및 알림(Toast) 로직 === */
-        function copyMainText() {
-            let outText = document.getElementById('outputText');
-            if(!outText.value) return showToast("복사할 결과물이 없습니다!");
-            outText.select();
-            document.execCommand("copy");
-            showToast("전체 글이 복사되었습니다! 📋");
-        }
-
-        function copySingleEmoji(emoji) {
-            let tempInput = document.createElement("input");
-            tempInput.value = emoji;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            showToast(emoji + " 복사 완료!");
-        }
-
-        function showToast(message) {
-            let toast = document.getElementById("toast");
-            toast.textContent = message;
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2000);
-        }
-
-        // 페이지 로딩 시 기본으로 Business 팔레트 띄우기
-        window.onload = () => renderPalette('business', document.querySelector('.tab-btn'));
-    </script>
 </body>
 </html>
