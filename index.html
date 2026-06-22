@@ -2,57 +2,338 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사이트 점검 중 - Emoji Decorator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Emoji Decorator Pro</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <style>
+        :root {
+            --bg-color: #F3F4F6;
+            --box-bg: #FFFFFF;
+            --text-main: #111827;
+            --text-sub: #6B7280;
+            --primary-btn: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --secondary-btn: #F3F4F6;
+        }
+
         body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            color: #333;
+            margin: 0; padding: 0; background-color: var(--bg-color);
+            font-family: 'Pretendard Variable', -apple-system, sans-serif;
+            color: var(--text-main); display: flex; justify-content: center; min-height: 100vh;
         }
-        .container {
+
+        .app-container {
+            width: 100%; max-width: 800px;
+            margin: 40px auto; padding: 40px; box-sizing: border-box;
+            background: var(--box-bg); border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .lang-toggle {
+            position: absolute; top: 30px; right: 40px;
+            background: var(--bg-color); border: 1px solid #E5E7EB; border-radius: 20px;
+            padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        header { text-align: left; margin-top: 0; margin-bottom: 30px; }
+        header h1 { font-size: 28px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px; }
+        header p { font-size: 15px; color: var(--text-sub); margin: 0; }
+
+        .top-nav {
+            display: flex; gap: 12px; margin-bottom: 30px;
+            background: var(--bg-color); padding: 8px; border-radius: 16px;
+        }
+        .nav-item {
+            flex: 1; text-align: center; padding: 12px 0;
+            text-decoration: none; color: var(--text-sub);
+            font-size: 15px; font-weight: 600; border-radius: 12px; transition: all 0.2s;
+        }
+        .nav-item.active { background: var(--box-bg); color: #111827; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+        .converter-grid { display: grid; gap: 16px; margin-bottom: 20px; }
+        .text-box {
+            width: 100%; height: 160px;
+            background-color: var(--bg-color); border: 1px solid transparent; border-radius: 16px; 
+            padding: 20px; font-size: 16px; line-height: 1.6; resize: none; box-sizing: border-box;
+            font-family: inherit; color: var(--text-main); transition: all 0.3s;
+        }
+        .text-box:focus { outline: none; border-color: #667EEA; background: var(--box-bg); box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1); }
+        .text-box::placeholder { color: #9CA3AF; }
+
+        .theme-buttons { display: flex; gap: 12px; }
+        .btn-theme { flex: 1; padding: 16px 0; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
+        .btn-biz { background-color: #E0E7FF; color: #3730A3; }
+        .btn-insta { background-color: #FCE7F3; color: #9D174D; }
+
+        .btn-copy {
+            width: 100%; padding: 18px 0; border: none; border-radius: 16px;
+            background: var(--primary-btn); color: white;
+            font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+        }
+
+        /* 💰 신규 디자인: 애드센스 임시 광고 레이아웃 박스 */
+        .ad-placeholder {
+            background: #F9FAFB;
+            border: 1px dashed #D1D5DB;
+            border-radius: 16px;
+            padding: 24px;
             text-align: center;
-            background-color: white;
-            padding: 50px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            max-width: 400px;
-            width: 85%;
+            font-size: 12px;
+            color: #9CA3AF;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px; /* 디스플레이 광고 기본 규격 공간 확보 */
         }
-        .icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite ease-in-out;
+
+        .divider { border: none; border-top: 1px solid #E5E7EB; margin: 40px 0 40px; }
+
+        .palette-header h2 { font-size: 20px; font-weight: 700; margin: 0 0 20px 0; }
+        .category-tabs { display: flex; overflow-x: auto; gap: 10px; margin-bottom: 20px; padding-bottom: 8px; }
+        .category-tabs::-webkit-scrollbar { display: none; }
+        .tab-btn { background: var(--bg-color); border: none; border-radius: 24px; padding: 10px 20px; font-size: 15px; font-weight: 600; color: var(--text-sub); cursor: pointer; white-space: nowrap; }
+        .tab-btn.active { background: #111827; color: white; }
+
+        .emoji-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 12px; background: var(--bg-color); padding: 24px; border-radius: 20px;
+            min-height: 200px; align-content: start;
         }
-        h1 {
-            font-size: 24px;
-            margin: 0 0 12px 0;
-            color: #2c3e50;
-            font-weight: 800;
-        }
-        p {
-            font-size: 15px;
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin: 0;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .emoji-item { font-size: 32px; text-align: center; cursor: pointer; padding: 10px 0; border-radius: 12px; transition: transform 0.1s; background: var(--box-bg); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .emoji-item:active { transform: scale(0.9); }
+
+        .toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background-color: rgba(17, 24, 39, 0.9); color: white; padding: 16px 32px; border-radius: 30px; font-size: 16px; font-weight: 600; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; z-index: 100; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .toast.show { opacity: 1; visibility: visible; }
+
+        .seo-article { margin-top: 40px; padding: 30px; background: #F9FAFB; border-radius: 20px; color: #4B5563; border: 1px solid #E5E7EB; }
+        .seo-article h2 { font-size: 20px; color: #111827; margin-top: 0; margin-bottom: 20px; }
+        .seo-article h3 { font-size: 16px; color: #374151; margin-top: 24px; margin-bottom: 12px; }
+        .seo-article p { font-size: 15px; line-height: 1.8; margin-bottom: 16px; text-align: justify; }
+        
+        footer { margin-top: 50px; text-align: center; font-size: 13px; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 30px; }
+        footer a { color: #6B7280; text-decoration: none; margin: 0 12px; }
+        footer a:hover { text-decoration: underline; color: #111827; }
+
+        @media (max-width: 768px) {
+            .app-container { max-width: 100%; margin: 0; padding: 20px 20px 40px 20px; border-radius: 0; box-shadow: none; background: #F9FAFB; }
+            .lang-toggle { top: 20px; right: 20px; padding: 6px 12px; background: #FFFFFF; }
+            header { text-align: center; }
+            header h1 { font-size: 24px; }
+            .text-box { height: 120px; font-size: 15px; background: #FFFFFF; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+            .ad-placeholder { background: #FFFFFF; padding: 16px; min-height: 80px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+            .emoji-grid { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); padding: 16px; background: #FFFFFF; }
+            .emoji-item { font-size: 28px; background: transparent; box-shadow: none; }
+            .seo-article { padding: 20px; }
+            footer { font-size: 12px; }
+            footer a { margin: 0 6px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🚧</div>
-        <h1>현재 사이트 단장 중입니다</h1>
-        <p>더 나은 서비스를 제공하기 위해<br>잠시 점검 및 업데이트를 진행하고 있습니다.<br>멋진 모습으로 곧 찾아뵙겠습니다!</p>
+
+    <div class="app-container">
+        <button class="lang-toggle" onclick="toggleLanguage()">🌐 EN / KO</button>
+
+        <header>
+            <h1>✨ Emoji Decorator</h1>
+            <p id="ui-desc">문장 자동 꾸미기 & 빠른 복사 팔레트</p>
+        </header>
+
+        <nav class="top-nav">
+            <a href="index.html" class="nav-item active" id="ui-navHome">✨ 이모지 툴</a>
+            <a href="blog.html" class="nav-item" id="ui-navBlog">📚 마케팅 꿀팁</a>
+        </nav>
+
+        <div class="converter-grid">
+            <textarea id="inputText" class="text-box" placeholder="변환할 글을 적어주세요."></textarea>
+            
+            <div class="theme-buttons">
+                <button class="btn-theme btn-biz" onclick="transformText('biz')" id="ui-btnBiz">💼 비즈니스</button>
+                <button class="btn-theme btn-insta" onclick="transformText('insta')" id="ui-btnInsta">🌿 인스타 감성</button>
+            </div>
+            
+            <textarea id="outputText" class="text-box" placeholder="결과물" readonly id="ui-output"></textarea>
+        </div>
+        
+        <button class="btn-copy" onclick="copyFullText()" id="ui-btnCopy">전체 복사하기 📋</button>
+
+        <div class="ad-placeholder" id="ui-adTop">ADVERTISEMENT (애드센스 승인 후 자동 노출 구역)</div>
+
+        <hr class="divider">
+
+        <div class="palette-header">
+            <h2 id="ui-paletteTitle">🎨 빠른 이모지 팔레트</h2>
+        </div>
+        
+        <div class="category-tabs" id="tabContainer">
+            <button class="tab-btn active" onclick="renderEmojis('popular', this)" id="tab-pop">🔥 인기</button>
+            <button class="tab-btn" onclick="renderEmojis('smileys', this)" id="tab-smile">😀 표정</button>
+            <button class="tab-btn" onclick="renderEmojis('hands', this)" id="tab-hand">👍 손짓</button>
+        </div>
+        <div class="emoji-grid" id="emojiGrid"></div>
+
+        <div class="ad-placeholder" id="ui-adMid">ADVERTISEMENT (애드센스 승인 후 자동 노출 구역)</div>
+
+        <article class="seo-article" id="ui-seoArticle">
+            <h2>이모지(Emoji) 활용 완벽 가이드</h2>
+            <p>이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
+            <h3>1. 비즈니스 환경에서의 이모지 사용법</h3>
+            <p>업무용 이메일이나 사내 메신저(Slack, Teams 등)에서 적절한 이모지 사용은 딱딱한 분위기를 부드럽게 만들고 업무 효율을 높일 수 있습니다. '체크(✅)', '서류(📄)', '일정(📅)' 등의 직관적인 이모지는 텍스트의 가독성을 극대화합니다.</p>
+            <h3>2. 인스타그램 및 SNS 감성 극대화</h3>
+            <p>인스타그램 피드나 프로필(Bio)을 꾸밀 때 이모지는 브랜드의 정체성을 나타냅니다. 화이트 톤의 깔끔한 감성을 원한다면 '흰색 하트(🤍)', '반짝이(✨)', '나뭇잎(🌿)' 조합을 추천합니다.</p>
+            <h3>3. 글로벌 이모지 트렌드와 다국어 호환성</h3>
+            <p>최신 Emoji 17.0 업데이트에 따라 다양한 피부 톤과 문화를 반영한 기호들이 지속적으로 추가되고 있습니다. 이모지는 언어의 장벽을 뛰어넘기 때문에, 글로벌 유저를 대상으로 하는 마케팅이나 메시지 작성 시 텍스트 번역과 함께 적절한 이모지를 매칭하는 것이 클릭률(CTR) 향상에 압도적으로 유리합니다.</p>
+        </article>
+
+        <footer id="ui-footer">
+            <div style="margin-bottom: 12px;">
+                <a href="about.html">사이트 소개</a> | 
+                <a href="terms.html">이용약관</a> | 
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="contact.html">문의하기</a>
+            </div>
+            <p>© 2026 Mojitap. All rights reserved.</p>
+            <p>Google Adsense Optimization Verified.</p>
+        </footer>
+
     </div>
+
+    <div id="toast" class="toast">복사되었습니다!</div>
+
+    <script>
+        let currentLang = 'ko';
+
+        const uiTranslations = {
+            ko: {
+                desc: "문장 자동 꾸미기 & 빠른 복사 팔레트",
+                navHome: "✨ 이모지 툴", navBlog: "📚 마케팅 꿀팁",
+                placeholderIn: "변환할 글을 적어주세요.", placeholderOut: "결과물이 이곳에 나옵니다.",
+                btnBiz: "💼 비즈니스", btnInsta: "🌿 인스타 감성", btnCopy: "전체 복사하기 📋",
+                adTop: "ADVERTISEMENT (애드센스 승인 후 자동 노출 구역)",
+                adMid: "ADVERTISEMENT (애드센스 승인 후 자동 노출 구역)",
+                paletteTitle: "🎨 빠른 이모지 팔레트",
+                tabPop: "🔥 인기", tabSmile: "😀 표정", tabHand: "👍 손짓", toastMsg: "✅ 복사 완료!",
+                seoHtml: `
+                    <h2>이모지(Emoji) 활용 완벽 가이드</h2>
+                    <p>이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
+                    <h3>1. 비즈니스 환경에서의 이모지 사용법</h3>
+                    <p>업무용 이메일이나 사내 메신저(Slack, Teams 등)에서 적절한 이모지 사용은 딱딱한 분위기를 부드럽게 만들고 업무 효율을 높일 수 있습니다.</p>
+                    <h3>2. 인스타그램 및 SNS 감성 극대화</h3>
+                    <p>인스타그램 피드나 프로필(Bio)을 꾸밀 때 이모지는 브랜드의 정체성을 나타냅니다. 화이트 톤의 깔끔한 감성을 원한다면 '흰색 하트(🤍)', '반짝이(✨)', '나뭇잎(🌿)' 조합을 추천합니다.</p>
+                    <h3>3. 글로벌 트렌드와 다국어 호환성</h3>
+                    <p>이모지는 언어 장벽을 넘기 때문에, 글로벌 마케팅에서 텍스트와 적절한 이모지를 매칭하는 것이 클릭률 향상에 압도적으로 유리합니다.</p>
+                `,
+                footerHtml: `
+                    <div style="margin-bottom: 12px;">
+                        <a href="about.html">사이트 소개</a> | <a href="terms.html">이용약관</a> | <a href="privacy.html">개인정보처리방침</a> | <a href="contact.html">문의하기</a>
+                    </div>
+                    <p>© 2026 Mojitap. All rights reserved.</p>
+                `
+            },
+            en: {
+                desc: "Auto Text Decorator & Emoji Palette",
+                navHome: "✨ Emoji Tool", navBlog: "📚 Marketing Tips",
+                placeholderIn: "Type your text here...", placeholderOut: "Result will appear here.",
+                btnBiz: "💼 Business", btnInsta: "🌿 Insta Aesthetic", btnCopy: "Copy All 📋",
+                adTop: "SPONSORED ADVERTISEMENT (AdSense Code Placeholder)",
+                adMid: "SPONSORED ADVERTISEMENT (AdSense Code Placeholder)",
+                paletteTitle: "🎨 Quick Emoji Palette",
+                tabPop: "🔥 Popular", tabSmile: "😀 Smileys", tabHand: "👍 Hands", toastMsg: "✅ Copied!",
+                seoHtml: `
+                    <h2>The Ultimate Guide to Using Emojis</h2>
+                    <p>Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone cannot convey.</p>
+                    <h3>1. Emojis in Business Environments</h3>
+                    <p>Using appropriate emojis in business emails or Slack can soften the tone and increase work efficiency.</p>
+                    <h3>2. Maximizing Social media Aesthetic</h3>
+                    <p>For a clean aesthetic, combinations like 'White Heart(🤍)' and 'Sparkles(✨)' are highly recommended.</p>
+                    <h3>3. Global Trends and Multilingual Compatibility</h3>
+                    <p>Because emojis break language barriers, matching text with the right emojis in global marketing gives a massive advantage.</p>
+                `,
+                footerHtml: `
+                    <div style="margin-bottom: 12px;">
+                        <a href="about.html">About Us</a> | <a href="terms.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a>
+                    </div>
+                    <p>© 2026 Mojitap. All rights reserved.</p>
+                `
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            const t = uiTranslations[currentLang];
+            
+            document.getElementById('ui-desc').innerText = t.desc;
+            document.getElementById('ui-navHome').innerText = t.navHome;
+            document.getElementById('ui-navBlog').innerText = t.navBlog;
+            document.getElementById('inputText').placeholder = t.placeholderIn;
+            document.getElementById('outputText').placeholder = t.placeholderOut;
+            document.getElementById('ui-btnBiz').innerText = t.btnBiz;
+            document.getElementById('ui-btnInsta').innerText = t.btnInsta;
+            document.getElementById('ui-btnCopy').innerText = t.btnCopy;
+            document.getElementById('ui-adTop').innerText = t.adTop;
+            document.getElementById('ui-adMid').innerText = t.adMid;
+            document.getElementById('ui-paletteTitle').innerText = t.paletteTitle;
+            document.getElementById('tab-pop').innerText = t.tabPop;
+            document.getElementById('tab-smile').innerText = t.tabSmile;
+            document.getElementById('tab-hand').innerText = t.tabHand;
+            document.getElementById('ui-seoArticle').innerHTML = t.seoHtml;
+            document.getElementById('ui-footer').innerHTML = t.footerHtml;
+        }
+
+        const emojiDict = {
+            "커피": "☕", "카페": "☕", "회의": "💼", "수익": "💰", "체크": "✅", "오늘": "☀️", "축하": "🎉",
+            "coffee": "☕", "cafe": "☕", "meeting": "💼", "revenue": "💰", "money": "💸", "check": "✅", "today": "☀️", "congrats": "🎉"
+        };
+
+        function transformText(theme) {
+            let text = document.getElementById('inputText').value;
+            if (!text.trim()) return;
+            Object.keys(emojiDict).forEach(w => { text = text.replace(new RegExp(w, 'gi'), w + emojiDict[w]); });
+            let lines = text.split('\n');
+            if (theme === 'biz') text = lines.map(l => l.trim() ? `🔹 ${l}` : '').join('\n');
+            if (theme === 'insta') text = lines.map(l => l.trim() ? `${l} ✨` : '').join('\n\n');
+            document.getElementById('outputText').value = text;
+        }
+
+        function copyFullText() {
+            const out = document.getElementById('outputText');
+            if(!out.value) return;
+            out.select(); document.execCommand('copy');
+            showToast(uiTranslations[currentLang].toastMsg);
+        }
+
+        const database = {
+            popular: ['✨','❤️','🔥','👍','✅','🥰','😂','🎉'],
+            smileys: ['😀','😃','😄','😁','😆','😅','😂','🤣'],
+            hands: ['👋','🤚','🖐️','✋','🖖','👌','🤌','🤏']
+        };
+
+        function renderEmojis(category, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            const grid = document.getElementById('emojiGrid');
+            grid.innerHTML = '';
+            database[category].forEach(emoji => {
+                const div = document.createElement('div');
+                div.className = 'emoji-item';
+                div.innerText = emoji;
+                div.onclick = () => {
+                    const temp = document.createElement('textarea');
+                    temp.value = emoji;
+                    document.body.appendChild(temp);
+                    temp.select(); document.execCommand('copy'); document.body.removeChild(temp);
+                    showToast(emoji + " " + uiTranslations[currentLang].toastMsg);
+                };
+                grid.appendChild(div);
+            });
+        }
+
+        window.onload = () => renderEmojis('popular', document.querySelector('.tab-btn.active'));
+    </script>
 </body>
 </html>
