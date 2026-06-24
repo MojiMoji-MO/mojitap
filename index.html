@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8R7T1JEFVL');
-</script>
-     <!-- Google search Console -->
-    <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mojitap - 3초 완성 이모지 마케팅 툴</title>
     
+    <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8R7T1JEFVL');
+    </script>
+
+    <title>Mojitap - 3초 완성 이모지 마케팅 툴</title>
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
     <style>
-        /* [v1.3.0 업데이트] 트렌디 팝 컬러 팔레트 적용 */
         :root {
-            --primary-color: #FF4F6D; /* 코랄 로즈 (메인) */
-            --primary-hover: #E83F5B; /* 코랄 로즈 호버 */
-            --sub-purple: #8B5CF6;    /* 퍼플 (서브 액션) */
+            --primary-color: #FF4F6D; 
+            --primary-hover: #E83F5B; 
+            --sub-purple: #8B5CF6;    
             --sub-purple-hover: #7C3AED; 
-            --accent-mint: #22D3C5;   /* 민트 (하이라이트/호버) */
+            --accent-mint: #22D3C5;   
             
-            --secondary-bg: #FFF0F2;  /* 연한 코랄 배경 (nav 활성화 등) */
-            --bg-color: #F9FAFB;      /* 아주 연한 쿨그레이 배경 */
+            --secondary-bg: #FFF0F2;  
+            --bg-color: #F9FAFB;      
             --box-bg: #FFFFFF;
             --text-main: #1F2937;
             --text-muted: #6B7280;
             --border-color: #E5E7EB;
             --palette-bg: #F3F4F6; 
-            --tab-active: #FF4F6D;    /* 탭 활성화 코랄 */
+            --tab-active: #FF4F6D;    
             --tab-inactive: #E5E7EB; 
         }
 
@@ -54,7 +52,7 @@
             width: 100%;
             max-width: 900px; 
             background: var(--box-bg);
-            box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); /* 코랄빛 은은한 그림자 */
+            box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); 
             border-radius: 20px;
             display: flex;
             flex-direction: column;
@@ -62,7 +60,6 @@
             box-sizing: border-box;
         }
 
-        /* 언어 변경 버튼 */
         .lang-toggle {
             position: absolute;
             top: 20px;
@@ -84,11 +81,7 @@
             transition: 0.3s;
         }
 
-        /* 언어 활성화 시 코랄 로즈 적용 */
-        .lang-btn.active {
-            background: var(--primary-color);
-            color: white;
-        }
+        .lang-btn.active { background: var(--primary-color); color: white; }
 
         header { text-align: center; margin-bottom: 20px; margin-top: 10px; }
 
@@ -110,20 +103,11 @@
             border-radius: 10px;
             transition: all 0.3s;
         }
-
         .nav-item:hover { color: var(--primary-color); }
-
-        .nav-item.active {
-            color: var(--primary-color);
-            background: var(--secondary-bg);
-        }
+        .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
 
         .tool-section { display: flex; flex-direction: column; gap: 15px; }
-
-        .textarea-wrapper {
-            display: flex;
-            gap: 20px;
-        }
+        .textarea-wrapper { display: flex; gap: 20px; }
 
         textarea {
             flex: 1;
@@ -138,8 +122,6 @@
             font-family: inherit;
             transition: 0.3s;
         }
-
-        /* 입력창 포커스 시 코랄 로즈 테두리 */
         textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(255, 79, 109, 0.1); }
 
         .btn-action, .btn-copy {
@@ -152,119 +134,60 @@
             transition: all 0.3s;
             width: 100%;
         }
-
-        /* 변환 버튼: 코랄 로즈 */
-        .btn-action { 
-            background-color: var(--primary-color); 
-            color: white; 
-            box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); 
-        }
-        .btn-action:hover { 
-            background-color: var(--primary-hover); 
-            transform: translateY(-2px); 
-        }
+        .btn-action { background-color: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
+        .btn-action:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
         
-        /* 복사 버튼: 퍼플 + 민트 호버 반전 */
-        .btn-copy { 
-            background-color: var(--sub-purple); 
-            color: white; 
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
-        }
-        .btn-copy:hover { 
-            background-color: var(--accent-mint); /* 호버 시 민트로 상큼하게 변환 */
-            box-shadow: 0 4px 15px rgba(34, 211, 197, 0.3);
-            transform: translateY(-2px); 
-            color: #064E3B; /* 민트 배경에 어울리는 짙은 녹색 텍스트 */
-        }
+        .btn-copy { background-color: var(--sub-purple); color: white; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
+        .btn-copy:hover { background-color: var(--accent-mint); box-shadow: 0 4px 15px rgba(34, 211, 197, 0.3); transform: translateY(-2px); color: #064E3B; }
 
-        /* 프리미엄 이모지 팔레트 디자인 */
-        .emoji-palette-section {
-            margin-top: 40px;
-        }
+        .emoji-palette-section { margin-top: 40px; }
+        .palette-title { font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
 
-        .palette-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-main);
-        }
-
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
+        .tab-container { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
         .tab-btn {
             background-color: var(--tab-inactive);
             color: #4B5563;
             border: none;
-            padding: 10px 22px;
-            border-radius: 25px; 
-            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 20px; 
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
-
         .tab-btn:hover { background-color: #D1D5DB; }
-        
-        /* 탭 활성화 시 코랄 로즈 */
-        .tab-btn.active { 
-            background-color: var(--tab-active); 
-            color: white; 
-            box-shadow: 0 4px 10px rgba(255, 79, 109, 0.25);
-        }
+        .tab-btn.active { background-color: var(--tab-active); color: white; box-shadow: 0 4px 10px rgba(255, 79, 109, 0.2); }
 
         .emoji-display-area {
             background-color: var(--palette-bg);
             border-radius: 16px;
             padding: 25px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 12px;
+            max-height: 320px;
+            overflow-y: auto;
         }
 
         .emoji-item {
             background-color: white;
-            border-radius: 14px;
-            width: 54px;
-            height: 54px;
+            border-radius: 12px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* 이모지 호버 시 민트색 그림자 효과 */
-        .emoji-item:hover {
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(34, 211, 197, 0.25);
-            border: 1px solid var(--accent-mint);
-        }
-
+        .emoji-item:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 6px 15px rgba(34, 211, 197, 0.25); border: 1px solid var(--accent-mint); }
         .emoji-item:active { transform: scale(0.95); }
 
-        /* 애드센스 승인용 SEO 텍스트 영역 */
-        .seo-content {
-            margin-top: 50px;
-            padding: 30px;
-            background: white;
-            border-top: 2px dashed var(--border-color);
-            color: #374151;
-            line-height: 1.8;
-            font-size: 15px;
-        }
+        .seo-content { margin-top: 50px; padding: 30px; background: white; border-top: 2px dashed var(--border-color); color: #374151; line-height: 1.8; font-size: 15px; }
         .seo-content h2 { font-size: 22px; color: var(--text-main); margin-bottom: 20px; font-weight: 800; }
         .seo-content h3 { font-size: 18px; margin-top: 30px; margin-bottom: 12px; color: var(--primary-color); font-weight: 700; }
         .seo-content p { margin-bottom: 15px; }
@@ -282,98 +205,58 @@
             .app-container { border-radius: 0; padding: 20px 15px; }
             .textarea-wrapper { flex-direction: column; gap: 15px; }
             .lang-toggle { top: 10px; right: 10px; }
-            .emoji-item { width: 48px; height: 48px; font-size: 24px; }
         }
     </style>
 </head>
 <body class="ko"> 
 
     <div class="app-container">
-        
         <div class="lang-toggle">
             <button class="lang-btn active" id="btn-ko" onclick="setLanguage('ko')">KOR</button>
             <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">ENG</button>
         </div>
 
         <header>
-            <a href="/">
-                <img src="mojitap-logo.png" alt="Mojitap Logo" style="height: 50px; max-width: 100%; margin-bottom: 10px;">
-            </a>
+            <a href="/"><img src="mojitap-logo.png" alt="Mojitap Logo" style="height: 50px; max-width: 100%; margin-bottom: 10px;"></a>
         </header>
 
         <nav class="top-nav">
-            <a href="/" class="nav-item active">
-                <span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span>
-            </a>
-            <a href="/blog" class="nav-item">
-                <span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span>
-            </a>
+            <a href="/" class="nav-item active"><span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span></a>
+            <a href="/blog" class="nav-item"><span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span></a>
         </nav>
 
         <main class="tool-section">
             <div class="textarea-wrapper">
-                <textarea id="inputText" 
-                    placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 오늘 날씨 너무 좋다!)"></textarea>
-                
-                <textarea id="outputText" 
-                    placeholder="이모지가 추가된 결과가 여기에 나옵니다!" readonly></textarea>
+                <textarea id="inputText" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 오늘 날씨 너무 좋다!)"></textarea>
+                <textarea id="outputText" placeholder="이모지가 추가된 결과가 여기에 나옵니다!" readonly></textarea>
             </div>
-            
-            <button class="btn-action" onclick="addEmojis()">
-                <span class="lang-ko">🚀 3초 만에 이모지 입히기</span><span class="lang-en">🚀 Add Emojis in 3 Secs</span>
-            </button>
-            
-            <button class="btn-copy" onclick="copyText('outputText')">
-                <span class="lang-ko">📋 복사해서 바로 사용하기</span><span class="lang-en">📋 Copy to Clipboard</span>
-            </button>
+            <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 3초 만에 이모지 입히기</span><span class="lang-en">🚀 Add Emojis in 3 Secs</span></button>
+            <button class="btn-copy" onclick="copyText('outputText')"><span class="lang-ko">📋 복사해서 바로 사용하기</span><span class="lang-en">📋 Copy to Clipboard</span></button>
         </main>
 
         <section class="emoji-palette-section">
-            <div class="palette-title">
-                <span class="lang-ko">🎨 빠른 이모지 팔레트</span><span class="lang-en">🎨 Quick Emoji Palette</span>
-            </div>
+            <div class="palette-title"><span class="lang-ko">🎨 글로벌 표준 이모지 팔레트</span><span class="lang-en">🎨 Standard Emoji Palette</span></div>
             
             <div class="tab-container">
-                <button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')">
-                    <span class="lang-ko">🔥 인기</span><span class="lang-en">🔥 Popular</span>
-                </button>
-                <button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')">
-                    <span class="lang-ko">😀 표정</span><span class="lang-en">😀 Faces</span>
-                </button>
-                <button class="tab-btn" id="tab-hands" onclick="changeEmojiTab('hands')">
-                    <span class="lang-ko">👍 손짓</span><span class="lang-en">👍 Hands</span>
-                </button>
-                <button class="tab-btn" id="tab-symbols" onclick="changeEmojiTab('symbols')">
-                    <span class="lang-ko">✨ 기호</span><span class="lang-en">✨ Symbols</span>
-                </button>
+                <button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')"><span class="lang-ko">🔥 인기</span><span class="lang-en">🔥 Best</span></button>
+                <button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')"><span class="lang-ko">😀 표정</span><span class="lang-en">😀 Faces</span></button>
+                <button class="tab-btn" id="tab-actions" onclick="changeEmojiTab('actions')"><span class="lang-ko">🧍 행동</span><span class="lang-en">🧍 Action</span></button>
+                <button class="tab-btn" id="tab-animals" onclick="changeEmojiTab('animals')"><span class="lang-ko">🐱 동물</span><span class="lang-en">🐱 Animal</span></button>
+                <button class="tab-btn" id="tab-foods" onclick="changeEmojiTab('foods')"><span class="lang-ko">🍔 음식</span><span class="lang-en">🍔 Food</span></button>
+                <button class="tab-btn" id="tab-places" onclick="changeEmojiTab('places')"><span class="lang-ko">🚗 장소</span><span class="lang-en">🚗 Place</span></button>
+                <button class="tab-btn" id="tab-objects" onclick="changeEmojiTab('objects')"><span class="lang-ko">💡 사물</span><span class="lang-en">💡 Object</span></button>
+                <button class="tab-btn" id="tab-symbols" onclick="changeEmojiTab('symbols')"><span class="lang-ko">✨ 기호</span><span class="lang-en">✨ Symbol</span></button>
+                <button class="tab-btn" id="tab-flags" onclick="changeEmojiTab('flags')"><span class="lang-ko">🏁 국기</span><span class="lang-en">🏁 Flags</span></button>
             </div>
 
-            <div class="emoji-display-area" id="emoji-grid-display">
-                <!-- 자바스크립트를 통해 이모지가 여기에 렌더링됩니다 -->
-            </div>
+            <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
 
         <article class="seo-content">
             <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드</h2>
             <h2 class="lang-en">The Ultimate Guide to Using Emojis</h2>
-            
             <p class="lang-ko">이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
             <p class="lang-en">Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone struggles to convey. Beyond simple picture symbols, they are a visual language based on the globally accepted Unicode Standard.</p>
-
-            <h3 class="lang-ko">1. 비즈니스 환경에서의 이모지 사용법</h3>
-            <h3 class="lang-en">1. How to Use Emojis in a Business Environment</h3>
-            <p class="lang-ko">업무용 이메일이나 사내 메신저(Slack, Teams 등)에서 적절한 이모지 사용은 딱딱한 분위기를 부드럽게 만들고 업무 효율을 높일 수 있습니다. '체크(✅)', '서류(📄)', '일정(📅)' 등의 직관적인 이모지는 텍스트의 가독성을 극대화합니다.</p>
-            <p class="lang-en">Appropriate use of emojis in business emails or internal messengers (like Slack, Teams) can soften a stiff atmosphere and improve work efficiency. Intuitive emojis like 'Check(✅)', 'Document(📄)', and 'Schedule(📅)' maximize text readability.</p>
-
-            <h3 class="lang-ko">2. 인스타그램 및 SNS 감성 극대화</h3>
-            <h3 class="lang-en">2. Maximizing Instagram and SNS Aesthetics</h3>
-            <p class="lang-ko">인스타그램 피드나 프로필(Bio)을 꾸밀 때 이모지는 브랜드의 정체성을 나타냅니다. 화이트 톤의 깔끔한 감성을 원한다면 '흰색 하트(🤍)', '반짝이(✨)', '나뭇잎(🌿)' 조합을 추천합니다.</p>
-            <p class="lang-en">When decorating an Instagram feed or profile (Bio), emojis represent brand identity. If you want a clean, white-toned aesthetic, a combination of 'White Heart(🤍)', 'Sparkles(✨)', and 'Leaf(🌿)' is highly recommended.</p>
-
-            <h3 class="lang-ko">3. 글로벌 이모지 트렌드와 다국어 호환성</h3>
-            <h3 class="lang-en">3. Global Emoji Trends and Multilingual Compatibility</h3>
-            <p class="lang-ko">최신 Emoji 17.0 업데이트에 따라 다양한 피부 톤과 문화를 반영한 기호들이 지속적으로 추가되고 있습니다. 이모지는 언어의 장벽을 뛰어넘기 때문에, 글로벌 유저를 대상으로 하는 마케팅이나 메시지 작성 시 텍스트 번역과 함께 적절한 이모지를 매칭하는 것이 클릭률(CTR) 향상에 압도적으로 유리합니다.</p>
-            <p class="lang-en">Following the latest Emoji 17.0 updates, symbols reflecting various skin tones and cultures are continuously being added. Because emojis transcend language barriers, matching appropriate emojis along with text translations is overwhelmingly advantageous for improving Click-Through Rates (CTR) in marketing or messaging aimed at global users.</p>
         </article>
 
         <footer>
@@ -383,43 +266,37 @@
                 <a href="/terms"><span class="lang-ko">이용약관</span><span class="lang-en">Terms of Service</span></a>
                 <a href="/contact"><span class="lang-ko">문의하기</span><span class="lang-en">Contact</span></a>
             </div>
-            <div class="copyright">
-                &copy; 2026 Mojitap. All rights reserved.
-            </div>
+            <div class="copyright">&copy; 2026 Mojitap. All rights reserved.</div>
         </footer>
     </div>
 
     <script>
-        // --- 다국어 데이터 및 설정 ---
         let currentLang = 'ko';
         const placeholderData = {
-            inputText: {
-                ko: "여기에 텍스트를 붙여넣으세요...\n(예: 오늘 날씨 너무 좋다!)",
-                en: "Paste your text here...\n(e.g., The weather is amazing today!)"
-            },
-            outputText: {
-                ko: "이모지가 추가된 결과가 여기에 나옵니다!",
-                en: "Your text with emojis will appear here!"
-            }
+            inputText: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 오늘 날씨 너무 좋다!)", en: "Paste your text here...\n(e.g., The weather is amazing today!)" },
+            outputText: { ko: "이모지가 추가된 결과가 여기에 나옵니다!", en: "Your text with emojis will appear here!" }
         };
 
         function setLanguage(lang) {
             currentLang = lang;
             document.body.className = lang; 
-            
             document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
             document.getElementById('inputText').placeholder = placeholderData.inputText[lang];
             document.getElementById('outputText').placeholder = placeholderData.outputText[lang];
         }
 
-        // --- 이모지 팔레트 탭 로직 ---
+        // 🟢 [v1.5.0 핵심 스펙 데이터] 글로벌 표준 대용량 이모지 데이터베이스 구축
         const emojiData = {
-            popular: ['✨', '❤️', '🔥', '👍', '✅', '🥰', '😂', '🎉'],
-            faces: ['😀', '😂', '🥰', '😎', '😭', '😡', '😱', '🤔'],
-            hands: ['👍', '👎', '👌', '✌️', '🤞', '👏', '🤝', '🙏'],
-            symbols: ['✨', '⭐', '📌', '💡', '✅', '✔️', '❗', '❓']
+            popular: ['✨', '❤️', '🔥', '👍', '✅', '🥰', '😂', '🎉', '🚨', '🚀', '📢', '🎁', '👇', '👉', '📌', '💡', '💯', '💵', '⭐', '👀', '🎯', '📣', '📈', '💌'],
+            faces: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕'],
+            actions: ['👋', '🤚', '🖐️', '✋', '🖖', '👌', '🤌', '🤏', '✌️', '🤞', '🤟', '🤘', '🤙', '👈', '👉', '👆', '🖕', '👇', '☝️', '👍', '👎', '✊', '👊', '🤛', '🤜', '👏', '🙌', '👐', '🤲', '🤝', '🙏', '✍️', '💅', '🤳', '💪', '🦾', '🦿', '🦵', '🦶', '👂', '🦻', '👃', '🧠', '🫀', '🫁', '🦷', '🦴', '👀', '👁️', '👅', '👄', '🏃', '🚶', '💃', '🕺', '🧗', '🧘', '🏄', '🏊', '🚴', '🏋️', '🤸', '⛹️', '🤾', '🎤', '🎬', '🎨'],
+            animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐻‍❄️', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦤', '🦩', '🦚', '🦜', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🐳', '🐋', '🐬', '🐟', '🐠', '🐡', '🦈', '🐙', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🪲', '🐞', '🦗', '🕷️', '🕸️', '🦂', '🦟', '🪰', '🪱', '🌿', '🌱', '🌴', '🌵', '🍁', '🍂', '🍃', '🌸', '🌹', '🌺', '🌻', '🌼', '🌷'],
+            foods: ['🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆', '🥑', '🥦', '🥬', '🥒', '🌶️', '🫑', '🌽', '🥕', '🫒', '🧄', '🧅', '🥔', '🍠', '🥐', '🥯', '🍞', '🥖', '🥨', '🥞', '🧇', '🧀', '🍖', '🍗', '🥩', '🥓', '🍔', '🍟', '🍕', '🌭', '🥪', '🌮', '🌯', '🫓', '🥙', '🧆', '🥚', '🍳', '🥘', '🍲', '🫕', '🥣', '🥗', '🍿', '🧈', '🧂', '🥫', '🍱', '🍘', '🍙', '🍚', '🍛', '🍜', '🍝', '🍣', '🍤', '🍥', '🥮', '🍡', '🥟', '🥠', '🥡', '🦀', '🦞', '🦐', '🦑', '🦪', '🍦', '🍧', '🍨', '🍩', '🍪', '🎂', '🍰', '🧁', '🥧', '🍫', '🍬', '🍭', '🍮', '🍯', '🍼', '🥛', '☕', '🫖', '🍵', '🍶', '🍾', '🍷', '🍸', '🍹', '🍺', '🍻', '🥂', '🥃', '🥤', '🧋', '🧃', '🧉', '🧊'],
+            places: ['🏔️', '⛰️', '🌋', '🗻', '🏕️', '🏖️', '🏜️', '🏝️', '🏞️', '🏟️', '🏛️', '🏗️', '🧱', '🏘️', '🏠', '🏡', '🏢', '🏣', '🏤', '🏥', '🏦', '🏨', '🏩', '🏪', '🏫', '🏬', '🏭', '🏯', '🏰', '💒', '🗼', '🗽', '⛪', '🕌', '🛕', ' synagogue', '⛩️', '🕋', '⛲', '⛺', '🌁', '🌃', '🏙️', '🌄', '🌅', '🌆', '🌇', '🌉', '🎠', '🎡', '🎢', '🚂', '🚃', '🚄', '🚅', '🚆', '🚇', '🚈', '🚉', '🚊', '🚝', '🚞', '🚋', '🚌', '🚍', '🚎', '🚐', '🚑', '🚒', '🚓', '🚔', '🚕', '🚖', '🚗', '🚘', '🚙', '🛻', '🚚', '🚛', '🚜', '🏎️', '🏍️', '🛵', '🦽', '🦼', '🛺', '🚲', '🛴', '🛹', '🛼', '🚏', '🛣️', '🛤️', '⚓', '⛵', '🛶', '🚤', '🛳️', '⛴️', '🚢', '✈️', '🛩️', '🛫', '🛬', '🪂', '💺', '🚁', '🚟', '🚠', '🚡', '🛰️', '🚀', '🛸', '🪐', '🌠', '🌌', '🌌', '🌤️', '🌧️', '❄️', '🌈', '☀️', '☁️', '⛅', '⛈️'],
+            objects: ['⌚', '📱', '📲', '💻', '⌨️', '🖥️', '🖨️', '🖱️', '🖲️', '🕹️', '🗜️', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', '📽️', '🎞️', '📞', '☎️', '📟', '📠', '📺', '📻', '🎙️', '🎚️', '🎛️', '🧭', '⏱️', '⏲️', '⏰', '⏳', '⌛', '🔋', '🔌', '💡', '🔦', '🕯️', '🪔', '🧯', '🛢️', '💸', '💵', '💴', '💶', '💷', '🪙', '💰', '💳', '💎', '⚖️', '🪜', '🧰', '🪛', '🔧', '🔨', '⚒️', '⛏️', '🪓', '🛡️', '⚙️', '🧱', '⛓️', '🧲', '🔫', '💣', '🧨', '🪓', '🔪', '🗡️', '⚔️', '🔮', '💈', '📿', '💄', '💍', '💼', '🩸', '💊', '🩹', '🩺', '🛒', '🚬', '🔑', '🗝️', '📦', '🏷️', '🔖', '🪞', '🪟', '🧻', '🧼', '🧽', '🪠', '🧺'],
+            symbols: ['💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟', '❣️', '💔', '❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💯', '💢', '💥', '💫', '💦', '💨', '🕳️', '💣', '💬', '👁️‍🗨️', '🗨️', '🗯️', '💭', '💤', '🌐', '🌀', '♠️', '♥️', '♦️', '♣️', '🃏', '🀄', '🎴', '🎭', '🖼️', '🎨', '🔇', '🔈', '🔉', '🔊', '📢', '📣', '📯', '🔔', '🔕', '🎼', '🎵', '🎶', '✴️', '✳️', '️', '⚠️', '♨️', '🚸', '⛔', '🚫', '🚳', '🚭', '🚯', '🚰', '🚹', '🚺', '🚻', '🚼', '🚾', '🅿️', 'ℹ️', '🆒', '🆓', '🆔', '🆕', '🆖', '🆗', '🆙', '🆚', '🈁', '🈂️', '🈚', '🈯', '🈲', '🈳', '🈴', '🈵', '🈶', '🈷️', '🈸', '🈹', '🈺', '🉐', '🉑', '🌀', '🛑', '❌', '⭕', '✅', '☑️', '✔️', '➕', ' Michael', '➖', '➗', '➰', '➿', '〽️', '✳️', '✴️', '❇️', '‼️', '⁉️', '❓', '❔', '❕', '❗', '〰️', '©️', '®️', '™️', '#️⃣', '*️⃣', '0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟', '🔀', '🔁', '🔂', '▶️', '⏩', '⏭️', '⏯️', '◀️', '⏪', '⏮️', '🔼', '⏫', '🔽', '⏬', '⏸️', '⏹️', '⏺️', '⏏️', '🎦', '🔅', '🔆', '📶', '📳', '📴', '➡️', '⬅️', '⬆️', '⬇️', '↗️', '↘️', '↙️', '↖️', '↕️', '↔️', '↩️', '↪️', '⤴️', '⤵️', '🔀', '🔁', '🔂', '🔄', '🔃', '🎚️', '🎛️'],
+            flags: ['🇰🇷', '🇺🇸', '🇯🇵', '🇨🇳', '🇬🇧', '🇨🇦', '🇩🇪', '🇫🇷', '🇮🇹', '🇷🇺', '🇪🇸', '🇧🇷', '🇦🇺', '🇻🇳', '🇹🇭', '🇹🇼', '🇭🇰', '🇸🇬', '🇲🇾', '🇮🇩', '🇵🇭', '🇮🇳', '🇲🇽', '🇷🇺', '🇹🇷', '🇸🇦', '🇦🇪', '🇿🇦', '🇳🇬', '🇪🇬', '🇳🇱', '🇨🇭', '🇸🇪', '🇳🇴', '🇩🇰', '🇫🇮', '🇵🇱', '🇺🇦', '🇮🇪', '🇳🇿', '🇦🇷', '🇨🇱', '🇨🇴', '🇵🇪', '🏁', '🚩', '🎌', '🏴‍☠️', '🏳️‍🌈', '🏳️‍⚧️', '🇺🇳', '🇪🇺']
         };
 
         function changeEmojiTab(category) {
@@ -438,7 +315,6 @@
             });
         }
 
-        // --- 기능 로직 ---
         function addEmojis() {
             const text = document.getElementById('inputText').value;
             if (!text.trim()) {
