@@ -12,23 +12,23 @@
       gtag('config', 'G-8R7T1JEFVL');
     </script>
 
+    <!-- 🟢 [terms.html 맞춤형 SEO] -->
+    <meta name="description" content="3초 완성 AI 이모지 자동입력 툴 모지탭(Mojitap) 공식 웹사이트입니다. 서비스 이용약관을 안내합니다.">
+    <meta name="keywords" content="모지탭 이용약관, terms of service">
     <title>Terms of Service | Mojitap</title>
+
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
     <style>
         :root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; }
         body { font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
-        
         .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 30px 40px; box-sizing: border-box; }
-
         .main-header { margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
         .header-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .logo-link img { height: 36px; display: block; }
-        
         .lang-toggle { display: flex; background: var(--palette-bg); border-radius: 8px; overflow: hidden; }
         .lang-btn { border: none; background: none; padding: 6px 12px; font-size: 12px; font-weight: 800; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
         .lang-btn.active { background: var(--primary-color); color: white; }
-
         .top-nav { display: flex; justify-content: center; gap: 15px; }
         .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 15px; padding: 8px 16px; border-radius: 10px; transition: all 0.3s; }
         .nav-item:hover { color: var(--primary-color); }
@@ -47,13 +47,7 @@
         body.ko .lang-en { display: none !important; }
         body.en .lang-ko { display: none !important; }
         
-        @media (max-width: 768px) { 
-            body { padding: 0; } 
-            .app-container { border-radius: 0; padding: 20px 15px; } 
-            .main-header { margin-bottom: 10px; padding-bottom: 10px; }
-            .header-top-row { margin-bottom: 10px; }
-            .content-box { padding: 25px 20px; } 
-        }
+        @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .main-header { margin-bottom: 10px; padding-bottom: 10px; } .header-top-row { margin-bottom: 10px; } .content-box { padding: 25px 20px; } }
     </style>
 </head>
 <body class="ko">
@@ -105,11 +99,18 @@
     </div>
 
     <script>
+        // 🟢 [v1.9.0] 언어 동적 변경 및 브라우저 자동 감지
         function setLanguage(lang) {
+            document.documentElement.lang = lang; 
             document.body.className = lang;
             document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
+        window.onload = () => { 
+            const userLang = navigator.language || navigator.userLanguage;
+            if (!userLang.includes('ko')) setLanguage('en'); 
+            else setLanguage('ko'); 
+        };
     </script>
 </body>
 </html>
