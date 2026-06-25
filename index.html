@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🟢 [절대 삭제 금지] 구글 서치 콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
     
-    <!-- 🟢 [절대 삭제 금지] 구글 애널리틱스 추적 코드 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -55,7 +53,6 @@
         textarea { flex: 1; height: 180px; padding: 18px; border: 2px solid var(--border-color); border-radius: 14px; font-size: 16px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; }
         textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(255, 79, 109, 0.1); }
         
-        /* 결과창 배경색을 약간 다르게 주어 에디터 느낌 강화 */
         #outputText { background-color: #FAFAFA; border-color: #D1D5DB; }
         #outputText:focus { background-color: #FFFFFF; border-color: var(--sub-purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); }
 
@@ -98,3 +95,234 @@
         body.en .lang-ko { display: none !important; }
 
         @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .textarea-wrapper { flex-direction: column; gap: 15px; } .lang-toggle { top: 10px; right: 10px; } }
+    </style>
+</head>
+<body class="ko"> 
+
+    <div id="toast"></div>
+
+    <div class="app-container">
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="btn-ko" onclick="setLanguage('ko')">KOR</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">ENG</button>
+        </div>
+
+        <header>
+            <a href="/"><img src="mojitap-logo.png" alt="Mojitap Logo" style="height: 50px; max-width: 100%; margin-bottom: 10px;"></a>
+        </header>
+
+        <nav class="top-nav">
+            <a href="/" class="nav-item active"><span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span></a>
+            <a href="/blog" class="nav-item"><span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span></a>
+        </nav>
+
+        <main class="tool-section">
+            <div class="textarea-wrapper">
+                <textarea id="inputText" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)"></textarea>
+                <textarea id="outputText" placeholder="결과가 여기에 나옵니다.&#13;&#10;마음대로 글을 수정하고 팔레트를 클릭해 이모지를 넣어보세요!"></textarea>
+            </div>
+            
+            <p class="hint-text lang-ko">💡 결과창에서 글을 직접 수정하거나, 팔레트를 클릭해 커서 위치에 이모지를 쏙쏙 넣을 수 있어요!</p>
+            <p class="hint-text lang-en">💡 You can edit the result directly or click the palette to insert emojis at your cursor!</p>
+
+            <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 AI 스마트 이모지 입히기</span><span class="lang-en">🚀 Smart Add Emojis</span></button>
+            <button class="btn-copy" onclick="copyText('outputText')"><span class="lang-ko">📋 전체 복사해서 바로 사용하기</span><span class="lang-en">📋 Copy All to Clipboard</span></button>
+        </main>
+
+        <section class="emoji-palette-section">
+            <div class="palette-title"><span class="lang-ko">🎨 글로벌 표준 이모지 팔레트</span><span class="lang-en">🎨 Standard Emoji Palette</span></div>
+            
+            <div class="tab-container">
+                <button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')"><span class="lang-ko">🔥 인기</span><span class="lang-en">🔥 Best</span></button>
+                <button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')"><span class="lang-ko">😀 표정</span><span class="lang-en">😀 Faces</span></button>
+                <button class="tab-btn" id="tab-symbols" onclick="changeEmojiTab('symbols')"><span class="lang-ko">✨ 기호</span><span class="lang-en">✨ Symbol</span></button>
+                <button class="tab-btn" id="tab-actions" onclick="changeEmojiTab('actions')"><span class="lang-ko">🧍 행동</span><span class="lang-en">🧍 Action</span></button>
+                <button class="tab-btn" id="tab-animals" onclick="changeEmojiTab('animals')"><span class="lang-ko">🐱 동물</span><span class="lang-en">🐱 Animal</span></button>
+                <button class="tab-btn" id="tab-foods" onclick="changeEmojiTab('foods')"><span class="lang-ko">🍔 음식</span><span class="lang-en">🍔 Food</span></button>
+                <button class="tab-btn" id="tab-places" onclick="changeEmojiTab('places')"><span class="lang-ko">🚗 장소</span><span class="lang-en">🚗 Place</span></button>
+                <button class="tab-btn" id="tab-objects" onclick="changeEmojiTab('objects')"><span class="lang-ko">💡 사물</span><span class="lang-en">💡 Object</span></button>
+                <button class="tab-btn" id="tab-flags" onclick="changeEmojiTab('flags')"><span class="lang-ko">🏁 국기</span><span class="lang-en">🏁 Flags</span></button>
+            </div>
+
+            <div class="emoji-display-area" id="emoji-grid-display"></div>
+        </section>
+
+        <article class="seo-content">
+            <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드</h2>
+            <h2 class="lang-en">The Ultimate Guide to Using Emojis</h2>
+            <p class="lang-ko">이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
+            <p class="lang-en">Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone struggles to convey. Beyond simple picture symbols, they are a visual language based on the globally accepted Unicode Standard.</p>
+        </article>
+
+        <footer>
+            <div class="footer-links">
+                <a href="/about"><span class="lang-ko">사이트 소개</span><span class="lang-en">About</span></a>
+                <a href="/privacy"><span class="lang-ko">개인정보처리방침</span><span class="lang-en">Privacy Policy</span></a>
+                <a href="/terms"><span class="lang-ko">이용약관</span><span class="lang-en">Terms of Service</span></a>
+                <a href="/contact"><span class="lang-ko">문의하기</span><span class="lang-en">Contact</span></a>
+            </div>
+            <div class="copyright">&copy; 2026 Mojitap. All rights reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        let currentLang = 'ko';
+        const placeholderData = {
+            inputText: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)", en: "Paste your text here...\n(e.g., Big sale event ends today, hurry up!)" },
+            outputText: { ko: "결과가 여기에 나옵니다.\n마음대로 글을 수정하고 팔레트를 클릭해 이모지를 넣어보세요!", en: "Result appears here.\nEdit freely and click the palette to insert emojis!" }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.body.className = lang; 
+            document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('inputText').placeholder = placeholderData.inputText[lang];
+            document.getElementById('outputText').placeholder = placeholderData.outputText[lang];
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
+        }
+
+        const emojiData = {
+            popular: ['✨', '❤️', '🔥', '👍', '✅', '🥰', '😂', '🎉', '🚨', '🚀', '📢', '🎁', '👇', '👉', '📌', '💡', '💯', '💵', '⭐', '👀', '🎯', '📣', '📈', '💌', '💖', '💕', '🫶', '👏', '🙏', '🙌', '💪', '✔️', '☑️', '❗', '❓', '🛒', '🛍️', '💸', '💰', '🏆', '🏅', '🥇', '⚡', '🌈', '☀️', '🍀', '🌿', '🌱', '🎈', '🎊', '🎤', '🎧', '📸', '💎', '👑', '😎', '😋', '😘', '🤩'],
+            faces: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕'],
+            symbols: ['💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟', '❣️', '💔', '❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💯', '💢', '💥', '💫', '💦', '💨', '💬', '🗨️', '🗯️', '💭', '💤', '🌐', '♠️', '♥️', '♦️', '♣️', '🃏', '🎭', '🎨', '📢', '📣', '🔔', '🔕', '🎵', '🎶', '⚠️', '⛔', '🚫', '🛑', '❌', '⭕', '✅', '☑️', '✔️', '➕', '➖', '➗', '❗', '❓', '❕', '❔', '▶️', '⏸️', '⏹️', '⏺️', '🔼', '🔽', '➡️', '⬅️', '⬆️', '⬇️'],
+            actions: ['👋', '🤚', '🖐️', '✋', '🖖', '👌', '🤌', '🤏', '✌️', '🤞', '🤟', '🤘', '🤙', '👈', '👉', '👆', '🖕', '👇', '☝️', '👍', '👎', '✊', '👊', '🤛', '🤜', '👏', '🙌', '👐', '🤲', '🤝', '🙏', '✍️', '💅', '🤳', '💪', '🦾', '🦿', '🦵', '🦶', '👂', '🦻', '👃', '🧠', '🫀', '🫁', '🦷', '🦴', '👀', '👁️', '👅', '👄', '🏃', '🚶', '💃', '🕺', '🧗', '🧘', '🏄', '🏊', '🚴', '🏋️', '🤸', '⛹️', '🤾', '🎤', '🎬', '🎨'],
+            animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐻‍❄️', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦤', '🦩', '🦚', '🦜', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🐳', '🐋', '🐬', '🐟', '🐠', '🐡', '🦈', '🐙', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🪲', '🐞', '🦗', '🕷️', '🕸️', '🦂', '🦟', '🪰', '🪱', '🌿', '🌱', '🌴', '🌵', '🍁', '🍂', '🍃', '🌸', '🌹', '🌺', '🌻', '🌼', '🌷'],
+            foods: ['🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆', '🥑', '🥦', '🥬', '🥒', '🌶️', '🫑', '🌽', '🥕', '🫒', '🧄', '🧅', '🥔', '🍠', '🥐', '🥯', '🍞', '🥖', '🥨', '🥞', '🧇', '🧀', '🍖', '🍗', '🥩', '🥓', '🍔', '🍟', '🍕', '🌭', '🥪', '🌮', '🌯', '🫓', '🥙', '🧆', '🥚', '🍳', '🥘', '🍲', '🫕', '🥣', '🥗', '🍿', '🧈', '🧂', '🥫', '🍱', '🍘', '🍙', '🍚', '🍛', '🍜', '🍝', '🍣', '🍤', '🍥', '🥮', '🍡', '🥟', '🥠', '🥡', '🦀', '🦞', '🦐', '🦑', '🦪', '🍦', '🍧', '🍨', '🍩', '🍪', '🎂', '🍰', '🧁', '🥧', '🍫', '🍬', '🍭', '🍮', '🍯', '🍼', '🥛', '☕', '🫖', '🍵', '🍶', '🍾', '🍷', '🍸', '🍹', '🍺', '🍻', '🥂', '🥃', '🥤', '🧋', '🧃', '🧉', '🧊'],
+            places: ['🏔️', '⛰️', '🌋', '🗻', '🏕️', '🏖️', '🏜️', '🏝️', '🏞️', '🏟️', '🏛️', '🏗️', '🏘️', '🏠', '🏡', '🏢', '🏣', '🏤', '🏥', '🏦', '🏨', '🏩', '🏪', '🏫', '🏬', '🏭', '🏯', '🏰', '💒', '🗼', '🗽', '⛪', '🕌', '🛕', '🕍', '⛩️', '🕋', '⛲', '⛺', '**', '🌃', '🏙️', '🌄', '🌅', '🌆', '🌇', '🌉', '🎠', '🎡', '🎢', '🚂', '🚄', '🚅', '🚆', '🚇', '🚈', '🚉', '🚊', '🚝', 'อม', '🚌', '🚍', '🚎', '🚐', '🚑', '🚒', '🚓', '🚔', '🚕', '🚖', '🚗', '🚘', '🚙', '🛻', '🚚', '🚛', '🚜', '🏎️', '🏍️', '🛵', '🚲', '🛴', '🛹', '🛼', '🚏', '🛣️', '🛤️', '⚓', '⛵', '🛶', '🚤', '🛳️', '⛴️', '🚢', '✈️', '🛩️', '🛫', '🛬', '🪂', '💺', '🚁', '🛰️', '🚀', '🛸', '🪐', '🌠', '🌌', '🌤️', '🌧️', '❄️', '🌈', '☀️', '☁️', '⛅', '⛈️'],
+            objects: ['⌚', '📱', '📲', '💻', '⌨️', '🖥️', '🖨️', '🖱️', '🖲️', '🕹️', '🗜️', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', '📽️', '🎞️', '📞', '☎️', '📟', '📠', '📺', '📻', '🎙️', '🎚️', '🎛️', '🧭', '⏱️', '⏲️', '⏰', '⏳', '⌛', '🔋', '🔌', '💡', '🔦', '🕯️', '🪔', '🧯', '🛢️', '💸', '💵', '💴', '💶', '💷', '🪙', '💰', '💳', '💎', '⚖️', '🪜', '🧰', '🪛', '🔧', '🔨', '⚒️', '⛏️', '🪓', '🛡️', '⚙️', '🧱', '⛓️', '🧲', '🔫', '💣', '🧨', '🪓', '🔪', '🗡️', '⚔️', '🔮', '💈', '📿', '💄', '💍', '💼', '🩸', '💊', '🩹', '🩺', '🛒', '🚬', '🔑', '🗝️', '📦', '🏷️', '🔖', '🪞', '🪟', '🧻', '🧼', '🧽', '🪠', '🧺'],
+            flags: ['🇰🇷', '🇺🇸', '🇯🇵', '🇨🇳', '🇬🇧', '🇨🇦', '🇩🇪', '🇫🇷', '🇮🇹', '🇷🇺', '🇪🇸', '🇧🇷', '🇦🇺', '🇻🇳', '🇹🇭', '🇹🇼', '🇭🇰', '🇸🇬', '🇲🇾', '🇮🇩', '🇵🇭', '🇮🇳', '🇲🇽', '🇹🇷', '🇸🇦', '🇦🇪', '🇿🇦', '🇳🇬', '🇪🇬', '🇳🇱', '🇨🇭', '🇸🇪', '🇳🇴', '🇩걍', '🇫🇮', '🇵🇱', '🇺🇦', '🇮🇪', '🇳🇿', '🇦🇷', '🇨🇱', '🇨🇴', '🇵🇪', '🏁', '🚩', '🎌', '🏴‍☠️', '🏳️‍🌈', '🏳️‍⚧️', '🇺🇳', '🇪🇺']
+        };
+
+        function changeEmojiTab(category) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-' + category).classList.add('active');
+
+            const displayArea = document.getElementById('emoji-grid-display');
+            displayArea.innerHTML = '';
+            
+            emojiData[category].forEach(emoji => {
+                const item = document.createElement('div');
+                item.className = 'emoji-item';
+                item.innerText = emoji;
+                item.onclick = () => copySingleEmoji(emoji);
+                displayArea.appendChild(item);
+            });
+        }
+
+        // 🟢 [v1.6.1 프리미엄 스펙] 다중 단어 치환 및 최대 4개 출력 고도화 알고리즘
+        function addEmojis() {
+            const text = document.getElementById('inputText').value;
+            if (!text.trim()) {
+                showToast(currentLang === 'ko' ? '변환할 텍스트를 먼저 입력해주세요!' : 'Please enter text to convert!');
+                return;
+            }
+
+            const rules = [
+                { words: ['최고', '완벽', '훌륭', '짱', '대박', '레전드', '역대급', '합격'], emoji: '✨' },
+                { words: ['좋아', '좋은', '좋다', '사랑', '하트', '행복', '만족'], emoji: '💖' },
+                { words: ['축하', '생일', '기념', '파티', '오픈', '환영', '웰컴'], emoji: '🎉' },
+                { words: ['안녕', '반갑', '인사', '하이'], emoji: '👋' },
+                { words: ['감사', '고맙', '수고', '부탁', '진심'], emoji: '🙏' },
+                { words: ['마케팅', '매출', '수익', '성과', '성장', '비즈니스'], emoji: '📈' },
+                { words: ['할인', '특가', '이벤트', '이벤트', '무료', '선물', '혜택', '세일', '쿠폰'], emoji: '🎁' },
+                { words: ['주목', '필독', '중요', '알림', '공지', '속보', '주의'], emoji: '🚨' },
+                { words: ['시간', '마감', '오늘까지', '임박', '종료', '서두르'], emoji: '⏳' },
+                { words: ['꿀팁', '정보', '방법', '노하우', '비법', '전략', '비결'], emoji: '💡' },
+                { words: ['추천', '강추', '베스트', '인기', '1위', '원픽'], emoji: '👍' },
+                { words: ['슬프', '눈물', '우울', '실패'], emoji: '😢' },
+                { words: ['화남', '짜증', '분노', '열받'], emoji: '😡' },
+                { words: ['운동', '헬스', '건강', '화이팅', '파이팅'], emoji: '💪' },
+                { words: ['여행', '휴가', '비행기', '바다'], emoji: '✈️' },
+                { words: ['커피', '카페', '커피숍'], emoji: '☕' },
+                { words: ['밥', '맛집', '음식', '점심', '저녁'], emoji: '🍽️' },
+                { words: ['돈', '월급', '부자', '투자', '대박'], emoji: '💸' },
+                { words: ['확실', '진짜', '보장', '리얼'], emoji: '💯' },
+                { words: ['확인', '보기', '체크', '집중'], emoji: '👀' },
+                { words: ['날씨', '맑음', '햇살'], emoji: '☀️' }
+            ];
+
+            let lines = text.split('\n');
+            let processedLines = lines.map(line => {
+                if (line.trim() === '') return line;
+
+                let currentLine = line;
+                let appliedEmojis = 0;
+                const MAX_EMOJIS_PER_LINE = 4; // 🟢 출력 양을 한 줄당 최대 4개까지 자연스럽게 늘림!
+
+                // 문장에 포함된 모든 단어들을 전면 스캔하여 다중 치환 진행
+                for (let rule of rules) {
+                    if (appliedEmojis >= MAX_EMOJIS_PER_LINE) break;
+
+                    for (let word of rule.words) {
+                        if (appliedEmojis >= MAX_EMOJIS_PER_LINE) break;
+                        if (currentLine.includes(rule.emoji)) continue; // 중복 이모지 폭탄 방지
+
+                        // 단어 매칭 시 단어 바로 뒤에 이모지 쏙 삽입
+                        let index = currentLine.indexOf(word);
+                        if (index !== -1) {
+                            let insertPos = index + word.length;
+                            currentLine = currentLine.slice(0, insertPos) + " " + rule.emoji + currentLine.slice(insertPos);
+                            appliedEmojis++;
+                            break; // 이 룰에 대해서는 매칭 완료 후 다음 룰로 패스
+                        }
+                    }
+                }
+
+                // AI 문맥 기호 센스 유지
+                if (appliedEmojis === 0) {
+                    if (currentLine.endsWith('!')) currentLine += ' 🔥';
+                    else if (currentLine.endsWith('?')) currentLine += ' 🤔';
+                    else if (currentLine.endsWith('~')) currentLine += ' 🎵';
+                }
+
+                return currentLine;
+            });
+
+            document.getElementById('outputText').value = processedLines.join('\n');
+            showToast(currentLang === 'ko' ? '✨ AI 초정밀 변환 완료!' : '✨ AI Smart Conversion Complete!');
+        }
+
+        function copySingleEmoji(emoji) {
+            navigator.clipboard.writeText(emoji).then(() => {
+                showToast(currentLang === 'ko' ? `${emoji} 복사 & 삽입 완료!` : `${emoji} Copied & Inserted!`);
+            });
+
+            const outputArea = document.getElementById('outputText');
+            const inputArea = document.getElementById('inputText');
+            
+            const activeElement = document.activeElement;
+            const targetArea = (activeElement === inputArea) ? inputArea : outputArea;
+
+            const startPos = targetArea.selectionStart;
+            const endPos = targetArea.selectionEnd;
+            const text = targetArea.value;
+
+            targetArea.value = text.substring(0, startPos) + emoji + text.substring(endPos);
+            targetArea.selectionStart = targetArea.selectionEnd = startPos + emoji.length;
+            targetArea.focus();
+        }
+
+        function copyText(elementId) {
+            const output = document.getElementById(elementId);
+            if (!output.value) {
+                showToast(currentLang === 'ko' ? '복사할 내용이 없습니다.' : 'Nothing to copy.');
+                return;
+            }
+            output.select();
+            document.execCommand('copy');
+            showToast(currentLang === 'ko' ? '📋 전체 복사 완료! SNS에 바로 붙여넣기 하세요!' : '📋 Copied! Ready to paste!');
+        }
+
+        window.onload = () => {
+            changeEmojiTab('popular');
+        };
+    </script>
+</body>
+</html>
