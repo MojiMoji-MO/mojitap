@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- 🟢 [절대 삭제 금지] 구글 서치 콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
     
+    <!-- 🟢 [절대 삭제 금지] 구글 애널리틱스 추적 코드 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -53,6 +55,7 @@
         textarea { flex: 1; height: 180px; padding: 18px; border: 2px solid var(--border-color); border-radius: 14px; font-size: 16px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; }
         textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(255, 79, 109, 0.1); }
         
+        /* 결과창 배경색을 약간 다르게 주어 에디터 느낌 강화 */
         #outputText { background-color: #FAFAFA; border-color: #D1D5DB; }
         #outputText:focus { background-color: #FFFFFF; border-color: var(--sub-purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); }
 
@@ -118,14 +121,15 @@
 
         <main class="tool-section">
             <div class="textarea-wrapper">
-                <textarea id="inputText" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)"></textarea>
+                <textarea id="inputText" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 오늘 날씨 너무 좋다!)"></textarea>
+                <!-- 🟢 readonly 제거: 사용자가 결과창을 직접 수정 가능하게 변경 -->
                 <textarea id="outputText" placeholder="결과가 여기에 나옵니다.&#13;&#10;마음대로 글을 수정하고 팔레트를 클릭해 이모지를 넣어보세요!"></textarea>
             </div>
             
             <p class="hint-text lang-ko">💡 결과창에서 글을 직접 수정하거나, 팔레트를 클릭해 커서 위치에 이모지를 쏙쏙 넣을 수 있어요!</p>
             <p class="hint-text lang-en">💡 You can edit the result directly or click the palette to insert emojis at your cursor!</p>
 
-            <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 AI 스마트 이모지 입히기</span><span class="lang-en">🚀 Smart Add Emojis</span></button>
+            <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 스마트 문맥 이모지 입히기</span><span class="lang-en">🚀 Smart Context Emojis</span></button>
             <button class="btn-copy" onclick="copyText('outputText')"><span class="lang-ko">📋 전체 복사해서 바로 사용하기</span><span class="lang-en">📋 Copy All to Clipboard</span></button>
         </main>
 
@@ -168,7 +172,7 @@
     <script>
         let currentLang = 'ko';
         const placeholderData = {
-            inputText: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)", en: "Paste your text here...\n(e.g., Big sale event ends today, hurry up!)" },
+            inputText: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 오늘 날씨 너무 좋다!)", en: "Paste your text here...\n(e.g., The weather is amazing today!)" },
             outputText: { ko: "결과가 여기에 나옵니다.\n마음대로 글을 수정하고 팔레트를 클릭해 이모지를 넣어보세요!", en: "Result appears here.\nEdit freely and click the palette to insert emojis!" }
         };
 
@@ -195,9 +199,9 @@
             actions: ['👋', '🤚', '🖐️', '✋', '🖖', '👌', '🤌', '🤏', '✌️', '🤞', '🤟', '🤘', '🤙', '👈', '👉', '👆', '🖕', '👇', '☝️', '👍', '👎', '✊', '👊', '🤛', '🤜', '👏', '🙌', '👐', '🤲', '🤝', '🙏', '✍️', '💅', '🤳', '💪', '🦾', '🦿', '🦵', '🦶', '👂', '🦻', '👃', '🧠', '🫀', '🫁', '🦷', '🦴', '👀', '👁️', '👅', '👄', '🏃', '🚶', '💃', '🕺', '🧗', '🧘', '🏄', '🏊', '🚴', '🏋️', '🤸', '⛹️', '🤾', '🎤', '🎬', '🎨'],
             animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐻‍❄️', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦤', '🦩', '🦚', '🦜', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🐳', '🐋', '🐬', '🐟', '🐠', '🐡', '🦈', '🐙', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🪲', '🐞', '🦗', '🕷️', '🕸️', '🦂', '🦟', '🪰', '🪱', '🌿', '🌱', '🌴', '🌵', '🍁', '🍂', '🍃', '🌸', '🌹', '🌺', '🌻', '🌼', '🌷'],
             foods: ['🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆', '🥑', '🥦', '🥬', '🥒', '🌶️', '🫑', '🌽', '🥕', '🫒', '🧄', '🧅', '🥔', '🍠', '🥐', '🥯', '🍞', '🥖', '🥨', '🥞', '🧇', '🧀', '🍖', '🍗', '🥩', '🥓', '🍔', '🍟', '🍕', '🌭', '🥪', '🌮', '🌯', '🫓', '🥙', '🧆', '🥚', '🍳', '🥘', '🍲', '🫕', '🥣', '🥗', '🍿', '🧈', '🧂', '🥫', '🍱', '🍘', '🍙', '🍚', '🍛', '🍜', '🍝', '🍣', '🍤', '🍥', '🥮', '🍡', '🥟', '🥠', '🥡', '🦀', '🦞', '🦐', '🦑', '🦪', '🍦', '🍧', '🍨', '🍩', '🍪', '🎂', '🍰', '🧁', '🥧', '🍫', '🍬', '🍭', '🍮', '🍯', '🍼', '🥛', '☕', '🫖', '🍵', '🍶', '🍾', '🍷', '🍸', '🍹', '🍺', '🍻', '🥂', '🥃', '🥤', '🧋', '🧃', '🧉', '🧊'],
-            places: ['🏔️', '⛰️', '🌋', '🗻', '🏕️', '🏖️', '🏜️', '🏝️', '🏞️', '🏟️', '🏛️', '🏗️', '🏘️', '🏠', '🏡', '🏢', '🏣', '🏤', '🏥', '🏦', '🏨', '🏩', '🏪', '🏫', '🏬', '🏭', '🏯', '🏰', '💒', '🗼', '🗽', '⛪', '🕌', '🛕', '🕍', '⛩️', '🕋', '⛲', '⛺', '**', '🌃', '🏙️', '🌄', '🌅', '🌆', '🌇', '🌉', '🎠', '🎡', '🎢', '🚂', '🚄', '🚅', '🚆', '🚇', '🚈', '🚉', '🚊', '🚝', 'อม', '🚌', '🚍', '🚎', '🚐', '🚑', '🚒', '🚓', '🚔', '🚕', '🚖', '🚗', '🚘', '🚙', '🛻', '🚚', '🚛', '🚜', '🏎️', '🏍️', '🛵', '🚲', '🛴', '🛹', '🛼', '🚏', '🛣️', '🛤️', '⚓', '⛵', '🛶', '🚤', '🛳️', '⛴️', '🚢', '✈️', '🛩️', '🛫', '🛬', '🪂', '💺', '🚁', '🛰️', '🚀', '🛸', '🪐', '🌠', '🌌', '🌤️', '🌧️', '❄️', '🌈', '☀️', '☁️', '⛅', '⛈️'],
+            places: ['🏔️', '⛰️', '🌋', '🗻', '🏕️', '🏖️', '🏜️', '🏝️', '🏞️', '🏟️', '🏛️', '🏗️', '🏘️', '🏠', '🏡', '🏢', '🏣', '🏤', '🏥', '🏦', '🏨', '🏩', '🏪', '🏫', '🏬', '🏭', '🏯', '🏰', '💒', '🗼', '🗽', '⛪', '🕌', '🛕', '🕍', '⛩️', '🕋', '⛲', '⛺', '🌃', '🏙️', '🌄', '🌅', '🌆', '🌇', '🌉', '🎠', '🎡', '🎢', '🚂', '🚄', '🚅', '🚆', '🚇', '🚈', '🚉', '🚊', '🚝', '🚋', '🚌', '🚍', '🚎', '🚐', '🚑', '🚒', '🚓', '🚔', '🚕', '🚖', '🚗', '🚘', '🚙', '🛻', '🚚', '🚛', '🚜', '🏎️', '🏍️', '🛵', '🚲', '🛴', '🛹', '🛼', '🚏', '🛣️', '🛤️', '⚓', '⛵', '🛶', '🚤', '🛳️', '⛴️', '🚢', '✈️', '🛩️', '🛫', '🛬', '🪂', '💺', '🚁', '🛰️', '🚀', '🛸', '🪐', '🌠', '🌌', '🌤️', '🌧️', '❄️', '🌈', '☀️', '☁️', '⛅', '⛈️'],
             objects: ['⌚', '📱', '📲', '💻', '⌨️', '🖥️', '🖨️', '🖱️', '🖲️', '🕹️', '🗜️', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', '📽️', '🎞️', '📞', '☎️', '📟', '📠', '📺', '📻', '🎙️', '🎚️', '🎛️', '🧭', '⏱️', '⏲️', '⏰', '⏳', '⌛', '🔋', '🔌', '💡', '🔦', '🕯️', '🪔', '🧯', '🛢️', '💸', '💵', '💴', '💶', '💷', '🪙', '💰', '💳', '💎', '⚖️', '🪜', '🧰', '🪛', '🔧', '🔨', '⚒️', '⛏️', '🪓', '🛡️', '⚙️', '🧱', '⛓️', '🧲', '🔫', '💣', '🧨', '🪓', '🔪', '🗡️', '⚔️', '🔮', '💈', '📿', '💄', '💍', '💼', '🩸', '💊', '🩹', '🩺', '🛒', '🚬', '🔑', '🗝️', '📦', '🏷️', '🔖', '🪞', '🪟', '🧻', '🧼', '🧽', '🪠', '🧺'],
-            flags: ['🇰🇷', '🇺🇸', '🇯🇵', '🇨🇳', '🇬🇧', '🇨🇦', '🇩🇪', '🇫🇷', '🇮🇹', '🇷🇺', '🇪🇸', '🇧🇷', '🇦🇺', '🇻🇳', '🇹🇭', '🇹🇼', '🇭🇰', '🇸🇬', '🇲🇾', '🇮🇩', '🇵🇭', '🇮🇳', '🇲🇽', '🇹🇷', '🇸🇦', '🇦🇪', '🇿🇦', '🇳🇬', '🇪🇬', '🇳🇱', '🇨🇭', '🇸🇪', '🇳🇴', '🇩걍', '🇫🇮', '🇵🇱', '🇺🇦', '🇮🇪', '🇳🇿', '🇦🇷', '🇨🇱', '🇨🇴', '🇵🇪', '🏁', '🚩', '🎌', '🏴‍☠️', '🏳️‍🌈', '🏳️‍⚧️', '🇺🇳', '🇪🇺']
+            flags: ['🇰🇷', '🇺🇸', '🇯🇵', '🇨🇳', '🇬🇧', '🇨🇦', '🇩🇪', '🇫🇷', '🇮🇹', '🇷🇺', '🇪🇸', '🇧🇷', '🇦🇺', '🇻🇳', '🇹🇭', '🇹🇼', '🇭🇰', '🇸🇬', '🇲🇾', '🇮🇩', '🇵🇭', '🇮🇳', '🇲🇽', '🇹🇷', '🇸🇦', '🇦🇪', '🇿🇦', '🇳🇬', '🇪🇬', '🇳🇱', '🇨🇭', '🇸🇪', '🇳🇴', '🇩🇰', '🇫🇮', '🇵🇱', '🇺🇦', '🇮🇪', '🇳🇿', '🇦🇷', '🇨🇱', '🇨🇴', '🇵🇪', '🏁', '🚩', '🎌', '🏴‍☠️', '🏳️‍🌈', '🏳️‍⚧️', '🇺🇳', '🇪🇺']
         };
 
         function changeEmojiTab(category) {
@@ -216,7 +220,952 @@
             });
         }
 
-        // 🟢 [v1.6.1 프리미엄 스펙] 다중 단어 치환 및 최대 4개 출력 고도화 알고리즘
+        /*
+         * Mojitap Context Engine 3.0
+         * 문장 의미뿐 아니라 제목, 소제목, 본문, CTA, 브랜드 서명처럼
+         * 소셜 콘텐츠의 구조까지 분석해 이모지의 종류·개수·위치를 결정한다.
+         */
+        const smartEmojiEngine = (() => {
+            const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*/gu;
+            const PROTECTED_RE = /(?:https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|#[\p{L}\p{N}_]+|@[\p{L}\p{N}_.]+|`[^`\n]*`|\[[^\]\n]+\]\([^)]+\))/giu;
+            const CRITICAL_RE = /사망|별세|장례|부고|추모|참사|재난|재해|사고|피해|부상|실종|질병|암\b|입원|수술|폭력|전쟁|자해|극단적 선택|death|funeral|disaster|accident|victim|injur|cancer|hospital|violence|war|suicide/i;
+            const CONDOLENCE_RE = /명복|애도|추모|위로|마음이 무겁|안타깝|쾌유|회복|무사하|힘을 보태|함께하|condolence|rest in peace|prayers|recovery/i;
+            const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|드립니다|합니다|입니다|예정입니다|notice|announce|please note|official/i;
+            const NEGATED_POSITIVE_RE = /(?:안\s*|별로\s*|전혀\s*)?(?:좋|행복|기쁘|즐겁|만족|추천|성공|괜찮|사랑)[^.!?。！？\n]{0,10}(?:않|못|아니|없|별로)|(?:not|never|hardly)\s+(?:good|happy|glad|satisfied|recommend|successful|love)/i;
+            const STRONG_NEGATION_RE = /아니|않|못|없|별로|싫|최악|실망|포기|실패|문제|오류|불편|not|never|no\b|fail|worst|hate|problem|error/i;
+
+            const profiles = [
+                {
+                    id: 'condolence', priority: 100, emojis: ['🕯️', '🙏', '💙'],
+                    patterns: [[CONDOLENCE_RE, 7]]
+                },
+                {
+                    id: 'apology', priority: 95, emojis: ['🙏', '😔'],
+                    patterns: [
+                        [/죄송|미안|사과|유감|양해(?:를)? 부탁|불편을 드려|심려를 끼쳐|sorry|apolog|regret/i, 6]
+                    ]
+                },
+                {
+                    id: 'celebration', priority: 82, emojis: ['🎉', '🥳', '🎊'],
+                    patterns: [
+                        [/축하|생일|기념일|기념하|파티|당첨|수상|합격|졸업|결혼|새해|congrat|birthday|anniversary|party|winner|graduat/i, 5],
+                        [/드디어|마침내|해냈|성공했|달성했|통과했|finally|made it|achieved/i, 3]
+                    ]
+                },
+                {
+                    id: 'launch', priority: 80, emojis: ['🚀', '✨', '🎉'],
+                    patterns: [
+                        [/출시|런칭|론칭|공개합니다|오픈합니다|정식 오픈|새롭게 선보|서비스 시작|출발합니다|launch|release|now live|grand open/i, 5],
+                        [/준비한 (?:제품|서비스|프로젝트)|새로운 (?:제품|서비스|기능|프로젝트)/i, 2.5]
+                    ]
+                },
+                {
+                    id: 'gratitude', priority: 78, emojis: ['🙏', '💛', '🥹'],
+                    patterns: [
+                        [/감사|고맙|덕분|수고 많|애써|도와주|함께해 주|응원해 주|thank|grateful|appreciat/i, 5],
+                        [/진심으로|마음 깊이|큰 힘이/i, 1.5]
+                    ]
+                },
+                {
+                    id: 'achievement', priority: 76, emojis: ['🏆', '🎯', '✨'],
+                    patterns: [
+                        [/성과|목표 달성|기록 갱신|1위|우승|최고 기록|완성했|완료했|성공|achievement|milestone|record|champion|completed/i, 4.5],
+                        [/해냈|이뤘|달성|성장했|개선했/i, 2.5]
+                    ]
+                },
+                {
+                    id: 'love', priority: 70, emojis: ['💖', '🥰', '💛'],
+                    patterns: [
+                        [/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|애정|love you|miss you|lovely|adorable/i, 5],
+                        [/좋아해|마음에 쏙|내 취향/i, 3]
+                    ]
+                },
+                {
+                    id: 'joy', priority: 68, emojis: ['😊', '😄', '✨'],
+                    patterns: [
+                        [/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|웃음|미소|happy|glad|delighted|excited|fun\b|smile/i, 4],
+                        [/좋은 하루|완벽한 하루|최고의 하루/i, 3]
+                    ]
+                },
+                {
+                    id: 'humor', priority: 67, emojis: ['😂', '🤣', '😆'],
+                    patterns: [
+                        [/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|농담|장난|개그|lol\b|lmao|funny|joke/i, 5]
+                    ]
+                },
+                {
+                    id: 'encouragement', priority: 66, emojis: ['💪', '🙌', '🔥'],
+                    patterns: [
+                        [/힘내|파이팅|화이팅|응원|할 수 있|포기하지|도전하|끝까지|용기|cheer|you can do|keep going|good luck|fighting/i, 4.5],
+                        [/가보자|시작해 보|함께 해보/i, 2.5]
+                    ]
+                },
+                {
+                    id: 'greeting', priority: 64, emojis: ['👋', '😊'],
+                    patterns: [
+                        [/안녕하세요|반갑습니다|어서 오|환영합니다|좋은 아침|좋은 저녁|hello\b|welcome|good morning|good evening/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'sadness', priority: 72, emojis: ['😢', '🥺', '💙'],
+                    patterns: [
+                        [/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|sad|cry|upset|depress|lonely|disappoint/i, 4.5],
+                        [/힘든 하루|마음이 무겁/i, 2]
+                    ]
+                },
+                {
+                    id: 'anger', priority: 73, emojis: ['😤', '😡'],
+                    patterns: [
+                        [/화나|짜증|분노|열받|화가 나|최악|불쾌|억울|angry|annoy|furious|frustrat|worst/i, 5]
+                    ]
+                },
+                {
+                    id: 'fatigue', priority: 63, emojis: ['😮‍💨', '🫠', '☕'],
+                    patterns: [
+                        [/피곤|지쳤|지쳐|야근|밤샘|녹초|바쁜 하루|번아웃|tired|exhaust|burnout|overtime/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'worry', priority: 69, emojis: ['🥺', '😥', '💭'],
+                    patterns: [
+                        [/걱정|불안|고민|막막|두렵|긴장|어쩌지|concern|worried|anxious|nervous|afraid/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'surprise', priority: 62, emojis: ['😮', '🤯', '👀'],
+                    patterns: [
+                        [/깜짝|놀랐|놀랍|대박|말도 안|믿기지|헉|세상에|surpris|amazing|unbelievable|wow\b|omg/i, 4]
+                    ]
+                },
+                {
+                    id: 'warning', priority: 91, emojis: ['⚠️', '🚨', '❗'],
+                    patterns: [
+                        [/주의|경고|위험|비상|긴급|속보|절대 금지|조심|유의|warning|danger|emergency|urgent|caution/i, 5.5]
+                    ]
+                },
+                {
+                    id: 'announcement', priority: 86, emojis: ['📢', '📌', '🔔'],
+                    patterns: [
+                        [/공지|안내|알림|소식|필독|알려드립니다|확인해 주세요|참고해 주세요|announce|notice|update|please note/i, 4.5],
+                        [FORMAL_RE, 1.2]
+                    ]
+                },
+                {
+                    id: 'deadline', priority: 85, emojis: ['⏰', '⏳', '📅'],
+                    patterns: [
+                        [/마감|오늘까지|내일까지|기간 종료|임박|선착순|접수 기간|신청 기간|deadline|last chance|ends? (?:today|tomorrow|soon)|limited time/i, 5],
+                        [/\d{1,2}월\s*\d{1,2}일|\d{1,2}:\d{2}/i, 1]
+                    ]
+                },
+                {
+                    id: 'promotion', priority: 84, emojis: ['🎁', '🏷️', '🛍️'],
+                    patterns: [
+                        [/할인|특가|쿠폰|무료|증정|사은품|혜택|이벤트|프로모션|세일|discount|sale\b|coupon|free\b|giveaway|event/i, 5],
+                        [/\d{1,3}\s*%|원\s*할인/i, 2]
+                    ]
+                },
+                {
+                    id: 'business', priority: 58, emojis: ['📈', '🎯', '💼'],
+                    patterns: [
+                        [/매출|성과|성장률|전환율|마케팅|비즈니스|고객 확보|목표|전략|지표|revenue|growth|marketing|business|conversion|strategy|goal/i, 4],
+                        [/상승|증가|개선|달성/i, 1.5]
+                    ]
+                },
+                {
+                    id: 'finance', priority: 59, emojis: ['💰', '📊', '💸'],
+                    patterns: [
+                        [/재테크|투자|저축|월급|수익|주식|코인|예산|비용|돈\b|finance|invest|saving|salary|profit|stock|budget/i, 4]
+                    ]
+                },
+                {
+                    id: 'idea', priority: 57, emojis: ['💡', '📝', '🔎'],
+                    patterns: [
+                        [/꿀팁|팁\b|방법|노하우|비법|아이디어|알아두|정리해|가이드|튜토리얼|tip\b|how to|idea|guide|tutorial|insight/i, 4],
+                        [/통찰|인사이트|새로운 의미|관점|새롭게 바라|의미를 발견|insight|new meaning|perspective/i, 4.3],
+                        [/발견했|알게 됐|깨달았/i, 2]
+                    ]
+                },
+                {
+                    id: 'work', priority: 53, emojis: ['💼', '🧩', '✅'],
+                    patterns: [
+                        [/업무|회의|기획|협업|팀원|프로젝트|보고서|일정|작업|직장|work\b|meeting|project|report|schedule|teamwork/i, 3.5]
+                    ]
+                },
+                {
+                    id: 'study', priority: 54, emojis: ['📚', '✏️', '🌱'],
+                    patterns: [
+                        [/공부|시험|과제|수업|강의|책을 읽|배웠|학습|자격증|study|exam|class|lecture|book|learn|certificate/i, 4]
+                    ]
+                },
+                {
+                    id: 'injury', priority: 76, emojis: ['🩹', '⚡', '🩺'],
+                    patterns: [
+                        [/근육통|경련|쥐가 나|파열|염좌|통증|젖산|부상|다치|손상|muscle pain|cramp|tear|injur|soreness|lactic acid|damage/i, 5.2]
+                    ]
+                },
+                {
+                    id: 'caution', priority: 75, emojis: ['⚠️', '👀', '📌'],
+                    patterns: [
+                        [/특히.{0,45}(?:많이 발생|자주 발생|주의|취약|위험)|초보.{0,35}(?:주의|발생|위험)|압도적으로 많이|주의가 필요|유의해야|prone to|at risk|especially.{0,30}(?:common|risk|careful)/i, 5]
+                    ]
+                },
+                {
+                    id: 'health', priority: 56, emojis: ['💪', '🩺', '🌿'],
+                    patterns: [
+                        [/운동|헬스|러닝|달리기|다이어트|근육|근육 섬유|체력|건강 관리|등산|요가|workout|exercise|running|fitness|diet|muscle|health|yoga/i, 4]
+                    ]
+                },
+                {
+                    id: 'water-activity', priority: 60, emojis: ['🌊', '🏊', '💧'],
+                    patterns: [
+                        [/물속|물살|수영|헤엄|잠수|물놀이|swim|swimming|underwater|water current|diving/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'travel', priority: 55, emojis: ['✈️', '🧳', '🌍'],
+                    patterns: [
+                        [/여행|휴가|비행기|공항|호텔|떠나|관광|해외|trip\b|travel|vacation|flight|airport|hotel|tour/i, 4]
+                    ]
+                },
+                {
+                    id: 'nature', priority: 49, emojis: ['🌿', '🌸', '🌊'],
+                    patterns: [
+                        [/바다|산책|공원|숲|꽃이|벚꽃|노을|풍경|자연|힐링|ocean|sea\b|walk|park|forest|flower|sunset|nature/i, 3.8]
+                    ]
+                },
+                {
+                    id: 'sunny', priority: 48, emojis: ['☀️', '🌤️'],
+                    patterns: [
+                        [/맑은 날|맑음|햇살|화창|날씨가 좋|따뜻한 날|sunny|sunshine|clear sky|beautiful weather/i, 4]
+                    ]
+                },
+                {
+                    id: 'rain', priority: 48, emojis: ['☔', '🌧️'],
+                    patterns: [
+                        [/비가 오|비 오는|장마|소나기|우산|폭우|rain|rainy|shower|umbrella/i, 4]
+                    ]
+                },
+                {
+                    id: 'snow', priority: 48, emojis: ['❄️', '☃️'],
+                    patterns: [
+                        [/눈이 오|눈 오는|함박눈|첫눈|폭설|추운 겨울|snow|snowy|blizzard|winter cold/i, 4]
+                    ]
+                },
+                {
+                    id: 'food', priority: 51, emojis: ['😋', '🍽️', '🍴'],
+                    patterns: [
+                        [/맛있|맛집|먹방|식사|점심|저녁|아침 식사|요리|배고프|디저트|food\b|delicious|restaurant|lunch|dinner|breakfast|cooking|hungry|dessert/i, 4]
+                    ]
+                },
+                {
+                    id: 'coffee', priority: 52, emojis: ['☕', '🧋'],
+                    patterns: [
+                        [/커피|카페|아메리카노|라떼|에스프레소|coffee|cafe|latte|espresso/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'photo', priority: 50, emojis: ['📸', '🎥', '🎨'],
+                    patterns: [
+                        [/사진|촬영|인증샷|영상|브이로그|콘텐츠|디자인|photo|picture|camera|video|vlog|content|design/i, 4]
+                    ]
+                },
+                {
+                    id: 'music', priority: 47, emojis: ['🎵', '🎧', '🎤'],
+                    patterns: [
+                        [/음악|노래|플레이리스트|공연|콘서트|앨범|music|song|playlist|concert|album/i, 4]
+                    ]
+                },
+                {
+                    id: 'pet', priority: 72, emojis: ['🐶', '🐱', '🐾'],
+                    patterns: [
+                        [/반려동물|강아지|고양이|멍멍|냥이|댕댕이|견종|래브라도|리트리버|비글|산책시키|pet\b|puppy|dog\b|breed|labrador|retriever|beagle|cat\b|kitten/i, 5]
+                    ]
+                },
+                {
+                    id: 'shopping', priority: 45, emojis: ['🛍️', '🛒', '📦'],
+                    patterns: [
+                        [/쇼핑|구매|주문|배송|장바구니|상품|제품|shopping|purchase|order|delivery|cart\b|product/i, 3.5]
+                    ]
+                },
+                {
+                    id: 'data', priority: 69, emojis: ['🗂️', '📊', '🔍'],
+                    patterns: [
+                        [/데이터|로 데이터|원시 데이터|데이터셋|텍스트 데이터|숫자 데이터|데이터베이스|스프레드시트|엑셀|셀\b|열\b|행\b|data\b|dataset|database|spreadsheet|excel|column|row\b/i, 4.8],
+                        [/수집|분석|가공|정제|추출|발췌|분류|필터|전처리|collect|analy|process|clean|extract|classif|filter|preprocess/i, 2.5]
+                    ]
+                },
+                {
+                    id: 'programming', priority: 70, emojis: ['💻', '🧩', '⌨️'],
+                    patterns: [
+                        [/개발자|프로그래밍|코드|코딩|함수|수식|정규표현식|regex|스크립트|자바스크립트|파이썬|HTML|CSS|API\b|program|developer|code\b|coding|function|formula|regular expression|script|javascript|python/i, 5],
+                        [/LEFT|MID|FIND|QUERY|REGEXEXTRACT|REGEXREPLACE|REGEXMATCH/i, 2]
+                    ]
+                },
+                {
+                    id: 'automation', priority: 68, emojis: ['⚙️', '🤖', '⚡'],
+                    patterns: [
+                        [/자동화|자동으로|워크플로|반복 작업|효율|비효율|최적화|생산성|automation|automate|workflow|efficien|optimiz|productiv/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'cloud', priority: 66, emojis: ['☁️', '⚙️', '🌐'],
+                    patterns: [
+                        [/클라우드|서버|서버리스|배포|호스팅|인프라|엔지니어링|cloud|serverless|server\b|deploy|hosting|infrastructure|engineering/i, 4.2]
+                    ]
+                },
+                {
+                    id: 'security', priority: 67, emojis: ['🔐', '🛡️', '🔒'],
+                    patterns: [
+                        [/보안|개인정보|암호|인증|권한|해킹|취약점|보호|security|privacy|password|auth|permission|hack|vulnerab|protect/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'legal', priority: 61, emojis: ['⚖️', '📜', '🏛️'],
+                    patterns: [
+                        [/법률|법적|법원|판결|소송|계약|규정|정책|약관|권리|의무|legal|law\b|court|lawsuit|contract|regulation|policy|rights/i, 4.3]
+                    ]
+                },
+                {
+                    id: 'medical', priority: 74, emojis: ['🩺', '🏥', '💊'],
+                    patterns: [
+                        [/의료|의학|진료|치료|증상|환자|약물|검사|병원|의사|medical|medicine|treatment|symptom|patient|drug|hospital|doctor/i, 4.5]
+                    ]
+                },
+                {
+                    id: 'education', priority: 55, emojis: ['📚', '🎓', '✏️'],
+                    patterns: [
+                        [/교육|학습|강의|수업|학생|교사|학교|교육과정|education|learning|lecture|class|student|teacher|school|curriculum/i, 4.2]
+                    ]
+                },
+                {
+                    id: 'document', priority: 44, emojis: ['📄', '📝', '📌'],
+                    patterns: [
+                        [/문서|보고서|자료|텍스트|문장|글\b|콘텐츠|가이드|매뉴얼|document|report|material|text\b|sentence|content|guide|manual/i, 3.8]
+                    ]
+                },
+                {
+                    id: 'question', priority: 40, emojis: ['🤔', '💭', '❓'],
+                    patterns: [
+                        [/궁금|어떻게 생각|어떤가요|무엇일까|왜일까|의견|추천해 주|알려주|wonder|what do you think|how can|why\b|any idea|recommend/i, 3.5],
+                        [/[?？]\s*$/, 2.2]
+                    ]
+                }
+            ];
+
+            const structureThemes = [
+                { id: 'mystery', pattern: /미스터리|수수께끼|의문|왜 이래|왜 그럴|이상한 이유|비밀|mystery|riddle|why does/i, emojis: ['🤷‍♂️', '🔬', '🕵️'] },
+                { id: 'isolation', pattern: /고립|외톨이|혼자|단절|고독|외로움|isolation|isolated|loneliness|alone\b/i, emojis: ['👤', '🧊', '🌫️'] },
+                { id: 'brain', pattern: /뇌\b|뇌과학|두뇌|인지|도파민|집중력|기억력|brain|neuroscience|dopamine|cognitive/i, emojis: ['🧠', '⏳', '⚡'] },
+                { id: 'time', pattern: /시간|알람|시계|기상|아침|마감|분\b|초\b|time\b|alarm|clock|minute|deadline/i, emojis: ['⏰', '⏳', '⌛'] },
+                { id: 'science', pattern: /과학|연구|실험|단백질|호르몬|혈류|산소|네트워크|science|research|experiment|protein|hormone/i, emojis: ['🔬', '🧬', '🧪'] },
+                { id: 'ai', pattern: /\bAI\b|인공지능|알고리즘|챗봇|디지털|온라인|기계|artificial intelligence|algorithm|chatbot|digital/i, emojis: ['🤖', '⚙️', '💻'] },
+                { id: 'data', pattern: /데이터|데이터셋|데이터베이스|스프레드시트|엑셀|수집|정제|추출|data\b|dataset|database|spreadsheet|excel|clean|extract/i, emojis: ['🗂️', '📊', '🔍'] },
+                { id: 'programming', pattern: /개발|프로그래밍|코드|함수|수식|정규표현식|regex|스크립트|API\b|developer|program|code\b|function|formula|regular expression|script/i, emojis: ['💻', '🧩', '⌨️'] },
+                { id: 'automation', pattern: /자동화|워크플로|효율|최적화|생산성|automation|workflow|efficien|optimiz|productiv/i, emojis: ['⚙️', '🤖', '⚡'] },
+                { id: 'security', pattern: /보안|개인정보|암호|인증|권한|보호|security|privacy|password|auth|permission|protect/i, emojis: ['🔐', '🛡️', '🔒'] },
+                { id: 'legal', pattern: /법률|법원|판결|소송|계약|규정|정책|legal|law\b|court|contract|regulation|policy/i, emojis: ['⚖️', '📜', '🏛️'] },
+                { id: 'medical', pattern: /의료|의학|진료|치료|증상|환자|병원|의사|medical|medicine|treatment|symptom|patient|hospital|doctor/i, emojis: ['🩺', '🏥', '💊'] },
+                { id: 'animal', pattern: /강아지|고양이|반려동물|견종|래브라도|리트리버|비글|동물|puppy|dog\b|cat\b|pet\b|breed|labrador|retriever|beagle|animal/i, emojis: ['🐶', '🐾', '🐱'] },
+                { id: 'water', pattern: /물속|물살|수영|헤엄|잠수|물놀이|swim|swimming|underwater|water current|diving/i, emojis: ['🌊', '🏊', '💧'] },
+                { id: 'anatomy', pattern: /근육|꼬리|근육통|경련|젖산|파열|통증|신체|muscle|tail|cramp|lactic acid|pain|body/i, emojis: ['💪', '🩹', '🩺'] },
+                { id: 'relationship', pattern: /인간관계|관계|친구|연락|대화|타인|사람 사이|소통|relationship|friend|conversation|connection/i, emojis: ['🤝', '💬', '🫂'] },
+                { id: 'friction', pattern: /마찰|함정|저주|위험|경고|소름|중독|불관용|trap|curse|danger|warning|addiction/i, emojis: ['🛑', '⚠️', '🚨'] },
+                { id: 'insight', pattern: /통찰|인사이트|아이디어|창의|유레카|깨달|해상도|관점|insight|idea|creative|perspective/i, emojis: ['💡', '✨', '🔎'] },
+                { id: 'offline', pattern: /오프라인|전원|스마트폰.*끄|디톡스|심심함|고요함|입력.*차단|offline|power off|detox|boredom/i, emojis: ['🔌', '📵', '🧘'] },
+                { id: 'ramen', pattern: /라면|국수|면 요리|ramen|noodle/i, emojis: ['🍜', '😋'] },
+                { id: 'shower', pattern: /샤워|목욕|비누|따뜻한 물|shower|bath/i, emojis: ['🚿', '🫧'] },
+                { id: 'food', pattern: /음식|맛있|맛집|요리|한 입|식사|먹|food|delicious|cook|meal/i, emojis: ['🍽️', '😋', '🍴'] },
+                { id: 'coffee', pattern: /커피|카페|라떼|아메리카노|coffee|cafe|latte/i, emojis: ['☕', '🧋'] },
+                { id: 'money', pattern: /돈\b|수익|매출|투자|재테크|비싸|가격|money|profit|revenue|invest|price/i, emojis: ['💰', '📈', '💸'] },
+                { id: 'growth', pattern: /성장|자기계발|능력|생존 기술|습관|발전|growth|skill|habit|improve/i, emojis: ['🌱', '🎯', '💪'] },
+                { id: 'travel', pattern: /여행|휴가|공항|비행기|해외|travel|trip|vacation|airport|flight/i, emojis: ['✈️', '🧳', '🌍'] },
+                { id: 'nature', pattern: /바다|산|숲|꽃|노을|풍경|자연|힐링|ocean|mountain|forest|flower|sunset|nature/i, emojis: ['🌿', '🌊', '🌸'] },
+                { id: 'health', pattern: /몸\b|건강|운동|헬스|다이어트|신체|health|body|workout|fitness/i, emojis: ['💪', '🏃', '🌿'] },
+                { id: 'launch', pattern: /출시|공개|오픈|런칭|새로운 서비스|launch|release|open/i, emojis: ['🚀', '✨', '🎉'] },
+                { id: 'promotion', pattern: /할인|쿠폰|무료|선물|혜택|이벤트|특가|sale\b|discount|coupon|free\b|gift/i, emojis: ['🎁', '🏷️', '🛍️'] },
+                { id: 'celebration', pattern: /축하|성공|합격|수상|기념|생일|달성|congrat|success|birthday|achiev/i, emojis: ['🎉', '🏆', '🥳'] },
+                { id: 'love', pattern: /사랑|설렘|소중|마음|love\b|lovely|heart/i, emojis: ['💖', '💛', '🥰'] },
+                { id: 'question', pattern: /왜\b|어떻게|무엇|설마|정말|궁금|질문|why\b|how\b|what\b|really|wonder/i, emojis: ['🤔', '❓', '👀'] }
+            ];
+
+            const CTA_RE = /저장|공유|팔로우|구독|태그|댓글|의견|알려 ?주|확인해|신청|구매|클릭|눌러|링크|몇 번|어떤가요|어떨까요|해보세요|건네보|save\b|share\b|follow\b|subscribe|tag\b|comment|click|check it|which one/i;
+            const SAVE_RE = /저장|두고두고|나중에.*꺼내|save\b|bookmark/i;
+            const FOLLOW_RE = /팔로우|구독|follow\b|subscribe/i;
+            const TAG_RE = /태그|친구.*소환|tag\b/i;
+            const BRAND_RE = /글로벌|매거진|뉴스레터|미디어|브랜드|세상을 .*비추|세상을 보는|global|magazine|newsletter|media/i;
+            const HASH_ONLY_RE = /^(?:\s*#[\p{L}\p{N}_-]+\s*){2,}$/u;
+
+            function hasEmoji(text) {
+                EMOJI_RE.lastIndex = 0;
+                return EMOJI_RE.test(text);
+            }
+
+            function countEmojis(text) {
+                EMOJI_RE.lastIndex = 0;
+                return (text.match(EMOJI_RE) || []).length;
+            }
+
+            function protectText(text) {
+                const values = [];
+                const safeText = text.replace(PROTECTED_RE, value => {
+                    const token = `\uE000${values.length}\uE001`;
+                    values.push(value);
+                    return token;
+                });
+                return {
+                    text: safeText,
+                    restore(value) {
+                        return value.replace(/\uE000(\d+)\uE001/g, (_, index) => values[Number(index)]);
+                    }
+                };
+            }
+
+            function splitLine(line) {
+                if (!line) return [''];
+                return line.split(/(?<=[.!?。！？…])(?=\s|$)/u);
+            }
+
+            function scoreProfile(profile, sentence) {
+                let score = 0;
+                for (const [pattern, weight] of profile.patterns) {
+                    pattern.lastIndex = 0;
+                    if (pattern.test(sentence)) score += weight;
+                }
+                return score;
+            }
+
+            function analyzeSentence(rawSentence, documentIsCritical) {
+                const sentence = rawSentence.trim();
+                if (sentence.length < 2 || hasEmoji(sentence)) return null;
+
+                const sentenceIsCritical = CRITICAL_RE.test(sentence);
+                if (documentIsCritical || sentenceIsCritical) {
+                    if (!sentenceIsCritical || !CONDOLENCE_RE.test(sentence)) return null;
+                    return {
+                        profile: profiles.find(profile => profile.id === 'condolence'),
+                        score: 12
+                    };
+                }
+
+                const scored = profiles.map(profile => ({
+                    profile,
+                    score: scoreProfile(profile, sentence)
+                }));
+
+                if (NEGATED_POSITIVE_RE.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (['joy', 'love', 'celebration', 'achievement'].includes(candidate.profile.id)) {
+                            candidate.score -= 8;
+                        }
+                    }
+                }
+
+                if (STRONG_NEGATION_RE.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (['promotion', 'business', 'recommendation', 'joy'].includes(candidate.profile.id)) {
+                            candidate.score -= 2.5;
+                        }
+                    }
+                }
+
+                if (/통찰|인사이트|새로운 의미|관점|새롭게 바라|의미를 발견|insight|new meaning|perspective/i.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (candidate.profile.id === 'idea') candidate.score += 2;
+                        if (candidate.profile.id === 'encouragement') candidate.score -= 3;
+                    }
+                }
+
+                if (/!|！/.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (['celebration', 'launch', 'joy', 'encouragement', 'warning'].includes(candidate.profile.id)) {
+                            candidate.score += 0.6;
+                        }
+                    }
+                }
+
+                if (FORMAL_RE.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (['announcement', 'deadline', 'warning', 'apology'].includes(candidate.profile.id)) {
+                            candidate.score += 0.7;
+                        }
+                        if (['humor', 'love'].includes(candidate.profile.id)) candidate.score -= 1.5;
+                    }
+                }
+
+                scored.sort((a, b) =>
+                    b.score - a.score ||
+                    b.profile.priority - a.profile.priority
+                );
+
+                const best = scored[0];
+                if (!best || best.score < 3.4) {
+                    if (/에러|오류|문제|한계|어렵|복잡|뒤엉|비효율|실패|불편|error|problem|limit|difficult|complex|inefficien|fail/i.test(sentence)) {
+                        return { profile: { id: 'generic-problem', priority: 35, emojis: ['🧩', '⚠️', '🔍'] }, score: 3.75 };
+                    }
+                    if (/해결|해법|방법|기술|도구|핵심|자동화|공유|소개|살펴|알아보|solution|method|technique|tool|key\b|automate|share|introduce|explore/i.test(sentence)) {
+                        return { profile: { id: 'generic-solution', priority: 36, emojis: ['💡', '🛠️', '✅'] }, score: 3.8 };
+                    }
+                    if (/\d|%|통계|비율|수치|계산|number|percent|statistic|calculate/i.test(sentence)) {
+                        return { profile: { id: 'generic-number', priority: 32, emojis: ['🔢', '📊', '🧮'] }, score: 3.55 };
+                    }
+                    if (/즉,|따라서|결국|때문|관점|의미|결과|원인|반면|however|therefore|because|result|cause|meaning/i.test(sentence)) {
+                        return { profile: { id: 'generic-explanation', priority: 31, emojis: ['🔎', '💡', '➡️'] }, score: 3.5 };
+                    }
+                    if (sentence.length >= 28) {
+                        return { profile: { id: 'generic-information', priority: 20, emojis: ['📌', '🔎', '📝'] }, score: 3.42 };
+                    }
+                    return null;
+                }
+
+                const second = scored[1];
+                if (second && best.score - second.score < 0.35 && second.profile.priority > best.profile.priority) {
+                    return second.score >= 3.4 ? second : best;
+                }
+                return best;
+            }
+
+            function scoreThemes(text) {
+                return structureThemes
+                    .map((theme, index) => {
+                        theme.pattern.lastIndex = 0;
+                        const matches = text.match(theme.pattern);
+                        return {
+                            theme,
+                            score: matches ? 4 + Math.max(0, 3 - index * 0.015) : 0
+                        };
+                    })
+                    .filter(item => item.score > 0)
+                    .sort((a, b) => b.score - a.score);
+            }
+
+            function uniqueEmojis(values) {
+                return [...new Set(values.filter(Boolean))];
+            }
+
+            function titleEmojis(text) {
+                const ranked = scoreThemes(text);
+                if (!ranked.length) {
+                    if (/[?？]/.test(text)) return ['🤔', '👀'];
+                    if (/!|！/.test(text)) return ['✨', '🔥'];
+                    return ['✨', '💡'];
+                }
+
+                const first = ranked[0].theme;
+                if (['mystery', 'isolation', 'brain', 'launch', 'promotion', 'celebration'].includes(first.id)) {
+                    return uniqueEmojis(first.emojis).slice(0, 2);
+                }
+                const result = [first.emojis[0]];
+                const second = ranked.find(item => item.theme.id !== first.id);
+                if (second) result.push(second.theme.emojis[0]);
+                else result.push(first.emojis[1] || '✨');
+                return uniqueEmojis(result).slice(0, 2);
+            }
+
+            function headingEmoji(text) {
+                if (/알람|기상 시간|생체 시계|alarm|wake up/i.test(text)) return '⏰';
+                if (/라면|국수|noodle|ramen/i.test(text)) return '🍜';
+                if (/샤워|목욕|shower|bath/i.test(text)) return '🚿';
+                if (/함정|저주|마찰 없는|중독|위험|경고|trap|curse|danger|warning/i.test(text)) return '🛑';
+                if (/오프라인|전원|스마트폰.*끄|디톡스|심심함|offline|power off|detox|boredom/i.test(text)) return '🔌';
+                if (/끝은|핵심|해답|결론|본질|통찰|인사이트|원리|이유|insight|answer|conclusion|reason/i.test(text)) return '💡';
+                const ranked = scoreThemes(text);
+                if (ranked.length) return ranked[0].theme.emojis[0];
+                const analysis = analyzeSentence(text, false);
+                return analysis ? analysis.profile.emojis[0] : '💡';
+            }
+
+            function calculateBodyBudget(sentenceCount, characterCount, structuralCount, existingCount, documentIsCritical) {
+                if (documentIsCritical) return structuralCount > 0 || existingCount > 0 ? 0 : 1;
+                let totalTarget;
+                if (sentenceCount === 1) totalTarget = characterCount >= 150 ? 2 : 1;
+                else if (sentenceCount <= 4) {
+                    totalTarget = Math.min(
+                        5,
+                        sentenceCount +
+                        (characterCount >= 220 ? 1 : 0) +
+                        (characterCount >= 250 ? 1 : 0)
+                    );
+                }
+                else if (sentenceCount === 5) totalTarget = 5;
+                else if (sentenceCount <= 10) totalTarget = Math.ceil(sentenceCount * 0.62);
+                else if (sentenceCount <= 18) totalTarget = Math.ceil(sentenceCount * 0.52);
+                else totalTarget = Math.ceil(sentenceCount * 0.42);
+
+                if (characterCount > 900) totalTarget = Math.max(totalTarget, Math.ceil(characterCount / 145));
+                totalTarget = Math.min(22, totalTarget);
+                return Math.max(0, totalTarget - structuralCount - existingCount);
+            }
+
+            function chooseEmoji(profile, usage, recentEmojis, sentence) {
+                let candidates = profile.emojis;
+
+                if (profile.id === 'pet' && /강아지|견종|래브라도|리트리버|비글|puppy|dog\b|breed|labrador|retriever|beagle/i.test(sentence)) {
+                    candidates = ['🐶', '🐾'];
+                } else if (profile.id === 'pet' && /고양이|냥이|cat\b|kitten/i.test(sentence)) {
+                    candidates = ['🐱', '🐾'];
+                } else if (profile.id === 'injury' && /경련|쥐가 나|cramp/i.test(sentence)) {
+                    candidates = ['⚡', '🩹', '🩺'];
+                } else if (profile.id === 'injury' && /근육통|파열|통증|손상|muscle pain|tear|pain|damage/i.test(sentence)) {
+                    candidates = ['🩹', '⚡', '🩺'];
+                } else if (profile.id === 'data' && /로 데이터|원시 데이터|수집된|raw data|collected data/i.test(sentence)) {
+                    candidates = ['🗂️', '📊', '🧹'];
+                } else if (profile.id === 'data' && /해법|해결|공유|추출하고 정제|solution|share|extract.*clean/i.test(sentence)) {
+                    candidates = ['💡', '🔍', '✅'];
+                } else if (profile.id === 'data' && /자동화|정규표현식|regex|워크플로|automate|regular expression|workflow/i.test(sentence)) {
+                    candidates = ['⚙️', '🧹', '💻'];
+                } else if (profile.id === 'data' && /에러|오류|문제|뒤엉|복잡|비효율|error|problem|complex|inefficien/i.test(sentence)) {
+                    candidates = ['⚠️', '🧩', '🔍'];
+                } else if (profile.id === 'programming' && /에러|오류|문제|복잡|error|problem|complex/i.test(sentence)) {
+                    candidates = ['🧩', '⚠️', '💻'];
+                } else if (profile.id === 'programming' && /자동화|정규표현식|regex|automation|regular expression/i.test(sentence)) {
+                    candidates = ['⚙️', '💻', '🧩'];
+                } else if (profile.id === 'gratitude' && /덕분|함께해 주|응원해 주/i.test(sentence)) {
+                    candidates = ['💛', '🙏', '🥹'];
+                } else if (profile.id === 'achievement' && /완료|완성/i.test(sentence)) {
+                    candidates = ['✅', '🏆', '✨'];
+                } else if (profile.id === 'question' && /댓글|의견.*(?:들려|남겨)|알려 ?주|참여해|comment|tell us|let us know/i.test(sentence)) {
+                    candidates = ['👉', '💬', '👀'];
+                } else if (profile.id === 'question' && /의견|생각/i.test(sentence)) {
+                    candidates = ['💭', '🤔', '❓'];
+                } else if (profile.id === 'joy' && /뿌듯/i.test(sentence)) {
+                    candidates = ['😊', '✨', '🙌'];
+                } else if (profile.id === 'anger' && /억울.*(?:적|경험)|왜\b|어째서/i.test(sentence)) {
+                    candidates = ['🤔', '😤'];
+                } else if (profile.id === 'worry' && sentence.trim().length > 15) {
+                    candidates = ['💭', '😥', '🥺'];
+                }
+
+                return candidates
+                    .slice()
+                    .sort((a, b) => {
+                        const recentPenaltyA = recentEmojis.includes(a) ? 3 : 0;
+                        const recentPenaltyB = recentEmojis.includes(b) ? 3 : 0;
+                        return ((usage.get(a) || 0) + recentPenaltyA) -
+                               ((usage.get(b) || 0) + recentPenaltyB);
+                    })[0];
+            }
+
+            function chooseSecondaryEmoji(sentence, primaryProfileId, primaryEmoji, usage, recentEmojis) {
+                const preferredThemeId = {
+                    pet: 'water',
+                    injury: 'anatomy',
+                    health: 'anatomy',
+                    caution: 'animal',
+                    data: 'automation',
+                    programming: 'data'
+                }[primaryProfileId];
+                const equivalentTheme = {
+                    pet: 'animal',
+                    'water-activity': 'water',
+                    health: 'anatomy',
+                    data: 'data',
+                    programming: 'programming',
+                    automation: 'automation',
+                    medical: 'medical'
+                }[primaryProfileId];
+
+                const themes = scoreThemes(sentence);
+                if (preferredThemeId) {
+                    themes.sort((a, b) =>
+                        Number(b.theme.id === preferredThemeId) -
+                        Number(a.theme.id === preferredThemeId)
+                    );
+                }
+
+                for (const { theme } of themes) {
+                    if (theme.id === equivalentTheme) continue;
+                    const emoji = theme.emojis.find(item =>
+                        item !== primaryEmoji &&
+                        !recentEmojis.includes(item) &&
+                        (usage.get(item) || 0) === 0
+                    );
+                    if (emoji) return emoji;
+                }
+                return null;
+            }
+
+            function placeEmoji(rawSentence, emoji, profileId, position = 'end') {
+                const leading = rawSentence.match(/^\s*/)?.[0] || '';
+                const trailing = rawSentence.match(/\s*$/)?.[0] || '';
+                const core = rawSentence.slice(leading.length, rawSentence.length - trailing.length);
+                if (!core) return rawSentence;
+
+                if (position === 'start') return `${leading}${emoji} ${core}${trailing}`;
+
+                const bullet = core.match(/^((?:[-*•▪▫]|\d+[.)])\s+)/);
+                if (bullet && ['announcement', 'warning', 'deadline', 'idea'].includes(profileId)) {
+                    return `${leading}${bullet[1]}${emoji} ${core.slice(bullet[1].length)}${trailing}`;
+                }
+
+                const isShortHeadline =
+                    core.length <= 30 &&
+                    !/[.!?。！？…]$/.test(core) &&
+                    ['announcement', 'warning', 'deadline', 'promotion', 'launch'].includes(profileId);
+
+                if (isShortHeadline) return `${leading}${emoji} ${core}${trailing}`;
+                return `${leading}${core} ${emoji}${trailing}`;
+            }
+
+            function appendEmojis(rawLine, emojis) {
+                if (!emojis.length) return rawLine;
+                const trailing = rawLine.match(/\s*$/)?.[0] || '';
+                const core = rawLine.slice(0, rawLine.length - trailing.length);
+                return `${core} ${emojis.join('')}${trailing}`;
+            }
+
+            function insertBeforeMention(rawLine, emojis) {
+                const marker = rawLine.match(/(\s*)(\uE000\d+\uE001)(\s*)$/);
+                if (!marker) return appendEmojis(rawLine, emojis);
+                const start = rawLine.slice(0, marker.index).trimEnd();
+                return `${start} ${emojis.join('')} ${marker[2]}${marker[3]}`;
+            }
+
+            function classifyLine(restoredLine, isFirstMeaningful, hasDocumentStructure) {
+                const text = restoredLine.trim();
+                if (!text) return 'blank';
+                if (HASH_ONLY_RE.test(text)) return 'hashtags';
+                const sentenceSegments = splitLine(text).filter(part => part.trim());
+                const ctaLike = FOLLOW_RE.test(text) || TAG_RE.test(text) || (CTA_RE.test(text) && text.length <= 180);
+                if (ctaLike && (hasDocumentStructure || sentenceSegments.length === 1)) return 'cta';
+                if (BRAND_RE.test(text) && text.length <= 100) return 'brand';
+
+                const explicitHeading =
+                    /^(?:\d{1,2}[.)]\s*|[①-⑳]\s*|[-*•▪▫]\s+|#{1,4}\s+|\*\*|['"“‘][^'"”’]{3,}['"”’]\s*)/u.test(text) ||
+                    /^[A-Za-z0-9][A-Za-z0-9 &'_-]{2,35}:\s*/.test(text);
+                const compactHeading =
+                    text.length <= 75 &&
+                    !/[.!?。！？]$/.test(text) &&
+                    (/[‘’“”'"][^‘’“”'"]+[‘’“”'"]/.test(text) || scoreThemes(text).length > 0);
+
+                if (!isFirstMeaningful && (explicitHeading || compactHeading)) return 'heading';
+
+                const explicitTitle =
+                    /^[\[【〈《"'“‘].+[\]】〉》"'”’]$/u.test(text) ||
+                    /^\[.+\]\s*$/u.test(text);
+                const headlineStyle =
+                    hasDocumentStructure &&
+                    text.length <= 135 &&
+                    !/[.!。]$/.test(text);
+                if (isFirstMeaningful && (explicitTitle || headlineStyle)) return 'title';
+                return 'body';
+            }
+
+            function structuralTransform(safeLine, restoredLine, role, documentIsCritical) {
+                const existing = countEmojis(restoredLine);
+                if (role === 'hashtags' || role === 'blank') return { text: safeLine, added: 0 };
+
+                if (documentIsCritical) {
+                    if (existing > 0 || !CONDOLENCE_RE.test(restoredLine)) return { text: safeLine, added: 0 };
+                    return { text: appendEmojis(safeLine, ['🕯️']), added: 1 };
+                }
+
+                if (role === 'title') {
+                    const needed = Math.max(0, 2 - existing);
+                    if (!needed) return { text: safeLine, added: 0 };
+                    const emojis = titleEmojis(restoredLine).slice(0, needed);
+                    return { text: appendEmojis(safeLine, emojis), added: emojis.length };
+                }
+
+                if (role === 'heading') {
+                    if (existing > 0) return { text: safeLine, added: 0 };
+                    const emoji = headingEmoji(restoredLine);
+                    const prefix = safeLine.match(/^(\s*(?:\d{1,2}[.)]|[①-⑳]|[-*•▪▫]|#{1,4})\s*)/u);
+                    if (prefix) {
+                        return {
+                            text: `${prefix[1]}${emoji} ${safeLine.slice(prefix[1].length)}`,
+                            added: 1
+                        };
+                    }
+                    return { text: placeEmoji(safeLine, emoji, 'heading', 'start'), added: 1 };
+                }
+
+                if (role === 'brand') {
+                    if (existing > 0) return { text: safeLine, added: 0 };
+                    return { text: placeEmoji(safeLine, '🌎', 'brand', 'start'), added: 1 };
+                }
+
+                if (role === 'cta') {
+                    const target = FOLLOW_RE.test(restoredLine) ? 2 : 1;
+                    const needed = Math.max(0, target - existing);
+                    if (!needed) return { text: safeLine, added: 0 };
+
+                    let emojis;
+                    if (FOLLOW_RE.test(restoredLine)) emojis = ['✨', '👉'];
+                    else if (SAVE_RE.test(restoredLine)) emojis = ['👇'];
+                    else if (TAG_RE.test(restoredLine)) emojis = ['👀'];
+                    else if (/[?？]/.test(restoredLine)) emojis = ['👀'];
+                    else emojis = ['👉'];
+
+                    emojis = emojis.slice(0, needed);
+                    return {
+                        text: FOLLOW_RE.test(restoredLine) ? insertBeforeMention(safeLine, emojis) : appendEmojis(safeLine, emojis),
+                        added: emojis.length
+                    };
+                }
+
+                return { text: safeLine, added: 0 };
+            }
+
+            function transform(originalText) {
+                const protectedText = protectText(originalText);
+                const lineParts = protectedText.text.split(/(\r?\n)/);
+                const meaningfulParts = lineParts
+                    .map((line, index) => ({ line, index }))
+                    .filter(item => !/^\r?\n$/.test(item.line) && item.line.trim());
+                const firstMeaningfulIndex = meaningfulParts[0]?.index ?? -1;
+                const hasDocumentStructure = meaningfulParts.length >= 3;
+                const documentIsCritical = CRITICAL_RE.test(protectedText.text);
+                let structuralCount = 0;
+                let structuralLogicalLine = 0;
+                const structuralLineIndexes = new Set();
+
+                const transformedLines = lineParts.map((safeLine, index) => {
+                    if (/^\r?\n$/.test(safeLine)) {
+                        structuralLogicalLine += 1;
+                        return safeLine;
+                    }
+                    if (!safeLine.trim()) return safeLine;
+                    const restoredLine = protectedText.restore(safeLine);
+                    const role = classifyLine(
+                        restoredLine,
+                        index === firstMeaningfulIndex,
+                        hasDocumentStructure
+                    );
+                    const result = structuralTransform(safeLine, restoredLine, role, documentIsCritical);
+                    structuralCount += result.added;
+                    if (result.added > 0) structuralLineIndexes.add(structuralLogicalLine);
+                    return result.text;
+                });
+
+                const textAfterStructure = transformedLines.join('');
+                const pieces = [];
+                let sentenceIndex = 0;
+                let lineIndex = 0;
+
+                for (const line of textAfterStructure.split(/(\r?\n)/)) {
+                    if (/^\r?\n$/.test(line)) {
+                        pieces.push({ text: line, newline: true });
+                        lineIndex += 1;
+                        continue;
+                    }
+                    for (const sentence of splitLine(line)) {
+                        pieces.push({
+                            text: sentence,
+                            newline: false,
+                            sentenceIndex: sentence.trim() ? sentenceIndex++ : -1,
+                            lineIndex
+                        });
+                    }
+                }
+
+                const existingCount = countEmojis(originalText);
+                const sentenceCount = pieces.filter(piece => piece.sentenceIndex >= 0).length;
+                const budget = calculateBodyBudget(
+                    sentenceCount,
+                    originalText.length,
+                    structuralCount,
+                    existingCount,
+                    documentIsCritical
+                );
+                if (budget <= 0) return protectedText.restore(textAfterStructure);
+
+                const candidates = [];
+                for (let index = 0; index < pieces.length; index++) {
+                    const piece = pieces[index];
+                    if (piece.newline || piece.sentenceIndex < 0) continue;
+                    if (structuralLineIndexes.has(piece.lineIndex)) continue;
+                    const analysis = analyzeSentence(piece.text, documentIsCritical);
+                    if (!analysis) continue;
+
+                    const restoredSentence = protectedText.restore(piece.text);
+                    if (HASH_ONLY_RE.test(restoredSentence.trim())) continue;
+
+                    candidates.push({
+                        index,
+                        lineIndex: piece.lineIndex,
+                        sentenceIndex: piece.sentenceIndex,
+                        profile: analysis.profile,
+                        score: analysis.score +
+                            (piece.text.trim().length <= 60 ? 0.25 : 0) +
+                            (/[!！?？]$/.test(piece.text.trim()) ? 0.15 : 0)
+                    });
+                }
+
+                candidates.sort((a, b) =>
+                    b.score - a.score ||
+                    b.profile.priority - a.profile.priority ||
+                    a.sentenceIndex - b.sentenceIndex
+                );
+
+                const selected = [];
+                const lineUsage = new Map();
+                const profileUsage = new Map();
+                const maxBodyPerLine = hasDocumentStructure ? 1 : Math.min(4, budget);
+
+                for (const candidate of candidates) {
+                    if (selected.length >= budget) break;
+                    const usedOnLine = lineUsage.get(candidate.lineIndex) || 0;
+                    if (usedOnLine >= maxBodyPerLine) continue;
+
+                    const sameProfileCount = profileUsage.get(candidate.profile.id) || 0;
+                    if (sameProfileCount >= 3 && candidate.score < 6) continue;
+
+                    const adjacentLowConfidence = selected.some(item =>
+                        Math.abs(item.sentenceIndex - candidate.sentenceIndex) === 1 &&
+                        item.lineIndex === candidate.lineIndex &&
+                        candidate.score < 4.1
+                    );
+                    if (hasDocumentStructure && adjacentLowConfidence) continue;
+
+                    selected.push(candidate);
+                    lineUsage.set(candidate.lineIndex, usedOnLine + 1);
+                    profileUsage.set(candidate.profile.id, sameProfileCount + 1);
+                }
+
+                const usage = new Map();
+                const recentEmojis = [];
+                let secondaryBudget = Math.max(0, budget - selected.length);
+                selected.sort((a, b) => a.sentenceIndex - b.sentenceIndex);
+
+                for (const candidate of selected) {
+                    const sentence = pieces[candidate.index].text;
+                    const emoji = chooseEmoji(candidate.profile, usage, recentEmojis, sentence);
+                    const emojis = [emoji];
+                    if (
+                        secondaryBudget > 0 &&
+                        !documentIsCritical &&
+                        protectedText.restore(sentence).trim().length >= 70
+                    ) {
+                        const secondary = chooseSecondaryEmoji(
+                            protectedText.restore(sentence),
+                            candidate.profile.id,
+                            emoji,
+                            usage,
+                            recentEmojis
+                        );
+                        if (secondary) {
+                            emojis.push(secondary);
+                            secondaryBudget -= 1;
+                        }
+                    }
+
+                    pieces[candidate.index].text = placeEmoji(
+                        sentence,
+                        emojis.join(''),
+                        candidate.profile.id
+                    );
+                    usage.set(emoji, (usage.get(emoji) || 0) + 1);
+                    if (emojis[1]) usage.set(emojis[1], (usage.get(emojis[1]) || 0) + 1);
+                    recentEmojis.push(...emojis);
+                    while (recentEmojis.length > 3) recentEmojis.shift();
+                }
+
+                return protectedText.restore(pieces.map(piece => piece.text).join(''));
+            }
+
+            return { transform };
+        })();
+
         function addEmojis() {
             const text = document.getElementById('inputText').value;
             if (!text.trim()) {
@@ -224,79 +1173,31 @@
                 return;
             }
 
-            const rules = [
-                { words: ['최고', '완벽', '훌륭', '짱', '대박', '레전드', '역대급', '합격'], emoji: '✨' },
-                { words: ['좋아', '좋은', '좋다', '사랑', '하트', '행복', '만족'], emoji: '💖' },
-                { words: ['축하', '생일', '기념', '파티', '오픈', '환영', '웰컴'], emoji: '🎉' },
-                { words: ['안녕', '반갑', '인사', '하이'], emoji: '👋' },
-                { words: ['감사', '고맙', '수고', '부탁', '진심'], emoji: '🙏' },
-                { words: ['마케팅', '매출', '수익', '성과', '성장', '비즈니스'], emoji: '📈' },
-                { words: ['할인', '특가', '이벤트', '이벤트', '무료', '선물', '혜택', '세일', '쿠폰'], emoji: '🎁' },
-                { words: ['주목', '필독', '중요', '알림', '공지', '속보', '주의'], emoji: '🚨' },
-                { words: ['시간', '마감', '오늘까지', '임박', '종료', '서두르'], emoji: '⏳' },
-                { words: ['꿀팁', '정보', '방법', '노하우', '비법', '전략', '비결'], emoji: '💡' },
-                { words: ['추천', '강추', '베스트', '인기', '1위', '원픽'], emoji: '👍' },
-                { words: ['슬프', '눈물', '우울', '실패'], emoji: '😢' },
-                { words: ['화남', '짜증', '분노', '열받'], emoji: '😡' },
-                { words: ['운동', '헬스', '건강', '화이팅', '파이팅'], emoji: '💪' },
-                { words: ['여행', '휴가', '비행기', '바다'], emoji: '✈️' },
-                { words: ['커피', '카페', '커피숍'], emoji: '☕' },
-                { words: ['밥', '맛집', '음식', '점심', '저녁'], emoji: '🍽️' },
-                { words: ['돈', '월급', '부자', '투자', '대박'], emoji: '💸' },
-                { words: ['확실', '진짜', '보장', '리얼'], emoji: '💯' },
-                { words: ['확인', '보기', '체크', '집중'], emoji: '👀' },
-                { words: ['날씨', '맑음', '햇살'], emoji: '☀️' }
-            ];
+            const button = document.querySelector('.btn-action');
+            const originalButtonHTML = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = currentLang === 'ko' ? '🧠 글의 맥락을 분석하고 있어요...' : '🧠 Analyzing context...';
 
-            let lines = text.split('\n');
-            let processedLines = lines.map(line => {
-                if (line.trim() === '') return line;
-
-                let currentLine = line;
-                let appliedEmojis = 0;
-                const MAX_EMOJIS_PER_LINE = 4; // 🟢 출력 양을 한 줄당 최대 4개까지 자연스럽게 늘림!
-
-                // 문장에 포함된 모든 단어들을 전면 스캔하여 다중 치환 진행
-                for (let rule of rules) {
-                    if (appliedEmojis >= MAX_EMOJIS_PER_LINE) break;
-
-                    for (let word of rule.words) {
-                        if (appliedEmojis >= MAX_EMOJIS_PER_LINE) break;
-                        if (currentLine.includes(rule.emoji)) continue; // 중복 이모지 폭탄 방지
-
-                        // 단어 매칭 시 단어 바로 뒤에 이모지 쏙 삽입
-                        let index = currentLine.indexOf(word);
-                        if (index !== -1) {
-                            let insertPos = index + word.length;
-                            currentLine = currentLine.slice(0, insertPos) + " " + rule.emoji + currentLine.slice(insertPos);
-                            appliedEmojis++;
-                            break; // 이 룰에 대해서는 매칭 완료 후 다음 룰로 패스
-                        }
-                    }
-                }
-
-                // AI 문맥 기호 센스 유지
-                if (appliedEmojis === 0) {
-                    if (currentLine.endsWith('!')) currentLine += ' 🔥';
-                    else if (currentLine.endsWith('?')) currentLine += ' 🤔';
-                    else if (currentLine.endsWith('~')) currentLine += ' 🎵';
-                }
-
-                return currentLine;
-            });
-
-            document.getElementById('outputText').value = processedLines.join('\n');
-            showToast(currentLang === 'ko' ? '✨ AI 초정밀 변환 완료!' : '✨ AI Smart Conversion Complete!');
+            document.getElementById('outputText').value = smartEmojiEngine.transform(text);
+            button.disabled = false;
+            button.innerHTML = originalButtonHTML;
+            showToast(currentLang === 'ko'
+                ? '✨ 로컬 문맥 분석 변환 완료! 입력한 글은 외부로 전송되지 않았습니다.'
+                : '✨ Local conversion complete. Your text never left this browser.');
         }
 
+        // 🟢 [마법의 UX] 이모지 원클릭 삽입 기능
         function copySingleEmoji(emoji) {
+            // 1. 클립보드 복사 안내
             navigator.clipboard.writeText(emoji).then(() => {
                 showToast(currentLang === 'ko' ? `${emoji} 복사 & 삽입 완료!` : `${emoji} Copied & Inserted!`);
             });
 
+            // 2. 현재 작업 중인 텍스트 에디터(입력창 or 결과창)에 직접 이모지 쏘아주기
             const outputArea = document.getElementById('outputText');
             const inputArea = document.getElementById('inputText');
             
+            // 사용자가 클릭해 둔 창을 파악, 기본값은 결과창(outputText)
             const activeElement = document.activeElement;
             const targetArea = (activeElement === inputArea) ? inputArea : outputArea;
 
@@ -304,7 +1205,10 @@
             const endPos = targetArea.selectionEnd;
             const text = targetArea.value;
 
+            // 커서가 깜빡이던 위치에 정확히 이모지 텍스트를 밀어 넣음
             targetArea.value = text.substring(0, startPos) + emoji + text.substring(endPos);
+            
+            // 이모지를 넣은 후 커서를 이모지 바로 뒤로 이동시키고 다시 포커스 맞추기
             targetArea.selectionStart = targetArea.selectionEnd = startPos + emoji.length;
             targetArea.focus();
         }
