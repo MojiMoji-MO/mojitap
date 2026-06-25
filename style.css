@@ -1,4 +1,4 @@
-/* 🎨 style.css (모지탭 전체 공통 디자인) */
+/* 🎨 style.css (모지탭 전체 공통 디자인) [v2.0.1] */
 
 :root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; --tab-active: #FF4F6D; --tab-inactive: #E5E7EB; }
 
@@ -89,6 +89,12 @@ body.en .lang-ko { display: none !important; }
 .contact-form textarea { height: 160px; resize: vertical; }
 .submit-btn { background-color: var(--sub-purple); color: white; border: none; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
 .submit-btn:hover { background-color: var(--accent-mint); color: #064E3B; transform: translateY(-2px); }
+
+/* 🟢 [v2.0.1 복구 완료] 애드센스 SEO 텍스트 전용 스타일 */
+.seo-content { margin-top: 40px; padding: 25px; background: white; border-top: 2px dashed var(--border-color); color: #374151; line-height: 1.8; font-size: 15px; border-radius: 16px; }
+.seo-content h2 { font-size: 20px; color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-weight: 800; }
+.seo-content h3 { font-size: 17px; margin-top: 25px; margin-bottom: 10px; color: var(--primary-color); font-weight: 700; }
+.seo-content p { margin-bottom: 15px; }
 
 /* 📱 모바일 최적화 */
 @media (max-width: 768px) { 
