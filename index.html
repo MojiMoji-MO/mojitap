@@ -6,7 +6,6 @@
     <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8R7T1JEFVL');</script>
-
     <meta name="description" content="AI Emoji Generator for Instagram, TikTok, and Blogs. Add emojis automatically to your text in 3 seconds. 3초 완성 문맥 이모지 자동입력 툴 모지탭(Mojitap).">
     <meta name="keywords" content="AI Emoji Generator, auto emoji, social media text tool, 이모지 자동입력, 인스타 이모지, emoji text maker">
     <title>Mojitap - AI Emoji Generator & Marketing Tool</title>
@@ -18,12 +17,10 @@
 </head>
 <body class="ko"> 
     <div id="toast"></div>
-
     <div class="app-container">
         
         <!-- 🟢 상단 헤더 조립 공간 -->
         <div id="header-placeholder"></div>
-
         <main class="tool-section">
             <p class="hint-text lang-ko">💡 글을 쓰고 버튼을 누르면 마법처럼 이모지가 입혀집니다!</p>
             <p class="hint-text lang-en">💡 Write text and click the button for magic emojis!</p>
@@ -36,7 +33,6 @@
                 </div>
             </div>
         </main>
-
         <section class="emoji-palette-section">
             <div class="palette-title"><span class="lang-ko">🎨 글로벌 표준 이모지 팔레트</span><span class="lang-en">🎨 Standard Emoji Palette</span></div>
             <div class="tab-container">
@@ -52,7 +48,6 @@
             </div>
             <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
-
         <!-- 🟢 [v2.0.1 복구 완료] 애드센스 승인용 텍스트 콘텐츠 -->
         <article class="seo-content">
             <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드</h2>
@@ -60,11 +55,9 @@
             <p class="lang-ko">이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
             <p class="lang-en">Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone struggles to convey. Beyond simple picture symbols, they are a visual language based on the globally accepted Unicode Standard.</p>
         </article>
-
         <!-- 🟢 하단 푸터 조립 공간 -->
         <div id="footer-placeholder"></div>
     </div>
-
     <!-- 🟢 마법의 연결고리: 조립 기계 스크립트 불러오기 -->
     <script src="layout.js"></script>
     <script>
@@ -73,14 +66,12 @@
             initLayout('home');
             changeEmojiTab('popular');
         };
-
         function showToast(message) {
             const toast = document.getElementById("toast");
             toast.innerText = message;
             toast.className = "show";
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
-
         const emojiData = {
             popular: ['✨','❤️','🔥','👍','✅','🥰','😂','🎉','🚨','🚀','📢','🎁','👇','👉','📌','💡','💯','💵','⭐','👀'],
             faces: ['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚'],
@@ -92,246 +83,8 @@
             objects: ['⌚','📱','📲','💻','⌨️','🖥️','🖨️','🖱️','🖲️','🕹️','🗜️','💽','💾','💿','📀','📼','📷','📸','📹','🎥'],
             flags: ['🇰🇷','🇺🇸','🇯🇵','🇨🇳','🇬🇧','🇨🇦','🇩🇪','🇫🇷','🇮🇹','🇷🇺','🇪🇸','🇧🇷','🇦🇺','🇻🇳','🇹🇭','🇹🇼','🇭🇰','🇸🇬','🇲🇾','🇮🇩']
         };
-
         function changeEmojiTab(category) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('tab-' + category).classList.add('active');
             const displayArea = document.getElementById('emoji-grid-display');
             displayArea.innerHTML = '';
-            emojiData[category].forEach(emoji => {
-                const item = document.createElement('div');
-                item.className = 'emoji-item';
-                item.innerText = emoji;
-                item.onclick = () => copySingleEmoji(emoji);
-                displayArea.appendChild(item);
-            });
-        }
-
-        const smartEmojiEngine = (() => {
-            const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*/gu;
-            const PROTECTED_RE = /(?:https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|#[\p{L}\p{N}_]+|@[\p{L}\p{N}_.]+|`[^`\n]*`|\[[^\]\n]+\]\([^)]+\))/giu;
-            const CRITICAL_RE = /사망|별세|장례|부고|추모|참사|재난|재해|사고|피해|부상|실종|질병|암\b|입원|수술|폭력|전쟁|자해|극단적 선택|\bdeath\b|\bfuneral\b|\bdisaster\b|\baccident\b|\bvictim\b|\binjur|\bcancer\b|\bhospital\b|\bviolence\b|\bwar\b|\bsuicide\b/i;
-            const CONDOLENCE_RE = /명복|애도|추모|위로|마음이 무겁|안타깝|쾌유|회복|무사하|힘을 보태|함께하|\bcondolence\b|\brest in peace\b|\bprayers\b|\brecovery\b/i;
-            const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|드립니다|합니다|입니다|예정입니다|\bnotice\b|\bannounce\b|\bplease note\b|\bofficial\b/i;
-            const NEGATED_POSITIVE_RE = /(?:안\s*|별로\s*|전혀\s*)?(?:좋|행복|기쁘|즐겁|만족|추천|성공|괜찮|사랑)[^.!?。！？\n]{0,10}(?:않|못|아니|없|별로)|\bnot\b\s+(?:good|happy|glad|satisfied|recommend|successful|love)/i;
-
-            const profiles = [
-                { id: 'condolence', priority: 100, emojis: ['🕯️', '🙏', '💙'], patterns: [[CONDOLENCE_RE, 7]] },
-                { id: 'apology', priority: 95, emojis: ['🙏', '😔'], patterns: [[/죄송|미안|사과|유감|양해(?:를)? 부탁|불편을 드려|\bsorry\b|\bapolog/i, 6]] },
-                { id: 'celebration', priority: 82, emojis: ['🎉', '🥳', '🎊'], patterns: [[/축하|생일|당첨|수상|합격|\bcongrat\b|\bbirthday\b|\bparty\b|\bwinner\b/i, 5], [/\bfinally\b|\bmade it\b|\bachieved\b/i, 3]] },
-                { id: 'launch', priority: 80, emojis: ['🚀', '✨', '🎉'], patterns: [[/출시|런칭|론칭|공개합니다|오픈합니다|\blaunch\b|\brelease\b|\bnow live\b|\bgrand open\b/i, 5], [/\bnew product\b|\bnew feature\b/i, 3]] },
-                { id: 'gratitude', priority: 78, emojis: ['🙏', '💛', '🥹'], patterns: [[/감사|고맙|덕분|\bthank\b|\bgrateful\b|\bappreciat\b/i, 5]] },
-                { id: 'achievement', priority: 76, emojis: ['🏆', '🎯', '✨'], patterns: [[/성과|목표 달성|1위|우승|\bachievement\b|\bmilestone\b|\brecord\b|\bcompleted\b/i, 4.5], [/\bgrowth\b|\bimproved\b/i, 2.5]] },
-                { id: 'warning', priority: 91, emojis: ['⚠️', '🚨', '❗'], patterns: [[/주의|경고|위험|긴급|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b/i, 5.5]] },
-                { id: 'promotion', priority: 84, emojis: ['🎁', '🏷️', '🛍️'], patterns: [[/할인|특가|쿠폰|무료|혜택|이벤트|\bdiscount\b|\bsale\b|\bcoupon\b|\bfree\b|\bgiveaway\b/i, 5]] },
-                { id: 'idea', priority: 57, emojis: ['💡', '📝', '🔎'], patterns: [[/꿀팁|방법|노하우|비법|인사이트|\btip\b|\bhow to\b|\bidea\b|\bguide\b|\binsight\b/i, 4]] }
-            ];
-
-            const structureThemes = [
-                { id: 'mystery', pattern: /미스터리|의문|\bmystery\b|\bsecret\b/i, emojis: ['🤷‍♂️', '🕵️'] },
-                { id: 'time', pattern: /시간|시계|\btime\b|\bclock\b|\bdeadline\b/i, emojis: ['⏰', '⏳'] },
-                { id: 'launch', pattern: /출시|공개|오픈|\blaunch\b|\brelease\b/i, emojis: ['🚀', '✨'] },
-                { id: 'promotion', pattern: /할인|쿠폰|무료|선물|\bsale\b|\bdiscount\b|\bcoupon\b/i, emojis: ['🎁', '🏷️'] }
-            ];
-
-            const CTA_RE = /저장|공유|팔로우|댓글|구매|링크|\bsave\b|\bshare\b|\bfollow\b|\bsubscribe\b|\bcomment\b|\bclick\b|\blink in bio\b|\bdm me\b/i;
-            const HASH_ONLY_RE = /^(?:\s*#[\p{L}\p{N}_-]+\s*){2,}$/u;
-
-            function hasEmoji(text) { EMOJI_RE.lastIndex = 0; return EMOJI_RE.test(text); }
-            function countEmojis(text) { EMOJI_RE.lastIndex = 0; return (text.match(EMOJI_RE) || []).length; }
-
-            function protectText(text) {
-                const values = [];
-                const safeText = text.replace(PROTECTED_RE, value => {
-                    const token = `\uE000${values.length}\uE001`;
-                    values.push(value);
-                    return token;
-                });
-                return { text: safeText, restore(value) { return value.replace(/\uE000(\d+)\uE001/g, (_, index) => values[Number(index)]); } };
-            }
-
-            function splitLine(line) { if (!line) return ['']; return line.split(/(?<=[.!?。！？…])(?=\s|$)/u); }
-            function scoreProfile(profile, sentence) {
-                let score = 0;
-                for (const [pattern, weight] of profile.patterns) { pattern.lastIndex = 0; if (pattern.test(sentence)) score += weight; }
-                return score;
-            }
-
-            function analyzeSentence(rawSentence, documentIsCritical) {
-                const sentence = rawSentence.trim();
-                if (sentence.length < 2 || hasEmoji(sentence)) return null;
-                const sentenceIsCritical = CRITICAL_RE.test(sentence);
-                if (documentIsCritical || sentenceIsCritical) {
-                    if (!sentenceIsCritical || !CONDOLENCE_RE.test(sentence)) return null;
-                    return { profile: profiles.find(profile => profile.id === 'condolence'), score: 12 };
-                }
-                const scored = profiles.map(profile => ({ profile, score: scoreProfile(profile, sentence) }));
-                scored.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
-                const best = scored[0];
-                if (!best || best.score < 3.4) return null;
-                return best;
-            }
-
-            function scoreThemes(text) {
-                return structureThemes.map((theme, index) => { theme.pattern.lastIndex = 0; const matches = text.match(theme.pattern); return { theme, score: matches ? 4 + Math.max(0, 3 - index * 0.015) : 0 }; })
-                    .filter(item => item.score > 0).sort((a, b) => b.score - a.score);
-            }
-
-            function uniqueEmojis(values) { return [...new Set(values.filter(Boolean))]; }
-
-            function titleEmojis(text) {
-                const ranked = scoreThemes(text);
-                if (!ranked.length) return [/[?？]/.test(text) ? '🤔' : '✨', '💡'];
-                return uniqueEmojis(ranked[0].theme.emojis).slice(0, 2);
-            }
-
-            function headingEmoji(text) {
-                const ranked = scoreThemes(text);
-                if (ranked.length) return ranked[0].theme.emojis[0];
-                const analysis = analyzeSentence(text, false);
-                return analysis ? analysis.profile.emojis[0] : '💡';
-            }
-
-            function chooseEmoji(profile, usage, recentEmojis) {
-                return profile.emojis.slice().sort((a, b) => {
-                    const penaltyA = recentEmojis.includes(a) ? 3 : 0;
-                    const penaltyB = recentEmojis.includes(b) ? 3 : 0;
-                    return ((usage.get(a) || 0) + penaltyA) - ((usage.get(b) || 0) + penaltyB);
-                })[0];
-            }
-
-            function placeEmoji(rawSentence, emoji, profileId, position = 'end') {
-                const leading = rawSentence.match(/^\s*/)?.[0] || '';
-                const trailing = rawSentence.match(/\s*$/)?.[0] || '';
-                const core = rawSentence.slice(leading.length, rawSentence.length - trailing.length);
-                if (!core) return rawSentence;
-                if (position === 'start') return `${leading}${emoji} ${core}${trailing}`;
-                return `${leading}${core} ${emoji}${trailing}`;
-            }
-
-            function classifyLine(restoredLine, isFirstMeaningful, hasDocumentStructure) {
-                const text = restoredLine.trim();
-                if (!text) return 'blank';
-                if (HASH_ONLY_RE.test(text)) return 'hashtags';
-                if (CTA_RE.test(text) && text.length <= 150) return 'cta';
-                if (!isFirstMeaningful && text.length <= 75 && !/[.!?。！？]$/.test(text)) return 'heading';
-                if (isFirstMeaningful && text.length <= 120 && !/[.!。]$/.test(text)) return 'title';
-                return 'body';
-            }
-
-            function structuralTransform(safeLine, restoredLine, role, documentIsCritical) {
-                const existing = countEmojis(restoredLine);
-                if (role === 'hashtags' || role === 'blank') return { text: safeLine, added: 0 };
-                if (documentIsCritical) return { text: `${safeLine} 🕯️`, added: 1 };
-
-                if (role === 'title') {
-                    if (existing > 0) return { text: safeLine, added: 0 };
-                    const emojis = titleEmojis(restoredLine);
-                    return { text: placeEmoji(safeLine, emojis.join(''), 'title', 'start'), added: emojis.length };
-                }
-                if (role === 'heading') {
-                    if (existing > 0) return { text: safeLine, added: 0 };
-                    return { text: placeEmoji(safeLine, headingEmoji(restoredLine), 'heading', 'start'), added: 1 };
-                }
-                if (role === 'cta') {
-                    if (existing > 0) return { text: safeLine, added: 0 };
-                    let emoji = /\bclick\b|\blink\b|링크|클릭/i.test(restoredLine) ? '👇' : '👉';
-                    return { text: placeEmoji(safeLine, emoji, 'cta', 'end'), added: 1 };
-                }
-                return { text: safeLine, added: 0 };
-            }
-
-            function transform(originalText) {
-                const protectedText = protectText(originalText);
-                const lineParts = protectedText.text.split(/(\r?\n)/);
-                const meaningfulParts = lineParts.filter(line => !/^\r?\n$/.test(line) && line.trim());
-                const firstMeaningfulIndex = lineParts.indexOf(meaningfulParts[0]);
-                const hasDocumentStructure = meaningfulParts.length >= 3;
-                const documentIsCritical = CRITICAL_RE.test(protectedText.text);
-                let structuralCount = 0;
-
-                const transformedLines = lineParts.map((safeLine, index) => {
-                    if (/^\r?\n$/.test(safeLine)) return safeLine;
-                    if (!safeLine.trim()) return safeLine;
-                    const role = classifyLine(protectedText.restore(safeLine), index === firstMeaningfulIndex, hasDocumentStructure);
-                    const result = structuralTransform(safeLine, protectedText.restore(safeLine), role, documentIsCritical);
-                    structuralCount += result.added;
-                    return result.text;
-                });
-
-                const pieces = [];
-                let sentenceIndex = 0;
-                transformedLines.join('').split(/(\r?\n)/).forEach(line => {
-                    if (/^\r?\n$/.test(line)) { pieces.push({ text: line, newline: true }); return; }
-                    splitLine(line).forEach(sentence => { pieces.push({ text: sentence, newline: false, sentenceIndex: sentence.trim() ? sentenceIndex++ : -1 }); });
-                });
-
-                const budget = Math.max(0, Math.min(22, Math.ceil(sentenceIndex * 0.65)) - structuralCount - countEmojis(originalText));
-                if (budget <= 0) return protectedText.restore(pieces.map(p => p.text).join(''));
-
-                const candidates = [];
-                pieces.forEach((piece, idx) => {
-                    if (piece.newline || piece.sentenceIndex < 0) return;
-                    const analysis = analyzeSentence(piece.text, documentIsCritical);
-                    if (analysis) candidates.push({ index: idx, profile: analysis.profile, score: analysis.score });
-                });
-
-                candidates.sort((a, b) => b.score - a.score);
-                const selected = candidates.slice(0, budget).sort((a, b) => a.index - b.index);
-
-                const usage = new Map();
-                const recentEmojis = [];
-                selected.forEach(candidate => {
-                    const emoji = chooseEmoji(candidate.profile, usage, recentEmojis);
-                    pieces[candidate.index].text = placeEmoji(pieces[candidate.index].text, emoji, candidate.profile.id);
-                    usage.set(emoji, (usage.get(emoji) || 0) + 1);
-                    recentEmojis.push(emoji);
-                    if (recentEmojis.length > 3) recentEmojis.shift();
-                });
-
-                return protectedText.restore(pieces.map(p => p.text).join(''));
-            }
-
-            return { transform };
-        })();
-
-        function addEmojis() {
-            const editor = document.getElementById('mainEditor');
-            const text = editor.value;
-            if (!text.trim()) { showToast(document.documentElement.lang === 'ko' ? '변환할 텍스트를 먼저 입력해주세요!' : 'Please enter text to convert!'); return; }
-            
-            const button = document.querySelector('.btn-action');
-            const originalHTML = button.innerHTML;
-            button.disabled = true; button.innerHTML = '🧠 AI Magic in progress...';
-            
-            editor.value = smartEmojiEngine.transform(text);
-            
-            button.disabled = false; button.innerHTML = originalHTML;
-            showToast(document.documentElement.lang === 'ko' ? '✨ 마법처럼 이모지가 입혀졌어요!' : '✨ Magic applied! Edit freely.');
-        }
-
-        function clearText() {
-            document.getElementById('mainEditor').value = '';
-            document.getElementById('mainEditor').focus();
-            showToast(document.documentElement.lang === 'ko' ? '🗑️ 비워졌습니다.' : '🗑️ Cleared.');
-        }
-
-        function copySingleEmoji(emoji) {
-            navigator.clipboard.writeText(emoji);
-            const target = document.getElementById('mainEditor');
-            const start = target.selectionStart, end = target.selectionEnd;
-            target.value = target.value.substring(0, start) + emoji + target.value.substring(end);
-            target.selectionStart = target.selectionEnd = start + emoji.length;
-            target.focus();
-            showToast(document.documentElement.lang === 'ko' ? `${emoji} 삽입 완료!` : `${emoji} Inserted!`);
-        }
-
-        function copyText(elementId) {
-            const output = document.getElementById(elementId);
-            if (!output.value) return;
-            output.select(); document.execCommand('copy');
-            showToast(document.documentElement.lang === 'ko' ? '📋 전체 복사 완료!' : '📋 Copied!');
-        }
-    </script>
-</body>
-</html>
