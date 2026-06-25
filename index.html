@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- 🟢 [절대 삭제 금지] 구글 서치 콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
     
+    <!-- 🟢 [절대 삭제 금지] 구글 애널리틱스 추적 코드 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -42,16 +44,20 @@
         .lang-btn.active { background: var(--primary-color); color: white; }
 
         header { text-align: center; margin-bottom: 20px; margin-top: 10px; }
-        .top-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .top-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
         .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 16px; padding: 10px 20px; border-radius: 10px; transition: all 0.3s; }
         .nav-item:hover { color: var(--primary-color); }
         .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
 
         .tool-section { display: flex; flex-direction: column; gap: 15px; }
         .textarea-wrapper { display: flex; gap: 20px; }
-
+        
         textarea { flex: 1; height: 180px; padding: 18px; border: 2px solid var(--border-color); border-radius: 14px; font-size: 16px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; }
         textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(255, 79, 109, 0.1); }
+        
+        /* 결과창 배경색을 약간 다르게 주어 에디터 느낌 강화 */
+        #outputText { background-color: #FAFAFA; border-color: #D1D5DB; }
+        #outputText:focus { background-color: #FFFFFF; border-color: var(--sub-purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); }
 
         .btn-action, .btn-copy { border: none; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s; width: 100%; }
         .btn-action { background-color: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
@@ -60,7 +66,9 @@
         .btn-copy { background-color: var(--sub-purple); color: white; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
         .btn-copy:hover { background-color: var(--accent-mint); box-shadow: 0 4px 15px rgba(34, 211, 197, 0.3); transform: translateY(-2px); color: #064E3B; }
 
-        .emoji-palette-section { margin-top: 40px; }
+        .hint-text { text-align: center; font-size: 14px; color: var(--sub-purple); font-weight: 700; margin-top: 10px; margin-bottom: 5px; }
+
+        .emoji-palette-section { margin-top: 25px; }
         .palette-title { font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
 
         .tab-container { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
@@ -73,26 +81,7 @@
         .emoji-item:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 6px 15px rgba(34, 211, 197, 0.25); border: 1px solid var(--accent-mint); }
         .emoji-item:active { transform: scale(0.95); }
 
-        /* 🟢 [신규] 스르륵 사라지는 토스트 알림 디자인 */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #374151;
-            color: #fff;
-            text-align: center;
-            border-radius: 30px;
-            padding: 16px 20px;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            font-size: 15px;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            opacity: 0;
-            transition: opacity 0.3s, bottom 0.3s;
-        }
+        #toast { visibility: hidden; min-width: 250px; background-color: #374151; color: #fff; text-align: center; border-radius: 30px; padding: 16px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 15px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
 
         .seo-content { margin-top: 50px; padding: 30px; background: white; border-top: 2px dashed var(--border-color); color: #374151; line-height: 1.8; font-size: 15px; }
@@ -108,12 +97,7 @@
         body.ko .lang-en { display: none !important; }
         body.en .lang-ko { display: none !important; }
 
-        @media (max-width: 768px) {
-            body { padding: 0; }
-            .app-container { border-radius: 0; padding: 20px 15px; }
-            .textarea-wrapper { flex-direction: column; gap: 15px; }
-            .lang-toggle { top: 10px; right: 10px; }
-        }
+        @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .textarea-wrapper { flex-direction: column; gap: 15px; } .lang-toggle { top: 10px; right: 10px; } }
     </style>
 </head>
 <body class="ko"> 
@@ -138,10 +122,15 @@
         <main class="tool-section">
             <div class="textarea-wrapper">
                 <textarea id="inputText" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 오늘 날씨 너무 좋다!)"></textarea>
-                <textarea id="outputText" placeholder="이모지가 추가된 결과가 여기에 나옵니다!" readonly></textarea>
+                <!-- 🟢 readonly 제거: 사용자가 결과창을 직접 수정 가능하게 변경 -->
+                <textarea id="outputText" placeholder="결과가 여기에 나옵니다.&#13;&#10;마음대로 글을 수정하고 팔레트를 클릭해 이모지를 넣어보세요!"></textarea>
             </div>
-            <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 3초 만에 이모지 입히기</span><span class="lang-en">🚀 Add Emojis in 3 Secs</span></button>
-            <button class="btn-copy" onclick="copyText('outputText')"><span class="lang-ko">📋 복사해서 바로 사용하기</span><span class="lang-en">📋 Copy to Clipboard</span></button>
+            
+            <p class="hint-text lang-ko">💡 결과창에서 글을 직접 수정하거나, 팔레트를 클릭해 커서 위치에 이모지를 쏙쏙 넣을 수 있어요!</p>
+            <p class="hint-text lang-en">💡 You can edit the result directly or click the palette to insert emojis at your cursor!</p>
+
+            <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 AI 스마트 이모지 입히기</span><span class="lang-en">🚀 Smart Add Emojis</span></button>
+            <button class="btn-copy" onclick="copyText('outputText')"><span class="lang-ko">📋 전체 복사해서 바로 사용하기</span><span class="lang-en">📋 Copy All to Clipboard</span></button>
         </main>
 
         <section class="emoji-palette-section">
@@ -184,7 +173,7 @@
         let currentLang = 'ko';
         const placeholderData = {
             inputText: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 오늘 날씨 너무 좋다!)", en: "Paste your text here...\n(e.g., The weather is amazing today!)" },
-            outputText: { ko: "이모지가 추가된 결과가 여기에 나옵니다!", en: "Your text with emojis will appear here!" }
+            outputText: { ko: "결과가 여기에 나옵니다.\n마음대로 글을 수정하고 팔레트를 클릭해 이모지를 넣어보세요!", en: "Result appears here.\nEdit freely and click the palette to insert emojis!" }
         };
 
         function setLanguage(lang) {
@@ -196,7 +185,6 @@
             document.getElementById('outputText').placeholder = placeholderData.outputText[lang];
         }
 
-        // 🟢 [신규] 토스트 알림 함수
         function showToast(message) {
             const toast = document.getElementById("toast");
             toast.innerText = message;
@@ -204,7 +192,6 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
 
-        // 🟢 인기 탭 대폭 확장 및 기호(symbols) 데이터 정제 완료
         const emojiData = {
             popular: ['✨', '❤️', '🔥', '👍', '✅', '🥰', '😂', '🎉', '🚨', '🚀', '📢', '🎁', '👇', '👉', '📌', '💡', '💯', '💵', '⭐', '👀', '🎯', '📣', '📈', '💌', '💖', '💕', '🫶', '👏', '🙏', '🙌', '💪', '✔️', '☑️', '❗', '❓', '🛒', '🛍️', '💸', '💰', '🏆', '🏅', '🥇', '⚡', '🌈', '☀️', '🍀', '🌿', '🌱', '🎈', '🎊', '🎤', '🎧', '📸', '💎', '👑', '😎', '😋', '😘', '🤩'],
             faces: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕'],
@@ -233,28 +220,112 @@
             });
         }
 
+        // 🟢 [프리미엄 핵심 기능] 스마트 문맥 인식 & 과도함 방지 알고리즘
         function addEmojis() {
             const text = document.getElementById('inputText').value;
             if (!text.trim()) {
                 showToast(currentLang === 'ko' ? '변환할 텍스트를 먼저 입력해주세요!' : 'Please enter text to convert!');
                 return;
             }
-            
-            let result = text
-                .replace(/좋다/g, '좋다 💖')
-                .replace(/날씨/g, '날씨 ☀️')
-                .replace(/최고/g, '최고 👍')
-                .replace(/축하/g, '축하 🎉')
-                .replace(/안녕/g, '안녕 👋')
-                .replace(/마케팅/g, '마케팅 📈')
-                .replace(/이모지/g, '이모지 ✨');
-            
-            if(text === result) { result += ' ✨'; }
-            
-            document.getElementById('outputText').value = result;
+
+            // 20가지 테마, 100여 개의 정밀한 키워드 사전
+            const rules = [
+                { words: ['최고', '완벽', '훌륭', '짱', '대박', '성공', '합격', '대성공'], emoji: '✨' },
+                { words: ['좋아', '좋은', '좋다', '사랑', '하트', '설렘', '심쿵', '행복'], emoji: '💖' },
+                { words: ['축하', '생일', '기념', '파티', '오픈', '환영', '새해'], emoji: '🎉' },
+                { words: ['안녕', '반갑', '어서오', '하이', '굿모닝'], emoji: '👋' },
+                { words: ['감사', '고맙', '땡큐', '수고', '부탁'], emoji: '🙏' },
+                { words: ['마케팅', '매출', '비즈니스', '수익', '성과', '성장', '목표'], emoji: '📈' },
+                { words: ['할인', '특가', '이벤트', '무료', '선물', '혜택', '사은품'], emoji: '🎁' },
+                { words: ['주목', '필독', '중요', '알림', '공지', '속보', '비상'], emoji: '🚨' },
+                { words: ['시간', '마감', '오늘까지', '기간', '임박', '종료'], emoji: '⏳' },
+                { words: ['꿀팁', '정보', '방법', '노하우', '비법', '아이디어'], emoji: '💡' },
+                { words: ['추천', '강추', '베스트', '인기', '1위'], emoji: '👍' },
+                { words: ['슬프', '눈물', '우울', '속상', '포기', '실패'], emoji: '😢' },
+                { words: ['화남', '짜증', '분노', '최악', '열받'], emoji: '😡' },
+                { words: ['운동', '헬스', '건강', '체력', '다이어트', '근육'], emoji: '💪' },
+                { words: ['여행', '휴가', '비행기', '떠나', '바다', '힐링'], emoji: '✈️' },
+                { words: ['커피', '카페', '아메리카노', '라떼'], emoji: '☕' },
+                { words: ['밥', '식사', '맛집', '먹방', '음식', '점심', '저녁'], emoji: '🍽️' },
+                { words: ['사진', '촬영', '인증샷', '찰칵'], emoji: '📸' },
+                { words: ['돈', '월급', '부자', '재테크', '저축', '투자'], emoji: '💸' },
+                { words: ['날씨', '맑음', '햇살', '따뜻'], emoji: '☀️' },
+                { words: ['비', '장마', '우산', '소나기'], emoji: '☔' },
+                { words: ['눈', '겨울', '함박눈', '추워'], emoji: '❄️' }
+            ];
+
+            let lines = text.split('\n');
+            let processedLines = lines.map(line => {
+                if (line.trim() === '') return line;
+
+                let currentLine = line;
+                let appliedEmojis = 0;
+                const MAX_EMOJIS_PER_LINE = 2; // 한 줄당 최대 2개까지만 허용 (도배 방지)
+
+                for (let rule of rules) {
+                    if (appliedEmojis >= MAX_EMOJIS_PER_LINE) break;
+
+                    for (let word of rule.words) {
+                        if (currentLine.includes(rule.emoji)) break; // 중복 이모지 방지
+                        
+                        const regex = new RegExp(`(${word})`, 'g');
+                        if (regex.test(currentLine)) {
+                            let replaced = false;
+                            // 첫 번째 매칭되는 단어 하나에만 이모지 부착
+                            currentLine = currentLine.replace(regex, (match) => {
+                                if (!replaced) {
+                                    replaced = true;
+                                    return `${match} ${rule.emoji}`;
+                                }
+                                return match;
+                            });
+                            appliedEmojis++;
+                            break; 
+                        }
+                    }
+                }
+
+                // AI 문맥 센스: 이모지가 아예 안 들어간 문장의 끝맺음 기호 분석
+                if (appliedEmojis === 0) {
+                    if (currentLine.endsWith('!')) currentLine += ' 🔥';
+                    else if (currentLine.endsWith('?')) currentLine += ' 🤔';
+                    else if (currentLine.endsWith('~')) currentLine += ' 🎵';
+                }
+
+                return currentLine;
+            });
+
+            document.getElementById('outputText').value = processedLines.join('\n');
+            showToast(currentLang === 'ko' ? '✨ AI 변환 완료!' : '✨ AI Conversion Complete!');
         }
 
-        // 🟢 복사 시 Alert 대신 Toast 알림 호출
+        // 🟢 [마법의 UX] 이모지 원클릭 삽입 기능
+        function copySingleEmoji(emoji) {
+            // 1. 클립보드 복사 안내
+            navigator.clipboard.writeText(emoji).then(() => {
+                showToast(currentLang === 'ko' ? `${emoji} 복사 & 삽입 완료!` : `${emoji} Copied & Inserted!`);
+            });
+
+            // 2. 현재 작업 중인 텍스트 에디터(입력창 or 결과창)에 직접 이모지 쏘아주기
+            const outputArea = document.getElementById('outputText');
+            const inputArea = document.getElementById('inputText');
+            
+            // 사용자가 클릭해 둔 창을 파악, 기본값은 결과창(outputText)
+            const activeElement = document.activeElement;
+            const targetArea = (activeElement === inputArea) ? inputArea : outputArea;
+
+            const startPos = targetArea.selectionStart;
+            const endPos = targetArea.selectionEnd;
+            const text = targetArea.value;
+
+            // 커서가 깜빡이던 위치에 정확히 이모지 텍스트를 밀어 넣음
+            targetArea.value = text.substring(0, startPos) + emoji + text.substring(endPos);
+            
+            // 이모지를 넣은 후 커서를 이모지 바로 뒤로 이동시키고 다시 포커스 맞추기
+            targetArea.selectionStart = targetArea.selectionEnd = startPos + emoji.length;
+            targetArea.focus();
+        }
+
         function copyText(elementId) {
             const output = document.getElementById(elementId);
             if (!output.value) {
@@ -263,14 +334,7 @@
             }
             output.select();
             document.execCommand('copy');
-            showToast(currentLang === 'ko' ? '📋 복사 완료! SNS에 바로 붙여넣기 하세요!' : '📋 Copied! Ready to paste!');
-        }
-
-        // 🟢 단일 이모지 복사 시 Alert 대신 Toast 알림 호출
-        function copySingleEmoji(emoji) {
-            navigator.clipboard.writeText(emoji).then(() => {
-                showToast(currentLang === 'ko' ? `${emoji} 복사 완료!` : `${emoji} Copied!`);
-            });
+            showToast(currentLang === 'ko' ? '📋 전체 복사 완료! SNS에 바로 붙여넣기 하세요!' : '📋 Copied! Ready to paste!');
         }
 
         window.onload = () => {
