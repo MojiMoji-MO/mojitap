@@ -166,14 +166,17 @@
             mainEditor: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)\n\n버튼을 누르면 마법처럼 이모지가 입혀집니다. 직접 수정하거나 팔레트를 눌러 이모지를 추가할 수도 있어요!", en: "Paste your text here...\n(e.g., Big sale event ends today, hurry up!)\n\nClick the AI button for magic. You can also edit freely and click the palette below to add emojis at your cursor!" }
         };
 
-        // 🟢 [v1.9.0] HTML 언어 속성 동적 변경 추가
+        // 🟢 [v1.9.2] 언어 변경 및 로컬 스토리지(금고)에 저장
         function setLanguage(lang) {
             currentLang = lang;
-            document.documentElement.lang = lang; // 구글 로봇과 스크린 리더에게 현재 언어를 알려줌
+            document.documentElement.lang = lang;
             document.body.className = lang; 
             document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('mainEditor').placeholder = placeholderData.mainEditor[lang];
+            
+            // 🎯 마법의 한 줄: 사용자가 누른 언어를 브라우저 금고에 영구 저장!
+            localStorage.setItem('mojitap_lang', lang);
         }
 
         function showToast(message) {
@@ -483,13 +486,19 @@
             showToast(currentLang === 'ko' ? '📋 전체 복사 완료!' : '📋 Copied! Ready to paste!');
         }
 
-        // 🟢 [v1.9.0] 브라우저 언어 자동 감지
+        // 🟢 [v1.9.2] 접속 시 금고부터 확인 후, 없으면 자동 감지
         window.onload = () => { 
-            const userLang = navigator.language || navigator.userLanguage;
-            if (!userLang.includes('ko')) {
-                setLanguage('en');
+            const savedLang = localStorage.getItem('mojitap_lang');
+            
+            if (savedLang) {
+                setLanguage(savedLang);
             } else {
-                setLanguage('ko');
+                const userLang = navigator.language || navigator.userLanguage;
+                if (!userLang.includes('ko')) {
+                    setLanguage('en');
+                } else {
+                    setLanguage('ko');
+                }
             }
             changeEmojiTab('popular'); 
         };
