@@ -15,35 +15,19 @@
       gtag('js', new Date());
       gtag('config', 'G-8R7T1JEFVL');
     </script>
-<meta name="description" content="3초 만에 문맥을 분석해 이모지를 자동으로 넣어주는 AI 이모지 툴 모지탭(Mojitap). Add emojis automatically to your text with our AI Emoji Generator for Instagram and blogs.">
-    <meta name="keywords" content="이모지, 이모지 자동입력, 특수문자, 인스타 이모지, emoji, emoji generator, auto emoji, text to emoji">
-    
-    <title>Mojitap - 3초 완성 이모지 마케팅 툴</title>
+
+    <!-- 🟢 [v1.9.0] 글로벌 타겟팅 영어 최우선 SEO 메타 태그 -->
+    <meta name="description" content="AI Emoji Generator for Instagram, TikTok, and Blogs. Add emojis automatically to your text in 3 seconds. 3초 완성 문맥 이모지 자동입력 툴 모지탭(Mojitap).">
+    <meta name="keywords" content="AI Emoji Generator, auto emoji, social media text tool, 이모지 자동입력, 인스타 이모지, emoji text maker">
+    <title>Mojitap - AI Emoji Generator & Marketing Tool</title>
+
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
     <style>
-        :root {
-            --primary-color: #FF4F6D; 
-            --primary-hover: #E83F5B; 
-            --sub-purple: #8B5CF6;    
-            --accent-mint: #22D3C5;   
-            --secondary-bg: #FFF0F2;  
-            --bg-color: #F9FAFB;      
-            --box-bg: #FFFFFF;
-            --text-main: #1F2937;
-            --text-muted: #6B7280;
-            --border-color: #E5E7EB;
-            --palette-bg: #F3F4F6; 
-            --tab-active: #FF4F6D;    
-            --tab-inactive: #E5E7EB; 
-        }
-
+        :root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; --tab-active: #FF4F6D; --tab-inactive: #E5E7EB; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
-        
-        /* 🟢 컨테이너 패딩 축소 */
         .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 30px 40px; box-sizing: border-box; }
 
-        /* 🟢 헤더(상단) 레이아웃 완전 압축 개편 */
         .main-header { margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
         .header-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .logo-link img { height: 36px; display: block; }
@@ -58,13 +42,11 @@
         .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
 
         .tool-section { display: flex; flex-direction: column; gap: 12px; }
-        
         #mainEditor { width: 100%; height: 240px; padding: 22px; border: 2px solid var(--border-color); border-radius: 16px; font-size: 17px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; background-color: #FAFAFA; color: var(--text-main); }
         #mainEditor:focus { background-color: #FFFFFF; outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(255, 79, 109, 0.1); }
 
         .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
         .sub-buttons { display: flex; gap: 10px; }
-
         .btn-action, .btn-copy, .btn-clear { border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s; }
         .btn-action { background-color: var(--primary-color); color: white; width: 100%; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
         .btn-action:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
@@ -104,16 +86,7 @@
         body.ko .lang-en { display: none !important; }
         body.en .lang-ko { display: none !important; }
 
-        /* 🟢 모바일 최적화: 여백 더 줄이기 */
-        @media (max-width: 768px) { 
-            body { padding: 0; } 
-            .app-container { border-radius: 0; padding: 20px 15px; } 
-            .main-header { margin-bottom: 10px; padding-bottom: 10px; }
-            .header-top-row { margin-bottom: 10px; }
-            #mainEditor { height: 200px; padding: 15px; font-size: 15px; }
-            .sub-buttons { flex-direction: row; } 
-            .btn-clear { min-width: 80px; padding: 16px 10px; } 
-        }
+        @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .main-header { margin-bottom: 10px; padding-bottom: 10px; } .header-top-row { margin-bottom: 10px; } #mainEditor { height: 200px; padding: 15px; font-size: 15px; } .sub-buttons { flex-direction: row; } .btn-clear { min-width: 80px; padding: 16px 10px; } }
     </style>
 </head>
 <body class="ko"> 
@@ -122,7 +95,6 @@
 
     <div class="app-container">
         
-        <!-- 🟢 통합 압축된 상단 헤더 -->
         <header class="main-header">
             <div class="header-top-row">
                 <a href="/" class="logo-link"><img src="mojitap-logo.png" alt="Mojitap Logo"></a>
@@ -144,7 +116,7 @@
             <textarea id="mainEditor" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)\n\n버튼을 누르면 마법처럼 이모지가 입혀집니다. 직접 수정하거나 팔레트를 눌러 이모지를 추가할 수도 있어요!"></textarea>
             
             <div class="action-buttons">
-                <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 스마트 문맥 이모지 입히기</span><span class="lang-en">🚀 Smart Context Emojis</span></button>
+                <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 스마트 문맥 이모지 입히기</span><span class="lang-en">🚀 Smart Add Emojis (AI)</span></button>
                 <div class="sub-buttons">
                     <button class="btn-copy" onclick="copyText('mainEditor')"><span class="lang-ko">📋 결과 복사하기</span><span class="lang-en">📋 Copy All</span></button>
                     <button class="btn-clear" onclick="clearText()"><span class="lang-ko">🗑️ 비우기</span><span class="lang-en">🗑️ Clear</span></button>
@@ -194,8 +166,10 @@
             mainEditor: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)\n\n버튼을 누르면 마법처럼 이모지가 입혀집니다. 직접 수정하거나 팔레트를 눌러 이모지를 추가할 수도 있어요!", en: "Paste your text here...\n(e.g., Big sale event ends today, hurry up!)\n\nClick the AI button for magic. You can also edit freely and click the palette below to add emojis at your cursor!" }
         };
 
+        // 🟢 [v1.9.0] HTML 언어 속성 동적 변경 추가
         function setLanguage(lang) {
             currentLang = lang;
+            document.documentElement.lang = lang; // 구글 로봇과 스크린 리더에게 현재 언어를 알려줌
             document.body.className = lang; 
             document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -224,8 +198,10 @@
         function changeEmojiTab(category) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('tab-' + category).classList.add('active');
+
             const displayArea = document.getElementById('emoji-grid-display');
             displayArea.innerHTML = '';
+            
             emojiData[category].forEach(emoji => {
                 const item = document.createElement('div');
                 item.className = 'emoji-item';
@@ -477,9 +453,7 @@
             
             button.disabled = false;
             button.innerHTML = originalButtonHTML;
-            showToast(currentLang === 'ko'
-                ? '✨ 마법처럼 이모지가 입혀졌어요! 자유롭게 수정해보세요.'
-                : '✨ Magic applied! Edit freely.');
+            showToast(currentLang === 'ko' ? '✨ 마법처럼 이모지가 입혀졌어요!' : '✨ Magic applied! Edit freely.');
         }
 
         function clearText() {
@@ -498,22 +472,27 @@
             targetArea.value = text.substring(0, startPos) + emoji + text.substring(endPos);
             targetArea.selectionStart = targetArea.selectionEnd = startPos + emoji.length;
             targetArea.focus();
-            
             showToast(currentLang === 'ko' ? `${emoji} 삽입 완료!` : `${emoji} Inserted!`);
         }
 
         function copyText(elementId) {
             const output = document.getElementById(elementId);
-            if (!output.value) {
-                showToast(currentLang === 'ko' ? '복사할 내용이 없습니다.' : 'Nothing to copy.');
-                return;
-            }
+            if (!output.value) { showToast(currentLang === 'ko' ? '복사할 내용이 없습니다.' : 'Nothing to copy.'); return; }
             output.select();
             document.execCommand('copy');
-            showToast(currentLang === 'ko' ? '📋 전체 복사 완료! SNS에 바로 붙여넣기 하세요!' : '📋 Copied! Ready to paste!');
+            showToast(currentLang === 'ko' ? '📋 전체 복사 완료!' : '📋 Copied! Ready to paste!');
         }
 
-        window.onload = () => { changeEmojiTab('popular'); };
+        // 🟢 [v1.9.0] 브라우저 언어 자동 감지
+        window.onload = () => { 
+            const userLang = navigator.language || navigator.userLanguage;
+            if (!userLang.includes('ko')) {
+                setLanguage('en');
+            } else {
+                setLanguage('ko');
+            }
+            changeEmojiTab('popular'); 
+        };
     </script>
 </body>
 </html>
