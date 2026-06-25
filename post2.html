@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+    
+    <!-- 🟢 [절대 삭제 금지] 구글 서치 콘솔 소유권 확인 태그 -->
+    <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
+    
     <!-- 🟢 [절대 삭제 금지] 구글 애널리틱스 추적 코드 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>
@@ -19,15 +22,19 @@
     <style>
         :root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; }
         body { font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
-        .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 40px; box-sizing: border-box; }
         
-        .lang-toggle { position: absolute; top: 20px; right: 20px; display: flex; background: var(--palette-bg); border-radius: 10px; overflow: hidden; }
-        .lang-btn { border: none; background: none; padding: 8px 14px; font-size: 13px; font-weight: 800; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
+        .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 30px 40px; box-sizing: border-box; }
+
+        .main-header { margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .header-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .logo-link img { height: 36px; display: block; }
+        
+        .lang-toggle { display: flex; background: var(--palette-bg); border-radius: 8px; overflow: hidden; }
+        .lang-btn { border: none; background: none; padding: 6px 12px; font-size: 12px; font-weight: 800; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
         .lang-btn.active { background: var(--primary-color); color: white; }
-        
-        header { text-align: center; margin-bottom: 20px; margin-top: 10px; }
-        .top-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-        .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 16px; padding: 10px 20px; border-radius: 10px; transition: all 0.3s; }
+
+        .top-nav { display: flex; justify-content: center; gap: 15px; }
+        .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 15px; padding: 8px 16px; border-radius: 10px; transition: all 0.3s; }
         .nav-item:hover { color: var(--primary-color); }
         .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
         
@@ -38,7 +45,6 @@
         .content-box h3 { font-size: 18px; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; font-weight: 700; }
         .content-box p { margin-bottom: 20px; font-size: 16px; }
         
-        /* 표(Table) 스타일 - 애드센스 SEO 최적화 요소 */
         .seo-table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 15px; background: white; }
         .seo-table th, .seo-table td { border: 1px solid var(--border-color); padding: 15px; text-align: left; }
         .seo-table th { background-color: var(--secondary-bg); font-weight: 800; color: var(--primary-color); }
@@ -46,28 +52,39 @@
         .back-btn { display: inline-block; margin-top: 30px; padding: 12px 24px; background: var(--secondary-bg); color: var(--primary-color); text-decoration: none; border-radius: 10px; font-weight: 800; transition: 0.3s; }
         .back-btn:hover { background: var(--primary-color); color: white; transform: translateX(-5px); }
 
-        footer { margin-top: 40px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        footer { margin-top: 30px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
         .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.2s; }
         .footer-links a:hover { color: var(--primary-color); }
         
         body.ko .lang-en { display: none !important; }
         body.en .lang-ko { display: none !important; }
-        @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .content-box { padding: 25px 20px; } }
+        
+        @media (max-width: 768px) { 
+            body { padding: 0; } 
+            .app-container { border-radius: 0; padding: 20px 15px; } 
+            .main-header { margin-bottom: 10px; padding-bottom: 10px; }
+            .header-top-row { margin-bottom: 10px; }
+            .content-box { padding: 25px 20px; } 
+        }
     </style>
 </head>
 <body class="ko">
     <div class="app-container">
-        <div class="lang-toggle">
-            <button class="lang-btn active" id="btn-ko" onclick="setLanguage('ko')">KOR</button>
-            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">ENG</button>
-        </div>
-        <header><a href="/"><img src="mojitap-logo.png" alt="Mojitap Logo" style="height: 50px; max-width: 100%; margin-bottom: 10px;"></a></header>
         
-        <nav class="top-nav">
-            <a href="/" class="nav-item"><span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span></a>
-            <a href="/blog" class="nav-item active"><span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span></a>
-        </nav>
+        <header class="main-header">
+            <div class="header-top-row">
+                <a href="/" class="logo-link"><img src="mojitap-logo.png" alt="Mojitap Logo"></a>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="btn-ko" onclick="setLanguage('ko')">KOR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">ENG</button>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="/" class="nav-item"><span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span></a>
+                <a href="/blog" class="nav-item active"><span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span></a>
+            </nav>
+        </header>
         
         <main class="content-box">
             <h1 class="lang-ko">이메일 뉴스레터 오픈율을 3배 높이는 이모지 제목 작성 가이드</h1>
@@ -94,7 +111,6 @@
             <p class="lang-ko">상황과 목적에 맞지 않는 이모지 남발은 오히려 브랜드 신뢰도를 떨어뜨립니다. 아래의 검증된 공식을 참고하여 모지탭(Mojitap)에서 이모지를 복사해 활용해 보세요.</p>
             <p class="lang-en">Overusing emojis that do not fit the context and purpose can actually harm brand credibility. Refer to the proven formulas below and copy emojis from Mojitap to use them effectively.</p>
 
-            <!-- 구글 SEO 최적화: 깔끔한 HTML 표(Table) -->
             <table class="seo-table">
                 <tr>
                     <th><span class="lang-ko">마케팅 목적</span><span class="lang-en">Marketing Goal</span></th>
@@ -120,8 +136,8 @@
 
             <h2 class="lang-ko">3. 주의! 스팸 필터(Spam Filter)에 걸리지 않으려면?</h2>
             <h2 class="lang-en">3. Caution! How to Avoid Spam Filters?</h2>
-            <p class="lang-ko">이모지는 훌륭한 도구지만, 과도하게 사용하면 이메일 서비스(Gmail, Naver 등)의 스팸 필터에 걸려 고객의 수신함에 아예 도달하지 못할 위험이 있습니다. 제목 하나당 이모지는 <b>최대 1~2개</b>로 제한하는 것이 가장 안전합니다. 또한 기종이나 운영체제(iOS, Android, Windows)에 따라 이모지가 다르게 보이거나 깨질 수(ㅁ 모양) 있으므로 가급적 보편적이고 대중적인 기호를 선택하는 것이 좋습니다.</p>
-            <p class="lang-en">While emojis are excellent tools, overusing them risks triggering the spam filters of email providers (Gmail, Outlook, etc.), preventing your email from reaching the inbox. It is safest to limit emojis to <b>a maximum of 1-2 per subject line</b>. Additionally, because emojis may look different or break (appearing as 'ㅁ' boxes) depending on the device or OS (iOS, Android, Windows), it's best to choose universal and widely used symbols.</p>
+            <p class="lang-ko">이모지는 훌륭한 도구지만, 과도하게 사용하면 이메일 서비스(Gmail, Naver 등)의 스팸 필터에 걸려 고객의 수신함에 아예 도달하지 못할 위험이 있습니다. 제목 하나당 이모지는 <b>최대 1~2개</b>로 제한하는 것이 가장 안전합니다. 또한 기종이나 운영체제(iOS, Android, Windows)에 따라 이모지가 다르게 보이거나 깨질 수 있으므로 가급적 보편적이고 대중적인 기호를 선택하는 것이 좋습니다.</p>
+            <p class="lang-en">While emojis are excellent tools, overusing them risks triggering the spam filters of email providers (Gmail, Outlook, etc.), preventing your email from reaching the inbox. It is safest to limit emojis to <b>a maximum of 1-2 per subject line</b>. Additionally, because emojis may look different or break depending on the device or OS, it's best to choose universal and widely used symbols.</p>
             
             <a href="/blog" class="back-btn">
                 <span class="lang-ko">← 목록으로 돌아가기</span><span class="lang-en">← Back to List</span>
