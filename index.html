@@ -13,7 +13,6 @@
     
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
-    <!-- 🟢 마법의 1줄: 공통 스타일 불러오기 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="ko"> 
@@ -21,7 +20,6 @@
 
     <div class="app-container">
         
-        <!-- 🟢 상단 헤더 조립 공간 -->
         <div id="header-placeholder"></div>
 
         <main class="tool-section">
@@ -53,7 +51,6 @@
             <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
 
-        <!-- 🟢 [v2.0.1 복구 완료] 애드센스 승인용 텍스트 콘텐츠 -->
         <article class="seo-content">
             <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드</h2>
             <h2 class="lang-en">The Ultimate Guide to Using Emojis</h2>
@@ -61,14 +58,12 @@
             <p class="lang-en">Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone struggles to convey. Beyond simple picture symbols, they are a visual language based on the globally accepted Unicode Standard.</p>
         </article>
 
-        <!-- 🟢 하단 푸터 조립 공간 -->
         <div id="footer-placeholder"></div>
     </div>
 
-    <!-- 🟢 마법의 연결고리: 조립 기계 스크립트 불러오기 -->
     <script src="layout.js"></script>
     <script>
-        // 화면이 켜지면 조립기계를 돌리는데, 메뉴 불빛을 'home'에 켜줘!
+        // 화면 켜질 때 레이아웃 조립 + 인기 이모지 탭 출력
         window.onload = () => {
             initLayout('home');
             changeEmojiTab('popular');
@@ -107,189 +102,508 @@
             });
         }
 
+        /*
+         * 🟢 Mojitap Local Context Engine 3.1
+         * 외부 API 없이 한국어·영어의 감정, 주제, 문장 역할, 부정 표현을 완벽하게 분석!
+         * 상품형 밀도: 핵심 문장은 넓게 커버하고 긴 고신뢰 문장은 관련 이모지 2개를 조합한다.
+         */
         const smartEmojiEngine = (() => {
             const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*/gu;
-            const PROTECTED_RE = /(?:https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|#[\p{L}\p{N}_]+|@[\p{L}\p{N}_.]+|`[^`\n]*`|\[[^\]\n]+\]\([^)]+\))/giu;
-            const CRITICAL_RE = /사망|별세|장례|부고|추모|참사|재난|재해|사고|피해|부상|실종|질병|암\b|입원|수술|폭력|전쟁|자해|극단적 선택|\bdeath\b|\bfuneral\b|\bdisaster\b|\baccident\b|\bvictim\b|\binjur|\bcancer\b|\bhospital\b|\bviolence\b|\bwar\b|\bsuicide\b/i;
-            const CONDOLENCE_RE = /명복|애도|추모|위로|마음이 무겁|안타깝|쾌유|회복|무사하|힘을 보태|함께하|\bcondolence\b|\brest in peace\b|\bprayers\b|\brecovery\b/i;
-            const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|드립니다|합니다|입니다|예정입니다|\bnotice\b|\bannounce\b|\bplease note\b|\bofficial\b/i;
-            const NEGATED_POSITIVE_RE = /(?:안\s*|별로\s*|전혀\s*)?(?:좋|행복|기쁘|즐겁|만족|추천|성공|괜찮|사랑)[^.!?。！？\n]{0,10}(?:않|못|아니|없|별로)|\bnot\b\s+(?:good|happy|glad|satisfied|recommend|successful|love)/i;
-
-            const profiles = [
-                { id: 'condolence', priority: 100, emojis: ['🕯️', '🙏', '💙'], patterns: [[CONDOLENCE_RE, 7]] },
-                { id: 'apology', priority: 95, emojis: ['🙏', '😔'], patterns: [[/죄송|미안|사과|유감|양해(?:를)? 부탁|불편을 드려|\bsorry\b|\bapolog/i, 6]] },
-                { id: 'celebration', priority: 82, emojis: ['🎉', '🥳', '🎊'], patterns: [[/축하|생일|당첨|수상|합격|\bcongrat\b|\bbirthday\b|\bparty\b|\bwinner\b/i, 5], [/\bfinally\b|\bmade it\b|\bachieved\b/i, 3]] },
-                { id: 'launch', priority: 80, emojis: ['🚀', '✨', '🎉'], patterns: [[/출시|런칭|론칭|공개합니다|오픈합니다|\blaunch\b|\brelease\b|\bnow live\b|\bgrand open\b/i, 5], [/\bnew product\b|\bnew feature\b/i, 3]] },
-                { id: 'gratitude', priority: 78, emojis: ['🙏', '💛', '🥹'], patterns: [[/감사|고맙|덕분|\bthank\b|\bgrateful\b|\bappreciat\b/i, 5]] },
-                { id: 'achievement', priority: 76, emojis: ['🏆', '🎯', '✨'], patterns: [[/성과|목표 달성|1위|우승|\bachievement\b|\bmilestone\b|\brecord\b|\bcompleted\b/i, 4.5], [/\bgrowth\b|\bimproved\b/i, 2.5]] },
-                { id: 'warning', priority: 91, emojis: ['⚠️', '🚨', '❗'], patterns: [[/주의|경고|위험|긴급|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b/i, 5.5]] },
-                { id: 'promotion', priority: 84, emojis: ['🎁', '🏷️', '🛍️'], patterns: [[/할인|특가|쿠폰|무료|혜택|이벤트|\bdiscount\b|\bsale\b|\bcoupon\b|\bfree\b|\bgiveaway\b/i, 5]] },
-                { id: 'idea', priority: 57, emojis: ['💡', '📝', '🔎'], patterns: [[/꿀팁|방법|노하우|비법|인사이트|\btip\b|\bhow to\b|\bidea\b|\bguide\b|\binsight\b/i, 4]] }
-            ];
-
-            const structureThemes = [
-                { id: 'mystery', pattern: /미스터리|의문|\bmystery\b|\bsecret\b/i, emojis: ['🤷‍♂️', '🕵️'] },
-                { id: 'time', pattern: /시간|시계|\btime\b|\bclock\b|\bdeadline\b/i, emojis: ['⏰', '⏳'] },
-                { id: 'launch', pattern: /출시|공개|오픈|\blaunch\b|\brelease\b/i, emojis: ['🚀', '✨'] },
-                { id: 'promotion', pattern: /할인|쿠폰|무료|선물|\bsale\b|\bdiscount\b|\bcoupon\b/i, emojis: ['🎁', '🏷️'] }
-            ];
-
-            const CTA_RE = /저장|공유|팔로우|댓글|구매|링크|\bsave\b|\bshare\b|\bfollow\b|\bsubscribe\b|\bcomment\b|\bclick\b|\blink in bio\b|\bdm me\b/i;
+            const EMOJI_AT_START_RE = /^(?:\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*)+/u;
+            const PROTECTED_RE = /(?:https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|#[\p{L}\p{N}_-]+|@[\p{L}\p{N}_.]+|`[^`\n]*`|\[[^\]\n]+\]\([^)]+\))/giu;
             const HASH_ONLY_RE = /^(?:\s*#[\p{L}\p{N}_-]+\s*){2,}$/u;
+            
+            // 핵심 정규표현식
+            const CRITICAL_RE = /사망|별세|장례|부고|추모|참사|대형 재난|희생자|유가족|전쟁|자해|극단적 선택|\bdeath\b|passed away|\bfuneral\b|rest in peace|deepest condolences?|\bfatal(?:ity|ities)?\b|\btragedy\b|\bcatastrophe\b|mass casualty|\bsuicide\b/i;
+            const CONDOLENCE_RE = /명복|애도|추모|유가족|깊은 위로|마음이 무겁|condolence|rest in peace|deepest sympath|our thoughts are with|mourning|bereaved/i;
+            const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|예정입니다|시행합니다|\bplease note\b|\bofficial notice\b|\bwe are writing to\b|\beffective (?:on|from|immediately)\b|\bkindly note\b/i;
+            
+            // 부정어 완벽 처리 (영어 & 한국어)
+            const FALSE_NEGATIVE_RE = /\bcan['’]t wait\b|\bcouldn['’]t be happier\b|\bnot only\b|\bno wonder\b|\bno[- ]brainer\b|\bnever been better\b|\bnothing short of\b/i;
+            const EN_NEGATION_RE = /\b(?:not|never|no longer|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|don['’]t|doesn['’]t|didn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|cannot|hardly|barely|rarely|far from)\b/i;
+            const KO_NEGATION_RE = /안\s*(?:좋|맞|되|하|추천)|별로|전혀.{0,12}(?:않|못)|(?:좋|행복|기쁘|만족|추천|성공|괜찮|사랑).{0,12}(?:않|못|아니|없)|비추천|실망|최악/i;
+            
+            const CTA_RE = /저장(?:해|하세요)?|공유(?:해|하세요)?|팔로우|구독|태그|댓글|의견.{0,8}(?:남겨|알려)|링크.{0,12}(?:눌러|확인)|신청(?:해|하세요)|지원(?:해|하세요)|(?:지금\s*)?구매(?:해|하세요|하고)|클릭|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b|\bshare (?:this|it|the)\b|\bfollow (?:us|for)\b|\bsubscribe\b|\btag (?:a|your)\b|\bcomment(?: below)?\b|\blet (?:me|us) know\b|\btell us\b|\bsign up\b|\bjoin us\b|\bapply (?:now|today|through)\b|\bshop now\b|\blearn more\b|\bread more\b|\b(?:tap|click|visit) the link\b|\blink in bio\b/i;
+            const SAVE_RE = /저장|북마크|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b/i;
+            const FOLLOW_RE = /팔로우|구독|\bfollow (?:us|for)\b|\bsubscribe\b/i;
+
+            const P = (id, priority, emojis, patterns) => ({ id, priority, emojis, patterns });
+            
+            const profiles = [
+                P('condolence', 100, ['🕯️'], [[CONDOLENCE_RE, 10]]),
+                P('warning', 97, ['⚠️','🚨','❗'], [[/주의|경고|위험|긴급|조심|유의|절대 금지|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b|\bheads up\b|\bbeware\b|\bred flag\b|\bdo not\b|\btemporarily unavailable\b|\bservice (?:outage|disruption|interruption)\b/i, 6]]),
+                P('negative-review', 95, ['👎','😕','⚠️'], [[/비추천|추천하지 않|돈이 아깝|가격 대비.{0,15}별로|환불|품질이 나쁘|다시는 (?:사지|쓰지)|wouldn['’]t recommend|don['’]t recommend|do not recommend|(?:isn['’]t|wasn['’]t|not) worth (?:it|the price)|waste of money|poor quality|one star|bad experience|asked for a refund|returning it/i, 7], [/배터리.{0,20}(?:방전|빨리)|고객 ?센터.{0,35}(?:답|연락).*(?:없|않)|battery (?:drains|dies)|support (?:never|didn['’]t|doesn['’]t)|never (?:replied|responded)|stopped working|keeps? crashing|full of bugs/i, 5.5]]),
+                P('apology', 92, ['🙏','😔'], [[/죄송|미안|사과|유감|불편을 드려|심려를 끼쳐|\bsorry\b|\bapolog|\bwe regret\b/i, 6]]),
+                P('deadline', 90, ['⏰','⏳','📅'], [[/마감|오늘까지|내일까지|기간 종료|임박|선착순|\bdeadline\b|\blast chance\b|\bfinal call\b|\bends? (?:today|tomorrow|soon)\b|\bdue (?:today|tomorrow|on)\b|\bcloses? (?:today|tomorrow|soon)\b|\bonly \d+ spots? left\b/i, 6]]),
+                P('promotion', 88, ['🎁','🏷️','🛍️'], [[/할인|특가|쿠폰|증정|사은품|혜택|프로모션|세일|\bdiscount\b|\bsale\b|\bcoupon\b|\bgiveaway\b|\bpromo code\b|\bspecial offer\b|\blimited offer\b|\bfree (?:shipping|trial|gift|download|sample)\b/i, 5.5], [/\d{1,3}\s*%|\b\d{1,3}% off\b|\$\d+\s*off/i, 2]]),
+                P('launch', 86, ['🚀','✨','🎉'], [[/출시|런칭|론칭|정식 오픈|새롭게 선보|서비스 시작|\blaunch(?:ed|ing)?\b|\brelease(?:d)?\b|\bnow live\b|\bintroducing\b|\bunveil(?:ed|ing)?\b|\brolling out\b|\bjust dropped\b|\bavailable now\b|\bwe shipped\b/i, 6], [/새로운 (?:제품|서비스|기능|프로젝트)|\bnew (?:product|service|feature|project|collection)\b/i, 2.5]]),
+                P('celebration', 85, ['🎉','🥳','🎊'], [[/축하|생일|기념일|당첨|수상|합격|졸업|결혼|새해|\bcongrat|\bbirthday\b|\banniversary\b|\bparty\b|\bwinner\b|\bgraduat|\bcheers to\b|\bwe did it\b|\bnailed it\b|\bcrushed it\b/i, 6]]),
+                P('gratitude', 83, ['🙏','💛','🥹'], [[/감사|고맙|덕분|수고 많|도와주|함께해 주|응원해 주|\bthank|\bgrateful\b|\bappreciat|\bhuge thanks\b|\bshoutout\b|couldn['’]t have done it without|means the world/i, 5.5]]),
+                P('achievement', 81, ['🏆','🎯','🙌'], [[/성과|목표 달성|기록 갱신|1위|우승|완성했|완료했|해냈|\bachievement\b|\bmilestone\b|\bnew record\b|\bpersonal best\b|\bcompleted\b|\bpulled it off\b|\bexceeded (?:our|all) expectations\b|\bpositive feedback\b|\bcustomer reactions?\b|\bbetter than (?:we|I) imagined\b/i, 5.5]]),
+                P('announcement', 79, ['📢','🔔','📌'], [[/공지|안내드립니다|알림드립니다|새 소식|필독|알려드립니다|\bannouncement\b|\bnotice\b|\bquick update\b|\bimportant update\b|\bbig news\b|\bFYI\b|\bPSA\b/i, 5], [FORMAL_RE, 4.5]]),
+                P('joy', 77, ['😊','🤩','✨'], [[/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|다시.{0,12}(?:가고|하고|먹고) 싶|\bhappy\b|\bglad\b|\bdelighted\b|\bexcited\b|\bthrilled\b|\bover the moon\b|\bon cloud nine\b|\bmade my day\b|\bcan['’]t wait\b|\blooking forward\b|\bwant to (?:go|visit|try|make|see) again\b/i, 5]]),
+                P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove you\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
+                P('humor', 75, ['😂','🤣','😆'], [[/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|농담|장난|\blol\b|\blmao\b|\brofl\b|\bfunny\b|\bjoke\b|\bcracked me up\b|\bplot twist\b/i, 5.5]]),
+                P('sadness', 74, ['😢','🥺','💙'], [[/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|\bsad\b|\bcry|\bupset\b|\bdepress|\blonely\b|\bdisappoint|\bheartbroken\b|\brough day\b|\bdevastated\b|\bgutted\b|\bbittersweet\b/i, 5]]),
+                P('anger', 73, ['😤','😡'], [[/화나|짜증|분노|열받|최악|불쾌|억울|\bangry\b|\bannoy|\bfurious\b|\bfrustrat|\bworst\b|\bfed up\b|\bunacceptable\b/i, 5.5]]),
+                P('encouragement', 72, ['💪','🙌','🔥'], [[/힘내|파이팅|응원|할 수 있|포기하지|도전하|끝까지|용기|\byou can do\b|\byou['’]ve got this\b|\bkeep going\b|\bgood luck\b|\bdon['’]t give up\b|\bbelieve in yourself\b|\blet['’]s do this\b/i, 5]]),
+                P('worry', 71, ['😥','💭','🥺'], [[/걱정|불안|고민|막막|두렵|긴장|\bworried\b|\banxious\b|\bnervous\b|\bafraid\b|\buneasy\b|\bstressed out\b|\bon edge\b/i, 5]]),
+                P('fatigue', 70, ['😮‍💨','🫠','☕'], [[/피곤|지쳤|야근|밤샘|녹초|번아웃|\btired\b|\bexhaust|\bburnout\b|\bdrained\b|\brunning on empty\b|\bwiped out\b|\blong day\b|\bneed coffee\b/i, 5]]),
+                P('surprise', 69, ['😮','🤯','👀'], [[/깜짝|놀랐|놀랍|대박|믿기지|헉|\bsurpris|\bunbelievable\b|\bwow\b|\bomg\b|\bno way\b|\bmind blown\b|\bspeechless\b/i, 4.8]]),
+                P('social-cta', 91, ['👉','🔖','💬'], [[CTA_RE, 7]]),
+                P('question', 65, ['🤔','👀','❓'], [[/궁금|어떻게 생각|어떤가요|무엇일까|왜일까|의견|\bwhat do you think\b|\bwhat are your thoughts\b|\banyone else\b|\bwho else\b|\bwhich (?:one|feature|option|version|color|colour|style|tip)\b|\bwhy\b|\bhow can\b|\bany ideas?\b/i, 4], [/[?？]\s*$/, 2.5]]),
+                P('data', 68, ['🗂️','📊','🔍'], [[/데이터|데이터셋|데이터베이스|스프레드시트|엑셀|로 데이터|\bdata\b|\bdataset\b|\bdatabase\b|\bspreadsheet\b|\banalytics\b|\bmetrics\b|\bquery\b|\bdashboard\b|\braw logs?\b|\bdata fields?\b/i, 5], [/수집|분석|가공|정제|추출|분류|필터|전처리|\bcollect|\banaly|\bprocess|\bclean|\bextract|\bclassif|\bfilter|\bpreprocess|\bvisualiz|\bpipeline\b/i, 2.5]]),
+                P('programming', 69, ['💻','🧩','⌨️'], [[/개발자|프로그래밍|코딩|코드|함수|정규표현식|스크립트|\bdeveloper\b|\bprogramming\b|\bcoding\b|\bcode\b|\bfunction\b|\bregex\b|\bregular expression\b|\bscript\b|\bjavascript\b|\btypescript\b|\bpython\b|\breact\b|\bnode\.?js\b|\bAPI\b|\bdebug/i, 5.5]]),
+                P('automation', 67, ['⚙️','🤖','⚡'], [[/자동화|워크플로|반복 작업|효율|최적화|생산성|\bautomation\b|\bautomate|\bworkflow\b|\befficien|\boptimiz|\bproductiv|\bstreamline|\bsave time\b|\bmanual process\b|\brepetitive task\b/i, 5]]),
+                P('security', 68, ['🔐','🛡️','🔒'], [[/보안|개인정보|암호|인증|권한|해킹|취약점|보호|\bsecurity\b|\bprivacy\b|\bpassword\b|\bauth|\bpermission\b|\bhack|\bvulnerab|\bprotect|\bencryption\b|\bdata breach\b|\bphishing\b|\bmalware\b|\b2FA\b/i, 5]]),
+                P('legal', 66, ['⚖️','📜','🏛️'], [[/법률|법적|법원|판결|소송|계약|규정|정책|약관|권리|의무|동의 절차|\blegal\b|\blaw\b|\bcourt\b|\blawsuit\b|\bcontract\b|\bregulation\b|\bpolicy\b|\bcompliance\b|\bcopyright\b|\btrademark\b|\bprivacy policy\b|\bterms of service\b|\bconsent\b|\bthird parties\b/i, 5.5], [/\bprivacy policy\b|\bpersonal information\b|\buser consent\b|개인정보처리방침/i, 3]]),
+                P('medical', 67, ['🩺','🏥','💊'], [[/의료|의학|진료|치료|증상|환자|약물|검사|병원|의사|\bmedical\b|\bmedicine\b|\btreatment\b|\bsymptom\b|\bpatient\b|\bhospital\b|\bdoctor\b|\bdiagnosis\b|\btherapy\b|\bprescription\b|\bclinical\b|\bhealthcare\b/i, 5]]),
+                P('injury', 72, ['🩹','⚡','🩺'], [[/근육통|경련|쥐가 나|파열|염좌|통증|부상|손상|\bmuscle pain\b|\bcramp\b|\btear\b|\binjur|\bsoreness\b|\blactic acid\b|\bpain\b/i, 5.5]]),
+                P('health', 63, ['💪','🌿','🩺'], [[/운동|헬스|러닝|다이어트|근육|건강|수면|명상|\bworkout\b|\bexercise\b|\brunning\b|\bfitness\b|\bdiet\b|\bmuscle\b|\bhealth\b|\bwellness\b|\bhydrat|\bsleep\b|\brecover|\bself-care\b|\byoga\b|\bmeditation\b/i, 4.8]]),
+                P('science', 62, ['🔬','🧬','🧪'], [[/과학|연구|실험|단백질|호르몬|뇌과학|\bscience\b|\bresearch\b|\bexperiment\b|\bprotein\b|\bhormone\b|\bneuroscience\b|\bstudy found\b/i, 4.8]]),
+                P('brain', 64, ['🧠','💡','⏳'], [[/뇌|두뇌|인지|도파민|집중력|창의성|\bbrain\b|\bcognitive\b|\bdopamine\b|\bfocus\b|\battention\b|\bcreativ|\bmental\b/i, 5]]),
+                P('digital-detox', 64, ['📵','📱','🧘'], [[/스마트폰|휴대폰|알림이 울|알림을 끄|스크롤|화면에서 벗어나|디지털 디톡스|\bsmartphone\b|\bnotifications?\b|\bscrolling\b|\bscreen-free\b|\boffline break\b|\bturn off (?:your|the) phone\b|\bstep away from (?:every|the|your) screen\b|\bunplug|\bmind wander\b/i, 5.2]]),
+                P('business', 61, ['📈','🎯','💼'], [[/매출|성장률|전환율|마케팅|비즈니스|고객 확보|전략|지표|\brevenue\b|\bgrowth\b|\bmarketing\b|\bbusiness\b|\bconversion\b|\bstrategy\b|\bROI\b|\bKPI\b|\bpipeline\b|\bretention\b|\bcustomer acquisition\b|\bquarterly results\b/i, 4.8]]),
+                P('finance', 61, ['💰','📊','💸'], [[/재테크|투자|저축|월급|수익|주식|예산|비용|\bfinance\b|\binvest|\bsaving|\bsalary\b|\bprofit\b|\bstock\b|\bbudget\b|\bcash flow\b|\bportfolio\b|\binterest rate\b|\bmortgage\b|\bretirement\b/i, 4.8], [/\bmonthly budget\b|\bautomated savings\b|\bretirement contributions?\b|월 예산|자동 저축/i, 2.5]]),
+                P('idea', 60, ['💡','📝','🔎'], [[/꿀팁|노하우|비법|아이디어|가이드|튜토리얼|통찰|인사이트|\bpro tip\b|\bhow to\b|\bidea\b|\bguide\b|\btutorial\b|\binsight\b|\btakeaway\b|\bdeep dive\b|\bstep-by-step\b|\bhere['’]s why\b|\blesson learned\b/i, 4.8]]),
+                P('work', 58, ['💼','✅','🧩'], [[/업무|회의|기획|협업|팀원|프로젝트|보고서|일정|직장|\bworkplace\b|\bmeeting\b|\bproject\b|\breport\b|\bschedule\b|\bteamwork\b|\bstandup\b|\bsprint\b|\broadmap\b|\bstakeholder\b|\bdeliverable\b|\bcollaborat/i, 4]]),
+                P('productivity', 59, ['✅','⚡','📌'], [[/생산성|할 일|체크리스트|집중|시간 관리|루틴|우선순위|습관|\bproductivity\b|\bto-do\b|\bchecklist\b|\bfocus\b|\btime management\b|\broutine\b|\bpriority\b|\bdeep work\b|\bhabit\b/i, 4.5]]),
+                P('education', 57, ['📚','🎓','✏️'], [[/공부|시험|과제|수업|강의|학습|학생|교사|학교|\bstudy\b|\bexam\b|\bclass\b|\blecture\b|\blearn|\bstudent\b|\bteacher\b|\bschool\b|\bcourse\b|\bresearch paper\b|\btraining\b/i, 4.5]]),
+                P('travel', 60, ['✈️','🧳','🌍'], [[/여행|휴가|비행기|공항|호텔|관광|해외|\btrip\b|\btravel\b|\bvacation\b|\bflight\b|\bairport\b|\bhotel\b|\bitinerary\b|\bboarding pass\b|\bpassport\b|\broad trip\b|\bgetaway\b/i, 5]]),
+                P('nature', 54, ['🌿','🌊','🌸'], [[/바다|산책|공원|숲|꽃|노을|풍경|자연|힐링|\bocean\b|\bsea\b|\bpark\b|\bforest\b|\bflower\b|\bsunset\b|\bnature\b|\bhiking\b|\btrail\b|\bwaterfall\b|\blake\b|\boutdoors\b/i, 4.3]]),
+                P('weather', 55, ['☀️','🌧️','❄️'], [[/날씨|햇살|화창|비가 오|장마|눈이 오|\bweather\b|\bsunny\b|\bsunshine\b|\brain(?:y|ing)?\b|\bstorm\b|\bsnow(?:y|ing)?\b|\bblizzard\b/i, 4.5]]),
+                P('food', 58, ['😋','🍽️','🍴'], [[/맛있|맛집|먹방|식사|요리|배고프|디저트|\bfood\b|\bdelicious\b|\brestaurant\b|\blunch\b|\bdinner\b|\bbreakfast\b|\bcooking\b|\bhungry\b|\bdessert\b|\brecipe\b|\bbrunch\b|\bhomemade\b|\bcraving\b|\bpasta\b/i, 4.8]]),
+                P('coffee', 59, ['☕','🧋'], [[/커피|카페|아메리카노|라떼|\bcoffee\b|\bcafe\b|\blatte\b|\bespresso\b/i, 5]]),
+                P('pet', 66, ['🐶','🐱','🐾'], [[/반려동물|강아지|고양이|견종|래브라도|리트리버|비글|\bpet\b|\bpuppy\b|\bdog\b|\bbreed\b|\blabrador\b|\bretriever\b|\bbeagle\b|\bcat\b|\bkitten\b/i, 5.5]]),
+                P('sports', 59, ['🏆','🏃','⚽'], [[/스포츠|경기|선수|득점|승리|패배|\bsports?\b|\bgame\b|\bmatch\b|\bplayer\b|\bscore\b|\bvictory\b|\bchampionship\b|\bfootball\b|\bsoccer\b|\bbasketball\b|\bbaseball\b|\btennis\b|\bmarathon\b/i, 4.8]]),
+                P('gaming', 59, ['🎮','🕹️','🔥'], [[/게임|게이밍|레벨업|퀘스트|보스전|\bgaming\b|\bvideo game\b|\bgamer\b|\blevel up\b|\bquest\b|\bboss fight\b|\bgameplay\b|\bconsole\b|\bco-op\b|\bmultiplayer\b/i, 5]]),
+                P('creative', 56, ['📸','🎨','🎵'], [[/사진|촬영|영상|디자인|음악|노래|콘서트|\bphoto\b|\bcamera\b|\bvideo\b|\bvlog\b|\bdesign\b|\bphotoshoot\b|\bmusic\b|\bsong\b|\bplaylist\b|\bconcert\b|\bpodcast\b/i, 4.5]]),
+                P('fashion', 56, ['👗','✨','🛍️'], [[/패션|옷|스타일링|코디|신발|가방|\bfashion\b|\boutfit\b|\bstyling\b|\bclothes\b|\bshoes\b|\bhandbag\b|\bwardrobe\b|\bsilhouette\b/i, 5.2]]),
+                P('beauty', 57, ['💄','✨','🧴'], [[/뷰티|화장|메이크업|스킨케어|피부|향수|\bbeauty\b|\bmakeup\b|\bskincare\b|\bperfume\b|\bcosmetic\b|\bserum\b|\bmoisturizer\b/i, 4.7]]),
+                P('home', 54, ['🏠','🛠️','🧹'], [[/인테리어|청소|정리|수리|가구|주방|\bhome improvement\b|\binterior\b|\bcleaning\b|\bdeclutter\b|\brepair\b|\bfurniture\b|\bkitchen\b|\bDIY\b|\brenovation\b/i, 4.5]]),
+                P('parenting', 58, ['👨‍👩‍👧','🍼','💛'], [[/육아|아이|아기|부모|엄마|아빠|가족|잠자리 습관|동화책|\bparenting\b|\bparent\b|\bbaby\b|\btoddler\b|\bchild\b|\bkids?\b|\bmom\b|\bmum\b|\bdad\b|\bfamily\b|\bbedtime routine\b|\bstory time\b|\bquiet story\b/i, 4.9]]),
+                P('hiring', 67, ['🧑‍💼','📣','🤝'], [[/채용|구인|지원자|면접|입사|커리어|이력서|\bhiring\b|\bjob opening\b|\bapplicant\b|\binterview\b|\bcareer\b|\bresume\b|\bCV\b|\bjoin our team\b/i, 5.5]]),
+                P('event', 61, ['📅','🎟️','🎤'], [[/행사|세미나|컨퍼런스|워크숍|웨비나|모임|티켓|\bevent\b|\bseminar\b|\bconference\b|\bworkshop\b|\bwebinar\b|\bmeetup\b|\bticket\b|\bsave the date\b/i, 5]]),
+                P('recommendation', 63, ['⭐','👍','✅'], [[/추천|강추|필수템|가성비|\bhighly recommend\b|\bmust-have\b|\bworth it\b|\btop pick\b|\bfavou?rite\b|\bgame changer\b|\bfive stars\b|\b10\/10\b|\bbest choice\b/i, 5]])
+            ];
+
+            const positiveIds = new Set(['celebration','launch','achievement','joy','love','recommendation','promotion']);
+            const genericProfiles = {
+                problem: P('problem', 40, ['🧩','⚠️','🔍'], []),
+                solution: P('solution', 41, ['💡','🛠️','✅'], []),
+                number: P('number', 38, ['📊','🔢','🧮'], []),
+                explanation: P('explanation', 37, ['🔎','💡','➡️'], []),
+                information: P('information', 30, ['📌','🔎','📝'], [])
+            };
 
             function hasEmoji(text) { EMOJI_RE.lastIndex = 0; return EMOJI_RE.test(text); }
             function countEmojis(text) { EMOJI_RE.lastIndex = 0; return (text.match(EMOJI_RE) || []).length; }
 
             function protectText(text) {
                 const values = [];
-                const safeText = text.replace(PROTECTED_RE, value => {
-                    const token = `\uE000${values.length}\uE001`;
-                    values.push(value);
-                    return token;
-                });
-                return { text: safeText, restore(value) { return value.replace(/\uE000(\d+)\uE001/g, (_, index) => values[Number(index)]); } };
+                return {
+                    text: text.replace(PROTECTED_RE, value => {
+                        values.push(value);
+                        return `\uE000${values.length - 1}\uE001`;
+                    }),
+                    restore(value) {
+                        return value.replace(/\uE000(\d+)\uE001/g, (_, index) => values[Number(index)]);
+                    }
+                };
             }
 
-            function splitLine(line) { if (!line) return ['']; return line.split(/(?<=[.!?。！？…])(?=\s|$)/u); }
+            function splitLine(line) {
+                if (!line) return [''];
+                const parts = [];
+                let start = 0;
+
+                for (let index = 0; index < line.length; index++) {
+                    if (!/[.!?。！？…]/u.test(line[index])) continue;
+                    if (index + 1 < line.length && !/\s/u.test(line[index + 1])) continue;
+
+                    let end = index + 1;
+                    let cursor = end;
+                    while (cursor < line.length && /\s/u.test(line[cursor])) cursor += 1;
+
+                    let foundTrailingEmoji = false;
+                    while (cursor < line.length) {
+                        const match = line.slice(cursor).match(EMOJI_AT_START_RE);
+                        if (!match) break;
+                        foundTrailingEmoji = true;
+                        cursor += match[0].length;
+                        while (cursor < line.length && /\s/u.test(line[cursor])) cursor += 1;
+                    }
+
+                    if (foundTrailingEmoji) end = cursor;
+                    parts.push(line.slice(start, end));
+                    start = end;
+                    index = Math.max(index, end - 1);
+                }
+
+                if (start < line.length) parts.push(line.slice(start));
+                return parts.length ? parts : [line];
+            }
+
             function scoreProfile(profile, sentence) {
                 let score = 0;
-                for (const [pattern, weight] of profile.patterns) { pattern.lastIndex = 0; if (pattern.test(sentence)) score += weight; }
+                for (const [pattern, weight] of profile.patterns) {
+                    pattern.lastIndex = 0;
+                    if (pattern.test(sentence)) score += weight;
+                }
                 return score;
+            }
+
+            function isEnglishDominant(text) {
+                const latin = (text.match(/[A-Za-z]/g) || []).length;
+                const hangul = (text.match(/[가-힣]/g) || []).length;
+                return latin >= 8 && latin > hangul * 1.5;
+            }
+
+            function isNegated(text) {
+                if (KO_NEGATION_RE.test(text)) return true;
+                return isEnglishDominant(text) && !FALSE_NEGATIVE_RE.test(text) && EN_NEGATION_RE.test(text);
             }
 
             function analyzeSentence(rawSentence, documentIsCritical) {
                 const sentence = rawSentence.trim();
-                if (sentence.length < 2 || hasEmoji(sentence)) return null;
-                const sentenceIsCritical = CRITICAL_RE.test(sentence);
-                if (documentIsCritical || sentenceIsCritical) {
-                    if (!sentenceIsCritical || !CONDOLENCE_RE.test(sentence)) return null;
-                    return { profile: profiles.find(profile => profile.id === 'condolence'), score: 12 };
+                if (sentence.length < 3 || hasEmoji(sentence)) return null;
+
+                const sentenceCritical = CRITICAL_RE.test(sentence);
+                if (documentIsCritical || sentenceCritical) {
+                    if (CONDOLENCE_RE.test(sentence)) return { profile: profiles[0], score: 12 };
+                    return null;
                 }
+
                 const scored = profiles.map(profile => ({ profile, score: scoreProfile(profile, sentence) }));
+                
+                // 🟢 부정어 감지 시 긍정 점수 대폭 삭감!
+                if (isNegated(sentence)) {
+                    for (const candidate of scored) {
+                        if (positiveIds.has(candidate.profile.id)) candidate.score -= 7;
+                    }
+                }
+
+                if (isEnglishDominant(sentence)) {
+                    for (const candidate of scored) {
+                        if (/\bsurprisingly (?:easy|simple|affordable|good|effective|light|quick)\b/i.test(sentence) && candidate.profile.id === 'surprise') candidate.score -= 4;
+                        if (/\b(?:boss fight|gameplay|co-op|multiplayer)\b/i.test(sentence) && candidate.profile.id === 'announcement') candidate.score -= 3;
+                        if (/\b(?:can['’]t wait|over the moon|made my day)\b/i.test(sentence) && candidate.profile.id === 'joy') candidate.score += 2;
+                        if (/\b(?:now live|just launched|just dropped|introducing)\b/i.test(sentence) && candidate.profile.id === 'launch') candidate.score += 2;
+                    }
+                }
+
+                if (FORMAL_RE.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (['announcement','deadline','warning','apology'].includes(candidate.profile.id)) candidate.score += 1;
+                        if (['humor','love'].includes(candidate.profile.id)) candidate.score -= 2;
+                    }
+                }
+
+                if (/[!！]/.test(sentence)) {
+                    for (const candidate of scored) {
+                        if (['celebration','launch','joy','warning','encouragement'].includes(candidate.profile.id)) candidate.score += 0.5;
+                    }
+                }
+
                 scored.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
                 const best = scored[0];
-                if (!best || best.score < 3.4) return null;
-                return best;
+                if (best && best.score >= 3.4) return best;
+                
+                // 애매한 경우 기본 제공 프로필 지정
+                if (/에러|오류|문제|한계|복잡|뒤엉|비효율|실패|불편|\berror\b|\bissue\b|\bproblem\b|\blimit\b|\bcomplex\b|\binefficien|\bfail|\bchallenge\b|\bpain point\b|\bbottleneck\b/i.test(sentence)) {
+                    return { profile: genericProfiles.problem, score: 3.9 };
+                }
+                if (/해결|해법|방법|기술|도구|핵심|자동화|공유|소개|\bsolution\b|\bmethod\b|\btechnique\b|\btool\b|\bkey\b|\bautomate\b|\bapproach\b|\bfix\b|\bbest practice\b/i.test(sentence)) {
+                    return { profile: genericProfiles.solution, score: 3.8 };
+                }
+                if (/\d|%|통계|비율|수치|\bpercent\b|\bstatistics?\b|\bcalculate\b|\bmetrics?\b/i.test(sentence)) {
+                    return { profile: genericProfiles.number, score: 3.65 };
+                }
+                if (/즉,|따라서|결국|때문|반면|\bhowever\b|\btherefore\b|\bbecause\b|\bas a result\b|\bthis means\b|\bin other words\b|\bon the other hand\b/i.test(sentence)) {
+                    return { profile: genericProfiles.explanation, score: 3.55 };
+                }
+                if (sentence.length >= 32) return { profile: genericProfiles.information, score: 3.42 };
+                return null;
             }
 
-            function scoreThemes(text) {
-                return structureThemes.map((theme, index) => { theme.pattern.lastIndex = 0; const matches = text.match(theme.pattern); return { theme, score: matches ? 4 + Math.max(0, 3 - index * 0.015) : 0 }; })
-                    .filter(item => item.score > 0).sort((a, b) => b.score - a.score);
-            }
-
-            function uniqueEmojis(values) { return [...new Set(values.filter(Boolean))]; }
-
-            function titleEmojis(text) {
-                const ranked = scoreThemes(text);
-                if (!ranked.length) return [/[?？]/.test(text) ? '🤔' : '✨', '💡'];
-                return uniqueEmojis(ranked[0].theme.emojis).slice(0, 2);
+            function titleThemes(text) {
+                const scored = profiles
+                    .map(profile => ({ profile, score: scoreProfile(profile, text) }))
+                    .filter(item => item.score >= 3.4 && !['social-cta','question','condolence'].includes(item.profile.id))
+                    .sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
+                
+                if (!scored.length) return /[?？]/.test(text) ? ['🤔','👀'] : ['✨','💡'];
+                const first = scored[0].profile.emojis[0];
+                const secondItem = scored.find(item => item.profile.id !== scored[0].profile.id);
+                const second = secondItem ? secondItem.profile.emojis[0] : scored[0].profile.emojis[1] || '✨';
+                return [...new Set([first, second])].slice(0, 2);
             }
 
             function headingEmoji(text) {
-                const ranked = scoreThemes(text);
-                if (ranked.length) return ranked[0].theme.emojis[0];
+                if (/알람|기상|생체 시계|\balarm\b|\bwake up\b/i.test(text)) return '⏰';
+                if (/결론|핵심|해답|이유|인사이트|\bkey takeaway\b|\bsolution\b|\bconclusion\b|\bwhy it matters\b/i.test(text)) return '💡';
+                if (/단계|방법|\bstep \d+\b|\bhow to\b|\bquick guide\b|\bgetting started\b/i.test(text)) return '📝';
+                if (/결과|성과|수치|\bresults?\b|\bperformance\b|\bmetrics?\b/i.test(text)) return '📊';
+                if (/주의|피해야|\bwarning\b|\bimportant\b|\bwhat to avoid\b/i.test(text)) return '⚠️';
+                if (/심심|고요|아무것도 안|\bdoing nothing\b|\bmental reset\b|\bquiet mind\b/i.test(text)) return '🧘';
+                if (/초기화|리셋|스마트폰|화면|\breset\b|\boffline\b|\bphone\b|\bscreen\b/i.test(text)) return '🔌';
                 const analysis = analyzeSentence(text, false);
                 return analysis ? analysis.profile.emojis[0] : '💡';
             }
 
-            function chooseEmoji(profile, usage, recentEmojis) {
-                return profile.emojis.slice().sort((a, b) => {
-                    const penaltyA = recentEmojis.includes(a) ? 3 : 0;
-                    const penaltyB = recentEmojis.includes(b) ? 3 : 0;
-                    return ((usage.get(a) || 0) + penaltyA) - ((usage.get(b) || 0) + penaltyB);
-                })[0];
-            }
-
-            function placeEmoji(rawSentence, emoji, profileId, position = 'end') {
-                const leading = rawSentence.match(/^\s*/)?.[0] || '';
-                const trailing = rawSentence.match(/\s*$/)?.[0] || '';
-                const core = rawSentence.slice(leading.length, rawSentence.length - trailing.length);
-                if (!core) return rawSentence;
-                if (position === 'start') return `${leading}${emoji} ${core}${trailing}`;
-                return `${leading}${core} ${emoji}${trailing}`;
-            }
-
-            function classifyLine(restoredLine, isFirstMeaningful, hasDocumentStructure) {
-                const text = restoredLine.trim();
-                if (!text) return 'blank';
-                if (HASH_ONLY_RE.test(text)) return 'hashtags';
-                if (CTA_RE.test(text) && text.length <= 150) return 'cta';
-                if (!isFirstMeaningful && text.length <= 75 && !/[.!?。！？]$/.test(text)) return 'heading';
-                if (isFirstMeaningful && text.length <= 120 && !/[.!。]$/.test(text)) return 'title';
+            function classifyLine(text, first, structured) {
+                const value = text.trim();
+                if (!value) return 'blank';
+                if (HASH_ONLY_RE.test(value)) return 'hashtags';
+                const sentenceCount = splitLine(value).filter(part => part.trim()).length;
+                if (CTA_RE.test(value) && value.length <= 230 && sentenceCount === 1) return 'cta';
+                const explicit = /^(?:\d{1,2}[.)]\s*|[①-⑳]\s*|[-*•▪▫]\s+|#{1,4}\s+|\*\*)/u.test(value);
+                const englishHeading = /^[A-Z][A-Za-z0-9'’:&-]*(?:\s+[A-Za-z0-9'’:&-]+){2,11}$/.test(value) && !/[.!?]$/.test(value);
+                if (!first && value.length <= 80 && (explicit || englishHeading || (!/[.!?。！？]$/.test(value) && analyzeSentence(value, false)?.score >= 4.5))) return 'heading';
+                const framed = /^[\[【〈《"'“‘].+[\]】〉》"'”’]$/u.test(value);
+                if (first && value.length <= 140 && (framed || (structured && !/[.!。]$/.test(value)))) return 'title';
                 return 'body';
             }
 
-            function structuralTransform(safeLine, restoredLine, role, documentIsCritical) {
-                const existing = countEmojis(restoredLine);
-                if (role === 'hashtags' || role === 'blank') return { text: safeLine, added: 0 };
-                if (documentIsCritical) return { text: `${safeLine} 🕯️`, added: 1 };
+            function append(raw, emojis) {
+                if (!emojis.length) return raw;
+                const trailing = raw.match(/\s*$/)?.[0] || '';
+                const core = raw.slice(0, raw.length - trailing.length);
+                return `${core} ${emojis.join('')}${trailing}`;
+            }
 
-                if (role === 'title') {
-                    if (existing > 0) return { text: safeLine, added: 0 };
-                    const emojis = titleEmojis(restoredLine);
-                    return { text: placeEmoji(safeLine, emojis.join(''), 'title', 'start'), added: emojis.length };
-                }
-                if (role === 'heading') {
-                    if (existing > 0) return { text: safeLine, added: 0 };
-                    return { text: placeEmoji(safeLine, headingEmoji(restoredLine), 'heading', 'start'), added: 1 };
-                }
-                if (role === 'cta') {
-                    if (existing > 0) return { text: safeLine, added: 0 };
-                    let emoji = /\bclick\b|\blink\b|링크|클릭/i.test(restoredLine) ? '👇' : '👉';
-                    return { text: placeEmoji(safeLine, emoji, 'cta', 'end'), added: 1 };
-                }
-                return { text: safeLine, added: 0 };
+            function prefix(raw, emoji) {
+                const leading = raw.match(/^\s*/)?.[0] || '';
+                const core = raw.slice(leading.length);
+                const bullet = core.match(/^((?:\d{1,2}[.)]|[①-⑳]|[-*•▪▫]|#{1,4})\s*)/u);
+                if (bullet) return `${leading}${bullet[1]}${emoji} ${core.slice(bullet[1].length)}`;
+                return `${leading}${emoji} ${core}`;
+            }
+
+            function ctaEmojis(text) {
+                if (SAVE_RE.test(text) && FOLLOW_RE.test(text)) return ['🔖','✨','👉'];
+                if (SAVE_RE.test(text) && /공유|\bshare\b/i.test(text)) return ['🔖','👉'];
+                if (FOLLOW_RE.test(text)) return ['✨','👉'];
+                if (/지원|신청|\bapply\b|\bsign up\b|\bjoin us\b/i.test(text)) return ['📝','👉'];
+                if (/구매|\bshop now\b|\bbuy now\b|\bcheckout\b/i.test(text)) return ['🛍️','👉'];
+                if (/링크|클릭|\b(?:tap|click|visit) the link\b|\blink in bio\b|\blearn more\b|\bread more\b/i.test(text)) return ['🔗','👉'];
+                if (/댓글|의견|\bcomment\b|\blet (?:me|us) know\b|\btell us\b/i.test(text)) return ['💬'];
+                if (/태그|\btag (?:a|your)\b/i.test(text)) return ['👀','👉'];
+                return ['👉'];
+            }
+
+            function chooseEmoji(profile, sentence, usage, recent) {
+                let candidates = profile.emojis.slice();
+                const id = profile.id;
+
+                if (id === 'pet' && /강아지|견종|\bpuppy\b|\bdog\b|\bbreed\b/i.test(sentence)) candidates = ['🐶','🐾'];
+                else if (id === 'pet' && /고양이|\bcat\b|\bkitten\b/i.test(sentence)) candidates = ['🐱','🐾'];
+                else if (id === 'social-cta') candidates = [ctaEmojis(sentence).join('')];
+                else if (id === 'travel' && /비행기|공항|여권|\bflight\b|\bairport\b|\bpassport\b/i.test(sentence)) candidates = ['✈️','🧳','🌍'];
+                else if (id === 'travel' && /호텔|숙소|\bhotel\b|\bresort\b/i.test(sentence)) candidates = ['🏨','🧳','🌍'];
+                else if (id === 'weather' && /비가|장마|\brain(?:y|ing)?\b|\bstorm\b/i.test(sentence)) candidates = ['🌧️','☔'];
+                else if (id === 'weather' && /눈이|\bsnow(?:y|ing)?\b|\bblizzard\b/i.test(sentence)) candidates = ['❄️','☃️'];
+                else if (id === 'injury' && /경련|쥐가 나|\bcramp\b/i.test(sentence)) candidates = ['⚡','🩹','🩺'];
+                else if (id === 'data' && /정규표현식|\bregex\b|\bregular expression\b|자동화|\bautomate/i.test(sentence)) candidates = ['⚙️','💻','🗂️'];
+                else if (id === 'negative-review' && /추천하지|비추천|wouldn['’]t recommend|don['’]t recommend|not worth/i.test(sentence)) candidates = ['👎'];
+                else if (id === 'negative-review' && /고객 ?센터|답변|\bsupport\b|\breplied\b|\bresponded\b/i.test(sentence)) candidates = ['😕','👎'];
+                else if (id === 'sports' && /\bwhat a game\b|\bcomeback\b/i.test(sentence)) candidates = ['🔥','🙌','🏆'];
+                else if (id === 'achievement' && /매출|전환율|성장률|\brevenue\b|\bconversion\b|\bgrowth\b|\bquarterly\b/i.test(sentence)) candidates = ['📈','🏆','🎯'];
+                else if (id === 'achievement' && /반응|피드백|\bfeedback\b|\bcustomer reactions?\b/i.test(sentence)) candidates = ['🎉','🙌','✨'];
+                else if (id === 'health' && /수분|회복|수면|\bhydrat|\brecover|\bsleep\b/i.test(sentence)) candidates = ['🌿','🩺','💪'];
+                else if (id === 'digital-detox' && /오프라인|화면에서 벗어나|\boffline\b|\bscreen-free\b|\bstep away from\b/i.test(sentence)) candidates = ['🔌','📵','🧘'];
+                else if (id === 'joy' && /can['’]t wait|looking forward|thrilled|over the moon/i.test(sentence)) candidates = ['🤩','😊','✨'];
+                else if (id === 'question' && /\bwhich\b|어떤|몇 번/i.test(sentence)) candidates = ['👀','🤔','❓'];
+                
+                return candidates.sort((a, b) => {
+                    const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
+                    const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
+                    return aPenalty - bPenalty;
+                })[0];
+            }
+
+            function chooseSecondaryEmoji(profile, sentence, primary, usage, recent) {
+                if (['condolence','negative-review','apology','question','social-cta'].includes(profile.id)) return null;
+                let contextual = [];
+                if (profile.id === 'pet' && /물속|물살|수영|헤엄|\bswim|\bunderwater\b/i.test(sentence)) contextual = ['🌊','🏊'];
+                else if (profile.id === 'injury' && /근육|경련|통증|\bmuscle\b|\bcramp\b|\bpain\b/i.test(sentence)) contextual = ['🩹','🩺'];
+                else if (profile.id === 'data' && /정규표현식|자동화|\bregex\b|\bregular expression\b|\bautomate/i.test(sentence)) contextual = ['💻','⚙️'];
+                else if (profile.id === 'programming' && /데이터|분석|\bdata\b|\banalytics?\b/i.test(sentence)) contextual = ['📊','⚙️'];
+                else if (profile.id === 'travel' && /비행기|공항|여권|\bflight\b|\bairport\b|\bpassport\b/i.test(sentence)) contextual = ['🧳','🌍'];
+                else if (profile.id === 'business' && /\d|%|매출|전환율|\brevenue\b|\bconversion\b|\bmetrics?\b/i.test(sentence)) contextual = ['📊','🎯'];
+                else if (profile.id === 'finance' && /저축|투자|예산|\bsaving|\binvest|\bbudget\b/i.test(sentence)) contextual = ['📈','💰'];
+                else if (profile.id === 'health' || profile.id === 'medical') contextual = ['🩺','🌿'];
+                else if (profile.id === 'security' && /비밀번호|암호|\bpassword\b|\bpasscode\b|\bcredential/i.test(sentence)) contextual = ['🔑','🛡️'];
+                else if (profile.id === 'security' && /피싱|\bphishing\b|\bmalware\b|\bdata breach\b/i.test(sentence)) contextual = ['⚠️','🛡️'];
+                else if (profile.id === 'security') contextual = ['🛡️','🔒'];
+                else if (profile.id === 'legal') contextual = ['📜','⚖️'];
+                else if (profile.id === 'food' && /기분(?:이|은|도)?\s*좋|행복|즐겁|\bhappy\b|\bglad\b|\bdelighted\b/i.test(sentence)) contextual = ['😊','😋'];
+                else if (profile.id === 'food') contextual = ['🍴','😋'];
+                else if (profile.id === 'coffee' && /기분(?:이|은|도)?\s*좋|행복|즐겁|\bhappy\b|\bglad\b|\bdelighted\b/i.test(sentence)) contextual = ['😊','☕'];
+                else if (profile.id === 'coffee') contextual = ['☕','🧋'];
+                else if (profile.id === 'launch') contextual = ['✨','🎉'];
+                else if (profile.id === 'achievement') contextual = ['🎯','🙌'];
+                else if (profile.id === 'brain') contextual = ['💡','🧠'];
+                else if (profile.id === 'digital-detox') contextual = ['🧘','📵'];
+                else if (profile.id === 'productivity') contextual = ['⚡','✅'];
+                else if (profile.id === 'fashion' || profile.id === 'beauty') contextual = ['✨','🛍️'];
+                else if (profile.id === 'parenting') contextual = ['💛','🍼'];
+                
+                const pool = [...contextual, ...profile.emojis].filter(emoji =>
+                    emoji && emoji !== primary && !primary.includes(emoji)
+                );
+                
+                if (!pool.length) return null;
+
+                return [...new Set(pool)].sort((a, b) => {
+                    const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
+                    const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
+                    return aPenalty - bPenalty;
+                })[0];
+            }
+
+            function bodyBudget(sentences, chars, structural, existing, critical) {
+                if (critical) return 0;
+                let target;
+                if (sentences <= 1) target = chars >= 150 ? 3 : chars >= 32 ? 2 : 1;
+                else if (sentences === 2) target = chars >= 180 ? 4 : 3;
+                else if (sentences === 3) target = 5;
+                else if (sentences === 4) target = 6;
+                else if (sentences <= 7) target = Math.ceil(sentences * 0.9) + 1;
+                else if (sentences <= 12) target = Math.ceil(sentences * 0.82) + 1;
+                else if (sentences <= 20) target = Math.ceil(sentences * 0.72) + 2;
+                else target = Math.ceil(sentences * 0.6) + 3;
+                
+                if (chars > 900) target = Math.max(target, Math.ceil(chars / 112));
+                const structuralWeight = Math.ceil(structural * 0.3);
+                return Math.max(0, Math.min(30, target) - structuralWeight - existing);
             }
 
             function transform(originalText) {
                 const protectedText = protectText(originalText);
                 const lineParts = protectedText.text.split(/(\r?\n)/);
-                const meaningfulParts = lineParts.filter(line => !/^\r?\n$/.test(line) && line.trim());
-                const firstMeaningfulIndex = lineParts.indexOf(meaningfulParts[0]);
-                const hasDocumentStructure = meaningfulParts.length >= 3;
-                const documentIsCritical = CRITICAL_RE.test(protectedText.text);
+                const meaningful = lineParts.map((line, index) => ({ line, index })).filter(item => !/^\r?\n$/.test(item.line) && item.line.trim());
+                const firstIndex = meaningful[0]?.index ?? -1;
+                const structured = meaningful.length >= 3;
+                const critical = CRITICAL_RE.test(protectedText.text);
                 let structuralCount = 0;
+                let logicalLine = 0;
+                const decoratedLines = new Set();
 
-                const transformedLines = lineParts.map((safeLine, index) => {
-                    if (/^\r?\n$/.test(safeLine)) return safeLine;
+                const lines = lineParts.map((safeLine, index) => {
+                    if (/^\r?\n$/.test(safeLine)) { logicalLine += 1; return safeLine; }
                     if (!safeLine.trim()) return safeLine;
-                    const role = classifyLine(protectedText.restore(safeLine), index === firstMeaningfulIndex, hasDocumentStructure);
-                    const result = structuralTransform(safeLine, protectedText.restore(safeLine), role, documentIsCritical);
-                    structuralCount += result.added;
-                    return result.text;
+
+                    const restored = protectedText.restore(safeLine);
+                    const role = classifyLine(restored, index === firstIndex, structured);
+                    const existing = countEmojis(restored);
+                    let result = safeLine;
+                    let added = 0;
+
+                    if (role === 'hashtags' || role === 'blank') return safeLine;
+                    if (critical) {
+                        if (!existing && CONDOLENCE_RE.test(restored)) {
+                            result = append(safeLine, ['🕯️']); added = 1;
+                        }
+                    } else if (role === 'title' && !existing) {
+                        const emojis = titleThemes(restored);
+                        result = append(safeLine, emojis); added = emojis.length;
+                    } else if (role === 'heading' && !existing) {
+                        result = prefix(safeLine, headingEmoji(restored)); added = 1;
+                    } else if (role === 'cta') {
+                        const desired = ctaEmojis(restored);
+                        const emojis = desired.slice(0, Math.max(0, desired.length - existing));
+                        result = append(safeLine, emojis); added = emojis.length;
+                    }
+
+                    if (added) decoratedLines.add(logicalLine);
+                    structuralCount += added;
+                    return result;
                 });
 
                 const pieces = [];
                 let sentenceIndex = 0;
-                transformedLines.join('').split(/(\r?\n)/).forEach(line => {
-                    if (/^\r?\n$/.test(line)) { pieces.push({ text: line, newline: true }); return; }
-                    splitLine(line).forEach(sentence => { pieces.push({ text: sentence, newline: false, sentenceIndex: sentence.trim() ? sentenceIndex++ : -1 }); });
-                });
+                let lineIndex = 0;
+                for (const line of lines.join('').split(/(\r?\n)/)) {
+                    if (/^\r?\n$/.test(line)) {
+                        pieces.push({ text: line, newline: true });
+                        lineIndex += 1;
+                        continue;
+                    }
+                    for (const sentence of splitLine(line)) {
+                        pieces.push({ text: sentence, newline: false, lineIndex, sentenceIndex: sentence.trim() ? sentenceIndex++ : -1 });
+                    }
+                }
 
-                const budget = Math.max(0, Math.min(22, Math.ceil(sentenceIndex * 0.65)) - structuralCount - countEmojis(originalText));
-                if (budget <= 0) return protectedText.restore(pieces.map(p => p.text).join(''));
+                const budget = bodyBudget(sentenceIndex, originalText.length, structuralCount, countEmojis(originalText), critical);
+                if (budget <= 0) return protectedText.restore(pieces.map(piece => piece.text).join(''));
 
                 const candidates = [];
-                pieces.forEach((piece, idx) => {
-                    if (piece.newline || piece.sentenceIndex < 0) return;
-                    const analysis = analyzeSentence(piece.text, documentIsCritical);
-                    if (analysis) candidates.push({ index: idx, profile: analysis.profile, score: analysis.score });
+                pieces.forEach((piece, index) => {
+                    if (piece.newline || piece.sentenceIndex < 0 || decoratedLines.has(piece.lineIndex)) return;
+                    const restored = protectedText.restore(piece.text);
+                    if (HASH_ONLY_RE.test(restored.trim())) return;
+                    const analysis = analyzeSentence(restored, critical);
+                    if (!analysis) return;
+                    candidates.push({
+                        index, lineIndex: piece.lineIndex, sentenceIndex: piece.sentenceIndex,
+                        profile: analysis.profile, score: analysis.score + (/[!?！？]$/.test(restored.trim()) ? 0.2 : 0)
+                    });
                 });
 
-                candidates.sort((a, b) => b.score - a.score);
-                const selected = candidates.slice(0, budget).sort((a, b) => a.index - b.index);
+                candidates.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority || a.sentenceIndex - b.sentenceIndex);
+                
+                const selected = [];
+                const lineUsage = new Map();
+                const profileUsage = new Map();
+                const maxPerLine = structured ? 2 : Math.min(6, budget);
+                const coverageTarget = Math.min(candidates.length, Math.max(1, Math.ceil(budget * 0.76)));
+                
+                for (const candidate of candidates) {
+                    if (selected.length >= coverageTarget) break;
+                    const onLine = lineUsage.get(candidate.lineIndex) || 0;
+                    if (onLine >= maxPerLine) continue;
+                    const sameProfile = profileUsage.get(candidate.profile.id) || 0;
+                    if (sameProfile >= 3 && candidate.score < 5) continue;
+                    
+                    selected.push(candidate);
+                    lineUsage.set(candidate.lineIndex, onLine + 1);
+                    profileUsage.set(candidate.profile.id, sameProfile + 1);
+                }
 
                 const usage = new Map();
-                const recentEmojis = [];
-                selected.forEach(candidate => {
-                    const emoji = chooseEmoji(candidate.profile, usage, recentEmojis);
-                    pieces[candidate.index].text = placeEmoji(pieces[candidate.index].text, emoji, candidate.profile.id);
-                    usage.set(emoji, (usage.get(emoji) || 0) + 1);
-                    recentEmojis.push(emoji);
-                    if (recentEmojis.length > 3) recentEmojis.shift();
-                });
+                const recent = [];
+                let secondaryBudget = Math.max(0, budget - selected.length);
+                let secondaryCount = 0;
+                const maxSecondaryCount = Math.min(secondaryBudget, Math.max(1, Math.ceil(sentenceIndex * 0.38)));
+                
+                selected.sort((a, b) => a.sentenceIndex - b.sentenceIndex);
+                
+                for (const candidate of selected) {
+                    const sentence = protectedText.restore(pieces[candidate.index].text);
+                    const emoji = chooseEmoji(candidate.profile, sentence, usage, recent);
+                    const emojis = [emoji];
+                    
+                    const pairMinLength = ['promotion','launch','celebration','gratitude','health','medical','security','pet','injury'].includes(candidate.profile.id) ? 24 : 32;
+                    const canUsePair = secondaryCount < maxSecondaryCount && secondaryBudget > 0 && candidate.score >= 4.7 && sentence.trim().length >= pairMinLength && !/[?？]\s*$/.test(sentence.trim());
+                    
+                    if (canUsePair) {
+                        const secondary = chooseSecondaryEmoji(candidate.profile, sentence, emoji, usage, recent);
+                        if (secondary) {
+                            emojis.push(secondary);
+                            secondaryBudget -= 1;
+                            secondaryCount += 1;
+                        }
+                    }
 
-                return protectedText.restore(pieces.map(p => p.text).join(''));
+                    pieces[candidate.index].text = append(pieces[candidate.index].text, emojis);
+                    usage.set(emoji, (usage.get(emoji) || 0) + 1);
+                    if (emojis[1]) usage.set(emojis[1], (usage.get(emojis[1]) || 0) + 1);
+                    recent.push(...emojis);
+                    while (recent.length > 4) recent.shift();
+                }
+
+                return protectedText.restore(pieces.map(piece => piece.text).join(''));
             }
 
             return { transform };
@@ -328,7 +642,7 @@
 
         function copyText(elementId) {
             const output = document.getElementById(elementId);
-            if (!output.value) return;
+            if (!output.value) { showToast(document.documentElement.lang === 'ko' ? '복사할 내용이 없습니다.' : 'Nothing to copy.'); return; }
             output.select(); document.execCommand('copy');
             showToast(document.documentElement.lang === 'ko' ? '📋 전체 복사 완료!' : '📋 Copied!');
         }
