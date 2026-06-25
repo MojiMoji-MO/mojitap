@@ -3,118 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 🟢 [절대 삭제 금지] 구글 서치 콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
-    
-    <!-- 🟢 [절대 삭제 금지] 구글 애널리틱스 추적 코드 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-8R7T1JEFVL');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8R7T1JEFVL');</script>
 
-    <!-- 🟢 [v1.9.0] 글로벌 타겟팅 영어 최우선 SEO 메타 태그 -->
     <meta name="description" content="AI Emoji Generator for Instagram, TikTok, and Blogs. Add emojis automatically to your text in 3 seconds. 3초 완성 문맥 이모지 자동입력 툴 모지탭(Mojitap).">
     <meta name="keywords" content="AI Emoji Generator, auto emoji, social media text tool, 이모지 자동입력, 인스타 이모지, emoji text maker">
     <title>Mojitap - AI Emoji Generator & Marketing Tool</title>
-
+    
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
-    <style>
-        :root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; --tab-active: #FF4F6D; --tab-inactive: #E5E7EB; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
-        .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 30px 40px; box-sizing: border-box; }
-
-        .main-header { margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-        .header-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .logo-link img { height: 36px; display: block; }
-        
-        .lang-toggle { display: flex; background: var(--palette-bg); border-radius: 8px; overflow: hidden; }
-        .lang-btn { border: none; background: none; padding: 6px 12px; font-size: 12px; font-weight: 800; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
-        .lang-btn.active { background: var(--primary-color); color: white; }
-
-        .top-nav { display: flex; justify-content: center; gap: 15px; }
-        .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 15px; padding: 8px 16px; border-radius: 10px; transition: all 0.3s; }
-        .nav-item:hover { color: var(--primary-color); }
-        .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
-
-        .tool-section { display: flex; flex-direction: column; gap: 12px; }
-        #mainEditor { width: 100%; height: 240px; padding: 22px; border: 2px solid var(--border-color); border-radius: 16px; font-size: 17px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; background-color: #FAFAFA; color: var(--text-main); }
-        #mainEditor:focus { background-color: #FFFFFF; outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(255, 79, 109, 0.1); }
-
-        .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
-        .sub-buttons { display: flex; gap: 10px; }
-        .btn-action, .btn-copy, .btn-clear { border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s; }
-        .btn-action { background-color: var(--primary-color); color: white; width: 100%; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
-        .btn-action:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
-        .btn-copy { background-color: var(--sub-purple); color: white; flex: 1; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
-        .btn-copy:hover { background-color: var(--accent-mint); box-shadow: 0 4px 15px rgba(34, 211, 197, 0.3); transform: translateY(-2px); color: #064E3B; }
-        .btn-clear { background-color: #F3F4F6; color: #4B5563; width: auto; min-width: 100px; }
-        .btn-clear:hover { background-color: #E5E7EB; transform: translateY(-2px); color: var(--text-main); }
-
-        .hint-text { text-align: center; font-size: 14px; color: var(--sub-purple); font-weight: 700; margin-bottom: 5px; }
-
-        .emoji-palette-section { margin-top: 25px; }
-        .palette-title { font-size: 16px; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
-
-        .tab-container { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-        .tab-btn { background-color: var(--tab-inactive); color: #4B5563; border: none; padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }
-        .tab-btn:hover { background-color: #D1D5DB; }
-        .tab-btn.active { background-color: var(--tab-active); color: white; box-shadow: 0 4px 10px rgba(255, 79, 109, 0.2); }
-
-        .emoji-display-area { background-color: var(--palette-bg); border-radius: 16px; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 10px; max-height: 280px; overflow-y: auto; }
-        .emoji-item { background-color: white; border-radius: 12px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif; border: 1px solid transparent; box-sizing: border-box; box-shadow: 0 2px 5px rgba(0,0,0,0.03); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-        .emoji-item:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 6px 15px rgba(34, 211, 197, 0.25); border: 1px solid var(--accent-mint); }
-        .emoji-item:active { transform: scale(0.95); }
-
-        #toast { visibility: hidden; min-width: 250px; background-color: #374151; color: #fff; text-align: center; border-radius: 30px; padding: 16px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 15px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
-        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
-
-        .seo-content { margin-top: 40px; padding: 25px; background: white; border-top: 2px dashed var(--border-color); color: #374151; line-height: 1.8; font-size: 15px; }
-        .seo-content h2 { font-size: 20px; color: var(--text-main); margin-bottom: 15px; font-weight: 800; }
-        .seo-content h3 { font-size: 17px; margin-top: 25px; margin-bottom: 10px; color: var(--primary-color); font-weight: 700; }
-        .seo-content p { margin-bottom: 15px; }
-
-        footer { margin-top: 30px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
-        .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.2s; }
-        .footer-links a:hover { color: var(--primary-color); }
-
-        body.ko .lang-en { display: none !important; }
-        body.en .lang-ko { display: none !important; }
-
-        @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .main-header { margin-bottom: 10px; padding-bottom: 10px; } .header-top-row { margin-bottom: 10px; } #mainEditor { height: 200px; padding: 15px; font-size: 15px; } .sub-buttons { flex-direction: row; } .btn-clear { min-width: 80px; padding: 16px 10px; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="ko"> 
-
     <div id="toast"></div>
 
     <div class="app-container">
         
-        <header class="main-header">
-            <div class="header-top-row">
-                <a href="/" class="logo-link"><img src="mojitap-logo.png" alt="Mojitap Logo"></a>
-                <div class="lang-toggle">
-                    <button class="lang-btn active" id="btn-ko" onclick="setLanguage('ko')">KOR</button>
-                    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">ENG</button>
-                </div>
-            </div>
-            <nav class="top-nav">
-                <a href="/" class="nav-item active"><span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span></a>
-                <a href="/blog" class="nav-item"><span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span></a>
-            </nav>
-        </header>
+        <div id="header-placeholder"></div>
 
         <main class="tool-section">
             <p class="hint-text lang-ko">💡 글을 쓰고 버튼을 누르면 마법처럼 이모지가 입혀집니다!</p>
             <p class="hint-text lang-en">💡 Write text and click the button for magic emojis!</p>
-            
-            <textarea id="mainEditor" placeholder="여기에 텍스트를 붙여넣으세요...&#13;&#10;(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)\n\n버튼을 누르면 마법처럼 이모지가 입혀집니다. 직접 수정하거나 팔레트를 눌러 이모지를 추가할 수도 있어요!"></textarea>
-            
+            <textarea id="mainEditor" placeholder=""></textarea>
             <div class="action-buttons">
                 <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 스마트 문맥 이모지 입히기</span><span class="lang-en">🚀 Smart Add Emojis (AI)</span></button>
                 <div class="sub-buttons">
@@ -126,7 +37,6 @@
 
         <section class="emoji-palette-section">
             <div class="palette-title"><span class="lang-ko">🎨 글로벌 표준 이모지 팔레트</span><span class="lang-en">🎨 Standard Emoji Palette</span></div>
-            
             <div class="tab-container">
                 <button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')"><span class="lang-ko">🔥 인기</span><span class="lang-en">🔥 Best</span></button>
                 <button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')"><span class="lang-ko">😀 표정</span><span class="lang-en">😀 Faces</span></button>
@@ -138,46 +48,19 @@
                 <button class="tab-btn" id="tab-objects" onclick="changeEmojiTab('objects')"><span class="lang-ko">💡 사물</span><span class="lang-en">💡 Object</span></button>
                 <button class="tab-btn" id="tab-flags" onclick="changeEmojiTab('flags')"><span class="lang-ko">🏁 국기</span><span class="lang-en">🏁 Flags</span></button>
             </div>
-
             <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
 
-        <article class="seo-content">
-            <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드</h2>
-            <h2 class="lang-en">The Ultimate Guide to Using Emojis</h2>
-            <p class="lang-ko">이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
-            <p class="lang-en">Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone struggles to convey. Beyond simple picture symbols, they are a visual language based on the globally accepted Unicode Standard.</p>
-        </article>
-
-        <footer>
-            <div class="footer-links">
-                <a href="/about"><span class="lang-ko">사이트 소개</span><span class="lang-en">About</span></a>
-                <a href="/privacy"><span class="lang-ko">개인정보처리방침</span><span class="lang-en">Privacy Policy</span></a>
-                <a href="/terms"><span class="lang-ko">이용약관</span><span class="lang-en">Terms of Service</span></a>
-                <a href="/contact"><span class="lang-ko">문의하기</span><span class="lang-en">Contact</span></a>
-            </div>
-            <div class="copyright">&copy; 2026 Mojitap. All rights reserved.</div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
+    <script src="layout.js"></script>
     <script>
-        let currentLang = 'ko';
-        const placeholderData = {
-            mainEditor: { ko: "여기에 텍스트를 붙여넣으세요...\n(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)\n\n버튼을 누르면 마법처럼 이모지가 입혀집니다. 직접 수정하거나 팔레트를 눌러 이모지를 추가할 수도 있어요!", en: "Paste your text here...\n(e.g., Big sale event ends today, hurry up!)\n\nClick the AI button for magic. You can also edit freely and click the palette below to add emojis at your cursor!" }
+        // 화면이 켜지면 조립기계를 돌리는데, 메뉴 불빛을 'home'에 켜줘!
+        window.onload = () => {
+            initLayout('home');
+            changeEmojiTab('popular');
         };
-
-        // 🟢 [v1.9.2] 언어 변경 및 로컬 스토리지(금고)에 저장
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            document.body.className = lang; 
-            document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('mainEditor').placeholder = placeholderData.mainEditor[lang];
-            
-            // 🎯 마법의 한 줄: 사용자가 누른 언어를 브라우저 금고에 영구 저장!
-            localStorage.setItem('mojitap_lang', lang);
-        }
 
         function showToast(message) {
             const toast = document.getElementById("toast");
@@ -187,24 +70,22 @@
         }
 
         const emojiData = {
-            popular: ['✨', '❤️', '🔥', '👍', '✅', '🥰', '😂', '🎉', '🚨', '🚀', '📢', '🎁', '👇', '👉', '📌', '💡', '💯', '💵', '⭐', '👀', '🎯', '📣', '📈', '💌', '💖', '💕', '🫶', '👏', '🙏', '🙌', '💪', '✔️', '☑️', '❗', '❓', '🛒', '🛍️', '💸', '💰', '🏆', '🏅', '🥇', '⚡', '🌈', '☀️', '🍀', '🌿', '🌱', '🎈', '🎊', '🎤', '🎧', '📸', '💎', '👑', '😎', '😋', '😘', '🤩'],
-            faces: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕'],
-            symbols: ['💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟', '❣️', '💔', '❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💯', '💢', '💥', '💫', '💦', '💨', '💬', '🗨️', '🗯️', '💭', '💤', '🌐', '♠️', '♥️', '♦️', '♣️', '🃏', '🎭', '🎨', '📢', '📣', '🔔', '🔕', '🎵', '🎶', '⚠️', '⛔', '🚫', '🛑', '❌', '⭕', '✅', '☑️', '✔️', '➕', '➖', '➗', '❗', '❓', '❕', '❔', '▶️', '⏸️', '⏹️', '⏺️', '🔼', '🔽', '➡️', '⬅️', '⬆️', '⬇️'],
-            actions: ['👋', '🤚', '🖐️', '✋', '🖖', '👌', '🤌', '🤏', '✌️', '🤞', '🤟', '🤘', '🤙', '👈', '👉', '👆', '🖕', '👇', '☝️', '👍', '👎', '✊', '👊', '🤛', '🤜', '👏', '🙌', '👐', '🤲', '🤝', '🙏', '✍️', '💅', '🤳', '💪', '🦾', '🦿', '🦵', '🦶', '👂', '🦻', '👃', '🧠', '🫀', '🫁', '🦷', '🦴', '👀', '👁️', '👅', '👄', '🏃', '🚶', '💃', '🕺', '🧗', '🧘', '🏄', '🏊', '🚴', '🏋️', '🤸', '⛹️', '🤾', '🎤', '🎬', '🎨'],
-            animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐻‍❄️', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦤', '🦩', '🦚', '🦜', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🐳', '🐋', '🐬', '🐟', '🐠', '🐡', '🦈', '🐙', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🪲', '🐞', '🦗', '🕷️', '🕸️', '🦂', '🦟', '🪰', '🪱', '🌿', '🌱', '🌴', '🌵', '🍁', '🍂', '🍃', '🌸', '🌹', '🌺', '🌻', '🌼', '🌷'],
-            foods: ['🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆', '🥑', '🥦', '🥬', '🥒', '🌶️', '🫑', '🌽', '🥕', '🫒', '🧄', '🧅', '🥔', '🍠', '🥐', '🥯', '🍞', '🥖', '🥨', '🥞', '🧇', '🧀', '🍖', '🍗', '🥩', '🥓', '🍔', '🍟', '🍕', '🌭', '🥪', '🌮', '🌯', '🫓', '🥙', '🧆', '🥚', '🍳', '🥘', '🍲', '🫕', '🥣', '🥗', '🍿', '🧈', '🧂', '🥫', '🍱', '🍘', '🍙', '🍚', '🍛', '🍜', '🍝', '🍣', '🍤', '🍥', '🥮', '🍡', '🥟', '🥠', '🥡', '🦀', '🦞', '🦐', '🦑', '🦪', '🍦', '🍧', '🍨', '🍩', '🍪', '🎂', '🍰', '🧁', '🥧', '🍫', '🍬', '🍭', '🍮', '🍯', '🍼', '🥛', '☕', '🫖', '🍵', '🍶', '🍾', '🍷', '🍸', '🍹', '🍺', '🍻', '🥂', '🥃', '🥤', '🧋', '🧃', '🧉', '🧊'],
-            places: ['🏔️', '⛰️', '🌋', '🗻', '🏕️', '🏖️', '🏜️', '🏝️', '🏞️', '🏟️', '🏛️', '🏗️', '🏘️', '🏠', '🏡', '🏢', '🏣', '🏤', '🏥', '🏦', '🏨', '🏩', '🏪', '🏫', '🏬', '🏭', '🏯', '🏰', '💒', '🗼', '🗽', '⛪', '🕌', '🛕', '🕍', '⛩️', '🕋', '⛲', '⛺', '🌃', '🏙️', '🌄', '🌅', '🌆', '🌇', '🌉', '🎠', '🎡', '🎢', '🚂', '🚄', '🚅', '🚆', '🚇', '🚈', '🚉', '🚊', '🚝', '🚋', '🚌', '🚍', '🚎', '🚐', '🚑', '🚒', '🚓', '🚔', '🚕', '🚖', '🚗', '🚘', '🚙', '🛻', '🚚', '🚛', '🚜', '🏎️', '🏍️', '🛵', '🚲', '🛴', '🛹', '🛼', '🚏', '🛣️', '🛤️', '⚓', '⛵', '🛶', '🚤', '🛳️', '⛴️', '🚢', '✈️', '🛩️', '🛫', '🛬', '🪂', '💺', '🚁', '🛰️', '🚀', '🛸', '🪐', '🌠', '🌌', '🌤️', '🌧️', '❄️', '🌈', '☀️', '☁️', '⛅', '⛈️'],
-            objects: ['⌚', '📱', '📲', '💻', '⌨️', '🖥️', '🖨️', '🖱️', '🖲️', '🕹️', '🗜️', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', '📽️', '🎞️', '📞', '☎️', '📟', '📠', '📺', '📻', '🎙️', '🎚️', '🎛️', '🧭', '⏱️', '⏲️', '⏰', '⏳', '⌛', '🔋', '🔌', '💡', '🔦', '🕯️', '🪔', '🧯', '🛢️', '💸', '💵', '💴', '💶', '💷', '🪙', '💰', '💳', '💎', '⚖️', '🪜', '🧰', '🪛', '🔧', '🔨', '⚒️', '⛏️', '🪓', '🛡️', '⚙️', '🧱', '⛓️', '🧲', '🔫', '💣', '🧨', '🪓', '🔪', '🗡️', '⚔️', '🔮', '💈', '📿', '💄', '💍', '💼', '🩸', '💊', '🩹', '🩺', '🛒', '🚬', '🔑', '🗝️', '📦', '🏷️', '🔖', '🪞', '🪟', '🧻', '🧼', '🧽', '🪠', '🧺'],
-            flags: ['🇰🇷', '🇺🇸', '🇯🇵', '🇨🇳', '🇬🇧', '🇨🇦', '🇩🇪', '🇫🇷', '🇮🇹', '🇷🇺', '🇪🇸', '🇧🇷', '🇦🇺', '🇻🇳', '🇹🇭', '🇹🇼', '🇭🇰', '🇸🇬', '🇲🇾', '🇮🇩', '🇵🇭', '🇮🇳', '🇲🇽', '🇹🇷', '🇸🇦', '🇦🇪', '🇿🇦', '🇳🇬', '🇪🇬', '🇳🇱', '🇨🇭', '🇸🇪', '🇳🇴', '🇩🇰', '🇫🇮', '🇵🇱', '🇺🇦', '🇮🇪', '🇳🇿', '🇦🇷', '🇨🇱', '🇨🇴', '🇵🇪', '🏁', '🚩', '🎌', '🏴‍☠️', '🏳️‍🌈', '🏳️‍⚧️', '🇺🇳', '🇪🇺']
+            popular: ['✨','❤️','🔥','👍','✅','🥰','😂','🎉','🚨','🚀','📢','🎁','👇','👉','📌','💡','💯','💵','⭐','👀'],
+            faces: ['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚'],
+            symbols: ['💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💯'],
+            actions: ['👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍'],
+            animals: ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐻‍❄️','🐨','🐯','🦁','🐮','🐷','🐽','🐸','🐵','🙈','🙉','🙊'],
+            foods: ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🫐','🍈','🍒','🍑','🥭','🍍','🥥','🥝','🍅','🍆','🥑'],
+            places: ['🏔️','⛰️','🌋','🗻','🏕️','🏖️','🏜️','🏝️','🏞️','🏟️','🏛️','🏗️','🏘️','🏠','🏡','🏢','🏣','🏤','🏥','🏦'],
+            objects: ['⌚','📱','📲','💻','⌨️','🖥️','🖨️','🖱️','🖲️','🕹️','🗜️','💽','💾','💿','📀','📼','📷','📸','📹','🎥'],
+            flags: ['🇰🇷','🇺🇸','🇯🇵','🇨🇳','🇬🇧','🇨🇦','🇩🇪','🇫🇷','🇮🇹','🇷🇺','🇪🇸','🇧🇷','🇦🇺','🇻🇳','🇹🇭','🇹🇼','🇭🇰','🇸🇬','🇲🇾','🇮🇩']
         };
 
         function changeEmojiTab(category) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('tab-' + category).classList.add('active');
-
             const displayArea = document.getElementById('emoji-grid-display');
             displayArea.innerHTML = '';
-            
             emojiData[category].forEach(emoji => {
                 const item = document.createElement('div');
                 item.className = 'emoji-item';
@@ -221,7 +102,6 @@
             const CONDOLENCE_RE = /명복|애도|추모|위로|마음이 무겁|안타깝|쾌유|회복|무사하|힘을 보태|함께하|\bcondolence\b|\brest in peace\b|\bprayers\b|\brecovery\b/i;
             const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|드립니다|합니다|입니다|예정입니다|\bnotice\b|\bannounce\b|\bplease note\b|\bofficial\b/i;
             const NEGATED_POSITIVE_RE = /(?:안\s*|별로\s*|전혀\s*)?(?:좋|행복|기쁘|즐겁|만족|추천|성공|괜찮|사랑)[^.!?。！？\n]{0,10}(?:않|못|아니|없|별로)|\bnot\b\s+(?:good|happy|glad|satisfied|recommend|successful|love)/i;
-            const STRONG_NEGATION_RE = /아니|않|못|없|별로|싫|최악|실망|포기|실패|문제|오류|불편|\bnot\b|\bnever\b|\bno\b|\bfail\b|\bworst\b|\bhate\b|\bproblem\b|\berror\b/i;
 
             const profiles = [
                 { id: 'condolence', priority: 100, emojis: ['🕯️', '🙏', '💙'], patterns: [[CONDOLENCE_RE, 7]] },
@@ -230,39 +110,19 @@
                 { id: 'launch', priority: 80, emojis: ['🚀', '✨', '🎉'], patterns: [[/출시|런칭|론칭|공개합니다|오픈합니다|\blaunch\b|\brelease\b|\bnow live\b|\bgrand open\b/i, 5], [/\bnew product\b|\bnew feature\b/i, 3]] },
                 { id: 'gratitude', priority: 78, emojis: ['🙏', '💛', '🥹'], patterns: [[/감사|고맙|덕분|\bthank\b|\bgrateful\b|\bappreciat\b/i, 5]] },
                 { id: 'achievement', priority: 76, emojis: ['🏆', '🎯', '✨'], patterns: [[/성과|목표 달성|1위|우승|\bachievement\b|\bmilestone\b|\brecord\b|\bcompleted\b/i, 4.5], [/\bgrowth\b|\bimproved\b/i, 2.5]] },
-                { id: 'love', priority: 70, emojis: ['💖', '🥰', '💛'], patterns: [[/사랑해|사랑합니다|심쿵|설레|\blove you\b|\blovely\b|\badorable\b/i, 5]] },
-                { id: 'joy', priority: 68, emojis: ['😊', '😄', '✨'], patterns: [[/행복|기쁘|즐겁|신나|반가|\bhappy\b|\bglad\b|\bexcited\b|\bsmile\b/i, 4]] },
-                { id: 'humor', priority: 67, emojis: ['😂', '🤣', '😆'], patterns: [[/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|\blol\b|\blmao\b|\bfunny\b|\bjoke\b/i, 5]] },
-                { id: 'encouragement', priority: 66, emojis: ['💪', '🙌', '🔥'], patterns: [[/힘내|파이팅|화이팅|응원|\bcheer\b|\bkeep going\b|\bgood luck\b/i, 4.5]] },
-                { id: 'greeting', priority: 64, emojis: ['👋', '😊'], patterns: [[/안녕하세요|반갑습니다|환영합니다|\bhello\b|\bwelcome\b|\bhi\b/i, 4.5]] },
-                { id: 'sadness', priority: 72, emojis: ['😢', '🥺', '💙'], patterns: [[/슬프|눈물|속상|우울|\bsad\b|\bcry\b|\bupset\b|\bdisappoint/i, 4.5]] },
-                { id: 'anger', priority: 73, emojis: ['😤', '😡'], patterns: [[/화나|짜증|분노|최악|\bangry\b|\bannoy\b|\bfurious\b|\bworst\b/i, 5]] },
                 { id: 'warning', priority: 91, emojis: ['⚠️', '🚨', '❗'], patterns: [[/주의|경고|위험|긴급|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b/i, 5.5]] },
-                { id: 'announcement', priority: 86, emojis: ['📢', '📌', '🔔'], patterns: [[/공지|안내|알림|소식|필독|\bannounce\b|\bnotice\b|\bupdate\b/i, 4.5]] },
-                { id: 'deadline', priority: 85, emojis: ['⏳', '⏰', '📅'], patterns: [[/마감|오늘까지|임박|종료|\bdeadline\b|\blast chance\b|\blimited time\b/i, 5]] },
                 { id: 'promotion', priority: 84, emojis: ['🎁', '🏷️', '🛍️'], patterns: [[/할인|특가|쿠폰|무료|혜택|이벤트|\bdiscount\b|\bsale\b|\bcoupon\b|\bfree\b|\bgiveaway\b/i, 5]] },
-                { id: 'business', priority: 58, emojis: ['📈', '🎯', '💼'], patterns: [[/매출|성과|마케팅|비즈니스|\brevenue\b|\bgrowth\b|\bmarketing\b|\bbusiness\b|\bconversion\b/i, 4]] },
-                { id: 'finance', priority: 59, emojis: ['💰', '📊', '💸'], patterns: [[/재테크|투자|저축|월급|수익|\bfinance\b|\binvest\b|\bsaving\b|\bprofit\b|\bmoney\b/i, 4]] },
-                { id: 'idea', priority: 57, emojis: ['💡', '📝', '🔎'], patterns: [[/꿀팁|방법|노하우|비법|인사이트|\btip\b|\bhow to\b|\bidea\b|\bguide\b|\binsight\b/i, 4]] },
-                { id: 'work', priority: 53, emojis: ['💼', '🧩', '✅'], patterns: [[/업무|회의|기획|프로젝트|\bwork\b|\bmeeting\b|\bproject\b|\breport\b/i, 3.5]] },
-                { id: 'health', priority: 56, emojis: ['💪', '🏃', '🌿'], patterns: [[/운동|헬스|러닝|건강|\bworkout\b|\bexercise\b|\brunning\b|\bfitness\b|\bhealth\b/i, 4]] },
-                { id: 'food', priority: 51, emojis: ['😋', '🍽️', '🍴'], patterns: [[/맛있|맛집|식사|요리|\bfood\b|\bdelicious\b|\brestaurant\b|\bmeal\b/i, 4]] },
-                { id: 'coffee', priority: 52, emojis: ['☕', '🧋'], patterns: [[/커피|카페|라떼|\bcoffee\b|\bcafe\b|\blatte\b/i, 4.5]] },
-                { id: 'photo', priority: 50, emojis: ['📸', '🎥', '🎨'], patterns: [[/사진|촬영|영상|디자인|\bphoto\b|\bpicture\b|\bcamera\b|\bvideo\b|\bdesign\b/i, 5]] },
-                { id: 'question', priority: 40, emojis: ['🤔', '💭', '❓'], patterns: [[/궁금|어떻게 생각|무엇일까|\bwonder\b|\bwhat do you think\b|\bwhy\b|\bany idea\b/i, 3.5], [/[?？]\s*$/, 2.2]] }
+                { id: 'idea', priority: 57, emojis: ['💡', '📝', '🔎'], patterns: [[/꿀팁|방법|노하우|비법|인사이트|\btip\b|\bhow to\b|\bidea\b|\bguide\b|\binsight\b/i, 4]] }
             ];
 
             const structureThemes = [
                 { id: 'mystery', pattern: /미스터리|의문|\bmystery\b|\bsecret\b/i, emojis: ['🤷‍♂️', '🕵️'] },
                 { id: 'time', pattern: /시간|시계|\btime\b|\bclock\b|\bdeadline\b/i, emojis: ['⏰', '⏳'] },
-                { id: 'ai', pattern: /\bAI\b|인공지능|알고리즘|\balgorithm\b|\bdigital\b/i, emojis: ['🤖', '💻'] },
-                { id: 'money', pattern: /돈\b|수익|매출|투자|\bmoney\b|\bprofit\b|\brevenue\b/i, emojis: ['💰', '📈'] },
                 { id: 'launch', pattern: /출시|공개|오픈|\blaunch\b|\brelease\b/i, emojis: ['🚀', '✨'] },
                 { id: 'promotion', pattern: /할인|쿠폰|무료|선물|\bsale\b|\bdiscount\b|\bcoupon\b/i, emojis: ['🎁', '🏷️'] }
             ];
 
-            const CTA_RE = /저장|공유|팔로우|댓글|구매|링크|\bsave\b|\bshare\b|\bfollow\b|\bsubscribe\b|\bcomment\b|\bclick\b|\blink in bio\b|\bdm me\b|\bcheck this out\b/i;
-            const BRAND_RE = /뉴스레터|브랜드|\bnewsletter\b|\bmedia\b|\bbrand\b/i;
+            const CTA_RE = /저장|공유|팔로우|댓글|구매|링크|\bsave\b|\bshare\b|\bfollow\b|\bsubscribe\b|\bcomment\b|\bclick\b|\blink in bio\b|\bdm me\b/i;
             const HASH_ONLY_RE = /^(?:\s*#[\p{L}\p{N}_-]+\s*){2,}$/u;
 
             function hasEmoji(text) { EMOJI_RE.lastIndex = 0; return EMOJI_RE.test(text); }
@@ -294,17 +154,9 @@
                     return { profile: profiles.find(profile => profile.id === 'condolence'), score: 12 };
                 }
                 const scored = profiles.map(profile => ({ profile, score: scoreProfile(profile, sentence) }));
-                if (NEGATED_POSITIVE_RE.test(sentence)) {
-                    for (const candidate of scored) { if (['joy', 'love', 'celebration', 'achievement'].includes(candidate.profile.id)) candidate.score -= 8; }
-                }
                 scored.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
                 const best = scored[0];
-                if (!best || best.score < 3.4) {
-                    if (/\berror\b|\bproblem\b|\bfail\b|오류|문제|실패/i.test(sentence)) return { profile: { id: 'generic-problem', priority: 35, emojis: ['🧩', '⚠️'] }, score: 3.75 };
-                    if (/\bsolution\b|\btool\b|\bguide\b|해결|방법|가이드/i.test(sentence)) return { profile: { id: 'generic-solution', priority: 36, emojis: ['💡', '✅'] }, score: 3.8 };
-                    if (sentence.length >= 25) return { profile: { id: 'generic-information', priority: 20, emojis: ['📌', '👀'] }, score: 3.42 };
-                    return null;
-                }
+                if (!best || best.score < 3.4) return null;
                 return best;
             }
 
@@ -326,12 +178,6 @@
                 if (ranked.length) return ranked[0].theme.emojis[0];
                 const analysis = analyzeSentence(text, false);
                 return analysis ? analysis.profile.emojis[0] : '💡';
-            }
-
-            function calculateBodyBudget(sentenceCount, characterCount, structuralCount, existingCount, documentIsCritical) {
-                if (documentIsCritical) return 0;
-                let totalTarget = sentenceCount === 1 ? (characterCount >= 100 ? 2 : 1) : Math.min(22, Math.ceil(sentenceCount * 0.65));
-                return Math.max(0, totalTarget - structuralCount - existingCount);
             }
 
             function chooseEmoji(profile, usage, recentEmojis) {
@@ -356,7 +202,6 @@
                 if (!text) return 'blank';
                 if (HASH_ONLY_RE.test(text)) return 'hashtags';
                 if (CTA_RE.test(text) && text.length <= 150) return 'cta';
-                if (BRAND_RE.test(text) && text.length <= 100) return 'brand';
                 if (!isFirstMeaningful && text.length <= 75 && !/[.!?。！？]$/.test(text)) return 'heading';
                 if (isFirstMeaningful && text.length <= 120 && !/[.!。]$/.test(text)) return 'title';
                 return 'body';
@@ -409,7 +254,7 @@
                     splitLine(line).forEach(sentence => { pieces.push({ text: sentence, newline: false, sentenceIndex: sentence.trim() ? sentenceIndex++ : -1 }); });
                 });
 
-                const budget = calculateBodyBudget(sentenceIndex, originalText.length, structuralCount, countEmojis(originalText), documentIsCritical);
+                const budget = Math.max(0, Math.min(22, Math.ceil(sentenceIndex * 0.65)) - structuralCount - countEmojis(originalText));
                 if (budget <= 0) return protectedText.restore(pieces.map(p => p.text).join(''));
 
                 const candidates = [];
@@ -441,67 +286,40 @@
         function addEmojis() {
             const editor = document.getElementById('mainEditor');
             const text = editor.value;
+            if (!text.trim()) { showToast(document.documentElement.lang === 'ko' ? '변환할 텍스트를 먼저 입력해주세요!' : 'Please enter text to convert!'); return; }
             
-            if (!text.trim()) {
-                showToast(currentLang === 'ko' ? '변환할 텍스트를 먼저 입력해주세요!' : 'Please enter text to convert!');
-                return;
-            }
-
             const button = document.querySelector('.btn-action');
-            const originalButtonHTML = button.innerHTML;
-            button.disabled = true;
-            button.innerHTML = currentLang === 'ko' ? '🧠 AI 마법을 부리는 중...' : '🧠 AI Magic in progress...';
-
+            const originalHTML = button.innerHTML;
+            button.disabled = true; button.innerHTML = '🧠 AI Magic in progress...';
+            
             editor.value = smartEmojiEngine.transform(text);
             
-            button.disabled = false;
-            button.innerHTML = originalButtonHTML;
-            showToast(currentLang === 'ko' ? '✨ 마법처럼 이모지가 입혀졌어요!' : '✨ Magic applied! Edit freely.');
+            button.disabled = false; button.innerHTML = originalHTML;
+            showToast(document.documentElement.lang === 'ko' ? '✨ 마법처럼 이모지가 입혀졌어요!' : '✨ Magic applied! Edit freely.');
         }
 
         function clearText() {
             document.getElementById('mainEditor').value = '';
             document.getElementById('mainEditor').focus();
-            showToast(currentLang === 'ko' ? '🗑️ 텍스트가 모두 지워졌습니다.' : '🗑️ Text cleared.');
+            showToast(document.documentElement.lang === 'ko' ? '🗑️ 비워졌습니다.' : '🗑️ Cleared.');
         }
 
         function copySingleEmoji(emoji) {
             navigator.clipboard.writeText(emoji);
-            const targetArea = document.getElementById('mainEditor');
-            const startPos = targetArea.selectionStart;
-            const endPos = targetArea.selectionEnd;
-            const text = targetArea.value;
-
-            targetArea.value = text.substring(0, startPos) + emoji + text.substring(endPos);
-            targetArea.selectionStart = targetArea.selectionEnd = startPos + emoji.length;
-            targetArea.focus();
-            showToast(currentLang === 'ko' ? `${emoji} 삽입 완료!` : `${emoji} Inserted!`);
+            const target = document.getElementById('mainEditor');
+            const start = target.selectionStart, end = target.selectionEnd;
+            target.value = target.value.substring(0, start) + emoji + target.value.substring(end);
+            target.selectionStart = target.selectionEnd = start + emoji.length;
+            target.focus();
+            showToast(document.documentElement.lang === 'ko' ? `${emoji} 삽입 완료!` : `${emoji} Inserted!`);
         }
 
         function copyText(elementId) {
             const output = document.getElementById(elementId);
-            if (!output.value) { showToast(currentLang === 'ko' ? '복사할 내용이 없습니다.' : 'Nothing to copy.'); return; }
-            output.select();
-            document.execCommand('copy');
-            showToast(currentLang === 'ko' ? '📋 전체 복사 완료!' : '📋 Copied! Ready to paste!');
+            if (!output.value) return;
+            output.select(); document.execCommand('copy');
+            showToast(document.documentElement.lang === 'ko' ? '📋 전체 복사 완료!' : '📋 Copied!');
         }
-
-        // 🟢 [v1.9.2] 접속 시 금고부터 확인 후, 없으면 자동 감지
-        window.onload = () => { 
-            const savedLang = localStorage.getItem('mojitap_lang');
-            
-            if (savedLang) {
-                setLanguage(savedLang);
-            } else {
-                const userLang = navigator.language || navigator.userLanguage;
-                if (!userLang.includes('ko')) {
-                    setLanguage('en');
-                } else {
-                    setLanguage('ko');
-                }
-            }
-            changeEmojiTab('popular'); 
-        };
     </script>
 </body>
 </html>
