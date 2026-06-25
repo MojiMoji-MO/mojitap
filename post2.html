@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🟢 [절대 삭제 금지] 구글 서치 콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" />
-    
-    <!-- 🟢 [절대 삭제 금지] 구글 애널리틱스 추적 코드 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,29 +13,28 @@
       gtag('config', 'G-8R7T1JEFVL');
     </script>
 
+    <!-- 🟢 [post2.html 맞춤형 SEO] -->
+    <meta name="description" content="이메일 뉴스레터 오픈율을 3배 높이는 이모지 제목 작성 가이드. 스팸함에 빠지지 않고 고객의 클릭을 유도하는 검증된 이모지 공식을 확인하세요.">
+    <meta name="keywords" content="이메일 마케팅, 뉴스레터 이모지, 이메일 오픈율, 마케팅 이모지 추천">
     <title>이메일 뉴스레터 이모지 전략 | Mojitap</title>
+
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
     <style>
         :root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; }
         body { font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
-        
         .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 30px 40px; box-sizing: border-box; }
-
         .main-header { margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
         .header-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .logo-link img { height: 36px; display: block; }
-        
         .lang-toggle { display: flex; background: var(--palette-bg); border-radius: 8px; overflow: hidden; }
         .lang-btn { border: none; background: none; padding: 6px 12px; font-size: 12px; font-weight: 800; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
         .lang-btn.active { background: var(--primary-color); color: white; }
-
         .top-nav { display: flex; justify-content: center; gap: 15px; }
         .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 15px; padding: 8px 16px; border-radius: 10px; transition: all 0.3s; }
         .nav-item:hover { color: var(--primary-color); }
         .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
         
-        /* 포스트 전용 스타일 */
         .content-box { padding: 40px; background: #F9FAFB; border-radius: 16px; border: 1px solid var(--border-color); line-height: 1.8; color: #374151; }
         .content-box h1 { font-size: 26px; color: var(--text-main); margin-top: 0; margin-bottom: 25px; font-weight: 800; border-bottom: 2px solid var(--border-color); padding-bottom: 15px; line-height: 1.4; }
         .content-box h2 { font-size: 20px; color: var(--primary-color); margin-top: 35px; margin-bottom: 15px; font-weight: 800; }
@@ -60,13 +56,7 @@
         body.ko .lang-en { display: none !important; }
         body.en .lang-ko { display: none !important; }
         
-        @media (max-width: 768px) { 
-            body { padding: 0; } 
-            .app-container { border-radius: 0; padding: 20px 15px; } 
-            .main-header { margin-bottom: 10px; padding-bottom: 10px; }
-            .header-top-row { margin-bottom: 10px; }
-            .content-box { padding: 25px 20px; } 
-        }
+        @media (max-width: 768px) { body { padding: 0; } .app-container { border-radius: 0; padding: 20px 15px; } .main-header { margin-bottom: 10px; padding-bottom: 10px; } .header-top-row { margin-bottom: 10px; } .content-box { padding: 25px 20px; } }
     </style>
 </head>
 <body class="ko">
@@ -156,11 +146,18 @@
     </div>
 
     <script>
+        // 🟢 [v1.9.0] 언어 동적 변경 및 브라우저 자동 감지
         function setLanguage(lang) {
+            document.documentElement.lang = lang; 
             document.body.className = lang;
             document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
+        window.onload = () => { 
+            const userLang = navigator.language || navigator.userLanguage;
+            if (!userLang.includes('ko')) setLanguage('en'); 
+            else setLanguage('ko'); 
+        };
     </script>
 </body>
 </html>
