@@ -1,4 +1,4 @@
-/* 🎨 style.css (모지탭 전체 공통 디자인) [v2.0.2] */
+/* 🎨 style.css (모지탭 전체 공통 디자인) [v2.0.3] */
 
 :root { 
     --primary-color: #FF4F6D; 
@@ -27,7 +27,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helv
 .lang-btn { border: none; background: none; padding: 6px 12px; font-size: 12px; font-weight: 800; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
 .lang-btn.active { background: var(--primary-color); color: white; }
 .top-nav { display: flex; justify-content: center; gap: 15px; }
-.nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 15px; padding: 8px 16px; border-radius: 10px; transition: all 0.3s; }
+
+/* 🟢 [핵심 수정] white-space: nowrap; 을 추가하여 어떤 경우에도 줄바꿈 쪼개짐을 강제 금지! */
+.nav-item { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 15px; padding: 8px 16px; border-radius: 10px; transition: all 0.3s; white-space: nowrap; }
 .nav-item:hover { color: var(--primary-color); }
 .nav-item.active { color: var(--primary-color); background: var(--secondary-bg); }
 
@@ -50,7 +52,7 @@ body.en .lang-ko { display: none !important; }
 #mainEditor { width: 100%; height: 240px; padding: 22px; border: 2px solid var(--border-color); border-radius: 16px; font-size: 17px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; background-color: #FAFAFA; color: var(--text-main); }
 #mainEditor:focus { background-color: #FFFFFF; outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(255, 79, 109, 0.1); }
 
-/* 🟢 텍스트창 플레이스홀더 완벽 제어 (절대 안 진하게, 브라우저 강제 덮어쓰기) */
+/* 텍스트창 플레이스홀더 완벽 제어 */
 #mainEditor::-webkit-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
 #mainEditor::-moz-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
 #mainEditor:-ms-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
@@ -59,7 +61,6 @@ body.en .lang-ko { display: none !important; }
 .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
 .sub-buttons { display: flex; gap: 10px; }
 
-/* 🟢 버튼 크기 적절하게 축소 완료 */
 .btn-action, .btn-copy, .btn-clear { border: none; padding: 13px 16px; border-radius: 14px; font-size: 15px; font-weight: 800; cursor: pointer; transition: all 0.3s; }
 .btn-action { background-color: var(--primary-color); color: white; width: 100%; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
 .btn-action:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
@@ -121,12 +122,17 @@ body.en .lang-ko { display: none !important; }
 .seo-content h3 { font-size: 17px; margin-top: 25px; margin-bottom: 10px; color: var(--primary-color); font-weight: 700; }
 .seo-content p { margin-bottom: 15px; }
 
-/* 📱 모바일 최적화 (에러 났던 괄호 복구 완료) */
+/* 📱 모바일 최적화 */
 @media (max-width: 768px) { 
     body { padding: 0; } 
     .app-container { border-radius: 0; padding: 20px 15px; } 
     .main-header { margin-bottom: 10px; padding-bottom: 10px; } 
     .header-top-row { margin-bottom: 10px; } 
+
+    /* 🟢 모바일에서 상단 3개 메뉴 다이어트 (가로로 꽉 차게 한 줄 배치) */
+    .top-nav { gap: 5px; justify-content: space-between; }
+    .nav-item { padding: 8px 6px; font-size: 13.5px; letter-spacing: -0.5px; flex: 1; text-align: center; }
+
     #mainEditor { height: 200px; padding: 15px; font-size: 15px; } 
     .sub-buttons { flex-direction: row; } 
     .btn-clear { min-width: 80px; padding: 16px 10px; } 
