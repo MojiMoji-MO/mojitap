@@ -38,7 +38,7 @@
         </main>
 
         <section class="emoji-palette-section">
-            <!-- 🟢 [수정완료] 팔레트 제목을 행동 유도형으로 변경 -->
+            <!-- 🟢 팔레트 제목을 행동 유도형으로 유지 -->
             <div class="palette-title">
                 <span class="lang-ko">⚡ 클릭 한 번으로 빠른 이모지 추가</span>
                 <span class="lang-en">⚡ Quick Emoji Insert</span>
@@ -57,7 +57,7 @@
             <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
 
-        <!-- 🟢 [수정완료] 애드센스 승인용 초고품질 마케팅 전문 텍스트 대폭 확장 -->
+        <!-- 🟢 애드센스 승인용 초고품질 마케팅 전문 텍스트 -->
         <article class="seo-content">
             <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드: 클릭률과 체류시간을 지배하는 마케팅 전략</h2>
             <h2 class="lang-en">The Ultimate Emoji Guide: Marketing Strategies to Dominate CTR and Retention</h2>
@@ -109,9 +109,10 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
 
-        // 🟢 [수정완료] 성능 저하 없이 카테고리별 이모지 데이터 압도적 대량 확장 (50~70개씩)
+        // 🟢 [수정완료] popular(인기) 탭에 웬만한 이모지 100여 개를 전부 때려 넣었습니다. 
+        // 이제 사용자는 다른 탭을 거의 누를 필요가 없습니다!
         const emojiData = {
-            popular: ['✨','❤️','🔥','👍','✅','🥰','😂','🎉','🚨','🚀','📢','🎁','👇','👉','📌','💡','💯','💵','⭐','👀','🙌','👏','🤝','💪','🙏','🏆','🎯','🛒','🛍️','🔖','🔔','🥇','📈','💬','🤩','😎','🥳','🥹','🤔','💸','💳','💎','👑','📝','🔎','⚡','💡','🛒','💖','🎈','🎊'],
+            popular: ['✨','🔥','❤️','👍','✅','😂','🥰','🎉','🚨','🚀','👇','👉','📌','💡','💯','🎁','📢','💵','⭐','👀','🙌','👏','🤝','💪','🙏','🏆','🎯','🛒','🛍️','🔖','🔔','📈','💬','🤩','😎','🥳','🥹','🤔','💸','💳','💎','👑','📝','🔎','⚡','💖','🎈','🎊','🤣','😊','😍','😘','😋','😏','😔','😭','😡','🤯','😱','🥺','👋','👌','✌️','🤞','👈','👆','☝️','👎','👊','❤️‍🔥','🤍','🖤','💔','💕','💥','💦','💨','🛑','⚠️','📣','🎵','📍','✏️','💰','📉','📊','📅','✔️','❌','✈️','☕','🍔','🍻','💻','📱','📸','🎧'],
             faces: ['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🥸','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺'],
             symbols: ['💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💯','💢','💥','💫','💦','💨','🕳️','💣','💬','👁️‍🗨️','🗨️','🗯️','💭','💤','💮','♨️','💈','🛑','⛔','🚫','🚷','🚯','🚳','🚱','🔞','📵','🚭','❗️','❕','❓','❔','‼️','⁉️','🔅','🔆','〽️','⚠️','🚸','🔱','⚜️','🔰','♻️','✅','✔️','❌','❎','➰','➿','✳️','✴️','❇️','©️','®️','™️'],
             actions: ['👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍','👎','✊','👊','🤛','🤜','👏','🙌','👐','🤲','🤝','🙏','✍️','💅','🤳','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🫀','🫁','🦷','뼈','👀','👁️','👅','👄'],
@@ -173,7 +174,7 @@
                 P('achievement', 81, ['🏆','🎯','🙌'], [[/성과|목표 달성|기록 갱신|1위|우승|완성했|완료했|해냈|\bachievement\b|\bmilestone\b|\bnew record\b|\bpersonal best\b|\bcompleted\b|\bpulled it off\b|\bexceeded (?:our|all) expectations\b|\bpositive feedback\b|\bcustomer reactions?\b|\bbetter than (?:we|I) imagined\b/i, 5.5]]),
                 P('announcement', 79, ['📢','🔔','📌'], [[/공지|안내드립니다|알림드립니다|새 소식|필독|알려드립니다|\bannouncement\b|\bnotice\b|\bquick update\b|\bimportant update\b|\bbig news\b|\bFYI\b|\bPSA\b/i, 5], [FORMAL_RE, 4.5]]),
                 P('joy', 77, ['😊','🤩','✨'], [[/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|다시.{0,12}(?:가고|하고|먹고) 싶|\bhappy\b|\bglad\b|\bdelighted\b|\bexcited\b|\bthrilled\b|\bover the moon\b|\bon cloud nine\b|\bmade my day\b|\bcan['’]t wait\b|\blooking forward\b|\bwant to (?:go|visit|try|make|see) again\b/i, 5]]),
-                P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove you\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
+                P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove 주\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
                 P('humor', 75, ['😂','🤣','😆'], [[/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|농담|장난|\blol\b|\blmao\b|\brofl\b|\bfunny\b|\bjoke\b|\bcracked me up\b|\bplot twist\b/i, 5.5]]),
                 P('sadness', 74, ['😢','🥺','💙'], [[/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|\bsad\b|\bcry|\bupset\b|\bdepress|\blonely\b|\bdisappoint|\bheartbroken\b|\brough day\b|\bdevastated\b|\bgutted\b|\bbittersweet\b/i, 5]]),
                 P('anger', 73, ['😤','😡'], [[/화나|짜증|분노|열받|최악|불쾌|억울|\bangry\b|\bannoy|\bfurious\b|\bfrustrat|\bworst\b|\bfed up\b|\bunacceptable\b/i, 5.5]]),
