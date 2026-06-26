@@ -13,6 +13,7 @@
     
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
+    <!-- 🟢 마법의 1줄: 공통 스타일 불러오기 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="ko"> 
@@ -20,6 +21,7 @@
 
     <div class="app-container">
         
+        <!-- 🟢 상단 헤더 조립 공간 -->
         <div id="header-placeholder"></div>
 
         <main class="tool-section">
@@ -36,7 +38,11 @@
         </main>
 
         <section class="emoji-palette-section">
-            <div class="palette-title"><span class="lang-ko">🎨 글로벌 표준 이모지 팔레트</span><span class="lang-en">🎨 Standard Emoji Palette</span></div>
+            <!-- 🟢 [수정완료] 팔레트 제목을 행동 유도형으로 변경 -->
+            <div class="palette-title">
+                <span class="lang-ko">⚡ 클릭 한 번으로 빠른 이모지 추가</span>
+                <span class="lang-en">⚡ Quick Emoji Insert</span>
+            </div>
             <div class="tab-container">
                 <button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')"><span class="lang-ko">🔥 인기</span><span class="lang-en">🔥 Best</span></button>
                 <button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')"><span class="lang-ko">😀 표정</span><span class="lang-en">😀 Faces</span></button>
@@ -51,19 +57,46 @@
             <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
 
+        <!-- 🟢 [수정완료] 애드센스 승인용 초고품질 마케팅 전문 텍스트 대폭 확장 -->
         <article class="seo-content">
-            <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드</h2>
-            <h2 class="lang-en">The Ultimate Guide to Using Emojis</h2>
-            <p class="lang-ko">이모지는 현대 디지털 커뮤니케이션에서 텍스트만으로는 전달하기 어려운 감정과 뉘앙스를 표현하는 필수적인 언어로 자리 잡았습니다. 단순한 그림 기호를 넘어 전 세계적으로 통용되는 유니코드 표준(Unicode Standard) 기반의 시각적 언어입니다.</p>
-            <p class="lang-en">Emojis have become an essential language in modern digital communication, expressing emotions and nuances that text alone struggles to convey. Beyond simple picture symbols, they are a visual language based on the globally accepted Unicode Standard.</p>
+            <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드: 클릭률과 체류시간을 지배하는 마케팅 전략</h2>
+            <h2 class="lang-en">The Ultimate Emoji Guide: Marketing Strategies to Dominate CTR and Retention</h2>
+
+            <p class="lang-ko">디지털 마케팅 시대에서 이모지는 단순한 감정 표현 기호를 넘어, 사용자 경험(UX)을 결정짓고 전환율을 높이는 핵심적인 시각적 언어(Visual Language)로 자리 잡았습니다. 텍스트의 가독성을 높이고 브랜드의 개성을 부여하는 이모지의 전략적 활용법을 상세히 알아봅니다.</p>
+            <p class="lang-en">In the digital marketing era, emojis have evolved beyond simple emotion symbols to become a core visual language that determines user experience (UX) and boosts conversion rates. Let's dive into strategic ways to use emojis to improve readability and give your brand personality.</p>
+
+            <h3 class="lang-ko">1. 이모지가 뇌과학과 마케팅에 미치는 영향</h3>
+            <h3 class="lang-en">1. The Impact of Emojis on Neuroscience and Marketing</h3>
+            <p class="lang-ko">연구에 따르면 인간의 뇌는 텍스트를 읽을 때보다 이미지를 처리할 때 60,000배 더 빠른 속도를 보입니다. 빽빽한 텍스트 사이에 배치된 적절한 이모지(💡, 🚀, 🎯)는 시각적 스톱퍼(Visual Stopper) 역할을 하여 사용자의 스크롤을 멈추게 하고, 텍스트에 내포된 긍정적, 긴급한 뉘앙스를 0.1초 만에 뇌에 전달합니다. 이는 곧 체류 시간 증가와 직접적인 클릭률(CTR) 상승으로 이어집니다.</p>
+            <p class="lang-en">Research shows that the human brain processes images 60,000 times faster than text. Appropriate emojis (💡, 🚀, 🎯) placed among dense text act as visual stoppers, halting the user's scroll and delivering the positive or urgent nuances of the text to the brain in 0.1 seconds. This directly leads to increased retention time and higher Click-Through Rates (CTR).</p>
+
+            <h3 class="lang-ko">2. 플랫폼별 최적화된 이모지 활용 공식</h3>
+            <h3 class="lang-en">2. Optimized Emoji Formulas by Platform</h3>
+            <ul class="lang-ko">
+                <li><b>블로그 및 웹사이트:</b> H2, H3 같은 소제목 앞에 기호(📌, ✅, 📝)를 배치하여 문서의 구조를 시각화하고 가독성을 극대화합니다.</li>
+                <li><b>소셜 미디어 (인스타그램, 틱톡):</b> 첫 줄에 후킹 이모지(🚨, 🔥, 🤯)를 사용하여 시선을 사로잡고, 마지막 줄에는 행동 유도(👇, 🔗, 👉) 이모지로 전환을 유도합니다.</li>
+                <li><b>이메일 뉴스레터:</b> 제목(Subject Line)에 브랜드 정체성에 맞는 이모지를 1~2개 사용하여 수신함 내 오픈율을 평균 40% 이상 높일 수 있습니다.</li>
+            </ul>
+            <ul class="lang-en">
+                <li><b>Blogs and Websites:</b> Place symbols (📌, ✅, 📝) before subheadings like H2 and H3 to visualize document structure and maximize readability.</li>
+                <li><b>Social Media (Instagram, TikTok):</b> Use hooking emojis (🚨, 🔥, 🤯) in the first line to grab attention, and action-inducing emojis (👇, 🔗, 👉) in the last line to drive conversions.</li>
+                <li><b>Email Newsletters:</b> Use 1-2 emojis matching your brand identity in the subject line to increase inbox open rates by over 40% on average.</li>
+            </ul>
+
+            <h3 class="lang-ko">3. 이모지 마케팅 시 주의해야 할 스팸 필터(Spam Filter)</h3>
+            <h3 class="lang-en">3. Spam Filters to Watch Out for in Emoji Marketing</h3>
+            <p class="lang-ko">과도한 이모지 사용은 오히려 독이 될 수 있습니다. 한 문장에 3개 이상의 이모지를 연속으로 사용하거나, 단어를 완전히 대체하는 방식(예: '오늘의 🎁입니다')은 스팸 로봇으로 오인받아 이메일이 스팸함으로 빠지거나 검색 엔진 알고리즘에서 패널티를 받을 수 있습니다. 항상 '여백의 미'를 유지하며 핵심을 강조할 때만 전략적으로 배치하는 것이 중요합니다.</p>
+            <p class="lang-en">Excessive emoji use can be toxic. Using 3 or more emojis consecutively in a sentence, or completely replacing words (e.g., 'Here is today's 🎁'), can trigger spam bots, causing emails to go to spam or receiving penalties from search engine algorithms. It is crucial to maintain 'white space' and place them strategically only when emphasizing core points.</p>
         </article>
 
+        <!-- 🟢 하단 푸터 조립 공간 -->
         <div id="footer-placeholder"></div>
     </div>
 
+    <!-- 🟢 마법의 연결고리: 조립 기계 스크립트 불러오기 -->
     <script src="layout.js"></script>
     <script>
-        // 화면 켜질 때 레이아웃 조립 + 인기 이모지 탭 출력
+        // 화면이 켜지면 조립기계를 돌리는데, 메뉴 불빛을 'home'에 켜줘!
         window.onload = () => {
             initLayout('home');
             changeEmojiTab('popular');
@@ -76,16 +109,17 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
 
+        // 🟢 [수정완료] 성능 저하 없이 카테고리별 이모지 데이터 압도적 대량 확장 (50~70개씩)
         const emojiData = {
-            popular: ['✨','❤️','🔥','👍','✅','🥰','😂','🎉','🚨','🚀','📢','🎁','👇','👉','📌','💡','💯','💵','⭐','👀'],
-            faces: ['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚'],
-            symbols: ['💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💯'],
-            actions: ['👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍'],
-            animals: ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐻‍❄️','🐨','🐯','🦁','🐮','🐷','🐽','🐸','🐵','🙈','🙉','🙊'],
-            foods: ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🫐','🍈','🍒','🍑','🥭','🍍','🥥','🥝','🍅','🍆','🥑'],
-            places: ['🏔️','⛰️','🌋','🗻','🏕️','🏖️','🏜️','🏝️','🏞️','🏟️','🏛️','🏗️','🏘️','🏠','🏡','🏢','🏣','🏤','🏥','🏦'],
-            objects: ['⌚','📱','📲','💻','⌨️','🖥️','🖨️','🖱️','🖲️','🕹️','🗜️','💽','💾','💿','📀','📼','📷','📸','📹','🎥'],
-            flags: ['🇰🇷','🇺🇸','🇯🇵','🇨🇳','🇬🇧','🇨🇦','🇩🇪','🇫🇷','🇮🇹','🇷🇺','🇪🇸','🇧🇷','🇦🇺','🇻🇳','🇹🇭','🇹🇼','🇭🇰','🇸🇬','🇲🇾','🇮🇩']
+            popular: ['✨','❤️','🔥','👍','✅','🥰','😂','🎉','🚨','🚀','📢','🎁','👇','👉','📌','💡','💯','💵','⭐','👀','🙌','👏','🤝','💪','🙏','🏆','🎯','🛒','🛍️','🔖','🔔','🥇','📈','💬','🤩','😎','🥳','🥹','🤔','💸','💳','💎','👑','📝','🔎','⚡','💡','🛒','💖','🎈','🎊'],
+            faces: ['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🥸','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺'],
+            symbols: ['💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💯','💢','💥','💫','💦','💨','🕳️','💣','💬','👁️‍🗨️','🗨️','🗯️','💭','💤','💮','♨️','💈','🛑','⛔','🚫','🚷','🚯','🚳','🚱','🔞','📵','🚭','❗️','❕','❓','❔','‼️','⁉️','🔅','🔆','〽️','⚠️','🚸','🔱','⚜️','🔰','♻️','✅','✔️','❌','❎','➰','➿','✳️','✴️','❇️','©️','®️','™️'],
+            actions: ['👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍','👎','✊','👊','🤛','🤜','👏','🙌','👐','🤲','🤝','🙏','✍️','💅','🤳','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🫀','🫁','🦷','뼈','👀','👁️','👅','👄'],
+            animals: ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐻‍❄️','🐨','🐯','🦁','🐮','🐷','🐽','🐸','🐵','🙈','🙉','🙊','🐒','🐔','🐧','🐦','🐤','🐣','🐥','🦆','🦅','🦉','🦇','🐺','🐗','🐴','🦄','🐝','🪱','🐛','🦋','🐌','🐞','🐜','🪰','🪲','🪳','🦟','🦗','🕷️','🕸️','🦂','🐢','🐍','🦎','🦖','🦕','🐙','🦑','🦐','🦞','🦀','🐡','🐠','🐟','🐬','🐳','🐋','🦈','🦭','🐊','🐅','🐆','🦓','🦍','🦧','🦣','🐘','🦛','🦏','🐪','🐫','🦒','🦘','🦬','🐃','🐂','🐄','🐎','🐖','🐏','🐑','🦙','🐐','🦌','🐕','🐩','🦮','🐕‍🦺','🐈','🐈‍⬛','🪶','🐓','🦃','🦤','🦚','🦜','🦢','🦩','🕊️'],
+            foods: ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🫐','🍈','🍒','🍑','🥭','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥬','🥒','🌶️','🫑','🌽','🥕','🫒','🧄','🧅','🥔','🍠','🥐','🥯','🍞','🥖','🥨','🧀','🥚','🍳','🧈','🥞','🧇','🥓','🥩','🍗','🍖','🦴','🌭','🍔','🍟','🍕','🫓','🥪','🥙','🧆','🌮','🌯','🫔','🥗','🥘','🫕','🥫','🍝','🍜','🍲','🍛','🍣','🍱','🥟','🦪','🍤','🍙','🍚','🍘','🍥','🥠','🥮','🍢','🍡','🍧','🍨','🍦','🥧','🧁','🍰','🎂','🍮','🍭','🍬','🍫','🍿','🍩','🍪','🌰','🥜','🍯','🥛','🍼','🫖','☕','🍵','🧃','🥤','🧋','🍶','🍺','🍻','🥂','🍷','🥃','🍸','🍹','🧉','🍾','🧊','🥄','🍴','🍽️','🥣','🥡','🥢','🧂'],
+            places: ['🏔️','⛰️','🌋','🗻','🏕️','🏖️','🏜️','🏝️','🏞️','🏟️','🏛️','🏗️','🏘️','🏠','🏡','🏢','🏣','🏤','🏥','🏦','🏨','🏩','🏪','🏫','🏬','🏭','🏯','🏰','💒','🗼','🗽','⛪','🕌','🛕','🕍','⛩️','🕋','⛲','⛺','🌁','🌃','🏙️','🌄','🌅','🌆','🌇','🌉','♨️','🎠','🎡','🎢','💈','🎪','🚂','🚃','🚄','🚅','🚆','🚇','🚈','🚉','🚊','🚝','🚞','🚋','🚌','🚍','🚎','🚐','🚑','🚒','🚓','🚔','🚕','🚖','🚗','🚘','🚙','🛻','🚚','🚛','🚜','🏎️','🏍️','🛵','🦽','🦼','🛺','🚲','🛴','🛹','🛼','🚏','🛣️','🛤️','🛢️','⛽','🚨','🚥','🚦','🛑','⚓','⛵','🛶','🚤','🛳️','⛴️','🛥️','🚢','✈️','🛩️','🛫','🛬','🪂','💺','🚁','🚟','🚠','🚡','🛰️','🚀','🛸'],
+            objects: ['⌚','📱','📲','💻','⌨️','🖥️','🖨️','🖱️','🖲️','🕹️','🗜️','💽','💾','💿','📀','📼','📷','📸','📹','🎥','📽️','🎞️','📞','☎️','📟','📠','📺','📻','🎙️','🎚️','🎛️','🧭','⏱️','⏲️','⏰','🕰️','⌛','⏳','📡','🔋','🔌','💡','🔦','🕯️','🪔','🧯','🛢️','💸','💵','💴','💶','💷','🪙','💰','💳','💎','⚖️','🪜','🧰','🪛','🔧','🔨','⚒️','🛠️','⛏️','🪚','🔩','⚙️','🪤','🧱','⛓️','🧲','🔫','💣','🧨','🪓','🔪','🗡️','⚔️','🛡️','🚬','⚰️','🪦','⚱️','🏺','🔮','📿','🧿','💈','⚗️','🔭','🔬','🕳️','🩹','🩺','💊','💉','🩸','🧬','🦠','🧫','🧪','🌡️','🧹','🪠','🧺','🧻','🚽','🚰','🚿','🛁','🛀','🧼','🪥','🪒','🧽','🪣','🧴','🛎️','🔑','🗝️','🚪','🪑','🛋️','🛏️','🛌','🧸','🪆','🖼️','🪞','🪟','🛍️','🛒','🎁','🎈','🎏','🎀','🪄','🪅','🎊','🎉','🎎','🏮','🎐','🧧','✉️','📩','📨','📧','💌','📥','📤','📦','🏷️','🪧','📪','📫','📬','📭','📮','📯','📜','📃','📄','📑','🧾','📊','📈','📉','🗒️','🗓️','📆','📅','🗑️','📇','🗃️','🗳️','🗄️','📋','📁','📂','🗂️','🗞️','📰','📓','📔','📒','📕','📗','📘','📙','📚','📖','🔖','🧷','🔗','📎','🖇️','📐','📏','🧮','📌','📍','✂️','펜','🖋️','🖊️','🖌️','🖍️','📝','✏️','🔍','🔎','🔏','🔐','🔒','🔓'],
+            flags: ['🇰🇷','🇺🇸','🇯🇵','🇨🇳','🇬🇧','🇨🇦','🇩🇪','🇫🇷','🇮🇹','🇷🇺','🇪🇸','🇧🇷','🇦🇺','🇻🇳','🇹🇭','🇹🇼','🇭🇰','🇸🇬','🇲🇾','🇮🇩','🇮🇳','🇲🇽','🇦🇷','🇨🇱','🇨🇴','🇵🇪','🇿🇦','🇪🇬','🇳🇬','🇰🇪','🇸🇦','🇦🇪','🇮🇱','🇹🇷','🇮🇷','🇵🇰','🇧🇩','🇵🇭','🇳🇿','🇨🇭','🇦🇹','🇳🇱','🇧🇪','🇸🇪','🇳🇴','🇩🇰','🇫🇮','🇵🇱','🇨🇿','🇭🇺','🇬🇷','🇵🇹','🇮🇪','🇺🇦']
         };
 
         function changeEmojiTab(category) {
@@ -103,9 +137,8 @@
         }
 
         /*
-         * 🟢 Mojitap Local Context Engine 3.1
+         * 🟢 [절대 보존 구역] Mojitap Local Context Engine 3.1
          * 외부 API 없이 한국어·영어의 감정, 주제, 문장 역할, 부정 표현을 완벽하게 분석!
-         * 상품형 밀도: 핵심 문장은 넓게 커버하고 긴 고신뢰 문장은 관련 이모지 2개를 조합한다.
          */
         const smartEmojiEngine = (() => {
             const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*/gu;
@@ -113,12 +146,10 @@
             const PROTECTED_RE = /(?:https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|#[\p{L}\p{N}_-]+|@[\p{L}\p{N}_.]+|`[^`\n]*`|\[[^\]\n]+\]\([^)]+\))/giu;
             const HASH_ONLY_RE = /^(?:\s*#[\p{L}\p{N}_-]+\s*){2,}$/u;
             
-            // 핵심 정규표현식
             const CRITICAL_RE = /사망|별세|장례|부고|추모|참사|대형 재난|희생자|유가족|전쟁|자해|극단적 선택|\bdeath\b|passed away|\bfuneral\b|rest in peace|deepest condolences?|\bfatal(?:ity|ities)?\b|\btragedy\b|\bcatastrophe\b|mass casualty|\bsuicide\b/i;
             const CONDOLENCE_RE = /명복|애도|추모|유가족|깊은 위로|마음이 무겁|condolence|rest in peace|deepest sympath|our thoughts are with|mourning|bereaved/i;
             const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|예정입니다|시행합니다|\bplease note\b|\bofficial notice\b|\bwe are writing to\b|\beffective (?:on|from|immediately)\b|\bkindly note\b/i;
             
-            // 부정어 완벽 처리 (영어 & 한국어)
             const FALSE_NEGATIVE_RE = /\bcan['’]t wait\b|\bcouldn['’]t be happier\b|\bnot only\b|\bno wonder\b|\bno[- ]brainer\b|\bnever been better\b|\bnothing short of\b/i;
             const EN_NEGATION_RE = /\b(?:not|never|no longer|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|don['’]t|doesn['’]t|didn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|cannot|hardly|barely|rarely|far from)\b/i;
             const KO_NEGATION_RE = /안\s*(?:좋|맞|되|하|추천)|별로|전혀.{0,12}(?:않|못)|(?:좋|행복|기쁘|만족|추천|성공|괜찮|사랑).{0,12}(?:않|못|아니|없)|비추천|실망|최악/i;
@@ -276,7 +307,6 @@
 
                 const scored = profiles.map(profile => ({ profile, score: scoreProfile(profile, sentence) }));
                 
-                // 🟢 부정어 감지 시 긍정 점수 대폭 삭감!
                 if (isNegated(sentence)) {
                     for (const candidate of scored) {
                         if (positiveIds.has(candidate.profile.id)) candidate.score -= 7;
@@ -308,8 +338,7 @@
                 scored.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
                 const best = scored[0];
                 if (best && best.score >= 3.4) return best;
-                
-                // 애매한 경우 기본 제공 프로필 지정
+
                 if (/에러|오류|문제|한계|복잡|뒤엉|비효율|실패|불편|\berror\b|\bissue\b|\bproblem\b|\blimit\b|\bcomplex\b|\binefficien|\bfail|\bchallenge\b|\bpain point\b|\bbottleneck\b/i.test(sentence)) {
                     return { profile: genericProfiles.problem, score: 3.9 };
                 }
@@ -331,7 +360,6 @@
                     .map(profile => ({ profile, score: scoreProfile(profile, text) }))
                     .filter(item => item.score >= 3.4 && !['social-cta','question','condolence'].includes(item.profile.id))
                     .sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
-                
                 if (!scored.length) return /[?？]/.test(text) ? ['🤔','👀'] : ['✨','💡'];
                 const first = scored[0].profile.emojis[0];
                 const secondItem = scored.find(item => item.profile.id !== scored[0].profile.id);
@@ -414,7 +442,7 @@
                 else if (id === 'digital-detox' && /오프라인|화면에서 벗어나|\boffline\b|\bscreen-free\b|\bstep away from\b/i.test(sentence)) candidates = ['🔌','📵','🧘'];
                 else if (id === 'joy' && /can['’]t wait|looking forward|thrilled|over the moon/i.test(sentence)) candidates = ['🤩','😊','✨'];
                 else if (id === 'question' && /\bwhich\b|어떤|몇 번/i.test(sentence)) candidates = ['👀','🤔','❓'];
-                
+
                 return candidates.sort((a, b) => {
                     const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
                     const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
@@ -424,6 +452,7 @@
 
             function chooseSecondaryEmoji(profile, sentence, primary, usage, recent) {
                 if (['condolence','negative-review','apology','question','social-cta'].includes(profile.id)) return null;
+
                 let contextual = [];
                 if (profile.id === 'pet' && /물속|물살|수영|헤엄|\bswim|\bunderwater\b/i.test(sentence)) contextual = ['🌊','🏊'];
                 else if (profile.id === 'injury' && /근육|경련|통증|\bmuscle\b|\bcramp\b|\bpain\b/i.test(sentence)) contextual = ['🩹','🩺'];
@@ -448,11 +477,12 @@
                 else if (profile.id === 'productivity') contextual = ['⚡','✅'];
                 else if (profile.id === 'fashion' || profile.id === 'beauty') contextual = ['✨','🛍️'];
                 else if (profile.id === 'parenting') contextual = ['💛','🍼'];
-                
+
                 const pool = [...contextual, ...profile.emojis].filter(emoji =>
-                    emoji && emoji !== primary && !primary.includes(emoji)
+                    emoji &&
+                    emoji !== primary &&
+                    !primary.includes(emoji)
                 );
-                
                 if (!pool.length) return null;
 
                 return [...new Set(pool)].sort((a, b) => {
@@ -473,7 +503,6 @@
                 else if (sentences <= 12) target = Math.ceil(sentences * 0.82) + 1;
                 else if (sentences <= 20) target = Math.ceil(sentences * 0.72) + 2;
                 else target = Math.ceil(sentences * 0.6) + 3;
-                
                 if (chars > 900) target = Math.max(target, Math.ceil(chars / 112));
                 const structuralWeight = Math.ceil(structural * 0.3);
                 return Math.max(0, Math.min(30, target) - structuralWeight - existing);
@@ -491,7 +520,10 @@
                 const decoratedLines = new Set();
 
                 const lines = lineParts.map((safeLine, index) => {
-                    if (/^\r?\n$/.test(safeLine)) { logicalLine += 1; return safeLine; }
+                    if (/^\r?\n$/.test(safeLine)) {
+                        logicalLine += 1;
+                        return safeLine;
+                    }
                     if (!safeLine.trim()) return safeLine;
 
                     const restored = protectedText.restore(safeLine);
@@ -503,17 +535,21 @@
                     if (role === 'hashtags' || role === 'blank') return safeLine;
                     if (critical) {
                         if (!existing && CONDOLENCE_RE.test(restored)) {
-                            result = append(safeLine, ['🕯️']); added = 1;
+                            result = append(safeLine, ['🕯️']);
+                            added = 1;
                         }
                     } else if (role === 'title' && !existing) {
                         const emojis = titleThemes(restored);
-                        result = append(safeLine, emojis); added = emojis.length;
+                        result = append(safeLine, emojis);
+                        added = emojis.length;
                     } else if (role === 'heading' && !existing) {
-                        result = prefix(safeLine, headingEmoji(restored)); added = 1;
+                        result = prefix(safeLine, headingEmoji(restored));
+                        added = 1;
                     } else if (role === 'cta') {
                         const desired = ctaEmojis(restored);
                         const emojis = desired.slice(0, Math.max(0, desired.length - existing));
-                        result = append(safeLine, emojis); added = emojis.length;
+                        result = append(safeLine, emojis);
+                        added = emojis.length;
                     }
 
                     if (added) decoratedLines.add(logicalLine);
@@ -531,7 +567,12 @@
                         continue;
                     }
                     for (const sentence of splitLine(line)) {
-                        pieces.push({ text: sentence, newline: false, lineIndex, sentenceIndex: sentence.trim() ? sentenceIndex++ : -1 });
+                        pieces.push({
+                            text: sentence,
+                            newline: false,
+                            lineIndex,
+                            sentenceIndex: sentence.trim() ? sentenceIndex++ : -1
+                        });
                     }
                 }
 
@@ -546,26 +587,30 @@
                     const analysis = analyzeSentence(restored, critical);
                     if (!analysis) return;
                     candidates.push({
-                        index, lineIndex: piece.lineIndex, sentenceIndex: piece.sentenceIndex,
-                        profile: analysis.profile, score: analysis.score + (/[!?！？]$/.test(restored.trim()) ? 0.2 : 0)
+                        index,
+                        lineIndex: piece.lineIndex,
+                        sentenceIndex: piece.sentenceIndex,
+                        profile: analysis.profile,
+                        score: analysis.score + (/[!?！？]$/.test(restored.trim()) ? 0.2 : 0)
                     });
                 });
 
                 candidates.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority || a.sentenceIndex - b.sentenceIndex);
-                
                 const selected = [];
                 const lineUsage = new Map();
                 const profileUsage = new Map();
                 const maxPerLine = structured ? 2 : Math.min(6, budget);
-                const coverageTarget = Math.min(candidates.length, Math.max(1, Math.ceil(budget * 0.76)));
-                
+                const coverageTarget = Math.min(
+                    candidates.length,
+                    Math.max(1, Math.ceil(budget * 0.76))
+                );
+
                 for (const candidate of candidates) {
                     if (selected.length >= coverageTarget) break;
                     const onLine = lineUsage.get(candidate.lineIndex) || 0;
                     if (onLine >= maxPerLine) continue;
                     const sameProfile = profileUsage.get(candidate.profile.id) || 0;
                     if (sameProfile >= 3 && candidate.score < 5) continue;
-                    
                     selected.push(candidate);
                     lineUsage.set(candidate.lineIndex, onLine + 1);
                     profileUsage.set(candidate.profile.id, sameProfile + 1);
@@ -575,18 +620,26 @@
                 const recent = [];
                 let secondaryBudget = Math.max(0, budget - selected.length);
                 let secondaryCount = 0;
-                const maxSecondaryCount = Math.min(secondaryBudget, Math.max(1, Math.ceil(sentenceIndex * 0.38)));
-                
+                const maxSecondaryCount = Math.min(
+                    secondaryBudget,
+                    Math.max(1, Math.ceil(sentenceIndex * 0.38))
+                );
                 selected.sort((a, b) => a.sentenceIndex - b.sentenceIndex);
-                
                 for (const candidate of selected) {
                     const sentence = protectedText.restore(pieces[candidate.index].text);
                     const emoji = chooseEmoji(candidate.profile, sentence, usage, recent);
                     const emojis = [emoji];
-                    
-                    const pairMinLength = ['promotion','launch','celebration','gratitude','health','medical','security','pet','injury'].includes(candidate.profile.id) ? 24 : 32;
-                    const canUsePair = secondaryCount < maxSecondaryCount && secondaryBudget > 0 && candidate.score >= 4.7 && sentence.trim().length >= pairMinLength && !/[?？]\s*$/.test(sentence.trim());
-                    
+                    const pairMinLength = [
+                        'promotion','launch','celebration','gratitude','health',
+                        'medical','security','pet','injury'
+                    ].includes(candidate.profile.id) ? 24 : 32;
+                    const canUsePair =
+                        secondaryCount < maxSecondaryCount &&
+                        secondaryBudget > 0 &&
+                        candidate.score >= 4.7 &&
+                        sentence.trim().length >= pairMinLength &&
+                        !/[?？]\s*$/.test(sentence.trim());
+
                     if (canUsePair) {
                         const secondary = chooseSecondaryEmoji(candidate.profile, sentence, emoji, usage, recent);
                         if (secondary) {
