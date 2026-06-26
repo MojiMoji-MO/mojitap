@@ -34,7 +34,7 @@ body.en .lang-ko { display: none !important; }
 #mainEditor:focus { background-color: #FFFFFF; outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(255, 79, 109, 0.1); }
 .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
 .sub-buttons { display: flex; gap: 10px; }
-.btn-action, .btn-copy, .btn-clear { border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s; }
+.btn-action, .btn-copy, .btn-clear { border: none; padding: 13px 16px; border-radius: 14px; font-size: 15px; font-weight: 800; cursor: pointer; transition: all 0.3s; }
 .btn-action { background-color: var(--primary-color); color: white; width: 100%; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
 .btn-action:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
 .btn-copy { background-color: var(--sub-purple); color: white; flex: 1; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
@@ -106,4 +106,10 @@ body.en .lang-ko { display: none !important; }
     .sub-buttons { flex-direction: row; } 
     .btn-clear { min-width: 80px; padding: 16px 10px; } 
     .content-box { padding: 25px 20px; } 
+
+   /* 텍스트창 플레이스홀더(안내문구) 색상 연하게 변경 */
+#mainEditor::placeholder { color: #9CA3AF; font-weight: 400; opacity: 0.8; }
+
+/* 새로 추가된 서브 가이드 텍스트 */
+.sub-guide-text { text-align: center; font-size: 13.5px; color: #6B7280; margin-top: 15px; margin-bottom: 0; word-break: keep-all; line-height: 1.5; font-weight: 600; }
 }
