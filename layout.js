@@ -5,21 +5,27 @@ function renderHeader(activeMenu) {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
 
+    // 🟢 3개의 메뉴에 불을 켜기 위한 세팅
     const isHome = activeMenu === 'home' ? 'active' : '';
+    const isAll = activeMenu === 'all' ? 'active' : '';
     const isBlog = activeMenu === 'blog' ? 'active' : '';
 
     headerPlaceholder.innerHTML = `
         <header class="main-header">
             <div class="header-top-row">
-                <a href="/" class="logo-link"><img src="mojitap-logo.png" alt="Mojitap Logo"></a>
+                <a href="/" class="logo-link">
+                    <img src="mojitap-logo.png" alt="Mojitap Logo" onerror="this.outerHTML='<h2 style=\\'margin:0; color:var(--primary-color); font-weight:800; letter-spacing:-1px;\\'>Mojitap</h2>'">
+                </a>
                 <div class="lang-toggle">
                     <button class="lang-btn" id="btn-ko" onclick="setLanguage('ko')">KOR</button>
                     <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">ENG</button>
                 </div>
             </div>
+            <!-- 🟢 [수정 완료] 메뉴 3개로 확장 및 이름 변경 -->
             <nav class="top-nav">
                 <a href="/" class="nav-item ${isHome}"><span class="lang-ko">✨ 이모지 툴</span><span class="lang-en">✨ Emoji Tool</span></a>
-                <a href="/blog" class="nav-item ${isBlog}"><span class="lang-ko">📚 마케팅 꿀팁</span><span class="lang-en">📚 Marketing Tips</span></a>
+                <a href="/all" class="nav-item ${isAll}"><span class="lang-ko">🌍 전체 이모지</span><span class="lang-en">🌍 All Emojis</span></a>
+                <a href="/blog" class="nav-item ${isBlog}"><span class="lang-ko">💡 이모지 팁</span><span class="lang-en">💡 Emoji Tips</span></a>
             </nav>
         </header>
     `;
@@ -33,12 +39,12 @@ function renderFooter() {
     footerPlaceholder.innerHTML = `
         <footer>
             <div class="footer-links">
-                <a href="/about"><span class="lang-ko">사이트 소개</span><span class="lang-en">About</span></a>
+                <a href="/about"><span class="lang-ko">사이트 소개</span><span class="lang-en">About Us</span></a>
                 <a href="/privacy"><span class="lang-ko">개인정보처리방침</span><span class="lang-en">Privacy Policy</span></a>
-                <a href="/terms"><span class="lang-ko">이용약관</span><span class="lang-en">Terms of Service</span></a>
+                <a href="/terms"><span class="lang-ko">이용약관</span><span class="lang-en">Terms of Use</span></a>
                 <a href="/contact"><span class="lang-ko">문의하기</span><span class="lang-en">Contact</span></a>
             </div>
-            <div class="copyright">&copy; 2026 Mojitap. All rights reserved.</div>
+            <div class="copyright" style="margin-top:15px; color:var(--text-muted); font-size:13px;">&copy; 2026 Mojitap. All rights reserved.</div>
         </footer>
     `;
 }
@@ -53,13 +59,13 @@ function setLanguage(lang) {
     if(btnKo) btnKo.classList.toggle('active', lang === 'ko');
     if(btnEn) btnEn.classList.toggle('active', lang === 'en');
     
-    // 에디터 Placeholder 변경 (index.html에만 존재)
+    // 🟢 [수정 완료] KOR/ENG 버튼을 눌러도 플레이스홀더가 무조건 1줄만 나오도록 고정!
     const editor = document.getElementById('mainEditor');
     if (editor) {
         if(lang === 'ko') {
-            editor.placeholder = "여기에 텍스트를 붙여넣으세요...\n(예: 대박 할인 이벤트 오늘 마감합니다 서두르세요!)\n\n버튼을 누르면 마법처럼 이모지가 입혀집니다. 직접 수정하거나 팔레트를 눌러 이모지를 추가할 수도 있어요!";
+            editor.placeholder = "여기에 텍스트를 붙여넣으세요...";
         } else {
-            editor.placeholder = "Paste your text here...\n(e.g., Big sale event ends today, hurry up!)\n\nClick the AI button for magic. You can also edit freely and click the palette below to add emojis at your cursor!";
+            editor.placeholder = "Paste your text here...";
         }
     }
 
