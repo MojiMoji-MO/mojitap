@@ -107,9 +107,11 @@ body.en .lang-ko { display: none !important; }
     .btn-clear { min-width: 80px; padding: 16px 10px; } 
     .content-box { padding: 25px 20px; } 
 
-   /* 텍스트창 플레이스홀더(안내문구) 색상 연하게 변경 */
-#mainEditor::placeholder { color: #9CA3AF; font-weight: 400; opacity: 0.8; }
+/* 텍스트창 플레이스홀더 완벽 제어 (절대 안 진하게, 브라우저 강제 덮어쓰기) */
+#mainEditor::-webkit-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+#mainEditor::-moz-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+#mainEditor:-ms-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+#mainEditor::placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
 
-/* 새로 추가된 서브 가이드 텍스트 */
+/* 서브 가이드 텍스트 */
 .sub-guide-text { text-align: center; font-size: 13.5px; color: #6B7280; margin-top: 15px; margin-bottom: 0; word-break: keep-all; line-height: 1.5; font-weight: 600; }
-}
