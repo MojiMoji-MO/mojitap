@@ -1,6 +1,20 @@
-/* 🎨 style.css (모지탭 전체 공통 디자인) [v2.0.1] */
+/* 🎨 style.css (모지탭 전체 공통 디자인) [v2.0.2] */
 
-:root { --primary-color: #FF4F6D; --primary-hover: #E83F5B; --sub-purple: #8B5CF6; --accent-mint: #22D3C5; --secondary-bg: #FFF0F2; --bg-color: #F9FAFB; --box-bg: #FFFFFF; --text-main: #1F2937; --text-muted: #6B7280; --border-color: #E5E7EB; --palette-bg: #F3F4F6; --tab-active: #FF4F6D; --tab-inactive: #E5E7EB; }
+:root { 
+    --primary-color: #FF4F6D; 
+    --primary-hover: #E83F5B; 
+    --sub-purple: #8B5CF6; 
+    --accent-mint: #22D3C5; 
+    --secondary-bg: #FFF0F2; 
+    --bg-color: #F9FAFB; 
+    --box-bg: #FFFFFF; 
+    --text-main: #1F2937; 
+    --text-muted: #6B7280; 
+    --border-color: #E5E7EB; 
+    --palette-bg: #F3F4F6; 
+    --tab-active: #FF4F6D; 
+    --tab-inactive: #E5E7EB; 
+}
 
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
 .app-container { position: relative; width: 100%; max-width: 900px; background: var(--box-bg); box-shadow: 0 10px 30px rgba(255, 79, 109, 0.05); border-radius: 20px; display: flex; flex-direction: column; padding: 30px 40px; box-sizing: border-box; }
@@ -30,10 +44,22 @@ body.en .lang-ko { display: none !important; }
    메인 에디터 (index.html) 전용 스타일
 -------------------------------------- */
 .tool-section { display: flex; flex-direction: column; gap: 12px; }
+.hint-text { text-align: center; font-size: 14px; color: var(--sub-purple); font-weight: 700; margin-bottom: 5px; word-break: keep-all; }
+.sub-guide-text { text-align: center; font-size: 13px; color: #6B7280; margin-top: 15px; margin-bottom: 0; word-break: keep-all; line-height: 1.5; font-weight: 600; }
+
 #mainEditor { width: 100%; height: 240px; padding: 22px; border: 2px solid var(--border-color); border-radius: 16px; font-size: 17px; line-height: 1.6; resize: vertical; box-sizing: border-box; font-family: inherit; transition: 0.3s; background-color: #FAFAFA; color: var(--text-main); }
 #mainEditor:focus { background-color: #FFFFFF; outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(255, 79, 109, 0.1); }
+
+/* 🟢 텍스트창 플레이스홀더 완벽 제어 (절대 안 진하게, 브라우저 강제 덮어쓰기) */
+#mainEditor::-webkit-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+#mainEditor::-moz-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+#mainEditor:-ms-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+#mainEditor::placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
+
 .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
 .sub-buttons { display: flex; gap: 10px; }
+
+/* 🟢 버튼 크기 적절하게 축소 완료 */
 .btn-action, .btn-copy, .btn-clear { border: none; padding: 13px 16px; border-radius: 14px; font-size: 15px; font-weight: 800; cursor: pointer; transition: all 0.3s; }
 .btn-action { background-color: var(--primary-color); color: white; width: 100%; box-shadow: 0 4px 15px rgba(255, 79, 109, 0.3); }
 .btn-action:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
@@ -41,7 +67,7 @@ body.en .lang-ko { display: none !important; }
 .btn-copy:hover { background-color: var(--accent-mint); box-shadow: 0 4px 15px rgba(34, 211, 197, 0.3); transform: translateY(-2px); color: #064E3B; }
 .btn-clear { background-color: #F3F4F6; color: #4B5563; width: auto; min-width: 100px; }
 .btn-clear:hover { background-color: #E5E7EB; transform: translateY(-2px); color: var(--text-main); }
-.hint-text { text-align: center; font-size: 14px; color: var(--sub-purple); font-weight: 700; margin-bottom: 5px; }
+
 .emoji-palette-section { margin-top: 25px; }
 .palette-title { font-size: 16px; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
 .tab-container { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
@@ -90,13 +116,12 @@ body.en .lang-ko { display: none !important; }
 .submit-btn { background-color: var(--sub-purple); color: white; border: none; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
 .submit-btn:hover { background-color: var(--accent-mint); color: #064E3B; transform: translateY(-2px); }
 
-/* 🟢 [v2.0.1 복구 완료] 애드센스 SEO 텍스트 전용 스타일 */
 .seo-content { margin-top: 40px; padding: 25px; background: white; border-top: 2px dashed var(--border-color); color: #374151; line-height: 1.8; font-size: 15px; border-radius: 16px; }
 .seo-content h2 { font-size: 20px; color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-weight: 800; }
 .seo-content h3 { font-size: 17px; margin-top: 25px; margin-bottom: 10px; color: var(--primary-color); font-weight: 700; }
 .seo-content p { margin-bottom: 15px; }
 
-/* 📱 모바일 최적화 */
+/* 📱 모바일 최적화 (에러 났던 괄호 복구 완료) */
 @media (max-width: 768px) { 
     body { padding: 0; } 
     .app-container { border-radius: 0; padding: 20px 15px; } 
@@ -106,12 +131,4 @@ body.en .lang-ko { display: none !important; }
     .sub-buttons { flex-direction: row; } 
     .btn-clear { min-width: 80px; padding: 16px 10px; } 
     .content-box { padding: 25px 20px; } 
-
-/* 텍스트창 플레이스홀더 완벽 제어 (절대 안 진하게, 브라우저 강제 덮어쓰기) */
-#mainEditor::-webkit-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
-#mainEditor::-moz-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
-#mainEditor:-ms-input-placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
-#mainEditor::placeholder { color: #cbd5e1 !important; font-weight: 400 !important; opacity: 1 !important; }
-
-/* 서브 가이드 텍스트 */
-.sub-guide-text { text-align: center; font-size: 13.5px; color: #6B7280; margin-top: 15px; margin-bottom: 0; word-break: keep-all; line-height: 1.5; font-weight: 600; }
+}
