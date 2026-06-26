@@ -13,7 +13,6 @@
     
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     
-    <!-- 🟢 마법의 1줄: 공통 스타일 불러오기 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="ko"> 
@@ -21,13 +20,14 @@
 
     <div class="app-container">
         
-        <!-- 🟢 상단 헤더 조립 공간 -->
         <div id="header-placeholder"></div>
 
         <main class="tool-section">
-            <p class="hint-text lang-ko">💡 글을 쓰고 버튼을 누르면 마법처럼 이모지가 입혀집니다!</p>
-            <p class="hint-text lang-en">💡 Write text and click the button for magic emojis!</p>
+            <p class="hint-text lang-ko">💡 밋밋한 텍스트를 붙여넣고 AI 버튼을 누르면, 1초 만에 찰떡같은 이모지가 완성됩니다!</p>
+            <p class="hint-text lang-en">💡 Paste your text and click the AI button to get perfect emojis in 1 second!</p>
+            
             <textarea id="mainEditor" placeholder=""></textarea>
+            
             <div class="action-buttons">
                 <button class="btn-action" onclick="addEmojis()"><span class="lang-ko">🚀 스마트 문맥 이모지 입히기</span><span class="lang-en">🚀 Smart Add Emojis (AI)</span></button>
                 <div class="sub-buttons">
@@ -35,14 +35,13 @@
                     <button class="btn-clear" onclick="clearText()"><span class="lang-ko">🗑️ 비우기</span><span class="lang-en">🗑️ Clear</span></button>
                 </div>
             </div>
+
+            <p class="sub-guide-text lang-ko">✨ 더 완벽한 결과를 원하시나요? AI 변환 후 아래 팔레트에서 원하는 이모지를 직접 클릭해 추가해 보세요!</p>
+            <p class="sub-guide-text lang-en">✨ For a more perfect result, click the emojis in the palette below to add them manually after AI generation!</p>
         </main>
 
         <section class="emoji-palette-section">
-            <!-- 🟢 팔레트 제목을 행동 유도형으로 유지 -->
-            <div class="palette-title">
-                <span class="lang-ko">⚡ 클릭 한 번으로 빠른 이모지 추가</span>
-                <span class="lang-en">⚡ Quick Emoji Insert</span>
-            </div>
+            <div class="palette-title"><span class="lang-ko">⚡ 클릭 한 번으로 빠른 이모지 추가</span><span class="lang-en">⚡ Quick Emoji Insert</span></div>
             <div class="tab-container">
                 <button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')"><span class="lang-ko">🔥 인기</span><span class="lang-en">🔥 Best</span></button>
                 <button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')"><span class="lang-ko">😀 표정</span><span class="lang-en">😀 Faces</span></button>
@@ -57,7 +56,6 @@
             <div class="emoji-display-area" id="emoji-grid-display"></div>
         </section>
 
-        <!-- 🟢 애드센스 승인용 초고품질 마케팅 전문 텍스트 -->
         <article class="seo-content">
             <h2 class="lang-ko">이모지(Emoji) 활용 완벽 가이드: 클릭률과 체류시간을 지배하는 마케팅 전략</h2>
             <h2 class="lang-en">The Ultimate Emoji Guide: Marketing Strategies to Dominate CTR and Retention</h2>
@@ -89,11 +87,9 @@
             <p class="lang-en">Excessive emoji use can be toxic. Using 3 or more emojis consecutively in a sentence, or completely replacing words (e.g., 'Here is today's 🎁'), can trigger spam bots, causing emails to go to spam or receiving penalties from search engine algorithms. It is crucial to maintain 'white space' and place them strategically only when emphasizing core points.</p>
         </article>
 
-        <!-- 🟢 하단 푸터 조립 공간 -->
         <div id="footer-placeholder"></div>
     </div>
 
-    <!-- 🟢 마법의 연결고리: 조립 기계 스크립트 불러오기 -->
     <script src="layout.js"></script>
     <script>
         // 화면이 켜지면 조립기계를 돌리는데, 메뉴 불빛을 'home'에 켜줘!
@@ -109,8 +105,7 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
 
-        // 🟢 [수정완료] popular(인기) 탭에 웬만한 이모지 100여 개를 전부 때려 넣었습니다. 
-        // 이제 사용자는 다른 탭을 거의 누를 필요가 없습니다!
+        // 🟢 인기 이모지 및 전체 카테고리 보존 구역
         const emojiData = {
             popular: ['✨','🔥','❤️','👍','✅','😂','🥰','🎉','🚨','🚀','👇','👉','📌','💡','💯','🎁','📢','💵','⭐','👀','🙌','👏','🤝','💪','🙏','🏆','🎯','🛒','🛍️','🔖','🔔','📈','💬','🤩','😎','🥳','🥹','🤔','💸','💳','💎','👑','📝','🔎','⚡','💖','🎈','🎊','🤣','😊','😍','😘','😋','😏','😔','😭','😡','🤯','😱','🥺','👋','👌','✌️','🤞','👈','👆','☝️','👎','👊','❤️‍🔥','🤍','🖤','💔','💕','💥','💦','💨','🛑','⚠️','📣','🎵','📍','✏️','💰','📉','📊','📅','✔️','❌','✈️','☕','🍔','🍻','💻','📱','📸','🎧'],
             faces: ['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🥸','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺'],
@@ -139,7 +134,6 @@
 
         /*
          * 🟢 [절대 보존 구역] Mojitap Local Context Engine 3.1
-         * 외부 API 없이 한국어·영어의 감정, 주제, 문장 역할, 부정 표현을 완벽하게 분석!
          */
         const smartEmojiEngine = (() => {
             const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*/gu;
@@ -174,7 +168,7 @@
                 P('achievement', 81, ['🏆','🎯','🙌'], [[/성과|목표 달성|기록 갱신|1위|우승|완성했|완료했|해냈|\bachievement\b|\bmilestone\b|\bnew record\b|\bpersonal best\b|\bcompleted\b|\bpulled it off\b|\bexceeded (?:our|all) expectations\b|\bpositive feedback\b|\bcustomer reactions?\b|\bbetter than (?:we|I) imagined\b/i, 5.5]]),
                 P('announcement', 79, ['📢','🔔','📌'], [[/공지|안내드립니다|알림드립니다|새 소식|필독|알려드립니다|\bannouncement\b|\bnotice\b|\bquick update\b|\bimportant update\b|\bbig news\b|\bFYI\b|\bPSA\b/i, 5], [FORMAL_RE, 4.5]]),
                 P('joy', 77, ['😊','🤩','✨'], [[/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|다시.{0,12}(?:가고|하고|먹고) 싶|\bhappy\b|\bglad\b|\bdelighted\b|\bexcited\b|\bthrilled\b|\bover the moon\b|\bon cloud nine\b|\bmade my day\b|\bcan['’]t wait\b|\blooking forward\b|\bwant to (?:go|visit|try|make|see) again\b/i, 5]]),
-                P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove 주\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
+                P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove you\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
                 P('humor', 75, ['😂','🤣','😆'], [[/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|농담|장난|\blol\b|\blmao\b|\brofl\b|\bfunny\b|\bjoke\b|\bcracked me up\b|\bplot twist\b/i, 5.5]]),
                 P('sadness', 74, ['😢','🥺','💙'], [[/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|\bsad\b|\bcry|\bupset\b|\bdepress|\blonely\b|\bdisappoint|\bheartbroken\b|\brough day\b|\bdevastated\b|\bgutted\b|\bbittersweet\b/i, 5]]),
                 P('anger', 73, ['😤','😡'], [[/화나|짜증|분노|열받|최악|불쾌|억울|\bangry\b|\bannoy|\bfurious\b|\bfrustrat|\bworst\b|\bfed up\b|\bunacceptable\b/i, 5.5]]),
