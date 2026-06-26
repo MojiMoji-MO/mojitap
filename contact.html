@@ -6,7 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8R7T1JEFVL');</script>
 
-    <meta name="description" content="Contact Mojitap for business inquiries, support, and partnerships. 모지탭 공식 웹사이트 비즈니스 및 고객 지원 문의.">
+    <meta name="description" content="Contact Mojitap for business inquiries, support, and partnerships.">
     <title>Contact Us | Mojitap</title>
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -16,15 +16,15 @@
         <div id="header-placeholder"></div>
         
         <main class="content-box">
-            <h2 class="lang-ko">✉️ 문의하기 (Contact Us)</h2>
-            <h2 class="lang-en">✉️ Contact Us</h2>
+            <h1 class="lang-ko">✉️ 문의하기 (Contact Us)</h1>
+            <h1 class="lang-en">✉️ Contact Us</h1>
 
             <p class="lang-ko">서비스 이용 중 불편한 점이 있거나, 광고 게재 및 비즈니스 제휴 제안이 있으신 경우 아래의 폼이나 공식 이메일로 연락해 주시기 바랍니다.</p>
             <p class="lang-en">If you experience any inconvenience while using the service, or if you have proposals for advertising and business partnerships, please contact us via the form below.</p>
             
             <div class="email-box">
-                <span class="lang-ko">관리자 이메일: info.mojitap@gmail.com</span>
-                <span class="lang-en">Admin Email: info.mojitap@gmail.com</span>
+                <span class="lang-ko">공식 이메일: info.mojitap@gmail.com</span>
+                <span class="lang-en">Official Email: info.mojitap@gmail.com</span>
             </div>
 
             <form class="contact-form" action="https://formsubmit.co/info.mojitap@gmail.com" method="POST">
@@ -32,19 +32,21 @@
                 <input type="hidden" name="_next" value="https://mojitap.com/contact">
                 <input type="hidden" name="_captcha" value="false">
 
+                <!-- placeholder는 양국 공통으로 이해할 수 있게 병기형식 유지 -->
                 <input type="text" name="사용자_이름" placeholder="이름 (Name)" required>
                 <input type="email" name="사용자_이메일" placeholder="답변 받을 이메일 (Email)" required>
                 <textarea name="문의_내용" placeholder="문의 내용 (Your Message)" required></textarea>
                 
-                <button type="submit" class="submit-btn"><span class="lang-ko">메시지 보내기</span><span class="lang-en">Send Message</span></button>
+                <button type="submit" class="submit-btn">
+                    <span class="lang-ko">메시지 보내기</span>
+                    <span class="lang-en">Send Message</span>
+                </button>
             </form>
         </main>
 
         <div id="footer-placeholder"></div>
     </div>
     <script src="layout.js"></script>
-    <script>
-        window.onload = () => { initLayout('contact'); };
-    </script>
+    <script>window.onload = () => { initLayout('contact'); };</script>
 </body>
 </html>
