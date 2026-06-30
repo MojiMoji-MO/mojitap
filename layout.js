@@ -1,3 +1,5 @@
+/* ⚙️ layout.js (Pure English Global Version) */
+
 function renderHeader(activeMenu) {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
@@ -6,6 +8,7 @@ function renderHeader(activeMenu) {
     const isAll = activeMenu === 'all' ? 'active' : '';
     const isBlog = activeMenu === 'blog' ? 'active' : '';
 
+    // 🚨 KOR/ENG 동적 버튼 싹 삭제 완료! 순수 영문 텍스트만 남김
     headerPlaceholder.innerHTML = `
         <header class="main-header">
             <div class="header-top-row">
@@ -31,13 +34,14 @@ function renderFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (!footerPlaceholder) return;
 
+    // 🚨 하단 메뉴 순수 영문 고정 완료!
     footerPlaceholder.innerHTML = `
         <footer>
             <div class="footer-links">
                 <a href="/about">About Us</a>
                 <a href="/privacy">Privacy Policy</a>
                 <a href="/terms">Terms of Use</a>
-                <a href="/contact">Contact</a>
+                <a href="/contact">Contact Us</a>
             </div>
             <div class="copyright" style="margin-top:15px; color:var(--text-muted); font-size:13px;">&copy; 2026 Mojitap. All rights reserved.</div>
         </footer>
@@ -67,4 +71,15 @@ function promptBookmark() {
 function initLayout(activeMenu) {
     renderHeader(activeMenu);
     renderFooter();
+    
+    // 🚨 기존에 브라우저에 남아있던 한국어 설정을 강제로 삭제하고 무조건 영어(en)로 고정!
+    document.documentElement.lang = 'en';
+    document.body.className = 'en';
+    localStorage.removeItem('mojitap_lang');
+
+    // 입력창 placeholder 영문 강제 고정
+    const editor = document.getElementById('mainEditor');
+    if (editor) {
+        editor.placeholder = "Paste your text here...";
+    }
 }
