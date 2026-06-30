@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,37 +11,31 @@
     <link rel="icon" type="image/png" href="mojitap-favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="ko">
-    <!-- 🟢 메인과 동일한 알림창(Toast) 공간 추가 -->
+<body>
     <div id="toast"></div>
 
     <div class="app-container">
         <div id="header-placeholder"></div>
         
         <main class="content-box">
-            <h1 class="lang-ko">✉️ 문의하기 (Contact Us)</h1>
-            <h1 class="lang-en">✉️ Contact Us</h1>
+            <h1>✉️ Contact Us</h1>
 
-            <p class="lang-ko">서비스 이용 중 불편한 점이 있거나, 광고 게재 및 비즈니스 제휴 제안이 있으신 경우 아래의 폼이나 공식 이메일로 연락해 주시기 바랍니다.</p>
-            <p class="lang-en">If you experience any inconvenience while using the service, or if you have proposals for advertising and business partnerships, please contact us via the form below.</p>
+            <p>If you experience any inconvenience while using the service, or if you have proposals for advertising and business partnerships, please contact us via the form below.</p>
             
             <div class="email-box">
-                <span class="lang-ko">공식 이메일: info.mojitap@gmail.com</span>
-                <span class="lang-en">Official Email: info.mojitap@gmail.com</span>
+                <span>Official Email: info.mojitap@gmail.com</span>
             </div>
 
-            <!-- 🟢 action 속성을 빼고 id 추가 (자바스크립트가 가로채서 백그라운드로 보냄) -->
             <form class="contact-form" id="contactForm">
-                <input type="hidden" name="_subject" value="[Mojitap] 웹사이트에서 새로운 문의가 도착했습니다!">
+                <input type="hidden" name="_subject" value="[Mojitap] New Contact Message!">
                 <input type="hidden" name="_captcha" value="false">
 
-                <input type="text" name="사용자_이름" placeholder="이름 (Name)" required>
-                <input type="email" name="사용자_이메일" placeholder="답변 받을 이메일 (Email)" required>
-                <textarea name="문의_내용" placeholder="문의 내용 (Your Message)" required></textarea>
+                <input type="text" name="Name" placeholder="Name" required>
+                <input type="email" name="Email" placeholder="Email" required>
+                <textarea name="Message" placeholder="Your Message" required></textarea>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="lang-ko">메시지 보내기</span>
-                    <span class="lang-en">Send Message</span>
+                    <span>Send Message</span>
                 </button>
             </form>
         </main>
@@ -53,7 +47,6 @@
     <script>
         window.onload = () => { initLayout('contact'); };
 
-        // 🟢 알림창(Toast) 띄우는 함수
         function showToast(message) {
             const toast = document.getElementById("toast");
             toast.innerText = message;
@@ -61,22 +54,18 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
 
-        // 🟢 FormSubmit 비동기(AJAX) 전송 로직
         const form = document.getElementById('contactForm');
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // 폼 전송 시 화면이 새로고침되는 것을 완벽 차단!
+            e.preventDefault();
             
             const btn = document.getElementById('submitBtn');
             const originalHTML = btn.innerHTML;
-            const lang = document.documentElement.lang;
 
-            // 전송 중 상태 표시 (버튼 비활성화)
             btn.disabled = true;
-            btn.innerHTML = lang === 'ko' ? '⏳ 전송 중...' : '⏳ Sending...';
+            btn.innerHTML = '⏳ Sending...';
 
             const formData = new FormData(form);
 
-            // FormSubmit 전용 AJAX 주소로 데이터 쏘기
             fetch("https://formsubmit.co/ajax/info.mojitap@gmail.com", {
                 method: "POST",
                 headers: {
@@ -86,15 +75,13 @@
             })
             .then(response => response.json())
             .then(data => {
-                // 성공하면 알림창 띄우고 빈칸으로 깔끔하게 초기화
-                showToast(lang === 'ko' ? '✅ 성공적으로 전송되었습니다!' : '✅ Message sent successfully!');
+                showToast('✅ Message sent successfully!');
                 form.reset(); 
                 btn.disabled = false;
                 btn.innerHTML = originalHTML;
             })
             .catch(error => {
-                // 실패 시 안내
-                showToast(lang === 'ko' ? '❌ 전송에 실패했습니다. 다시 시도해주세요.' : '❌ Failed to send. Please try again.');
+                showToast('❌ Failed to send. Please try again.');
                 btn.disabled = false;
                 btn.innerHTML = originalHTML;
             });
