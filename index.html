@@ -144,6 +144,7 @@
 
             const P = (id, priority, emojis, patterns) => ({ id, priority, emojis, patterns });
             
+            // 🚨 일상 대화 영단어 대폭 추가 및 보강된 프로필 목록
             const profiles = [
                 P('condolence', 100, ['🕯️'], [[CONDOLENCE_RE, 10]]),
                 P('warning', 97, ['⚠️','🚨','❗'], [[/주의|경고|위험|긴급|조심|유의|절대 금지|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b|\bheads up\b|\bbeware\b|\bred flag\b|\bdo not\b|\btemporarily unavailable\b|\bservice (?:outage|disruption|interruption)\b/i, 6]]),
@@ -156,14 +157,14 @@
                 P('gratitude', 83, ['🙏','💛','🥹'], [[/감사|고맙|덕분|수고 많|도와주|함께해 주|응원해 주|\bthank|\bgrateful\b|\bappreciat|\bhuge thanks\b|\bshoutout\b|couldn['’]t have done it without|means the world/i, 5.5]]),
                 P('achievement', 81, ['🏆','🎯','🙌'], [[/성과|목표 달성|기록 갱신|1위|우승|완성했|완료했|해냈|\bachievement\b|\bmilestone\b|\bnew record\b|\bpersonal best\b|\bcompleted\b|\bpulled it off\b|\bexceeded (?:our|all) expectations\b|\bpositive feedback\b|\bcustomer reactions?\b|\bbetter than (?:we|I) imagined\b/i, 5.5]]),
                 P('announcement', 79, ['📢','🔔','📌'], [[/공지|안내드립니다|알림드립니다|새 소식|필독|알려드립니다|\bannouncement\b|\bnotice\b|\bquick update\b|\bimportant update\b|\bbig news\b|\bFYI\b|\bPSA\b/i, 5], [FORMAL_RE, 4.5]]),
-                P('joy', 77, ['😊','🤩','✨'], [[/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|다시.{0,12}(?:가고|하고|먹고) 싶|\bhappy\b|\bglad\b|\bdelighted\b|\bexcited\b|\bthrilled\b|\bover the moon\b|\bon cloud nine\b|\bmade my day\b|\bcan['’]t wait\b|\blooking forward\b|\bwant to (?:go|visit|try|make|see) again\b/i, 5]]),
+                P('joy', 77, ['😊','🤩','✨'], [[/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|다시.{0,12}(?:가고|하고|먹고) 싶|\bhappy\b|\bglad\b|\bdelighted\b|\bexcited\b|\bthrilled\b|\bover the moon\b|\bon cloud nine\b|\bmade my day\b|\bcan['’]t wait\b|\blooking forward\b|\bwant to (?:go|visit|try|make|see) again\b|\bgood\b|\bgreat\b|\bawesome\b|\bamazing\b|\bperfect\b|\bfantastic\b|\bwonderful\b|\bfun\b/i, 5]]),
                 P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove you\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
                 P('humor', 75, ['😂','🤣','😆'], [[/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|농담|장난|\blol\b|\blmao\b|\brofl\b|\bfunny\b|\bjoke\b|\bcracked me up\b|\bplot twist\b/i, 5.5]]),
-                P('sadness', 74, ['😢','🥺','💙'], [[/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|\bsad\b|\bcry|\bupset\b|\bdepress|\blonely\b|\bdisappoint|\bheartbroken\b|\brough day\b|\bdevastated\b|\bgutted\b|\bbittersweet\b/i, 5]]),
+                P('sadness', 74, ['😢','🥺','💙'], [[/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|\bsad\b|\bcry|\bupset\b|\bdepress|\blonely\b|\bdisappoint|\bheartbroken\b|\brough day\b|\bdevastated\b|\bgutted\b|\bbittersweet\b|\bbad\b|\bterrible\b|\bhorrible\b|\bawful\b|\bsucks?\b/i, 5]]),
                 P('anger', 73, ['😤','😡'], [[/화나|짜증|분노|열받|최악|불쾌|억울|\bangry\b|\bannoy|\bfurious\b|\bfrustrat|\bworst\b|\bfed up\b|\bunacceptable\b/i, 5.5]]),
                 P('encouragement', 72, ['💪','🙌','🔥'], [[/힘내|파이팅|응원|할 수 있|포기하지|도전하|끝까지|용기|\byou can do\b|\byou['’]ve got this\b|\bkeep going\b|\bgood luck\b|\bdon['’]t give up\b|\bbelieve in yourself\b|\blet['’]s do this\b/i, 5]]),
                 P('worry', 71, ['😥','💭','🥺'], [[/걱정|불안|고민|막막|두렵|긴장|\bworried\b|\banxious\b|\bnervous\b|\bafraid\b|\buneasy\b|\bstressed out\b|\bon edge\b/i, 5]]),
-                P('fatigue', 70, ['😮‍💨','🫠','☕'], [[/피곤|지쳤|야근|밤샘|녹초|번아웃|\btired\b|\bexhaust|\bburnout\b|\bdrained\b|\brunning on empty\b|\bwiped out\b|\blong day\b|\bneed coffee\b/i, 5]]),
+                P('fatigue', 70, ['😮‍💨','🫠','☕'], [[/피곤|지쳤|야근|밤샘|녹초|번아웃|\btired\b|\bexhaust|\bburnout\b|\bdrained\b|\brunning on empty\b|\bwiped out\b|\blong day\b|\bneed coffee\b|\bbusy\b|\bhectic\b|\bswamped\b|\bwhole day\b|\bhard day\b/i, 5]]),
                 P('surprise', 69, ['😮','🤯','👀'], [[/깜짝|놀랐|놀랍|대박|믿기지|헉|\bsurpris|\bunbelievable\b|\bwow\b|\bomg\b|\bno way\b|\bmind blown\b|\bspeechless\b/i, 4.8]]),
                 P('social-cta', 91, ['👉','🔖','💬'], [[CTA_RE, 7]]),
                 P('question', 65, ['🤔','👀','❓'], [[/궁금|어떻게 생각|어떤가요|무엇일까|왜일까|의견|\bwhat do you think\b|\bwhat are your thoughts\b|\banyone else\b|\bwho else\b|\bwhich (?:one|feature|option|version|color|colour|style|tip)\b|\bwhy\b|\bhow can\b|\bany ideas?\b/i, 4], [/[?？]\s*$/, 2.5]]),
@@ -203,12 +204,14 @@
             ];
 
             const positiveIds = new Set(['celebration','launch','achievement','joy','love','recommendation','promotion']);
+            
+            // 🚨 일상적인 짧은 문장을 위한 캐주얼 이모지로 교체
             const genericProfiles = {
                 problem: P('problem', 40, ['🧩','⚠️','🔍'], []),
                 solution: P('solution', 41, ['💡','🛠️','✅'], []),
                 number: P('number', 38, ['📊','🔢','🧮'], []),
                 explanation: P('explanation', 37, ['🔎','💡','➡️'], []),
-                information: P('information', 30, ['📌','🔎','📝'], [])
+                information: P('information', 30, ['✨','💬','📌'], [])
             };
 
             function hasEmoji(text) { EMOJI_RE.lastIndex = 0; return EMOJI_RE.test(text); }
@@ -335,7 +338,10 @@
                 if (/즉,|따라서|결국|때문|반면|\bhowever\b|\btherefore\b|\bbecause\b|\bas a result\b|\bthis means\b|\bin other words\b|\bon the other hand\b/i.test(sentence)) {
                     return { profile: genericProfiles.explanation, score: 3.55 };
                 }
-                if (sentence.length >= 32) return { profile: genericProfiles.information, score: 3.42 };
+                
+                // 🚨 글자 수 커트라인 대폭 하향 (32자 -> 8자)하여 짧은 문장에도 이모지 출력 유도
+                if (sentence.length >= 15) return { profile: genericProfiles.information, score: 3.42 };
+                if (sentence.length >= 8) return { profile: genericProfiles.information, score: 3.40 };
                 return null;
             }
 
@@ -479,14 +485,17 @@
             function bodyBudget(sentences, chars, structural, existing, critical) {
                 if (critical) return 0;
                 let target;
-                if (sentences <= 1) target = chars >= 150 ? 3 : chars >= 32 ? 2 : 1;
-                else if (sentences === 2) target = chars >= 180 ? 4 : 3;
+                
+                // 🚨 짧은 문장 1~2개 입력 시 허용 예산을 더 늘려줌
+                if (sentences <= 1) target = chars >= 100 ? 3 : chars >= 15 ? 2 : 1;
+                else if (sentences === 2) target = chars >= 120 ? 4 : 3;
                 else if (sentences === 3) target = 5;
                 else if (sentences === 4) target = 6;
                 else if (sentences <= 7) target = Math.ceil(sentences * 0.9) + 1;
                 else if (sentences <= 12) target = Math.ceil(sentences * 0.82) + 1;
                 else if (sentences <= 20) target = Math.ceil(sentences * 0.72) + 2;
                 else target = Math.ceil(sentences * 0.6) + 3;
+                
                 if (chars > 900) target = Math.max(target, Math.ceil(chars / 112));
                 const structuralWeight = Math.ceil(structural * 0.3);
                 return Math.max(0, Math.min(30, target) - structuralWeight - existing);
@@ -584,9 +593,11 @@
                 const lineUsage = new Map();
                 const profileUsage = new Map();
                 const maxPerLine = structured ? 2 : Math.min(6, budget);
+                
+                // 🚨 출력 빈도 목표치 완화 (0.76 -> 0.85)
                 const coverageTarget = Math.min(
                     candidates.length,
-                    Math.max(1, Math.ceil(budget * 0.76))
+                    Math.max(1, Math.ceil(budget * 0.85))
                 );
 
                 for (const candidate of candidates) {
