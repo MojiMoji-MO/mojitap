@@ -1,5 +1,3 @@
-/* ⚙️ layout.js (Global English Version) */
-
 function renderHeader(activeMenu) {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
@@ -69,5 +67,4 @@ function promptBookmark() {
 function initLayout(activeMenu) {
     renderHeader(activeMenu);
     renderFooter();
-    document.documentElement.lang = 'en';
 }
