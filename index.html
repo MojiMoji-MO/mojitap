@@ -144,7 +144,6 @@
 
             const P = (id, priority, emojis, patterns) => ({ id, priority, emojis, patterns });
             
-            // 🚨 일상 대화 영단어 대폭 추가 및 보강된 프로필 목록
             const profiles = [
                 P('condolence', 100, ['🕯️'], [[CONDOLENCE_RE, 10]]),
                 P('warning', 97, ['⚠️','🚨','❗'], [[/주의|경고|위험|긴급|조심|유의|절대 금지|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b|\bheads up\b|\bbeware\b|\bred flag\b|\bdo not\b|\btemporarily unavailable\b|\bservice (?:outage|disruption|interruption)\b/i, 6]]),
@@ -166,6 +165,10 @@
                 P('worry', 71, ['😥','💭','🥺'], [[/걱정|불안|고민|막막|두렵|긴장|\bworried\b|\banxious\b|\bnervous\b|\bafraid\b|\buneasy\b|\bstressed out\b|\bon edge\b/i, 5]]),
                 P('fatigue', 70, ['😮‍💨','🫠','☕'], [[/피곤|지쳤|야근|밤샘|녹초|번아웃|\btired\b|\bexhaust|\bburnout\b|\bdrained\b|\brunning on empty\b|\bwiped out\b|\blong day\b|\bneed coffee\b|\bbusy\b|\bhectic\b|\bswamped\b|\bwhole day\b|\bhard day\b/i, 5]]),
                 P('surprise', 69, ['😮','🤯','👀'], [[/깜짝|놀랐|놀랍|대박|믿기지|헉|\bsurpris|\bunbelievable\b|\bwow\b|\bomg\b|\bno way\b|\bmind blown\b|\bspeechless\b/i, 4.8]]),
+                
+                // 🚨 일상 대화 및 시간대 프로필 신설 (✨ 대신 사용될 캐주얼 이모지들)
+                P('daily', 60, ['🚶','🎧','📱','☕','⛅'], [[/오늘|지금|방금|내일|일상|하루|동네|산책|출근|퇴근|주말|\btoday\b|\bnow\b|\btomorrow\b|\bdaily\b|\bjust now\b|\bwalk\b|\bmorning\b|\bnight\b|\bweekend\b/i, 4.5]]),
+                
                 P('social-cta', 91, ['👉','🔖','💬'], [[CTA_RE, 7]]),
                 P('question', 65, ['🤔','👀','❓'], [[/궁금|어떻게 생각|어떤가요|무엇일까|왜일까|의견|\bwhat do you think\b|\bwhat are your thoughts\b|\banyone else\b|\bwho else\b|\bwhich (?:one|feature|option|version|color|colour|style|tip)\b|\bwhy\b|\bhow can\b|\bany ideas?\b/i, 4], [/[?？]\s*$/, 2.5]]),
                 P('data', 68, ['🗂️','📊','🔍'], [[/데이터|데이터셋|데이터베이스|스프레드시트|엑셀|로 데이터|\bdata\b|\bdataset\b|\bdatabase\b|\bspreadsheet\b|\banalytics\b|\bmetrics\b|\bquery\b|\bdashboard\b|\braw logs?\b|\bdata fields?\b/i, 5], [/수집|분석|가공|정제|추출|분류|필터|전처리|\bcollect|\banaly|\bprocess|\bclean|\bextract|\bclassif|\bfilter|\bpreprocess|\bvisualiz|\bpipeline\b/i, 2.5]]),
@@ -205,13 +208,16 @@
 
             const positiveIds = new Set(['celebration','launch','achievement','joy','love','recommendation','promotion']);
             
-            // 🚨 일상적인 짧은 문장을 위한 캐주얼 이모지로 교체
+            // 🚨 문장 기호(형태) 기반 동적 기본값 그룹 (✨ 완전 삭제 및 다양성 확보)
             const genericProfiles = {
                 problem: P('problem', 40, ['🧩','⚠️','🔍'], []),
                 solution: P('solution', 41, ['💡','🛠️','✅'], []),
                 number: P('number', 38, ['📊','🔢','🧮'], []),
                 explanation: P('explanation', 37, ['🔎','💡','➡️'], []),
-                information: P('information', 30, ['✨','💬','📌'], [])
+                info_short: P('info_short', 30, ['💬','👀','📌','✏️','🔖'], []),
+                info_long: P('info_long', 31, ['📝','💡','🔍','✅','🗂️'], []),
+                exclamation: P('exclamation', 32, ['🔥','🙌','❗','💥'], []),
+                question_generic: P('question_generic', 33, ['🤔','💭','👀','❓'], [])
             };
 
             function hasEmoji(text) { EMOJI_RE.lastIndex = 0; return EMOJI_RE.test(text); }
@@ -339,9 +345,12 @@
                     return { profile: genericProfiles.explanation, score: 3.55 };
                 }
                 
-                // 🚨 글자 수 커트라인 대폭 하향 (32자 -> 8자)하여 짧은 문장에도 이모지 출력 유도
-                if (sentence.length >= 15) return { profile: genericProfiles.information, score: 3.42 };
-                if (sentence.length >= 8) return { profile: genericProfiles.information, score: 3.40 };
+                // 🚨 기계적 ✨ 출력을 막고 문장 형태와 길이에 따라 맞춤형 그룹 배정
+                if (/[!！]/.test(sentence)) return { profile: genericProfiles.exclamation, score: 3.45 };
+                if (/[?？]/.test(sentence)) return { profile: genericProfiles.question_generic, score: 3.45 };
+                if (sentence.length >= 25) return { profile: genericProfiles.info_long, score: 3.42 };
+                if (sentence.length >= 8) return { profile: genericProfiles.info_short, score: 3.40 };
+                
                 return null;
             }
 
@@ -350,10 +359,13 @@
                     .map(profile => ({ profile, score: scoreProfile(profile, text) }))
                     .filter(item => item.score >= 3.4 && !['social-cta','question','condolence'].includes(item.profile.id))
                     .sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
-                if (!scored.length) return /[?？]/.test(text) ? ['🤔','👀'] : ['✨','💡'];
+                
+                // 🚨 제목에서도 ✨ 제거하고 전문적인 기호 배치
+                if (!scored.length) return /[?？]/.test(text) ? ['🤔','👀'] : ['💡','📝'];
+                
                 const first = scored[0].profile.emojis[0];
                 const secondItem = scored.find(item => item.profile.id !== scored[0].profile.id);
-                const second = secondItem ? secondItem.profile.emojis[0] : scored[0].profile.emojis[1] || '✨';
+                const second = secondItem ? secondItem.profile.emojis[0] : scored[0].profile.emojis[1] || '💡';
                 return [...new Set([first, second])].slice(0, 2);
             }
 
@@ -399,9 +411,10 @@
             }
 
             function ctaEmojis(text) {
-                if (SAVE_RE.test(text) && FOLLOW_RE.test(text)) return ['🔖','✨','👉'];
+                // 🚨 CTA(Call to Action)에서도 무분별한 ✨ 제거
+                if (SAVE_RE.test(text) && FOLLOW_RE.test(text)) return ['🔖','👉'];
                 if (SAVE_RE.test(text) && /공유|\bshare\b/i.test(text)) return ['🔖','👉'];
-                if (FOLLOW_RE.test(text)) return ['✨','👉'];
+                if (FOLLOW_RE.test(text)) return ['👀','👉'];
                 if (/지원|신청|\bapply\b|\bsign up\b|\bjoin us\b/i.test(text)) return ['📝','👉'];
                 if (/구매|\bshop now\b|\bbuy now\b|\bcheckout\b/i.test(text)) return ['🛍️','👉'];
                 if (/링크|클릭|\b(?:tap|click|visit) the link\b|\blink in bio\b|\blearn more\b|\bread more\b/i.test(text)) return ['🔗','👉'];
@@ -436,6 +449,10 @@
                 return candidates.sort((a, b) => {
                     const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
                     const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
+                    
+                    // 🚨 사용 횟수가 같을 때 기계적으로 순서대로 찍히는 것을 방지하는 랜덤 셔플
+                    if (aPenalty === bPenalty) return Math.random() - 0.5;
+                    
                     return aPenalty - bPenalty;
                 })[0];
             }
@@ -478,6 +495,9 @@
                 return [...new Set(pool)].sort((a, b) => {
                     const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
                     const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
+                    
+                    if (aPenalty === bPenalty) return Math.random() - 0.5;
+                    
                     return aPenalty - bPenalty;
                 })[0];
             }
@@ -486,7 +506,6 @@
                 if (critical) return 0;
                 let target;
                 
-                // 🚨 짧은 문장 1~2개 입력 시 허용 예산을 더 늘려줌
                 if (sentences <= 1) target = chars >= 100 ? 3 : chars >= 15 ? 2 : 1;
                 else if (sentences === 2) target = chars >= 120 ? 4 : 3;
                 else if (sentences === 3) target = 5;
@@ -594,7 +613,6 @@
                 const profileUsage = new Map();
                 const maxPerLine = structured ? 2 : Math.min(6, budget);
                 
-                // 🚨 출력 빈도 목표치 완화 (0.76 -> 0.85)
                 const coverageTarget = Math.min(
                     candidates.length,
                     Math.max(1, Math.ceil(budget * 0.85))
