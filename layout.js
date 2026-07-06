@@ -5,7 +5,8 @@ function renderHeader(activeMenu) {
     if (!headerPlaceholder) return;
 
     const isHome = activeMenu === 'home' ? 'active' : '';
-    const isAll = activeMenu === 'all' ? 'active' : '';
+    // 💡 안전장치: 'all'이나 'all-emojis' 둘 중 뭘로 불러와도 메뉴 불빛이 켜지도록 수정!
+    const isAll = (activeMenu === 'all' || activeMenu === 'all-emojis') ? 'active' : '';
     const isBlog = activeMenu === 'blog' ? 'active' : '';
 
     // 🚨 KOR/ENG 동적 버튼 싹 삭제 완료! 순수 영문 텍스트만 남김
@@ -23,7 +24,8 @@ function renderHeader(activeMenu) {
             </div>
             <nav class="top-nav">
                 <a href="/" class="nav-item ${isHome}">✨ Emoji Tool</a>
-                <a href="/all" class="nav-item ${isAll}">🌍 All Emojis</a>
+                <!-- 🚨 아래 주소가 완벽한 SEO 맞춤형 주소로 변경되었습니다! -->
+                <a href="/all-emojis" class="nav-item ${isAll}">🌍 All Emojis</a>
                 <a href="/blog" class="nav-item ${isBlog}">💡 Emoji Tips</a>
             </nav>
         </header>
