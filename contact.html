@@ -3,88 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8R7T1JEFVL');</script>
 
-    <meta name="description" content="Contact Mojitap for business inquiries, support, and partnerships.">
-    <title>Contact Us | Mojitap</title>
-    <link rel="icon" type="image/png" href="mojitap-favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <!-- ========================================================================= -->
+    <!-- 🎯 1. 구글 서치콘솔 (Google Search Console) 소유권 확인 코드 -->
+    <!-- ========================================================================= -->
+    <meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8">
+
+    <!-- ========================================================================= -->
+    <!-- 📊 2. 구글 애널리틱스 (Google Analytics 4) 트래픽 추적 코드 -->
+    <!-- ========================================================================= -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-8R7T1JEFVL');
+    </script>
+
+    <!-- ========================================================================= -->
+    <!-- 💰 3. 구글 애드센스 (Google AdSense) 광고 송출 및 심사 코드 -->
+    <!-- ========================================================================= -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+        crossorigin="anonymous"></script>
+
+    <!-- ========================================================================= -->
+    <!-- 🔎 4. 검색엔진 최적화(SEO)와 대표 URL -->
+    <!-- ========================================================================= -->
+    <title>Contact Mojitap | Support, Corrections, and Feedback</title>
+    <meta name="description" content="Contact Mojitap for tool support, corrections, accessibility feedback, broken links, or a business inquiry.">
+    <link rel="canonical" href="https://mojitap.com/contact">
+
+    <!-- ========================================================================= -->
+    <!-- 📣 5. 소셜 미디어 공유 정보(Open Graph) -->
+    <!-- ========================================================================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mojitap.com/contact">
+    <meta property="og:title" content="Contact Mojitap">
+    <meta property="og:description" content="Contact Mojitap for tool support, corrections, accessibility feedback, broken links, or a business inquiry.">
+    <meta property="og:image" content="https://mojitap.com/mojitap-og.png">
+    <meta property="og:site_name" content="Mojitap">
+    <!-- ========================================================================= -->
+    <!-- 🧭 6. 구조화 데이터 -->
+    <!-- ========================================================================= -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Mojitap",
+  "url": "https://mojitap.com/contact",
+  "description": "Contact Mojitap for tool support, corrections, accessibility feedback, broken links, or a business inquiry.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Mojitap",
+    "url": "https://mojitap.com/",
+    "email": "info.mojitap@gmail.com"
+  }
+}
+    </script>
+
+    <!-- ========================================================================= -->
+    <!-- 🎨 7. 기존 사이트 아이콘과 공통 디자인 파일 -->
+    <!-- ========================================================================= -->
+    <link rel="icon" type="image/png" href="/mojitap-favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .form-field { display: grid; gap: 7px; }
+        .form-field label { font-weight: 700; color: var(--text-main); }
+        .form-help { color: var(--text-muted); font-size: 13px; line-height: 1.6; margin: 0; }
+        .contact-note { background: #f8fafc; border-left: 4px solid #64748b; padding: 16px 18px; border-radius: 10px; margin: 22px 0; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        .submit-btn:disabled { cursor: not-allowed; opacity: 0.7; transform: none; }
+        #formStatus { min-height: 24px; margin: 4px 0 0; font-weight: 700; }
+        #formStatus.success { color: #15803d; }
+        #formStatus.error { color: #b91c1c; }
+    </style>
+
 </head>
 <body>
     <div id="toast"></div>
 
     <div class="app-container">
         <div id="header-placeholder"></div>
-        
-        <main class="content-box">
-            <h1>✉️ Contact Us</h1>
 
-            <p>If you experience any inconvenience while using the service, or if you have proposals for advertising and business partnerships, please contact us via the form below.</p>
-            
+        <main class="content-box">
+            <h1>Contact Mojitap</h1>
+
+            <p>
+                Use this page for tool support, error reports, accessibility feedback, broken links, article
+                corrections, or a business inquiry. Include the page address and device or browser when reporting
+                a technical problem.
+            </p>
+
             <div class="email-box">
-                <span>Official Email: info.mojitap@gmail.com</span>
+                Official email:
+                <a href="mailto:info.mojitap@gmail.com">info.mojitap@gmail.com</a>
             </div>
 
-            <form class="contact-form" id="contactForm">
-                <input type="hidden" name="_subject" value="[Mojitap] New Contact Message!">
-                <input type="hidden" name="_captcha" value="false">
+            <div class="contact-note">
+                <p style="margin: 0;">
+                    The form is processed by FormSubmit. Your name, email address, and message are sent for the purpose
+                    of responding to your inquiry. Do not include passwords, payment information, medical records, or
+                    other sensitive personal information. See the <a href="/privacy">Privacy Policy</a> for details.
+                </p>
+            </div>
 
-                <input type="text" name="Name" placeholder="Name" required>
-                <input type="email" name="Email" placeholder="Email" required>
-                <textarea name="Message" placeholder="Your Message" required></textarea>
-                
+            <form class="contact-form" id="contactForm" novalidate>
+                <input type="hidden" name="_subject" value="[Mojitap] New Contact Message">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="sr-only" aria-hidden="true">
+                    <label for="companyWebsite">Leave this field empty</label>
+                    <input id="companyWebsite" type="text" name="_honey" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-field">
+                    <label for="contactName">Name</label>
+                    <input id="contactName" type="text" name="Name" autocomplete="name" maxlength="100" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="contactEmail">Email</label>
+                    <input id="contactEmail" type="email" name="Email" autocomplete="email" maxlength="254" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="Message" minlength="10" maxlength="5000" required></textarea>
+                    <p class="form-help">Please provide at least 10 characters and avoid sensitive information.</p>
+                </div>
+
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <span>Send Message</span>
                 </button>
+
+                <p id="formStatus" role="status" aria-live="polite"></p>
             </form>
         </main>
 
         <div id="footer-placeholder"></div>
     </div>
-    
-    <script src="layout.js"></script>
+
+    <script src="/layout.js"></script>
     <script>
         window.onload = () => { initLayout('contact'); };
 
-        function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.innerText = message;
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
+        const form = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
+        const originalButtonText = submitButton.innerHTML;
+
+        function setStatus(message, type) {
+            formStatus.textContent = message;
+            formStatus.className = type || '';
         }
 
-        const form = document.getElementById('contactForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const btn = document.getElementById('submitBtn');
-            const originalHTML = btn.innerHTML;
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            setStatus('', '');
 
-            btn.disabled = true;
-            btn.innerHTML = '⏳ Sending...';
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                setStatus('Please complete the required fields correctly.', 'error');
+                return;
+            }
 
-            const formData = new FormData(form);
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
 
-            fetch("https://formsubmit.co/ajax/info.mojitap@gmail.com", {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                showToast('✅ Message sent successfully!');
-                form.reset(); 
-                btn.disabled = false;
-                btn.innerHTML = originalHTML;
-            })
-            .catch(error => {
-                showToast('❌ Failed to send. Please try again.');
-                btn.disabled = false;
-                btn.innerHTML = originalHTML;
-            });
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/info.mojitap@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(form)
+                });
+
+                const data = await response.json().catch(() => ({}));
+                const accepted = response.ok && (data.success === true || data.success === 'true');
+
+                if (!accepted) {
+                    throw new Error(data.message || 'The form service did not confirm delivery.');
+                }
+
+                form.reset();
+                setStatus('Message sent successfully. Thank you for contacting Mojitap.', 'success');
+            } catch (error) {
+                console.error('Contact form error:', error);
+                setStatus('The message could not be sent. Please email info.mojitap@gmail.com directly.', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
         });
     </script>
 </body>
