@@ -1,74 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mojitap.com/</loc></url>
-  <url><loc>https://mojitap.com/all-emojis</loc></url>
-  <url><loc>https://mojitap.com/about</loc></url>
-  <url><loc>https://mojitap.com/privacy</loc></url>
-  <url><loc>https://mojitap.com/terms</loc></url>
-  <url><loc>https://mojitap.com/contact</loc></url>
-  <url><loc>https://mojitap.com/blog</loc></url>
-  <url><loc>https://mojitap.com/01-instagram-emoji-ctr-strategy</loc></url>
-  <url><loc>https://mojitap.com/02-email-newsletter-emoji-open-rates</loc></url>
-  <url><loc>https://mojitap.com/03-tiktok-shorts-emoji-subtitles</loc></url>
-  <url><loc>https://mojitap.com/05-iphone-galaxy-emoji-compatibility</loc></url>
-  <url><loc>https://mojitap.com/06-windows-mac-pc-emoji-shortcuts</loc></url>
-  <url><loc>https://mojitap.com/07-ecommerce-emoji-consumer-psychology-sales</loc></url>
-  <url><loc>https://mojitap.com/08-youtube-seo-emoji-ctr-algorithm</loc></url>
-  <url><loc>https://mojitap.com/09-push-notification-emoji-app-open-rates</loc></url>
-  <url><loc>https://mojitap.com/10-facebook-meta-ads-emoji-cpc-roas</loc></url>
-  <url><loc>https://mojitap.com/11-google-seo-serp-emoji-organic-ctr</loc></url>
-  <url><loc>https://mojitap.com/12-landing-page-cro-heatmap-emojis</loc></url>
-  <url><loc>https://mojitap.com/13-customer-support-chatbot-emoji-csat-score</loc></url>
-  <url><loc>https://mojitap.com/14-b2b-cold-email-outreach-emoji-reply-rates</loc></url>
-  <url><loc>https://mojitap.com/15-ab-testing-emoji-marketing-roi-data</loc></url>
-  <url><loc>https://mojitap.com/16-global-marketing-emoji-cultural-localization</loc></url>
-  <url><loc>https://mojitap.com/17-inclusive-marketing-emoji-accessibility-screen-readers</loc></url>
-  <url><loc>https://mojitap.com/18-saas-onboarding-emoji-churn-reduction</loc></url>
-  <url><loc>https://mojitap.com/20-neuromarketing-ecommerce-emoji-cart-abandonment</loc></url>
-  <url><loc>https://mojitap.com/24-ab-testing-emojis-email-marketing-open-rates</loc></url>
-  <url><loc>https://mojitap.com/25-linkedin-b2b-outreach-social-selling-emojis</loc></url>
-  <url><loc>https://mojitap.com/27-saas-slack-discord-community-visual-anchors</loc></url>
+  <url>
+    <loc>https://mojitap.com/</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/all-emojis</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/blog</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/about</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/contact</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/privacy</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/terms</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/01-instagram-emoji-ctr-strategy</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/02-email-newsletter-emoji-open-rates</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/05-iphone-galaxy-emoji-compatibility</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/06-windows-mac-pc-emoji-shortcuts</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/07-ecommerce-emoji-consumer-psychology-sales</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/08-youtube-seo-emoji-ctr-algorithm</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/09-push-notification-emoji-app-open-rates</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/10-facebook-meta-ads-emoji-cpc-roas</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/11-google-seo-serp-emoji-organic-ctr</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/13-customer-support-chatbot-emoji-csat-score</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/15-ab-testing-emoji-marketing-roi-data</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/16-global-marketing-emoji-cultural-localization</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/17-inclusive-marketing-emoji-accessibility-screen-readers</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/18-saas-onboarding-emoji-churn-reduction</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/25-linkedin-b2b-outreach-social-selling-emojis</loc>
+  </url>
+  <url>
+    <loc>https://mojitap.com/27-saas-slack-discord-community-visual-anchors</loc>
+  </url>
   <url>
     <loc>https://mojitap.com/29-how-to-type-emojis-windows-mac-iphone-android</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/30-heart-emoji-meanings-colors-symbols</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/31-how-to-find-an-emoji-without-knowing-name</loc>
   </url>
-<url>
+  <url>
     <loc>https://mojitap.com/32-how-to-copy-and-paste-emojis-without-formatting-problems</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/33-should-emojis-go-before-or-after-punctuation</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/34-why-does-an-emoji-show-as-a-box-or-question-mark</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/35-how-to-remove-recently-used-emojis</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/36-emoji-keyboard-missing-on-iphone</loc>
   </url>
   <url>
     <loc>https://mojitap.com/37-how-to-get-new-emojis-on-iphone-android</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/38-how-to-react-to-a-text-message-with-an-emoji</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/39-how-to-change-emoji-skin-tone</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/40-how-to-make-your-own-emoji-on-iphone-android</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/41-how-to-turn-off-emoji-suggestions</loc>
   </url>
-    <url>
+  <url>
     <loc>https://mojitap.com/42-how-to-delete-stickers-from-iphone-keyboard</loc>
   </url>
-  
 </urlset>
