@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<!-- ========================================================================= -->
+<!-- 1. Google Search Console site verification -->
+<!-- ========================================================================= -->
+<meta content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8" name="google-site-verification"/>
+
+<!-- ========================================================================= -->
+<!-- 2. Google Analytics 4 -->
+<!-- ========================================================================= -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-8R7T1JEFVL');
+</script>
+
+<!-- ========================================================================= -->
+<!-- 3. Google AdSense -->
+<!-- ========================================================================= -->
+<script async
+  crossorigin="anonymous"
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843">
+</script>
+
+<!-- ========================================================================= -->
+<!-- 4. SEO -->
+<!-- ========================================================================= -->
+<title>Gmail Emoji Reactions: Add, Remove, and Fix Them | Mojitap</title>
+
+<meta
+  content="Learn how Gmail emoji reactions work, how to add or undo one, why the reaction button may be missing, and why reactions can arrive as separate emails."
+  name="description"/>
+
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+
+<link
+  href="https://mojitap.com/44-gmail-emoji-reactions-add-remove-fix"
+  rel="canonical"/>
+
+<!-- ========================================================================= -->
+<!-- 5. Open Graph / Twitter -->
+<!-- ========================================================================= -->
+<meta content="article" property="og:type"/>
+<meta content="https://mojitap.com/44-gmail-emoji-reactions-add-remove-fix" property="og:url"/>
+<meta content="Gmail Emoji Reactions: How to Add, Remove, and Fix Them" property="og:title"/>
+<meta
+  content="Add a Gmail emoji reaction, undo an accidental one, understand missing reaction buttons, and fix reactions that appear as separate emails."
+  property="og:description"/>
+<meta content="https://mojitap.com/mojitap-og.png" property="og:image"/>
+<meta content="Mojitap guide to Gmail emoji reactions" property="og:image:alt"/>
+<meta content="Mojitap" property="og:site_name"/>
+<meta content="2026-08-16" property="article:published_time"/>
+<meta content="2026-08-16" property="article:modified_time"/>
+
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Gmail Emoji Reactions: How to Add, Remove, and Fix Them" name="twitter:title"/>
+<meta
+  content="Add, undo, and troubleshoot Gmail emoji reactions, including missing buttons and reactions that arrive as separate emails."
+  name="twitter:description"/>
+<meta content="https://mojitap.com/mojitap-og.png" name="twitter:image"/>
+
+<!-- ========================================================================= -->
+<!-- 6. Structured Data -->
+<!-- ========================================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Gmail Emoji Reactions: How to Add, Remove, and Fix Them",
+  "description": "A practical guide to Gmail emoji reactions: how to add or undo a reaction, understand when reactions are unavailable, and troubleshoot reactions that appear as separate emails.",
+  "url": "https://mojitap.com/44-gmail-emoji-reactions-add-remove-fix",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mojitap.com/44-gmail-emoji-reactions-add-remove-fix"
+  },
+  "datePublished": "2026-08-16",
+  "dateModified": "2026-08-16",
+  "inLanguage": "en",
+  "articleSection": "Gmail Emoji Help",
+  "author": {
+    "@type": "Person",
+    "name": "Bavum",
+    "jobTitle": "Builder and Editor at Mojitap",
+    "url": "https://mojitap.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mojitap",
+    "url": "https://mojitap.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mojitap.com/mojitap-logo.png"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://mojitap.com/mojitap-og.png"
+  }
+}
+</script>
+
+<link href="/mojitap-favicon.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+
+<style>
+  .article-meta {
+    margin: -8px 0 30px;
+    color: var(--text-muted, #667085);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .answer-box,
+  .context-box,
+  .warning-box,
+  .mojitap-box {
+    margin: 24px 0;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .answer-box {
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-left: 5px solid var(--primary-color, #e85d75);
+    background: #ffffff;
+  }
+
+  .context-box {
+    border-left: 4px solid #2563eb;
+    background: #eff6ff;
+  }
+
+  .warning-box {
+    border-left: 4px solid #d97706;
+    background: #fffbeb;
+  }
+
+  .mojitap-box {
+    border-left: 4px solid #16a34a;
+    background: #f0fdf4;
+  }
+
+  .answer-box p:last-child,
+  .context-box p:last-child,
+  .warning-box p:last-child,
+  .mojitap-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .table-wrap {
+    width: 100%;
+    margin: 22px 0 32px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .reaction-table {
+    width: 100%;
+    min-width: 820px;
+    border-collapse: collapse;
+    background: #ffffff;
+  }
+
+  .reaction-table th,
+  .reaction-table td {
+    padding: 13px 15px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .reaction-table th {
+    background: #f8fafc;
+    color: var(--text-main, #1f2937);
+  }
+
+  .steps {
+    margin: 22px 0 30px;
+    padding: 20px 22px 20px 44px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 14px;
+    background: #ffffff;
+  }
+
+  .steps li {
+    margin-bottom: 10px;
+  }
+
+  .steps li:last-child {
+    margin-bottom: 0;
+  }
+
+  .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 22px 0 32px;
+  }
+
+  .decision-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 14px;
+    background: #ffffff;
+  }
+
+  .decision-card h3 {
+    margin-top: 0;
+  }
+
+  .example-message {
+    margin: 14px 0;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--border-color, #e5e7eb);
+  }
+
+  .reference-list a,
+  .related-links a {
+    overflow-wrap: anywhere;
+  }
+
+  .article-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 42px;
+  }
+
+  .article-actions .back-btn {
+    margin: 0;
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    .decision-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .answer-box,
+    .context-box,
+    .warning-box,
+    .mojitap-box,
+    .decision-card {
+      padding: 17px;
+    }
+
+    .article-actions {
+      flex-direction: column;
+    }
+
+    .article-actions .back-btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div id="toast"></div>
+
+<div class="app-container">
+<div id="header-placeholder"></div>
+
+<main class="content-box">
+<article>
+
+<h1>Gmail Emoji Reactions: How to Add, Remove, and Fix Them</h1>
+
+<p class="article-meta">
+  Written by Bavum, Builder and Editor at Mojitap ·
+  Published August 16, 2026 ·
+  Reviewed with current Google Gmail and Google Workspace documentation ·
+  About 9 minutes
+</p>
+
+<p>
+  Gmail emoji reactions let you respond to an email without writing a normal reply.
+  Open the message, choose <strong>Add emoji reaction</strong>, and select an emoji.
+  If you react by mistake, Gmail lets you use <strong>Undo</strong> for a short period
+  after sending the reaction. If the reaction button is missing, the cause may be the
+  account, the message type, the number of recipients, a Workspace administrator
+  setting, or the email app you are using.
+</p>
+
+<p>
+  The most useful way to troubleshoot Gmail reactions is to separate three different
+  things: an emoji typed <em>inside</em> an email, a Gmail <em>reaction</em> attached
+  to a message, and a reaction that arrives as a separate notification email.
+  They look related, but they do not behave the same way.
+</p>
+
+<section class="answer-box" aria-labelledby="quick-answer">
+<h2 id="quick-answer">The short answer</h2>
+
+<div class="table-wrap" role="region" aria-label="Gmail emoji reaction quick answers" tabindex="0">
+<table class="reaction-table">
+<thead>
+<tr>
+  <th>What you want to do</th>
+  <th>What to use</th>
+  <th>Important limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>React to a Gmail message</td>
+  <td>Add emoji reaction</td>
+  <td>The option is not available for every message or account</td>
+</tr>
+<tr>
+  <td>Undo an accidental reaction</td>
+  <td>Tap or click Undo immediately after reacting</td>
+  <td>The available window depends on Gmail's Undo Send setting, from 5 to 30 seconds</td>
+</tr>
+<tr>
+  <td>Put an emoji in the email text</td>
+  <td>Use your device emoji keyboard or paste a standard Unicode emoji</td>
+  <td>This is message content, not a Gmail reaction</td>
+</tr>
+<tr>
+  <td>Reaction button is missing</td>
+  <td>Check the message and account conditions below</td>
+  <td>Some situations intentionally disable reactions</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<h2>What changed for Gmail emoji reactions in 2026?</h2>
+
+<p>
+  Gmail reactions are no longer limited to the earlier personal-account rollout.
+  Google Workspace expanded emoji reactions to Workspace customers and announced
+  that the feature would be enabled by default starting February 9, 2026 unless an
+  organization had disabled or changed the setting.
+</p>
+
+<p>
+  That matters when troubleshooting a work or school account. If reactions appear
+  for one person but not another, do not assume the Gmail app is broken. A Workspace
+  administrator can turn the feature off for users, and users can still receive
+  reactions even when their own ability to send them is disabled.
+</p>
+
+<div class="context-box">
+<p>
+  <strong>Useful distinction:</strong>
+  a missing reaction button on a managed account can be an administrator setting,
+  while a missing button on one specific email can be caused by the message itself.
+  Check both before reinstalling Gmail or changing unrelated settings.
+</p>
+</div>
+
+<h2>How to add a Gmail emoji reaction</h2>
+
+<h3>On Gmail in a web browser</h3>
+
+<ol class="steps">
+<li>Open Gmail and open the message you want to react to.</li>
+<li>Find <strong>Add emoji reaction</strong> near the Reply control or below the message.</li>
+<li>Select an emoji.</li>
+<li>The reaction appears at the bottom of the email.</li>
+<li>To see who used a reaction, hover over the reaction chip.</li>
+</ol>
+
+<p>
+  If someone already reacted with the emoji you want, Gmail lets you reuse the
+  existing reaction chip instead of opening the picker again.
+</p>
+
+<h3>On the Gmail mobile app</h3>
+
+<ol class="steps">
+<li>Open the message in the Gmail app.</li>
+<li>Tap <strong>Add emoji reaction</strong>.</li>
+<li>Choose a visible emoji or open the larger emoji selection.</li>
+<li>The reaction appears under the message.</li>
+<li>Touch and hold a reaction to check who used it.</li>
+</ol>
+
+<p>
+  Google describes Gmail reactions as best experienced in Gmail on the web and in
+  the Gmail mobile apps. If you open the same mailbox through a third-party email
+  app, the reaction feature can behave differently or be unavailable.
+</p>
+
+<h2>Can you remove a Gmail emoji reaction after sending it?</h2>
+
+<p>
+  Gmail documents one removal method: use <strong>Undo</strong> immediately after
+  adding the reaction. The available time is tied to your Gmail Undo Send setting,
+  which can be set from 5 to 30 seconds.
+</p>
+
+<div class="warning-box">
+<p>
+  <strong>If the Undo message is already gone:</strong>
+  Google's current Gmail help page does not document a later delete button for an
+  already-sent emoji reaction. Do not keep clicking the reaction or send another
+  reaction expecting the first one to disappear.
+</p>
+</div>
+
+<p>
+  If the reaction was accidental and the undo window has passed, the clearest
+  recovery is usually a short written reply when context matters.
+</p>
+
+<div class="example-message">
+  <strong>Example:</strong><br/>
+  “Sorry — that reaction was accidental. I meant to acknowledge the update.”
+</div>
+
+<p>
+  A written correction is especially useful when the reaction could be misunderstood,
+  such as a work message, approval request, complaint, or sensitive conversation.
+</p>
+
+<h2>Why the Gmail emoji reaction button is missing</h2>
+
+<p>
+  Before changing app settings, match your situation to the restriction.
+  Gmail intentionally prevents reactions in several cases.
+</p>
+
+<div class="table-wrap" role="region" aria-label="Reasons Gmail emoji reactions may be unavailable" tabindex="0">
+<table class="reaction-table">
+<thead>
+<tr>
+  <th>What you see</th>
+  <th>Likely reason</th>
+  <th>What to do next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>No reaction option on a work or school account</td>
+  <td>Your Google Workspace administrator may have disabled emoji reactions</td>
+  <td>Use a normal reply or ask the administrator whether the feature is allowed</td>
+</tr>
+<tr>
+  <td>No reaction option on a group message</td>
+  <td>The message was sent to a group email list or includes a Google Group</td>
+  <td>Reply normally instead of troubleshooting the emoji picker</td>
+</tr>
+<tr>
+  <td>No reaction option on a large-recipient email</td>
+  <td>The message was sent to more than 20 recipients</td>
+  <td>Use Reply or Reply all only when appropriate</td>
+</tr>
+<tr>
+  <td>You are a BCC recipient</td>
+  <td>Gmail does not allow a reaction in this situation</td>
+  <td>Send a normal reply only if it is appropriate to reveal your address</td>
+</tr>
+<tr>
+  <td>Message came from an alias or has a custom reply-to address</td>
+  <td>The message does not meet Gmail reaction conditions</td>
+  <td>Use a written reply</td>
+</tr>
+<tr>
+  <td>Message uses client-side encryption</td>
+  <td>Emoji reactions are unavailable for that encrypted message</td>
+  <td>Respond using the supported encrypted-email workflow</td>
+</tr>
+<tr>
+  <td>You opened Gmail mail in Outlook or Apple Mail</td>
+  <td>The Gmail reaction control is not available in that third-party provider</td>
+  <td>Open the message in Gmail if you need the Gmail reaction feature</td>
+</tr>
+<tr>
+  <td>You have reacted repeatedly to the same message</td>
+  <td>Gmail limits reactions after more than 20 reactions to the same message</td>
+  <td>Use a normal reply instead of adding more reactions</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Why a Gmail reaction can arrive as a separate email</h2>
+
+<p>
+  A Gmail reaction is not guaranteed to appear as a neat reaction chip for every
+  recipient. Google says a reaction may look different or arrive as an email that
+  says someone “reacted via Gmail” in several situations.
+</p>
+
+<div class="decision-grid">
+
+<section class="decision-card">
+<h3>The recipient uses another email provider</h3>
+<p>
+  Apple Mail, Microsoft Outlook, or another provider may show the reaction as a
+  separate email instead of the Gmail reaction interface.
+</p>
+</section>
+
+<section class="decision-card">
+<h3>The recipient uses an older Gmail app</h3>
+<p>
+  Updating the Gmail app can restore the newer reaction presentation when the older
+  app version does not support it correctly.
+</p>
+</section>
+
+<section class="decision-card">
+<h3>Conversation view is turned off</h3>
+<p>
+  Gmail can present the reaction differently when messages are not grouped in
+  conversation view.
+</p>
+</section>
+
+<section class="decision-card">
+<h3>The recipient does not use a Gmail address</h3>
+<p>
+  The reaction can be delivered in a form that behaves more like an email
+  notification than an in-thread Gmail reaction.
+</p>
+</section>
+
+</div>
+
+<p>
+  This is why a reaction can look perfectly normal to the sender but confusing to
+  the recipient. If you need a response to remain clear across email providers,
+  a short text reply is more predictable than a reaction alone.
+</p>
+
+<p>
+  If the recipient is using Outlook, also see
+  <a href="/43-outlook-emoji-shortcut-windows-mac-web">
+    Outlook Emoji Shortcut: Windows, Mac, and Web
+  </a>
+  for the difference between email text emoji and Outlook-specific reactions.
+</p>
+
+<h2>Reaction or normal reply? Use this decision rule</h2>
+
+<div class="table-wrap" role="region" aria-label="When to use a Gmail reaction or a written reply" tabindex="0">
+<table class="reaction-table">
+<thead>
+<tr>
+  <th>Situation</th>
+  <th>Reaction is usually enough</th>
+  <th>Written reply is safer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Simple acknowledgement</td>
+  <td>When everyone understands what the reaction means</td>
+  <td>When acknowledgement must be recorded clearly in words</td>
+</tr>
+<tr>
+  <td>Approval or decision</td>
+  <td>Only if the process explicitly accepts reactions</td>
+  <td>When “approved,” “declined,” or conditions need to be unambiguous</td>
+</tr>
+<tr>
+  <td>Deadline or task assignment</td>
+  <td>Rarely</td>
+  <td>State the date, owner, and next action in text</td>
+</tr>
+<tr>
+  <td>Casual congratulations or thanks</td>
+  <td>Often reasonable</td>
+  <td>Use text when the relationship or tone is uncertain</td>
+</tr>
+<tr>
+  <td>Sensitive or corrective message</td>
+  <td>Avoid relying on a reaction alone</td>
+  <td>Write the intended meaning directly</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>
+  The goal is not to avoid emoji. It is to keep the meaning recoverable if the
+  reaction is displayed differently, forwarded, or read outside Gmail.
+</p>
+
+<h2>What if you wanted an emoji inside the email instead?</h2>
+
+<p>
+  A Gmail reaction is attached to a received message. An emoji typed into the
+  subject or message body becomes part of the email text.
+  If you meant to write something like:
+</p>
+
+<div class="example-message">
+  The final draft is ready ✅
+</div>
+
+<p>
+  use your device's emoji keyboard or copy a standard Unicode emoji and paste it into
+  the draft. For subject lines, preview text, and newsletter wording, use
+  <a href="/02-email-newsletter-emoji-open-rates">
+    How to Use Emojis in Email Subject Lines and Newsletters
+  </a>.
+</p>
+
+<p>
+  If copying an emoji introduces strange formatting, read
+  <a href="/32-how-to-copy-and-paste-emojis-without-formatting-problems">
+    How to Copy and Paste Emojis Without Breaking Formatting
+  </a>.
+  If the recipient sees a square or question mark instead of the character, use
+  <a href="/34-why-does-an-emoji-show-as-a-box-or-question-mark">
+    Why Does an Emoji Show as a Box or Question Mark?
+  </a>.
+</p>
+
+<div class="mojitap-box">
+<p><strong>Where Mojitap helps</strong></p>
+<p>
+  Mojitap can help you find and copy standard Unicode emoji for the text of an email.
+  It cannot enable Gmail reactions, change a Google Workspace administrator setting,
+  extend Gmail's Undo window, or remove a reaction after Gmail no longer offers Undo.
+</p>
+</div>
+
+<h2>A practical recovery sequence when Gmail reactions do not work</h2>
+
+<ol class="steps">
+<li>Confirm that you are using Gmail itself, not Outlook, Apple Mail, or another email client.</li>
+<li>Check whether the problem affects every message or only one message.</li>
+<li>If it is one message, check for a group list, more than 20 recipients, BCC, alias, custom reply-to address, or client-side encryption.</li>
+<li>If it is a work or school account, consider whether the Workspace administrator disabled reactions.</li>
+<li>If reactions arrive as separate emails, check the recipient's email provider, Gmail app version, and conversation-view setting.</li>
+<li>If you reacted accidentally, use Undo immediately while the option is still visible.</li>
+<li>If the undo window has passed and the reaction could be misunderstood, send a short text clarification.</li>
+</ol>
+
+<p>
+  This sequence avoids treating every reaction problem as an app bug. In many cases,
+  Gmail is working as designed and the correct fix is to identify the message or
+  account condition that disables or changes reactions.
+</p>
+
+<h2>Official references</h2>
+
+<p>
+  This guide was reviewed on August 16, 2026. Gmail and Google Workspace controls
+  can change, so account administrators and users should check Google's current
+  help pages when a setting or interface differs.
+</p>
+
+<ul class="reference-list">
+<li>
+  <a
+    href="https://support.google.com/mail/answer/14080429?hl=en"
+    rel="noopener noreferrer">
+    Gmail Help: Reply to emails with emoji reactions
+  </a>
+</li>
+<li>
+  <a
+    href="https://workspaceupdates.googleblog.com/2026/01/emojis-reactions-in-gmail-will-be-on-by-default.html"
+    rel="noopener noreferrer">
+    Google Workspace Updates: Emoji reactions in Gmail enabled by default
+  </a>
+</li>
+<li>
+  <a
+    href="https://support.google.com/a/answer/173555?hl=en"
+    rel="noopener noreferrer">
+    Google Workspace Admin Help: Manage Gmail settings for users
+  </a>
+</li>
+</ul>
+
+<h2>Related Mojitap guides</h2>
+
+<ul class="related-links">
+<li>
+  <a href="/02-email-newsletter-emoji-open-rates">
+    How to Use Emojis in Email Subject Lines and Newsletters
+  </a>
+</li>
+<li>
+  <a href="/43-outlook-emoji-shortcut-windows-mac-web">
+    Outlook Emoji Shortcut: Windows, Mac, and Web
+  </a>
+</li>
+<li>
+  <a href="/32-how-to-copy-and-paste-emojis-without-formatting-problems">
+    How to Copy and Paste Emojis Without Breaking Formatting
+  </a>
+</li>
+<li>
+  <a href="/34-why-does-an-emoji-show-as-a-box-or-question-mark">
+    Why Does an Emoji Show as a Box or Question Mark?
+  </a>
+</li>
+<li>
+  <a href="/all-emojis">
+    Browse and Copy Standard Emojis
+  </a>
+</li>
+</ul>
+
+<p>
+  Use a Gmail reaction when a quick acknowledgement is enough and the message
+  supports the feature. Use a written reply when the response needs to carry a
+  decision, instruction, deadline, or explanation. If the reaction button is missing,
+  check the account and message conditions before changing unrelated Gmail settings.
+</p>
+
+<div class="article-actions">
+<a class="back-btn" href="/">Add Emojis to Text</a>
+
+<a
+  class="back-btn"
+  href="/all-emojis"
+  style="background-color: var(--palette-bg, #f8fafc); color: var(--text-main, #1f2937);">
+  Browse All Emojis
+</a>
+
+<a
+  class="back-btn"
+  href="/blog"
+  style="background-color: var(--palette-bg, #f8fafc); color: var(--text-main, #1f2937);">
+  Back to Emoji Tips
+</a>
+</div>
+
+</article>
+</main>
+
+<div id="footer-placeholder"></div>
+</div>
+
+<script src="/layout.js"></script>
+
+<script>
+  window.addEventListener('load', function () {
+    if (typeof initLayout === 'function') {
+      initLayout('blog');
+    }
+  });
+</script>
+
+</body>
+</html>
