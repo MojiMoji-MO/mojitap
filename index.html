@@ -313,7 +313,7 @@
             const EN_NEGATION_RE = /\b(?:not|never|no longer|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|don['’]t|doesn['’]t|didn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|cannot|hardly|barely|rarely|far from)\b/i;
             const KO_NEGATION_RE = /안\s*(?:좋|맞|되|하|추천)|별로|전혀.{0,12}(?:않|못)|(?:좋|행복|기쁘|만족|추천|성공|괜찮|사랑).{0,12}(?:않|못|아니|없)|비추천|실망|최악/i;
             
-            const CTA_RE = /저장(?:해|하세요)?|공유(?:해|하세요)?|팔로우|구독|태그|댓글|의견.{0,8}(?:남겨|알려)|링크.{0,12}(?:눌러|확인)|신청(?:해|하세요)|지원(?:해|하세요)|(?:지금\s*)?구매(?:해|하세요|하고)|클릭|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b|\bshare (?:this|it|the)\b|\bfollow (?:us|for)\b|\bsubscribe\b|\btag (?:a|your)\b|\bcomment(?: below)?\b|\blet (?:me|us) know\b|\btell us\b|\bsign up\b|\bjoin us\b|\bapply (?:now|today|through)\b|\bshop now\b|\blearn more\b|\bread more\b|\b(?:tap|click|visit) the link\b|\blink in bio\b/i;
+            const CTA_RE = /저장(?:해|하세요)?|공유(?:해|하세요)?|팔로우|구독|태그|댓글|의견.{0,8}(?:남겨|알려)|링크.{0,12}(?:눌러|확인)|신청(?:해|하세요)?|지원(?:해|하세요)?|(?:지금\s*)?구매(?:해|하세요|하고)|클릭|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b|\bshare (?:this|it|the)\b|\bfollow (?:us|for)\b|\bsubscribe\b|\btag (?:a|your)\b|\bcomment(?: below)?\b|\blet (?:me|us) know\b|\btell us\b|\bsign up\b|\bjoin us\b|\bapply (?:now|today|through)\b|\bshop now\b|\blearn more\b|\bread more\b|\b(?:tap|click|visit) the link\b|\blink in bio\b/i;
             const SAVE_RE = /저장|북마크|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b/i;
             const FOLLOW_RE = /팔로우|구독|\bfollow (?:us|for)\b|\bsubscribe\b/i;
 
@@ -871,21 +871,74 @@
             showToast('🗑️ Cleared.');
         }
 
-        function copySingleEmoji(emoji) {
-            navigator.clipboard.writeText(emoji);
+        async function copySingleEmoji(emoji) {
             const target = document.getElementById('mainEditor');
-            const start = target.selectionStart, end = target.selectionEnd;
-            target.value = target.value.substring(0, start) + emoji + target.value.substring(end);
+            const start = target.selectionStart;
+            const end = target.selectionEnd;
+
+            target.value =
+                target.value.substring(0, start) +
+                emoji +
+                target.value.substring(end);
+
             target.selectionStart = target.selectionEnd = start + emoji.length;
             target.focus();
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(emoji);
+                } else {
+                    const temp = document.createElement('textarea');
+                    temp.value = emoji;
+                    temp.setAttribute('readonly', '');
+                    temp.style.position = 'fixed';
+                    temp.style.opacity = '0';
+                    document.body.appendChild(temp);
+                    temp.select();
+
+                    const copied = document.execCommand('copy');
+                    document.body.removeChild(temp);
+
+                    if (!copied) {
+                        throw new Error('Emoji copy command failed');
+                    }
+                }
+            } catch (error) {
+                console.warn('Emoji clipboard copy failed:', error);
+            }
+
             showToast(`${emoji} Inserted!`);
         }
 
-        function copyText(elementId) {
+        async function copyText(elementId) {
             const output = document.getElementById(elementId);
-            if (!output.value) { showToast('Nothing to copy.'); return; }
-            output.select(); document.execCommand('copy');
-            showToast('📋 Copied!');
+
+            if (!output.value) {
+                showToast('Nothing to copy.');
+                return;
+            }
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(output.value);
+                } else {
+                    output.focus();
+                    output.select();
+
+                    const copied = document.execCommand('copy');
+
+                    if (!copied) {
+                        throw new Error('Copy command failed');
+                    }
+                }
+
+                showToast('📋 Copied!');
+            } catch (error) {
+                output.focus();
+                output.select();
+
+                showToast('Copy failed. Please copy the selected text manually.');
+            }
         }
     </script>
 </body>
