@@ -191,7 +191,7 @@
 <div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
 </div>
 <script src="/layout.js?v=20260916"></script>
-<script src="/emoji-engine.js?v=20260916"></script>
+<script src="/emoji-engine.js?v=20260916-2"></script>
 <script>
 
         window.onload = () => {
@@ -254,7 +254,7 @@
                 if (!window.smartEmojiEngine) throw new Error('Engine unavailable');
                 const result = window.smartEmojiEngine.analyze(editor.value);
                 editor.value = result.text;
-                showToast(result.added ? 'Added ' + result.added + ' emoji suggestion' + (result.added === 1 ? '' : 's') + '. Review and edit freely.' : 'No extra suggestions. Your text is unchanged.');
+                showToast(result.added ? 'Added ' + result.added + ' emoji suggestion' + (result.added === 1 ? '' : 's') + '. Review and edit freely.' : 'No additional emoji was needed for this input.');
             } catch (error) {
                 showToast('Suggestions could not load. Your text is unchanged. Please refresh and try again.');
             } finally {
