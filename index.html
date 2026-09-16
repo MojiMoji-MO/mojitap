@@ -172,17 +172,17 @@
 <tr><td>Dinner at 7</td><td>Dinner at 7 🍽️</td><td>The meal cue is optional; the time stays in words.</td></tr>
 <tr><td>The package arrived</td><td>The package arrived 📦</td><td>Only you can confirm whether the parcel arrived.</td></tr>
 <tr><td>Do not click the link.</td><td>Do not click the link. ⚠️</td><td>The warning must not become an invitation to click.</td></tr>
-<tr><td>The release is cancelled.</td><td>The release is cancelled. ⚠️</td><td>Cancellation is not a launch celebration.</td></tr>
-<tr><td>오늘 기분이 좋지 않아.</td><td>오늘 기분이 좋지 않아. 😕</td><td>Review tone and context before sending.</td></tr>
-<tr><td>Please read section B.</td><td>Please read section B.</td><td>No suitable match is a valid result.</td></tr>
+<tr><td>The release is cancelled.</td><td>The release is cancelled. 🚫</td><td>Cancellation is not a launch celebration.</td></tr>
+<tr><td>오늘 기분이 좋지 않아.</td><td>오늘 기분이 좋지 않아. 😔</td><td>Review tone and context before sending.</td></tr>
+<tr><td>Please read section B.</td><td>Please read section B. 📚</td><td>A reading cue is added without changing the instruction.</td></tr>
 </tbody></table></div>
 <h3>How the number of emoji is chosen</h3>
 <p>The tool normally adds one cue to a matched sentence and limits additions within a paragraph. A long sentence can receive two compatible topic cues. A document-wide ceiling limits clutter; it is not a target the tool must fill. Existing emoji and repeated sentences reduce new additions.</p>
 <p>The same input uses stable selection rather than unrelated random decoration. A sentence that already contains emoji is left alone. Clicking the button repeatedly is not intended to keep adding more symbols; use the palette for intentional additions.</p>
 <h3>What stays untouched</h3>
 <p>The engine preserves your words, punctuation, and line breaks. It excludes supported URL, email, mention, hashtag, and code patterns from topic matching. This is not a general-purpose parser or a guarantee for every markup format. Do not paste secrets or use decorative processing for program source, legal wording, or other exact-format material.</p>
-<h3>When no automatic suggestion is better</h3>
-<p>Unclear matches, unsupported wording, some negations, and sensitive passages can stay unchanged. Mojitap does not interpret sarcasm or complex conditions reliably. It does not translate text, validate facts, or infer a person's intent. Read the final sentence without its emoji; its important meaning should still stand.</p>
+<h3>How the engine handles difficult wording</h3>
+<p>For ordinary English and Korean text, the engine falls back to broad context cues when no narrow topic rule wins. Negation, cancellation, failure, and sensitive wording are handled before positive or promotional cues so the added emoji does not reverse the sentence. Existing emoji and protected URL, email, code, mention, and hashtag patterns are preserved. Mojitap still does not interpret every form of sarcasm, metaphor, or complex condition like a human reader, so review the result before publishing.</p>
 <h3>Insert and copy</h3>
 <p>Select a palette emoji to insert it at the cursor. The original single-emoji clipboard copy is also attempted; a copy restriction does not prevent insertion. <strong>Copy All</strong> copies the editor text and reports a failure rather than claiming success when the browser blocks it. Clipboard behavior depends on browser permissions.</p>
 <h3>Find the right guide</h3>
@@ -191,7 +191,7 @@
 <div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
 </div>
 <script src="/layout.js?v=20260916"></script>
-<script src="/emoji-engine.js?v=20260916-3"></script>
+<script src="/emoji-engine.js?v=20260917-64"></script>
 <script>
 
         window.onload = () => {
