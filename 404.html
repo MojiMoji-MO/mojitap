@@ -1,29 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-
-  <title>Page Not Found | Mojitap</title>
-
-  <meta
-    content="The page you are looking for could not be found."
-    name="description"/>
-
-  <meta
-    content="noindex, follow"
-    name="robots"/>
-
-  <link
-    href="/mojitap-favicon.png"
-    rel="icon"
-    type="image/png"/>
-
-  <link
-    href="/style.css"
-    rel="stylesheet"/>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Page Not Found | Mojitap</title>
+<meta content="The page you are looking for could not be found." name="description"/>
+<meta content="noindex, follow" name="robots"/>
+<link href="/mojitap-favicon.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<style>
     .not-found-box {
       text-align: center;
       padding: 60px 24px;
@@ -69,63 +55,36 @@
       }
     }
   </style>
-</head>
-
-<body>
-
+<link href="/ui-enhancements.css?v=20260916" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><div aria-atomic="true" aria-live="polite" class="sr-only" id="site-status" role="status"></div><div id="toast"></div>
 <div class="app-container">
-
-  <div id="header-placeholder"></div>
-
-  <main class="content-box">
-
-    <section class="not-found-box">
-
-      <div class="not-found-code">404</div>
-
-      <h1>Page Not Found</h1>
-
-      <p>
+<div id="header-placeholder"><header class="main-header"><div class="header-top-row"><a class="logo-link" href="/"><img alt="Mojitap" height="36" src="/mojitap-logo.png" width="128"/></a><button class="bookmark-btn" data-bookmark="" hidden="" type="button">Bookmark</button></div><nav aria-label="Main navigation" class="top-nav"><a class="nav-item" data-menu="home" href="/"><span aria-hidden="true">✨</span> Emoji Tool</a><a class="nav-item" data-menu="all-emojis" href="/all-emojis"><span aria-hidden="true">🌍</span> All Emojis</a><a class="nav-item" data-menu="blog" href="/blog"><span aria-hidden="true">💡</span> Emoji Tips</a></nav></header></div>
+<main class="content-box" id="main-content">
+<section class="not-found-box">
+<div class="not-found-code">404</div>
+<h1>Page Not Found</h1>
+<p>
         The page you are looking for may have been removed,
         renamed, or replaced by a newer Mojitap guide.
         You can return to the homepage, browse emojis,
         or view the latest emoji guides.
       </p>
-
-      <div class="not-found-actions">
-
-        <a
-          class="back-btn"
-          href="/">
+<div class="not-found-actions">
+<a class="back-btn" href="/">
           Go to Mojitap
         </a>
-
-        <a
-          class="back-btn"
-          href="/all-emojis"
-          style="background-color: var(--palette-bg, #f8fafc); color: var(--text-main, #1f2937);">
+<a class="back-btn" href="/all-emojis" style="background-color: var(--palette-bg, #f8fafc); color: var(--text-main, #1f2937);">
           Browse All Emojis
         </a>
-
-        <a
-          class="back-btn"
-          href="/blog"
-          style="background-color: var(--palette-bg, #f8fafc); color: var(--text-main, #1f2937);">
+<a class="back-btn" href="/blog" style="background-color: var(--palette-bg, #f8fafc); color: var(--text-main, #1f2937);">
           View Emoji Guides
         </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <div id="footer-placeholder"></div>
-
 </div>
-
-<script src="/layout.js"></script>
-
+</section>
+</main>
+<div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
+</div>
+<script src="/layout.js?v=20260916"></script>
 <script>
   window.addEventListener('load', function () {
     if (typeof initLayout === 'function') {
@@ -133,6 +92,6 @@
     }
   });
 </script>
-
 </body>
 </html>
+

@@ -81,118 +81,32 @@
             .about-actions .back-btn { width: 100%; box-sizing: border-box; }
         }
     </style>
-</head>
-<body>
+<link href="/ui-enhancements.css?v=20260916" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><div aria-atomic="true" aria-live="polite" class="sr-only" id="site-status" role="status"></div>
 <div id="toast"></div>
 <div class="app-container">
-<div id="header-placeholder"></div>
-<main class="content-box">
-<h1>About Mojitap</h1>
-<section class="about-intro">
-<p>
-                    Mojitap is an independent browser-based emoji tool built and maintained by Bavum.
-                    The site helps people find emojis, copy them quickly, understand common usage, and
-                    add relevant visual cues to everyday text without installing a keyboard extension.
-                </p>
-<p>
-                    The project began with a practical problem: large emoji lists are slow to scan,
-                    platform pickers are not always easy to search, and an emoji that looks appropriate
-                    in isolation may not fit the tone of a complete sentence. Mojitap combines a searchable
-                    emoji library with a text tool designed to make that editing process faster.
-                </p>
-</section>
-<h2>How the Emoji Tool Works</h2>
-<p>
-                Mojitap uses curated keywords, text patterns, and context rules inside the browser to
-                suggest emojis for review. It is a rule-based matching system. It does not claim to predict
-                social-media rankings, understand every cultural nuance, or guarantee that a suggestion will
-                improve engagement, sales, or any other result.
-            </p>
-<p>
-                The text entered into the main emoji editor is processed by the page's local JavaScript and
-                is not sent to a Mojitap content-processing server. The website still uses services such as
-                Google Analytics, Google AdSense, Cloudflare, and FormSubmit for site operation, measurement,
-                advertising, security, and contact messages. Those services are explained in the
-                <a href="/privacy">Privacy Policy</a>.
-            </p>
-<div class="about-note">
-<p>
-<strong>Editorial rule:</strong> Mojitap suggestions are starting points, not final decisions.
-                    Readers should review meaning, accessibility, relationship, culture, platform rendering,
-                    and professional context before publishing or sending important text.
-                </p>
+<div id="header-placeholder"><header class="main-header"><div class="header-top-row"><a class="logo-link" href="/"><img alt="Mojitap" height="36" src="/mojitap-logo.png" width="128"/></a><button class="bookmark-btn" data-bookmark="" hidden="" type="button">Bookmark</button></div><nav aria-label="Main navigation" class="top-nav"><a class="nav-item" data-menu="home" href="/"><span aria-hidden="true">✨</span> Emoji Tool</a><a class="nav-item" data-menu="all-emojis" href="/all-emojis"><span aria-hidden="true">🌍</span> All Emojis</a><a class="nav-item" data-menu="blog" href="/blog"><span aria-hidden="true">💡</span> Emoji Tips</a></nav></header></div>
+<main class="content-box" id="main-content"><h1>About Mojitap</h1>
+<p>Mojitap is an independent emoji tool maintained by <strong>Bavum, Builder and Editor at Mojitap</strong>. It has two main uses: suggesting existing Unicode emoji for a draft and finding a specific emoji to copy. Neither requires installing a keyboard extension or creating an account.</p>
+<h2>What the tool actually does</h2>
+<p>The homepage runs a local JavaScript rule engine. It looks for supported English and Korean phrases, checks common negation and status patterns, and adds optional emoji without rewriting the original words. It limits repetition and can leave a sentence unchanged when it does not find a suitable match.</p>
+<p>This is not a language-model service. It does not understand every joke, dialect, relationship, or cultural implication. A suggestion is an editing option, not evidence that a message is appropriate to send. Sensitive passages and unclear sentences may receive no additions.</p>
+<p>The <a href="/all-emojis">All Emojis page</a> is a searchable character list. Emoji artwork depends on the browser, operating system, font, and destination app. Copying a character does not guarantee identical artwork on another device.</p>
+<h2>How the guides are prepared</h2>
+<p>The <a href="/blog">guides</a> explain emoji input, compatibility, reactions, meaning, and clear use in messages. They combine linked official documentation with original explanatory examples, comparisons, and troubleshooting sequences.</p>
+<p>AI-assisted drafting and coding tools are used in creating and revising this site. They are not used to process text entered into the homepage editor. Device instructions are documentation-based unless a guide identifies a particular test environment. Local browser checks do not demonstrate behavior on every phone, keyboard, or third-party app.</p>
+<p>Sample messages are illustrative unless explicitly identified otherwise. They are not customer case studies, measured marketing results, or claims of professional qualifications. When platform controls change, the linked official documentation provides the reference for the feature being discussed.</p>
+<h2>Privacy and data</h2>
+<p>Your draft is processed by the homepage's code in your browser, not submitted to a Mojitap text-processing server. The website uses third-party services for analytics, advertising, hosting, and contact messages. Those services have separate data behavior; see the <a href="/privacy">Privacy Policy</a> before using the site.</p>
+<h2>Corrections and contact</h2>
+<p>For an incorrect instruction, broken symbol, or access problem, use the <a href="/contact">contact page</a> or email <a href="mailto:info.mojitap@gmail.com">info.mojitap@gmail.com</a>. Include the page address and, for display problems, the app, operating system, and an example without personal information. Do not send passwords, private messages, or confidential documents.</p>
+<p>Last updated: September 16, 2026.</p></main>
+<div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
 </div>
-<h2>How Mojitap Guides Are Produced</h2>
-<p>
-                Articles are written from the perspective of the person who builds and operates the tool.
-                Practical observations from interface design, emoji categorization, copy editing, mobile testing,
-                and day-to-day site maintenance are combined with official platform documentation and public
-                reference material where those sources are relevant.
-            </p>
-<ul class="principle-list">
-<li>
-<strong>Real work is described as real work.</strong> Tool-development observations and direct
-                    tests may be presented as hands-on experience.
-                </li>
-<li>
-<strong>Examples are identified accurately.</strong> A fictional or composite example is not
-                    presented as a real client project.
-                </li>
-<li>
-<strong>Results are not guaranteed.</strong> Mojitap does not promise higher click-through rates,
-                    conversions, rankings, revenue, or legal compliance.
-                </li>
-<li>
-<strong>Official sources are preferred for changing platform features.</strong> Device shortcuts,
-                    accessibility settings, platform tools, and technical standards are checked against current
-                    documentation when possible.
-                </li>
-<li>
-<strong>Corrections are welcome.</strong> Readers can report an error, a broken link, or a device
-                    compatibility issue through the contact page.
-                </li>
-</ul>
-<h2>What Mojitap Covers</h2>
-<p>
-                The site focuses on practical emoji use: finding characters, understanding common meanings,
-                typing emojis on different devices, improving readability, avoiding ambiguous professional
-                messages, supporting accessibility, and using visual cues with restraint. Some articles also
-                examine marketing and workplace communication, but they are intended as communication guidance,
-                not legal, medical, financial, or regulatory advice.
-            </p>
-<h2>About the Builder and Editor</h2>
-<section class="author-profile">
-<p>
-<strong>Bavum</strong> is the independent builder and editor behind Mojitap. The role includes
-                    maintaining the emoji tool, organizing the emoji browser, reviewing mobile behavior, checking
-                    internal links, researching platform documentation, and editing the site's practical guides.
-                </p>
-<p>
-                    This description does not claim a fictional agency, specialist department, client portfolio,
-                    or guaranteed commercial result. The site's expertise is presented through the work that is
-                    actually performed: building, testing, documenting, and improving an emoji-focused web tool.
-                </p>
-</section>
-<h2>Contact and Corrections</h2>
-<p>
-                For support, corrections, accessibility feedback, or a business inquiry, email
-                <a href="mailto:info.mojitap@gmail.com">info.mojitap@gmail.com</a> or use the
-                <a href="/contact">Contact page</a>.
-            </p>
-<p style="color: var(--text-muted); font-size: 14px;">
-                Last updated: July 24, 2026
-            </p>
-<div class="about-actions">
-<a class="back-btn" href="/">Use the Emoji Tool</a>
-<a class="back-btn" href="/all-emojis" style="background-color: var(--palette-bg); color: var(--text-main);">Browse All Emojis</a>
-<a class="back-btn" href="/blog" style="background-color: var(--palette-bg); color: var(--text-main);">Read Emoji Guides</a>
-</div>
-</main>
-<div id="footer-placeholder"></div>
-</div>
-<script src="/layout.js"></script>
+<script src="/layout.js?v=20260916"></script>
 <script>
         window.onload = () => { initLayout('about'); };
     </script>
 </body>
 </html>
+

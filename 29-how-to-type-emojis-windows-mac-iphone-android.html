@@ -276,17 +276,17 @@
             }
         }
     </style>
-</head>
-<body>
+<link href="/ui-enhancements.css?v=20260916" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><div aria-atomic="true" aria-live="polite" class="sr-only" id="site-status" role="status"></div>
 <div id="toast"></div>
 <div class="app-container">
 <!-- layout.js가 공통 헤더를 이 위치에 불러옵니다. -->
-<div id="header-placeholder"></div>
-<main class="content-box">
+<div id="header-placeholder"><header class="main-header"><div class="header-top-row"><a class="logo-link" href="/"><img alt="Mojitap" height="36" src="/mojitap-logo.png" width="128"/></a><button class="bookmark-btn" data-bookmark="" hidden="" type="button">Bookmark</button></div><nav aria-label="Main navigation" class="top-nav"><a class="nav-item" data-menu="home" href="/"><span aria-hidden="true">✨</span> Emoji Tool</a><a class="nav-item" data-menu="all-emojis" href="/all-emojis"><span aria-hidden="true">🌍</span> All Emojis</a><a aria-current="page" class="nav-item active" data-menu="blog" href="/blog"><span aria-hidden="true">💡</span> Emoji Tips</a></nav></header></div>
+<main class="content-box" id="main-content">
 <article>
 <h1>How to Type Emojis on Windows, Mac, iPhone, and Android</h1>
 <p class="article-meta">
-                    Written by Bavum, Builder and Editor at Mojitap ·
+                    Written by <a href="/about">Bavum</a>, Builder and Editor at Mojitap ·
                     Published July 22, 2026 ·
                     Reviewed against current official platform instructions ·
                     About 9 minutes
@@ -577,9 +577,9 @@
 <table class="guide-table">
 <thead>
 <tr>
-<th>Problem</th>
-<th>Likely cause</th>
-<th>What to try</th>
+<th scope="col">Problem</th>
+<th scope="col">Likely cause</th>
+<th scope="col">What to try</th>
 </tr>
 </thead>
 <tbody>
@@ -747,12 +747,12 @@
 </article>
 </main>
 <!-- layout.js가 공통 푸터를 이 위치에 불러옵니다. -->
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
 </div>
 <!-- ========================================================================= -->
 <!-- 🧩 9. 기존 사이트 공통 헤더·푸터와 메뉴 기능 -->
 <!-- ========================================================================= -->
-<script src="/layout.js"></script>
+<script src="/layout.js?v=20260916"></script>
 <script>
         window.onload = () => {
             initLayout('blog');
@@ -760,3 +760,4 @@
     </script>
 </body>
 </html>
+

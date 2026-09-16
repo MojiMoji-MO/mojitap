@@ -38,7 +38,7 @@
     "@type": "WebPage",
     "@id": "https://mojitap.com/18-saas-onboarding-emoji-churn-reduction"
   },
-  "dateModified": "2026-08-07",
+  "dateModified": "2026-09-16",
   "inLanguage": "en",
   "articleSection": "Product Onboarding",
   "author": {
@@ -58,7 +58,7 @@
   },
   "image": "https://mojitap.com/mojitap-og.png"
 }
-    </script>
+</script>
 <link href="/mojitap-favicon.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
 <style>
@@ -89,59 +89,55 @@
             .summary-box, .practical-note, .warning-box, .example-box, .source-box, .builder-note { padding: 16px; }
         }
 </style>
-</head>
-<body>
+<link href="/ui-enhancements.css?v=20260916" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><div aria-atomic="true" aria-live="polite" class="sr-only" id="site-status" role="status"></div>
 <div id="toast"></div>
 <div class="app-container">
-<div id="header-placeholder"></div>
-<main class="content-box">
-<article>
-<h1>Using Emojis in SaaS Onboarding and In-App Status Messages</h1>
-<p class="article-meta">Written by Bavum, Builder and Editor at Mojitap · Originally published June 2026 · Updated August 7, 2026</p>
-<p>In a product interface, an emoji may reinforce a status, but the status and next action must remain in text. Use a small, consistent vocabulary for completion, information, warning, and error states. Do not use celebration to hide a required permission, charge, or failed task.</p>
-<section class="summary-box"><h2>Interface-message formula</h2><p><strong>State what happened + explain what it means + provide the next action.</strong> The emoji is optional and should never be the only status.</p></section>
-<h2>Define a status system before decorating screens</h2>
-<div aria-label="SaaS status message system" class="responsive-table-wrap" role="region" tabindex="0"><table class="guide-table"><thead><tr><th>State</th><th>Example label</th><th>Message requirement</th></tr></thead><tbody>
-<tr><td>Complete</td><td>✅ Complete</td><td>Name the completed task and any next step.</td></tr>
-<tr><td>Information</td><td>💡 Tip</td><td>Keep optional advice separate from required instructions.</td></tr>
-<tr><td>Warning</td><td>⚠️ Review required</td><td>Describe the consequence before the user continues.</td></tr>
-<tr><td>Error</td><td>Could not save</td><td>Explain what failed and how to recover.</td></tr>
-<tr><td>Waiting</td><td>Processing</td><td>Indicate whether the user can leave the page or retry.</td></tr>
+<div id="header-placeholder"><header class="main-header"><div class="header-top-row"><a class="logo-link" href="/"><img alt="Mojitap" height="36" src="/mojitap-logo.png" width="128"/></a><button class="bookmark-btn" data-bookmark="" hidden="" type="button">Bookmark</button></div><nav aria-label="Main navigation" class="top-nav"><a class="nav-item" data-menu="home" href="/"><span aria-hidden="true">✨</span> Emoji Tool</a><a class="nav-item" data-menu="all-emojis" href="/all-emojis"><span aria-hidden="true">🌍</span> All Emojis</a><a aria-current="page" class="nav-item active" data-menu="blog" href="/blog"><span aria-hidden="true">💡</span> Emoji Tips</a></nav></header></div>
+<main class="content-box" id="main-content">
+<article><h1>Using Emojis in SaaS Onboarding and In-App Status Messages</h1><p class="article-meta">Written by <a href="/about">Bavum</a>, Builder and Editor at Mojitap · Originally published June 2026 · Updated September 16, 2026</p><p>In SaaS onboarding, choose a status message from the result of the action, not from how encouraging you want the interface to sound. “Import started”, “Import complete”, and “Import failed” need different wording. An emoji may reinforce the state, but it should never be the only way to know whether data was saved.</p>
+<p>The example below follows a fictional contacts import. It shows how the same task moves through several states, what text belongs in each, and when a checkmark or celebration would be premature. No conversion or retention result is implied.</p>
+<h2>Model the states before writing success copy</h2>
+<div aria-label="Contact import lifecycle" class="responsive-table-wrap" role="region" tabindex="0"><table class="guide-table"><thead><tr><th scope="col">State</th><th scope="col">Visible message</th><th scope="col">Available action</th></tr></thead><tbody>
+<tr><td>No file selected</td><td>Choose a CSV file containing Email and Name columns.</td><td>Choose file</td></tr>
+<tr><td>Validating</td><td>Checking the file's required columns…</td><td>Wait; show cancellation only if actually supported</td></tr>
+<tr><td>Validation failed</td><td>The Email column is missing. Add it and select the file again.</td><td>Choose another file</td></tr>
+<tr><td>Importing</td><td>Import in progress. The result will appear here.</td><td>Do not offer a duplicate import action</td></tr>
+<tr><td>Completed</td><td>Import complete. 120 contacts were added. ✅</td><td>View contacts</td></tr>
+<tr><td>Partial result</td><td>112 contacts added; 8 rows need review.</td><td>Review skipped rows</td></tr>
 </tbody></table></div>
-<h2>Keep the first successful outcome visible</h2>
-<p>An onboarding flow should guide the user to the smallest useful result: create the first item, import a file, connect a source, or invite a collaborator. Avoid adding emojis to every step. Emphasize the current action and progress in words.</p>
-<h2>Write specific success messages</h2>
-<div class="example-pair"><div><h3>Celebration without information</h3><p>Great job! 🎉</p></div><div><h3>Specific confirmation</h3><p>Project created. Add the first task or invite a teammate 🎉</p></div></div>
-<h2>Make errors recoverable</h2>
-<div class="example-pair"><div><h3>Incomplete</h3><p>❌ Something went wrong.</p></div><div><h3>Actionable</h3><p>The CSV could not be imported because two required columns are missing. Add “Email” and “Status,” then try again.</p></div></div>
-<p>W3C guidance on error identification and status messages supports presenting status information in ways that assistive technologies can detect. A red icon or emoji alone is not enough.</p>
-<h2>Use empty states to explain the first action</h2>
-<p>“Nothing here yet 🚀” does not tell the user what belongs on the screen. A useful empty state names the missing content, gives an example, and provides one primary action.</p>
-<div class="example-box"><h3>Useful empty state</h3><p><strong>No reports yet.</strong> Connect a data source, then create your first weekly report.</p><p><strong>Primary action:</strong> Connect data source</p></div>
-<h2>Do not let celebration hide friction</h2>
-<ul class="checklist"><li>Explain charges before confirmation.</li><li>Describe required permissions before requesting them.</li><li>Show destructive consequences before the action.</li><li>Do not use confetti or upbeat symbols to distract from a failure.</li><li>Keep optional tips visually distinct from required steps.</li></ul>
-<h2>Review the flow in a fixed order</h2>
-<ol class="steps"><li>Confirm that each step has a clear text label.</li><li>Check that every state change has a text message.</li><li>Add a recovery action to warnings and errors.</li><li>Remove symbols that are used inconsistently.</li><li>Check narrow screens, zoom, keyboard navigation, and long translations when possible.</li></ol>
-<div class="practical-note"><p><strong>Mojitap workflow:</strong> Draft short success, tip, or warning text, then use Mojitap to explore a restrained cue. Keep the text-only version when the symbol does not improve identification.</p></div>
-<p class="related-links">Related guides: <a href="/13-customer-support-chatbot-emoji-csat-score">customer support messages</a>, <a href="/09-push-notification-emoji-app-open-rates">push notifications</a>, and <a href="/17-inclusive-marketing-emoji-accessibility-screen-readers">accessible emoji use</a>.</p>
-<section class="source-box">
-<h2>Official references</h2>
-<p>These sources are used for platform behavior, terminology, accessibility requirements, or policy details. The examples and decision frameworks in this guide are editorial explanations created for Mojitap.</p>
-<ul class="source-list"><li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" rel="noopener noreferrer">W3C WAI: Labels or instructions</a></li>
-<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html" rel="noopener noreferrer">W3C WAI: Status messages</a></li>
-<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html" rel="noopener noreferrer">W3C WAI: Error identification</a></li></ul>
-</section>
-<div class="builder-note"><p><strong>Editorial note:</strong> This guide separates platform facts from practical writing examples. It does not claim that emojis improve clicks, sales, replies, rankings, or retention. Results depend on the message, audience, placement, and context.</p></div>
+<p>The counts are invented to illustrate the wording. A real interface must use the actual result. Do not show “120 contacts added” when the server has only accepted a job for processing. A request being accepted is not the same as the work completing.</p>
+<h2>Handle a partial result without a misleading checkmark</h2>
+<p>“Success 🎉” is inadequate when some rows were skipped. A partial result should name both what happened and what remains. Show the skipped rows or explain how to find them. If the user can retry, explain whether retrying the complete file would create duplicates or whether only failed rows should be resubmitted.</p>
+<p>A neutral status is often better than forcing partial completion into a success or failure emoji. “112 added; 8 need review” gives the user a decision. A half-celebratory string of icons does not.</p>
+<h2>Preserve the next action after an error</h2>
+<p>For a missing column, identify the column and the recovery route. For an unavailable service, do not imply the file is invalid. For an unknown connection failure, do not promise that nothing was imported unless the system can confirm that.</p>
+<div class="example-box"><p><strong>Wrong diagnosis:</strong> Bad file ❌</p><p><strong>Known validation error:</strong> The Email column is missing. Add a column named Email, then try again.</p><p><strong>Uncertain connection result:</strong> We could not confirm the import result. Check the contacts list before starting another import.</p></div>
+<p><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html" rel="noopener noreferrer">W3C's error-identification guidance</a> requires an automatically detected input error to be identified and described in text. That is a different responsibility from choosing a red error symbol.</p>
+<h2>Give empty states a useful first step</h2>
+<p>An empty contacts screen can say “No contacts yet. Import a CSV or add a contact.” It should not say “No results” unless the person actually ran a search that returned nothing. These two empty states need different recovery actions.</p>
+<p>For a filtered list with no matches, keep the filter visible and offer “Clear filters”. For a first-use screen, offer the creation or import action. A rocket may fit a celebratory onboarding style, but the words must still identify which state the user is in.</p>
+<h2>Do not announce success before a browser action succeeds</h2>
+<p>The same rule applies to copying text. A copy button should wait for a successful clipboard operation before showing “Copied”. If the browser denies access, select the text and explain manual copying instead of leaving a false success message.</p>
+<p>For web implementation details, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText" rel="noopener noreferrer">Clipboard writeText reference</a> describes its asynchronous result and failure behavior. Keep that technical result separate from the fact that text may already have been inserted into an editor: insertion can succeed while clipboard copying fails.</p>
+<p>This distinction is relevant to Mojitap itself. The tool can add an emoji to the editable text even when copying is unavailable. Its status needs to describe the completed action rather than treating both actions as a single guaranteed success.</p>
+<h2>Keep focus and status communication predictable</h2>
+<p>When a state changes, preserve the user's context. Do not move keyboard focus to a decorative celebration merely to make the update noticeable. Expose the relevant text update through an appropriate status mechanism and keep the next action reachable.</p>
+<p><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html" rel="noopener noreferrer">W3C's status-message guidance</a> explains how such updates can be available to assistive technology without taking focus. Implementing a visible checkmark alone does not provide the same information.</p>
+<h2>Review the flow as a sequence, not as isolated sentences</h2>
+<p>Write the initial state, pending state, success state, partial state, and failure state on one page. Check the transitions in that order. Can someone distinguish “not started” from “still running”, and “failed” from “finished with exceptions”? Is each claimed result grounded in the event that actually occurred?</p>
+<p>Only then add a small consistent visual vocabulary. A checkmark may accompany confirmed completion. A warning may introduce an action with consequences. A tip should look optional rather than like a required step. Leave the other states text-only when an emoji adds no useful distinction.</p>
+<p>Use <a href="/">Mojitap</a> for draft suggestions, not state detection: it does not know whether your import completed. For agent-written responses after a user reports a problem, use <a href="/13-customer-support-chatbot-emoji-csat-score">the customer-support message guide</a>. For a message sent outside the app, use <a href="/09-push-notification-emoji-app-open-rates">the notification guide</a>.</p>
 <div class="article-actions">
 <a class="back-btn" href="/">Add Emojis to Text with Mojitap</a>
 <a class="back-btn" href="/all-emojis" style="background-color: var(--palette-bg); color: var(--text-main);">Browse All Emojis</a>
 <a class="back-btn" href="/blog" style="background-color: var(--palette-bg); color: var(--text-main);">Back to Blog</a>
-</div>
-</article>
+</div></article>
 </main>
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
 </div>
-<script src="/layout.js"></script>
+<script src="/layout.js?v=20260916"></script>
 <script>window.onload = () => { initLayout('blog'); };</script>
 </body>
 </html>
+

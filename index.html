@@ -83,14 +83,14 @@
 <!-- ========================================================================= -->
 <!-- 7. Existing Mojitap icon and shared stylesheet -->
 <!-- ========================================================================= -->
-<link href="mojitap-favicon.png" rel="icon" type="image/png"/>
-<link href="style.css" rel="stylesheet"/>
-</head>
-<body>
+<link href="/mojitap-favicon.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/ui-enhancements.css?v=20260916" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><div aria-atomic="true" aria-live="polite" class="sr-only" id="site-status" role="status"></div>
 <div id="toast"></div>
 <div class="app-container">
-<div id="header-placeholder"></div>
-<main class="tool-section">
+<div id="header-placeholder"><header class="main-header"><div class="header-top-row"><a class="logo-link" href="/"><img alt="Mojitap" height="36" src="/mojitap-logo.png" width="128"/></a><button class="bookmark-btn" data-bookmark="" hidden="" type="button">Bookmark</button></div><nav aria-label="Main navigation" class="top-nav"><a aria-current="page" class="nav-item active" data-menu="home" href="/"><span aria-hidden="true">✨</span> Emoji Tool</a><a class="nav-item" data-menu="all-emojis" href="/all-emojis"><span aria-hidden="true">🌍</span> All Emojis</a><a class="nav-item" data-menu="blog" href="/blog"><span aria-hidden="true">💡</span> Emoji Tips</a></nav></header></div>
+<main class="tool-section" id="main-content"><noscript>Automatic suggestions and palette insertion need JavaScript. You can still read the guides using the navigation links.</noscript>
 <h1 style="
                     margin: 0;
                     text-align: center;
@@ -114,14 +114,14 @@
             </label>
 <textarea aria-describedby="editorHelp" id="mainEditor" placeholder="Paste your text here..."></textarea>
 <div class="action-buttons">
-<button class="btn-action" onclick="addEmojis()">
+<button class="btn-action" onclick="addEmojis()" type="button">
                     ✨ Add Emojis to Text
                 </button>
 <div class="sub-buttons">
-<button class="btn-copy" onclick="copyText('mainEditor')">
+<button class="btn-copy" onclick="copyText('mainEditor')" type="button">
                         📋 Copy All
                     </button>
-<button class="btn-clear" onclick="clearText()">
+<button class="btn-clear" onclick="clearText()" type="button">
                         🗑️ Clear
                     </button>
 </div>
@@ -130,147 +130,83 @@
                 Review the suggestions before publishing, then use the palette
                 below to add, remove, or replace emojis.
             </p>
-
 </main>
 <section class="emoji-palette-section">
 <div class="palette-title">⚡ Quick Emoji Insert</div>
 <div class="tab-container">
-<button class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')">
+<button aria-pressed="true" class="tab-btn active" id="tab-popular" onclick="changeEmojiTab('popular')" type="button">
                     🔥 Best
                 </button>
-<button class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')">
+<button aria-pressed="false" class="tab-btn" id="tab-faces" onclick="changeEmojiTab('faces')" type="button">
                     😀 Faces
                 </button>
-<button class="tab-btn" id="tab-symbols" onclick="changeEmojiTab('symbols')">
+<button aria-pressed="false" class="tab-btn" id="tab-symbols" onclick="changeEmojiTab('symbols')" type="button">
                     ✨ Symbol
                 </button>
-<button class="tab-btn" id="tab-actions" onclick="changeEmojiTab('actions')">
+<button aria-pressed="false" class="tab-btn" id="tab-actions" onclick="changeEmojiTab('actions')" type="button">
                     🧍 Action
                 </button>
-<button class="tab-btn" id="tab-animals" onclick="changeEmojiTab('animals')">
+<button aria-pressed="false" class="tab-btn" id="tab-animals" onclick="changeEmojiTab('animals')" type="button">
                     🐱 Animal
                 </button>
-<button class="tab-btn" id="tab-foods" onclick="changeEmojiTab('foods')">
+<button aria-pressed="false" class="tab-btn" id="tab-foods" onclick="changeEmojiTab('foods')" type="button">
                     🍔 Food
                 </button>
-<button class="tab-btn" id="tab-places" onclick="changeEmojiTab('places')">
+<button aria-pressed="false" class="tab-btn" id="tab-places" onclick="changeEmojiTab('places')" type="button">
                     🚗 Place
                 </button>
-<button class="tab-btn" id="tab-objects" onclick="changeEmojiTab('objects')">
+<button aria-pressed="false" class="tab-btn" id="tab-objects" onclick="changeEmojiTab('objects')" type="button">
                     💡 Object
                 </button>
-<button class="tab-btn" id="tab-flags" onclick="changeEmojiTab('flags')">
+<button aria-pressed="false" class="tab-btn" id="tab-flags" onclick="changeEmojiTab('flags')" type="button">
                     🏁 Flags
                 </button>
 </div>
 <div class="emoji-display-area" id="emoji-grid-display"></div>
 </section>
-<article class="seo-content">
-<h2>Free Emoji Generator for Text: How Mojitap Works</h2>
-<p>
-                Mojitap helps you add emojis to text without searching through
-                hundreds of symbols one by one. Paste a sentence, caption, social
-                post, or message, then select <strong>Add Emojis to Text</strong>.
-                The browser-based tool compares your wording with curated keyword
-                and context rules and inserts relevant emoji suggestions that you
-                can review, edit, and copy.
-            </p>
-<h3>1. Add Emojis to Sentences, Captions, and Messages</h3>
-<p>
-                Use Mojitap for short messages, social media captions, announcements,
-                email drafts, product updates, and other everyday text. The original
-                words remain editable, so you can remove a suggestion, move it to a
-                different position, or use the quick palette to choose another emoji.
-            </p>
-<h3>2. Start with Meaning, Not Decoration</h3>
-<p>
-                Use an emoji when it adds useful tone, emphasis, or structure. A
-                relevant symbol can help a key point stand out, but too many emojis
-                can make a message harder to scan. Keep the wording clear enough to
-                understand without relying on the emoji alone.
-            </p>
-<h3>3. Adjust the Style for Each Platform</h3>
-<ul>
-<li>
-<strong>Social media captions:</strong>
-                    Put the most relevant emoji near the phrase it supports and
-                    remove unrelated symbols that add clutter.
-                </li>
-<li>
-<strong>Messages and email:</strong>
-                    Match the level of formality to the recipient and review the
-                    final text before sending.
-                </li>
-<li>
-<strong>Blogs and websites:</strong>
-                    Use a small number of symbols such as 📌, ✅, or 📝 to identify
-                    steps, reminders, and important sections.
-                </li>
-<li>
-<strong>Professional communication:</strong>
-                    Choose neutral, widely understood emojis and keep essential
-                    instructions, dates, and decisions in words.
-                </li>
-</ul>
-<h3>4. Review Every Automatic Emoji Suggestion</h3>
-<p>
-                Automated matching cannot fully understand every joke, cultural
-                reference, sensitive topic, or brand rule. Remove any suggestion
-                that changes the intended meaning, looks inappropriate for the
-                audience, or may be interpreted differently on another platform.
-            </p>
-<h3>5. Browser-Based Processing and Useful Emoji Guides</h3>
-<p>
-                Text entered in the Mojitap editor is processed in your browser by
-                the tool's matching rules. To find a specific symbol, use the
-                <a href="/all-emojis">All Emojis search and copy page</a>. To open
-                the built-in emoji keyboard on your device, read
-                <a href="/29-how-to-type-emojis-windows-mac-iphone-android">
-                    How to Type Emojis on Windows, Mac, iPhone, and Android
-                </a>. For common heart symbols, see the
-                <a href="/30-heart-emoji-meanings-colors-symbols">
-                    Heart Emoji Meanings guide
-                </a>.
-            </p>
-<h3>6. What Mojitap Does and Does Not Do</h3>
-<p>
-                Mojitap is a focused emoji generator for text, not a guarantee that
-                one emoji will work for every reader or platform. It does not predict
-                engagement, search rankings, or campaign results. Its purpose is to
-                give you a fast, editable starting point while you remain in control
-                of the final wording.
-            </p>
-<p>
-                Browse more practical examples in
-                <a href="/blog">Emoji Tips</a>. For information about analytics,
-                advertising, cookies, and contact-form data, review the
-                <a href="/privacy">Privacy Policy</a>.
-            </p>
-<h3 id="mojitap-example-review">7. Review the Suggested Result with Examples</h3>
-<div style="overflow-x:auto;margin:18px 0 24px;">
-<table style="width:100%;min-width:620px;border-collapse:collapse;background:#fff;">
-<thead><tr><th style="padding:12px;border:1px solid var(--border-color);text-align:left;">Input</th><th style="padding:12px;border:1px solid var(--border-color);text-align:left;">Possible result</th><th style="padding:12px;border:1px solid var(--border-color);text-align:left;">Final review</th></tr></thead>
-<tbody>
-<tr><td style="padding:12px;border:1px solid var(--border-color);">Dinner at 7</td><td style="padding:12px;border:1px solid var(--border-color);">Dinner at 7 🍽️</td><td style="padding:12px;border:1px solid var(--border-color);">Confirm that the meal cue matches the context.</td></tr>
-<tr><td style="padding:12px;border:1px solid var(--border-color);">The package arrived</td><td style="padding:12px;border:1px solid var(--border-color);">The package arrived 📦</td><td style="padding:12px;border:1px solid var(--border-color);">Keep the delivery status in words.</td></tr>
-<tr><td style="padding:12px;border:1px solid var(--border-color);">Please review the warning</td><td style="padding:12px;border:1px solid var(--border-color);">Please review the warning ⚠️</td><td style="padding:12px;border:1px solid var(--border-color);">Do not let the symbol replace the warning details.</td></tr>
+<article class="seo-content"><h2>Choose emoji that fit the sentence, then review the result</h2>
+<p>Mojitap adds existing Unicode emoji to supported English and Korean wording. Paste a draft, select <strong>Add Emojis to Text</strong>, review the suggested characters, and use <strong>Copy All</strong>. You can still edit every word and insert an emoji manually from the palette.</p>
+<h3>Try these exact inputs</h3>
+<p>These short examples reflect the current local rules, not customer results. Meaning outside the supported patterns can still be missed.</p>
+<div aria-label="Example inputs and current suggestions" class="responsive-table-wrap" role="region" tabindex="0"><table class="guide-table"><thead><tr><th scope="col">Input</th><th scope="col">Result</th><th scope="col">What to check</th></tr></thead><tbody>
+<tr><td>Dinner at 7</td><td>Dinner at 7 🍽️</td><td>The meal cue is optional; the time stays in words.</td></tr>
+<tr><td>The package arrived</td><td>The package arrived 📦</td><td>Only you can confirm whether the parcel arrived.</td></tr>
+<tr><td>Do not click the link.</td><td>Do not click the link. ⚠️</td><td>The warning must not become an invitation to click.</td></tr>
+<tr><td>The release is cancelled.</td><td>The release is cancelled. ⚠️</td><td>Cancellation is not a launch celebration.</td></tr>
+<tr><td>오늘 기분이 좋지 않아.</td><td>오늘 기분이 좋지 않아. 😕</td><td>Review tone and context before sending.</td></tr>
+<tr><td>Please read section B.</td><td>Please read section B.</td><td>No suitable match is a valid result.</td></tr>
 </tbody></table></div>
-<p>Suggestions can be wrong when a word has several meanings, a sentence is sarcastic, or a symbol has a different social meaning for the audience. Keep the wording complete and remove any emoji that makes the message less precise.</p>
-</article>
-<div id="footer-placeholder"></div>
+<h3>How the number of emoji is chosen</h3>
+<p>The tool normally adds one cue to a matched sentence and limits additions within a paragraph. A long sentence can receive two compatible topic cues. A document-wide ceiling limits clutter; it is not a target the tool must fill. Existing emoji and repeated sentences reduce new additions.</p>
+<p>The same input uses stable selection rather than unrelated random decoration. A sentence that already contains emoji is left alone. Clicking the button repeatedly is not intended to keep adding more symbols; use the palette for intentional additions.</p>
+<h3>What stays untouched</h3>
+<p>The engine preserves your words, punctuation, and line breaks. It excludes supported URL, email, mention, hashtag, and code patterns from topic matching. This is not a general-purpose parser or a guarantee for every markup format. Do not paste secrets or use decorative processing for program source, legal wording, or other exact-format material.</p>
+<h3>When no automatic suggestion is better</h3>
+<p>Unclear matches, unsupported wording, some negations, and sensitive passages can stay unchanged. Mojitap does not interpret sarcasm or complex conditions reliably. It does not translate text, validate facts, or infer a person's intent. Read the final sentence without its emoji; its important meaning should still stand.</p>
+<h3>Insert and copy</h3>
+<p>Select a palette emoji to insert it at the cursor. The original single-emoji clipboard copy is also attempted; a copy restriction does not prevent insertion. <strong>Copy All</strong> copies the editor text and reports a failure rather than claiming success when the browser blocks it. Clipboard behavior depends on browser permissions.</p>
+<h3>Find the right guide</h3>
+<p>For a particular character, use <a href="/all-emojis">All Emojis</a>. For an unknown name, try the <a href="/31-how-to-find-an-emoji-without-knowing-name">description-based search guide</a>. A box or broken sequence is covered by <a href="/34-why-does-an-emoji-show-as-a-box-or-question-mark">display troubleshooting</a>. For device input, see <a href="/29-how-to-type-emojis-windows-mac-iphone-android">the keyboard guide</a>.</p>
+<p>Your draft is processed locally by this page's JavaScript. Analytics, advertising, hosting, and contact services have separate data behavior described in the <a href="/privacy">Privacy Policy</a>. Learn about the rule-based tool and the site's editing process on <a href="/about">About Mojitap</a>.</p></article>
+<div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
 </div>
-<script src="layout.js"></script>
+<script src="/layout.js?v=20260916"></script>
+<script src="/emoji-engine.js?v=20260916"></script>
 <script>
+
         window.onload = () => {
             initLayout('home');
             changeEmojiTab('popular');
         };
 
+        let toastTimer;
         function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.innerText = message;
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            clearTimeout(toastTimer);
+            toast.textContent = message;
+            toast.className = 'show';
+            toastTimer = setTimeout(() => { toast.className = ''; }, 4000);
         }
 
         const emojiData = {
@@ -285,13 +221,19 @@
             flags: ['🇰🇷','🇺🇸','🇯🇵','🇨🇳','🇬🇧','🇨🇦','🇩🇪','🇫🇷','🇮🇹','🇷🇺','🇪🇸','🇧🇷','🇦🇺','🇻🇳','🇹🇭','🇹🇼','🇭🇰','🇸🇬','🇲🇾','🇮🇩','🇮🇳','🇲🇽','🇦🇷','🇨🇱','🇨🇴','🇵🇪','🇿🇦','🇪🇬','🇳🇬','🇰🇪','🇸🇦','🇦🇪','🇮🇱','🇹🇷','🇮🇷','🇵🇰','🇧🇩','🇵🇭','🇳🇿','🇨🇭','🇦🇹','🇳🇱','🇧🇪','🇸🇪','🇳🇴','🇩🇰','🇫🇮','🇵🇱','🇨🇿','🇭🇺','🇬🇷','🇵🇹','🇮🇪','🇺🇦']
         };
 
+        const emojiNames = {"✨":"sparkles","🔥":"fire","❤️":"red heart","👍":"thumbs up","✅":"check mark button","😂":"face with tears of joy","🥰":"smiling face with hearts","🎉":"party popper","🚨":"police car light","🚀":"rocket","👇":"backhand index pointing down","👉":"backhand index pointing right","📌":"pushpin","💡":"light bulb","💯":"hundred points","🎁":"wrapped gift","📢":"loudspeaker","💵":"dollar banknote","⭐":"star","👀":"eyes","🙌":"raising hands","👏":"clapping hands","🤝":"handshake","💪":"flexed biceps","🙏":"folded hands","🏆":"trophy","🎯":"bullseye","🛒":"shopping cart","🛍️":"shopping bags","🔖":"bookmark","🔔":"bell","📈":"chart increasing","💬":"speech balloon","🤩":"star-struck","😎":"smiling face with sunglasses","🥳":"partying face","🥹":"face holding back tears","🤔":"thinking face","💸":"money with wings","💳":"credit card","💎":"gem stone","👑":"crown","📝":"memo","🔎":"magnifying glass tilted right","⚡":"high voltage","💖":"sparkling heart","🎈":"balloon","🎊":"confetti ball","🤣":"rolling on the floor laughing","😊":"smiling face with smiling eyes","😍":"smiling face with heart-eyes","😘":"face blowing a kiss","😋":"face savoring food","😏":"smirking face","😔":"pensive face","😭":"loudly crying face","😡":"enraged face","🤯":"exploding head","😱":"face screaming in fear","🥺":"pleading face","👋":"waving hand","👌":"OK hand","✌️":"victory hand","🤞":"crossed fingers","👈":"backhand index pointing left","👆":"backhand index pointing up","☝️":"index pointing up","👎":"thumbs down","👊":"oncoming fist","❤️‍🔥":"heart on fire","🤍":"white heart","🖤":"black heart","💔":"broken heart","💕":"two hearts","💥":"collision","💦":"sweat droplets","💨":"dashing away","🛑":"stop sign","⚠️":"warning","📣":"megaphone","🎵":"musical note","📍":"round pushpin","✏️":"pencil","💰":"money bag","📉":"chart decreasing","📊":"bar chart","📅":"calendar","✔️":"check mark","❌":"cross mark","✈️":"airplane","☕":"hot beverage","🍔":"hamburger","🍻":"clinking beer mugs","💻":"laptop","📱":"mobile phone","📸":"camera with flash","🎧":"headphone","😀":"grinning face","😃":"grinning face with big eyes","😄":"grinning face with smiling eyes","😁":"beaming face with smiling eyes","😆":"grinning squinting face","😅":"grinning face with sweat","😇":"smiling face with halo","🙂":"slightly smiling face","🙃":"upside-down face","😉":"winking face","😌":"relieved face","😗":"kissing face","😙":"kissing face with smiling eyes","😚":"kissing face with closed eyes","😛":"face with tongue","😝":"squinting face with tongue","😜":"winking face with tongue","🤪":"zany face","🤨":"face with raised eyebrow","🧐":"face with monocle","🤓":"nerd face","🥸":"disguised face","😒":"unamused face","😞":"disappointed face","😟":"worried face","😕":"confused face","🙁":"slightly frowning face","☹️":"frowning face","😣":"persevering face","😖":"confounded face","😫":"tired face","😩":"weary face","😢":"crying face","😤":"face with steam from nose","😠":"angry face","🤬":"face with symbols on mouth","😳":"flushed face","🥵":"hot face","🥶":"cold face","😨":"fearful face","😰":"anxious face with sweat","😥":"sad but relieved face","😓":"downcast face with sweat","🤗":"smiling face with open hands","🤭":"face with hand over mouth","🤫":"shushing face","🤥":"lying face","😶":"face without mouth","😐":"neutral face","😑":"expressionless face","😬":"grimacing face","🙄":"face with rolling eyes","😯":"hushed face","😦":"frowning face with open mouth","😧":"anguished face","😮":"face with open mouth","😲":"astonished face","🥱":"yawning face","😴":"sleeping face","🤤":"drooling face","😪":"sleepy face","😵":"face with crossed-out eyes","🤐":"zipper-mouth face","🥴":"woozy face","🤢":"nauseated face","🤮":"face vomiting","🤧":"sneezing face","😷":"face with medical mask","🤒":"face with thermometer","🤕":"face with head-bandage","🤑":"money-mouth face","🤠":"cowboy hat face","😈":"smiling face with horns","👿":"angry face with horns","👹":"ogre","👺":"goblin","💘":"heart with arrow","💝":"heart with ribbon","💗":"growing heart","💓":"beating heart","💞":"revolving hearts","💟":"heart decoration","❣️":"heart exclamation","🧡":"orange heart","💛":"yellow heart","💚":"green heart","💙":"blue heart","💜":"purple heart","🤎":"brown heart","💢":"anger symbol","💫":"dizzy","🕳️":"hole","💣":"bomb","👁️‍🗨️":"eye in speech bubble","🗨️":"left speech bubble","🗯️":"right anger bubble","💭":"thought balloon","💤":"ZZZ","💮":"white flower","♨️":"hot springs","💈":"barber pole","⛔":"no entry","🚫":"prohibited","🚷":"no pedestrians","🚯":"no littering","🚳":"no bicycles","🚱":"non-potable water","🔞":"no one under eighteen","📵":"no mobile phones","🚭":"no smoking","❗️":"red exclamation mark","❕":"white exclamation mark","❓":"red question mark","❔":"white question mark","‼️":"double exclamation mark","⁉️":"exclamation question mark","🔅":"dim button","🔆":"bright button","〽️":"part alternation mark","🚸":"children crossing","🔱":"trident emblem","⚜️":"fleur-de-lis","🔰":"Japanese symbol for beginner","♻️":"recycling symbol","❎":"cross mark button","➰":"curly loop","➿":"double curly loop","✳️":"eight-spoked asterisk","✴️":"eight-pointed star","❇️":"sparkle","©️":"copyright","®️":"registered","™️":"trade mark","🤚":"raised back of hand","🖐️":"hand with fingers splayed","✋":"raised hand","🖖":"vulcan salute","🤌":"pinched fingers","🤏":"pinching hand","🤟":"love-you gesture","🤘":"sign of the horns","🤙":"call me hand","🖕":"middle finger","✊":"raised fist","🤛":"left-facing fist","🤜":"right-facing fist","👐":"open hands","🤲":"palms up together","✍️":"writing hand","💅":"nail polish","🤳":"selfie","🦾":"mechanical arm","🦿":"mechanical leg","🦵":"leg","🦶":"foot","👂":"ear","🦻":"ear with hearing aid","👃":"nose","🧠":"brain","🫀":"anatomical heart","🫁":"lungs","🦷":"tooth","🦴":"bone","👁️":"eye","👅":"tongue","👄":"mouth","🐶":"dog face","🐱":"cat face","🐭":"mouse face","🐹":"hamster","🐰":"rabbit face","🦊":"fox","🐻":"bear","🐼":"panda","🐻‍❄️":"polar bear","🐨":"koala","🐯":"tiger face","🦁":"lion","🐮":"cow face","🐷":"pig face","🐽":"pig nose","🐸":"frog","🐵":"monkey face","🙈":"see-no-evil monkey","🙉":"hear-no-evil monkey","🙊":"speak-no-evil monkey","🐒":"monkey","🐔":"chicken","🐧":"penguin","🐦":"bird","🐤":"baby chick","🐣":"hatching chick","🐥":"front-facing baby chick","🦆":"duck","🦅":"eagle","🦉":"owl","🦇":"bat","🐺":"wolf","🐗":"boar","🐴":"horse face","🦄":"unicorn","🐝":"honeybee","🪱":"worm","🐛":"bug","🦋":"butterfly","🐌":"snail","🐞":"lady beetle","🐜":"ant","🪰":"fly","🪲":"beetle","🪳":"cockroach","🦟":"mosquito","🦗":"cricket","🕷️":"spider","🕸️":"spider web","🦂":"scorpion","🐢":"turtle","🐍":"snake","🦎":"lizard","🦖":"T-Rex","🦕":"sauropod","🐙":"octopus","🦑":"squid","🦐":"shrimp","🦞":"lobster","🦀":"crab","🐡":"blowfish","🐠":"tropical fish","🐟":"fish","🐬":"dolphin","🐳":"spouting whale","🐋":"whale","🦈":"shark","🦭":"seal","🐊":"crocodile","🐅":"tiger","🐆":"leopard","🦓":"zebra","🦍":"gorilla","🦧":"orangutan","🦣":"mammoth","🐘":"elephant","🦛":"hippopotamus","🦏":"rhinoceros","🐪":"camel","🐫":"two-hump camel","🦒":"giraffe","🦘":"kangaroo","🦬":"bison","🐃":"water buffalo","🐂":"ox","🐄":"cow","🐎":"horse","🐖":"pig","🐏":"ram","🐑":"ewe","🦙":"llama","🐐":"goat","🦌":"deer","🐕":"dog","🐩":"poodle","🦮":"guide dog","🐕‍🦺":"service dog","🐈":"cat","🐈‍⬛":"black cat","🪶":"feather","🐓":"rooster","🦃":"turkey","🦤":"dodo","🦚":"peacock","🦜":"parrot","🦢":"swan","🦩":"flamingo","🕊️":"dove","🍏":"green apple","🍎":"red apple","🍐":"pear","🍊":"tangerine","🍋":"lemon","🍌":"banana","🍉":"watermelon","🍇":"grapes","🍓":"strawberry","🫐":"blueberries","🍈":"melon","🍒":"cherries","🍑":"peach","🥭":"mango","🍍":"pineapple","🥥":"coconut","🥝":"kiwi fruit","🍅":"tomato","🍆":"eggplant","🥑":"avocado","🥦":"broccoli","🥬":"leafy green","🥒":"cucumber","🌶️":"hot pepper","🫑":"bell pepper","🌽":"ear of corn","🥕":"carrot","🫒":"olive","🧄":"garlic","🧅":"onion","🥔":"potato","🍠":"roasted sweet potato","🥐":"croissant","🥯":"bagel","🍞":"bread","🥖":"baguette bread","🥨":"pretzel","🧀":"cheese wedge","🥚":"egg","🍳":"cooking","🧈":"butter","🥞":"pancakes","🧇":"waffle","🥓":"bacon","🥩":"cut of meat","🍗":"poultry leg","🍖":"meat on bone","🌭":"hot dog","🍟":"french fries","🍕":"pizza","🫓":"flatbread","🥪":"sandwich","🥙":"stuffed flatbread","🧆":"falafel","🌮":"taco","🌯":"burrito","🫔":"tamale","🥗":"green salad","🥘":"shallow pan of food","🫕":"fondue","🥫":"canned food","🍝":"spaghetti","🍜":"steaming bowl","🍲":"pot of food","🍛":"curry rice","🍣":"sushi","🍱":"bento box","🥟":"dumpling","🦪":"oyster","🍤":"fried shrimp","🍙":"rice ball","🍚":"cooked rice","🍘":"rice cracker","🍥":"fish cake with swirl","🥠":"fortune cookie","🥮":"moon cake","🍢":"oden","🍡":"dango","🍧":"shaved ice","🍨":"ice cream","🍦":"soft ice cream","🥧":"pie","🧁":"cupcake","🍰":"shortcake","🎂":"birthday cake","🍮":"custard","🍭":"lollipop","🍬":"candy","🍫":"chocolate bar","🍿":"popcorn","🍩":"doughnut","🍪":"cookie","🌰":"chestnut","🥜":"peanuts","🍯":"honey pot","🥛":"glass of milk","🍼":"baby bottle","🫖":"teapot","🍵":"teacup without handle","🧃":"beverage box","🥤":"cup with straw","🧋":"bubble tea","🍶":"sake","🍺":"beer mug","🥂":"clinking glasses","🍷":"wine glass","🥃":"tumbler glass","🍸":"cocktail glass","🍹":"tropical drink","🧉":"mate","🍾":"bottle with popping cork","🧊":"ice","🥄":"spoon","🍴":"fork and knife","🍽️":"fork and knife with plate","🥣":"bowl with spoon","🥡":"takeout box","🥢":"chopsticks","🧂":"salt","🏔️":"snow-capped mountain","⛰️":"mountain","🌋":"volcano","🗻":"mount fuji","🏕️":"camping","🏖️":"beach with umbrella","🏜️":"desert","🏝️":"desert island","🏞️":"national park","🏟️":"stadium","🏛️":"classical building","🏗️":"building construction","🏘️":"houses","🏠":"house","🏡":"house with garden","🏢":"office building","🏣":"Japanese post office","🏤":"post office","🏥":"hospital","🏦":"bank","🏨":"hotel","🏩":"love hotel","🏪":"convenience store","🏫":"school","🏬":"department store","🏭":"factory","🏯":"Japanese castle","🏰":"castle","💒":"wedding","🗼":"Tokyo tower","🗽":"Statue of Liberty","⛪":"church","🕌":"mosque","🛕":"hindu temple","🕍":"synagogue","⛩️":"shinto shrine","🕋":"kaaba","⛲":"fountain","⛺":"tent","🌁":"foggy","🌃":"night with stars","🏙️":"cityscape","🌄":"sunrise over mountains","🌅":"sunrise","🌆":"cityscape at dusk","🌇":"sunset","🌉":"bridge at night","🎠":"carousel horse","🎡":"ferris wheel","🎢":"roller coaster","🎪":"circus tent","🚂":"locomotive","🚃":"railway car","🚄":"high-speed train","🚅":"bullet train","🚆":"train","🚇":"metro","🚈":"light rail","🚉":"station","🚊":"tram","🚝":"monorail","🚞":"mountain railway","🚋":"tram car","🚌":"bus","🚍":"oncoming bus","🚎":"trolleybus","🚐":"minibus","🚑":"ambulance","🚒":"fire engine","🚓":"police car","🚔":"oncoming police car","🚕":"taxi","🚖":"oncoming taxi","🚗":"automobile","🚘":"oncoming automobile","🚙":"sport utility vehicle","🛻":"pickup truck","🚚":"delivery truck","🚛":"articulated lorry","🚜":"tractor","🏎️":"racing car","🏍️":"motorcycle","🛵":"motor scooter","🦽":"manual wheelchair","🦼":"motorized wheelchair","🛺":"auto rickshaw","🚲":"bicycle","🛴":"kick scooter","🛹":"skateboard","🛼":"roller skate","🚏":"bus stop","🛣️":"motorway","🛤️":"railway track","🛢️":"oil drum","⛽":"fuel pump","🚥":"horizontal traffic light","🚦":"vertical traffic light","⚓":"anchor","⛵":"sailboat","🛶":"canoe","🚤":"speedboat","🛳️":"passenger ship","⛴️":"ferry","🛥️":"motor boat","🚢":"ship","🛩️":"small airplane","🛫":"airplane departure","🛬":"airplane arrival","🪂":"parachute","💺":"seat","🚁":"helicopter","🚟":"suspension railway","🚠":"mountain cableway","🚡":"aerial tramway","🛰️":"satellite","🛸":"flying saucer","⌚":"watch","📲":"mobile phone with arrow","⌨️":"keyboard","🖥️":"desktop computer","🖨️":"printer","🖱️":"computer mouse","🖲️":"trackball","🕹️":"joystick","🗜️":"clamp","💽":"computer disk","💾":"floppy disk","💿":"optical disk","📀":"dvd","📼":"videocassette","📷":"camera","📹":"video camera","🎥":"movie camera","📽️":"film projector","🎞️":"film frames","📞":"telephone receiver","☎️":"telephone","📟":"pager","📠":"fax machine","📺":"television","📻":"radio","🎙️":"studio microphone","🎚️":"level slider","🎛️":"control knobs","🧭":"compass","⏱️":"stopwatch","⏲️":"timer clock","⏰":"alarm clock","🕰️":"mantelpiece clock","⌛":"hourglass done","⏳":"hourglass not done","📡":"satellite antenna","🔋":"battery","🔌":"electric plug","🔦":"flashlight","🕯️":"candle","🪔":"diya lamp","🧯":"fire extinguisher","💴":"yen banknote","💶":"euro banknote","💷":"pound banknote","🪙":"coin","⚖️":"balance scale","🪜":"ladder","🧰":"toolbox","🪛":"screwdriver","🔧":"wrench","🔨":"hammer","⚒️":"hammer and pick","🛠️":"hammer and wrench","⛏️":"pick","🪚":"carpentry saw","🔩":"nut and bolt","⚙️":"gear","🪤":"mouse trap","🧱":"brick","⛓️":"chains","🧲":"magnet","🔫":"water pistol","🧨":"firecracker","🪓":"axe","🔪":"kitchen knife","🗡️":"dagger","⚔️":"crossed swords","🛡️":"shield","🚬":"cigarette","⚰️":"coffin","🪦":"headstone","⚱️":"funeral urn","🏺":"amphora","🔮":"crystal ball","📿":"prayer beads","🧿":"nazar amulet","⚗️":"alembic","🔭":"telescope","🔬":"microscope","🩹":"adhesive bandage","🩺":"stethoscope","💊":"pill","💉":"syringe","🩸":"drop of blood","🧬":"dna","🦠":"microbe","🧫":"petri dish","🧪":"test tube","🌡️":"thermometer","🧹":"broom","🪠":"plunger","🧺":"basket","🧻":"roll of paper","🚽":"toilet","🚰":"potable water","🚿":"shower","🛁":"bathtub","🛀":"person taking bath","🧼":"soap","🪥":"toothbrush","🪒":"razor","🧽":"sponge","🪣":"bucket","🧴":"lotion bottle","🛎️":"bellhop bell","🔑":"key","🗝️":"old key","🚪":"door","🪑":"chair","🛋️":"couch and lamp","🛏️":"bed","🛌":"person in bed","🧸":"teddy bear","🪆":"nesting dolls","🖼️":"framed picture","🪞":"mirror","🪟":"window","🎏":"carp streamer","🎀":"ribbon","🪄":"magic wand","🪅":"piñata","🎎":"Japanese dolls","🏮":"red paper lantern","🎐":"wind chime","🧧":"red envelope","✉️":"envelope","📩":"envelope with arrow","📨":"incoming envelope","📧":"e-mail","💌":"love letter","📥":"inbox tray","📤":"outbox tray","📦":"package","🏷️":"label","🪧":"placard","📪":"closed mailbox with lowered flag","📫":"closed mailbox with raised flag","📬":"open mailbox with raised flag","📭":"open mailbox with lowered flag","📮":"postbox","📯":"postal horn","📜":"scroll","📃":"page with curl","📄":"page facing up","📑":"bookmark tabs","🧾":"receipt","🗒️":"spiral notepad","🗓️":"spiral calendar","📆":"tear-off calendar","🗑️":"wastebasket","📇":"card index","🗃️":"card file box","🗳️":"ballot box with ballot","🗄️":"file cabinet","📋":"clipboard","📁":"file folder","📂":"open file folder","🗂️":"card index dividers","🗞️":"rolled-up newspaper","📰":"newspaper","📓":"notebook","📔":"notebook with decorative cover","📒":"ledger","📕":"closed book","📗":"green book","📘":"blue book","📙":"orange book","📚":"books","📖":"open book","🧷":"safety pin","🔗":"link","📎":"paperclip","🖇️":"linked paperclips","📐":"triangular ruler","📏":"straight ruler","🧮":"abacus","✂️":"scissors","🖋️":"fountain pen","🖊️":"pen","🖌️":"paintbrush","🖍️":"crayon","🔍":"magnifying glass tilted left","🔏":"locked with pen","🔐":"locked with key","🔒":"locked","🔓":"unlocked","🇰🇷":"flag: South Korea","🇺🇸":"flag: United States","🇯🇵":"flag: Japan","🇨🇳":"flag: China","🇬🇧":"flag: United Kingdom","🇨🇦":"flag: Canada","🇩🇪":"flag: Germany","🇫🇷":"flag: France","🇮🇹":"flag: Italy","🇷🇺":"flag: Russia","🇪🇸":"flag: Spain","🇧🇷":"flag: Brazil","🇦🇺":"flag: Australia","🇻🇳":"flag: Vietnam","🇹🇭":"flag: Thailand","🇹🇼":"flag: Taiwan","🇭🇰":"flag: Hong Kong SAR China","🇸🇬":"flag: Singapore","🇲🇾":"flag: Malaysia","🇮🇩":"flag: Indonesia","🇮🇳":"flag: India","🇲🇽":"flag: Mexico","🇦🇷":"flag: Argentina","🇨🇱":"flag: Chile","🇨🇴":"flag: Colombia","🇵🇪":"flag: Peru","🇿🇦":"flag: South Africa","🇪🇬":"flag: Egypt","🇳🇬":"flag: Nigeria","🇰🇪":"flag: Kenya","🇸🇦":"flag: Saudi Arabia","🇦🇪":"flag: United Arab Emirates","🇮🇱":"flag: Israel","🇹🇷":"flag: Türkiye","🇮🇷":"flag: Iran","🇵🇰":"flag: Pakistan","🇧🇩":"flag: Bangladesh","🇵🇭":"flag: Philippines","🇳🇿":"flag: New Zealand","🇨🇭":"flag: Switzerland","🇦🇹":"flag: Austria","🇳🇱":"flag: Netherlands","🇧🇪":"flag: Belgium","🇸🇪":"flag: Sweden","🇳🇴":"flag: Norway","🇩🇰":"flag: Denmark","🇫🇮":"flag: Finland","🇵🇱":"flag: Poland","🇨🇿":"flag: Czechia","🇭🇺":"flag: Hungary","🇬🇷":"flag: Greece","🇵🇹":"flag: Portugal","🇮🇪":"flag: Ireland","🇺🇦":"flag: Ukraine"};
+
         function changeEmojiTab(category) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); });
             document.getElementById('tab-' + category).classList.add('active');
+            document.getElementById('tab-' + category).setAttribute('aria-pressed', 'true');
             const displayArea = document.getElementById('emoji-grid-display');
             displayArea.innerHTML = '';
             emojiData[category].forEach(emoji => {
-                const item = document.createElement('div');
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.setAttribute('aria-label', 'Insert ' + (emojiNames[emoji] || emoji));
+                item.title = emojiNames[emoji] || emoji;
                 item.className = 'emoji-item';
                 item.innerText = emoji;
                 item.onclick = () => copySingleEmoji(emoji);
@@ -299,647 +241,93 @@
             });
         }
 
-        const smartEmojiEngine = (() => {
-            const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*/gu;
-            const EMOJI_AT_START_RE = /^(?:\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F|\uFE0E)?)*)+/u;
-            const PROTECTED_RE = /(?:https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|#[\p{L}\p{N}_-]+|@[\p{L}\p{N}_.]+|`[^`\n]*`|\[[^\]\n]+\]\([^)]+\))/giu;
-            const HASH_ONLY_RE = /^(?:\s*#[\p{L}\p{N}_-]+\s*){2,}$/u;
-            
-            const CRITICAL_RE = /사망|별세|장례|부고|추모|참사|대형 재난|희생자|유가족|전쟁|자해|극단적 선택|\bdeath\b|passed away|\bfuneral\b|rest in peace|deepest condolences?|\bfatal(?:ity|ities)?\b|\btragedy\b|\bcatastrophe\b|mass casualty|\bsuicide\b/i;
-            const CONDOLENCE_RE = /명복|애도|추모|유가족|깊은 위로|마음이 무겁|condolence|rest in peace|deepest sympath|our thoughts are with|mourning|bereaved/i;
-            const FORMAL_RE = /안내드립니다|공지드립니다|알려드립니다|확인 부탁|참고 부탁|양해 부탁|예정입니다|시행합니다|\bplease note\b|\bofficial notice\b|\bwe are writing to\b|\beffective (?:on|from|immediately)\b|\bkindly note\b/i;
-            
-            const FALSE_NEGATIVE_RE = /\bcan['’]t wait\b|\bcouldn['’]t be happier\b|\bnot only\b|\bno wonder\b|\bno[- ]brainer\b|\bnever been better\b|\bnothing short of\b/i;
-            const EN_NEGATION_RE = /\b(?:not|never|no longer|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|don['’]t|doesn['’]t|didn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|cannot|hardly|barely|rarely|far from)\b/i;
-            const KO_NEGATION_RE = /안\s*(?:좋|맞|되|하|추천)|별로|전혀.{0,12}(?:않|못)|(?:좋|행복|기쁘|만족|추천|성공|괜찮|사랑).{0,12}(?:않|못|아니|없)|비추천|실망|최악/i;
-            
-            const CTA_RE = /저장(?:해|하세요)?|공유(?:해|하세요)?|팔로우|구독|태그|댓글|의견.{0,8}(?:남겨|알려)|링크.{0,12}(?:눌러|확인)|신청(?:해|하세요)?|지원(?:해|하세요)?|(?:지금\s*)?구매(?:해|하세요|하고)|클릭|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b|\bshare (?:this|it|the)\b|\bfollow (?:us|for)\b|\bsubscribe\b|\btag (?:a|your)\b|\bcomment(?: below)?\b|\blet (?:me|us) know\b|\btell us\b|\bsign up\b|\bjoin us\b|\bapply (?:now|today|through)\b|\bshop now\b|\blearn more\b|\bread more\b|\b(?:tap|click|visit) the link\b|\blink in bio\b/i;
-            const SAVE_RE = /저장|북마크|\bsave (?:this|the)\b|\bbookmark (?:this|the)\b/i;
-            const FOLLOW_RE = /팔로우|구독|\bfollow (?:us|for)\b|\bsubscribe\b/i;
-
-            const P = (id, priority, emojis, patterns) => ({ id, priority, emojis, patterns });
-            
-            const profiles = [
-                P('condolence', 100, ['🕯️'], [[CONDOLENCE_RE, 10]]),
-                P('warning', 97, ['⚠️','🚨','❗'], [[/주의|경고|위험|긴급|조심|유의|절대 금지|\bwarning\b|\bdanger\b|\bemergency\b|\burgent\b|\bcaution\b|\bheads up\b|\bbeware\b|\bred flag\b|\bdo not\b|\btemporarily unavailable\b|\bservice (?:outage|disruption|interruption)\b/i, 6]]),
-                P('negative-review', 95, ['👎','😕','⚠️'], [[/비추천|추천하지 않|돈이 아깝|가격 대비.{0,15}별로|환불|품질이 나쁘|다시는 (?:사지|쓰지)|wouldn['’]t recommend|don['’]t recommend|do not recommend|(?:isn['’]t|wasn['’]t|not) worth (?:it|the price)|waste of money|poor quality|one star|bad experience|asked for a refund|returning it/i, 7], [/배터리.{0,20}(?:방전|빨리)|고객 ?센터.{0,35}(?:답|연락).*(?:없|않)|battery (?:drains|dies)|support (?:never|didn['’]t|doesn['’]t)|never (?:replied|responded)|stopped working|keeps? crashing|full of bugs/i, 5.5]]),
-                P('apology', 92, ['🙏','😔'], [[/죄송|미안|사과|유감|불편을 드려|심려를 끼쳐|\bsorry\b|\bapolog|\bwe regret\b/i, 6]]),
-                P('deadline', 90, ['⏰','⏳','📅'], [[/마감|오늘까지|내일까지|기간 종료|임박|선착순|\bdeadline\b|\blast chance\b|\bfinal call\b|\bends? (?:today|tomorrow|soon)\b|\bdue (?:today|tomorrow|on)\b|\bcloses? (?:today|tomorrow|soon)\b|\bonly \d+ spots? left\b/i, 6]]),
-                P('promotion', 88, ['🎁','🏷️','🛍️'], [[/할인|특가|쿠폰|증정|사은품|혜택|프로모션|세일|\bdiscount\b|\bsale\b|\bcoupon\b|\bgiveaway\b|\bpromo code\b|\bspecial offer\b|\blimited offer\b|\bfree (?:shipping|trial|gift|download|sample)\b/i, 5.5], [/\d{1,3}\s*%|\b\d{1,3}% off\b|\$\d+\s*off/i, 2]]),
-                P('launch', 86, ['🚀','✨','🎉'], [[/출시|런칭|론칭|정식 오픈|새롭게 선보|서비스 시작|\blaunch(?:ed|ing)?\b|\brelease(?:d)?\b|\bnow live\b|\bintroducing\b|\bunveil(?:ed|ing)?\b|\brolling out\b|\bjust dropped\b|\bavailable now\b|\bwe shipped\b/i, 6], [/새로운 (?:제품|서비스|기능|프로젝트)|\bnew (?:product|service|feature|project|collection)\b/i, 2.5]]),
-                P('celebration', 85, ['🎉','🥳','🎊'], [[/축하|생일|기념일|당첨|수상|합격|졸업|결혼|새해|\bcongrat|\bbirthday\b|\banniversary\b|\bparty\b|\bwinner\b|\bgraduat|\bcheers to\b|\bwe did it\b|\bnailed it\b|\bcrushed it\b/i, 6]]),
-                P('gratitude', 83, ['🙏','💛','🥹'], [[/감사|고맙|덕분|수고 많|도와주|함께해 주|응원해 주|\bthank|\bgrateful\b|\bappreciat|\bhuge thanks\b|\bshoutout\b|couldn['’]t have done it without|means the world/i, 5.5]]),
-                P('achievement', 81, ['🏆','🎯','🙌'], [[/성과|목표 달성|기록 갱신|1위|우승|완성했|완료했|해냈|\bachievement\b|\bmilestone\b|\bnew record\b|\bpersonal best\b|\bcompleted\b|\bpulled it off\b|\bexceeded (?:our|all) expectations\b|\bpositive feedback\b|\bcustomer reactions?\b|\bbetter than (?:we|I) imagined\b/i, 5.5]]),
-                P('announcement', 79, ['📢','🔔','📌'], [[/공지|안내드립니다|알림드립니다|새 소식|필독|알려드립니다|\bannouncement\b|\bnotice\b|\bquick update\b|\bimportant update\b|\bbig news\b|\bFYI\b|\bPSA\b/i, 5], [FORMAL_RE, 4.5]]),
-                P('joy', 77, ['😊','🤩','✨'], [[/행복|기쁘|즐겁|신나|반가|뿌듯|기분 좋|다시.{0,12}(?:가고|하고|먹고) 싶|\bhappy\b|\bglad\b|\bdelighted\b|\bexcited\b|\bthrilled\b|\bover the moon\b|\bon cloud nine\b|\bmade my day\b|\bcan['’]t wait\b|\blooking forward\b|\bwant to (?:go|visit|try|make|see) again\b|\bgood\b|\bgreat\b|\bawesome\b|\bamazing\b|\bperfect\b|\bfantastic\b|\bwonderful\b|\bfun\b/i, 5]]),
-                P('love', 76, ['💖','🥰','💛'], [[/사랑해|사랑합니다|소중한|보고 싶|심쿵|설레|\blove you\b|\bmiss you\b|\badorable\b|\bmy favorite person\b|\bclose to my heart\b|\bobsessed with\b|\bin love with\b/i, 5]]),
-                P('humor', 75, ['😂','🤣','😆'], [[/ㅋㅋ+|ㅎㅎ+|웃겨|빵 터|농담|장난|\blol\b|\blmao\b|\brofl\b|\bfunny\b|\bjoke\b|\bcracked me up\b|\bplot twist\b/i, 5.5]]),
-                P('sadness', 74, ['😢','🥺','💙'], [[/슬프|눈물|속상|우울|마음 아프|허전|외롭|아쉽|서운|실망|\bsad\b|\bcry|\bupset\b|\bdepress|\blonely\b|\bdisappoint|\bheartbroken\b|\brough day\b|\bdevastated\b|\bgutted\b|\bbittersweet\b|\bbad\b|\bterrible\b|\bhorrible\b|\bawful\b|\bsucks?\b/i, 5]]),
-                P('anger', 73, ['😤','😡'], [[/화나|짜증|분노|열받|최악|불쾌|억울|\bangry\b|\bannoy|\bfurious\b|\bfrustrat|\bworst\b|\bfed up\b|\bunacceptable\b/i, 5.5]]),
-                P('encouragement', 72, ['💪','🙌','🔥'], [[/힘내|파이팅|응원|할 수 있|포기하지|도전하|끝까지|용기|\byou can do\b|\byou['’]ve got this\b|\bkeep going\b|\bgood luck\b|\bdon['’]t give up\b|\bbelieve in yourself\b|\blet['’]s do this\b/i, 5]]),
-                P('worry', 71, ['😥','💭','🥺'], [[/걱정|불안|고민|막막|두렵|긴장|\bworried\b|\banxious\b|\bnervous\b|\bafraid\b|\buneasy\b|\bstressed out\b|\bon edge\b/i, 5]]),
-                P('fatigue', 70, ['😮‍💨','🫠','☕'], [[/피곤|지쳤|야근|밤샘|녹초|번아웃|\btired\b|\bexhaust|\bburnout\b|\bdrained\b|\brunning on empty\b|\bwiped out\b|\blong day\b|\bneed coffee\b|\bbusy\b|\bhectic\b|\bswamped\b|\bwhole day\b|\bhard day\b/i, 5]]),
-                P('surprise', 69, ['😮','🤯','👀'], [[/깜짝|놀랐|놀랍|대박|믿기지|헉|\bsurpris|\bunbelievable\b|\bwow\b|\bomg\b|\bno way\b|\bmind blown\b|\bspeechless\b/i, 4.8]]),
-                
-                // 🚨 일상 대화 및 시간대 프로필 신설 (✨ 대신 사용될 캐주얼 이모지들)
-                P('daily', 60, ['🚶','🎧','📱','☕','⛅'], [[/오늘|지금|방금|내일|일상|하루|동네|산책|출근|퇴근|주말|\btoday\b|\bnow\b|\btomorrow\b|\bdaily\b|\bjust now\b|\bwalk\b|\bmorning\b|\bnight\b|\bweekend\b/i, 4.5]]),
-                
-                P('social-cta', 91, ['👉','🔖','💬'], [[CTA_RE, 7]]),
-                P('question', 65, ['🤔','👀','❓'], [[/궁금|어떻게 생각|어떤가요|무엇일까|왜일까|의견|\bwhat do you think\b|\bwhat are your thoughts\b|\banyone else\b|\bwho else\b|\bwhich (?:one|feature|option|version|color|colour|style|tip)\b|\bwhy\b|\bhow can\b|\bany ideas?\b/i, 4], [/[?？]\s*$/, 2.5]]),
-                P('data', 68, ['🗂️','📊','🔍'], [[/데이터|데이터셋|데이터베이스|스프레드시트|엑셀|로 데이터|\bdata\b|\bdataset\b|\bdatabase\b|\bspreadsheet\b|\banalytics\b|\bmetrics\b|\bquery\b|\bdashboard\b|\braw logs?\b|\bdata fields?\b/i, 5], [/수집|분석|가공|정제|추출|분류|필터|전처리|\bcollect|\banaly|\bprocess|\bclean|\bextract|\bclassif|\bfilter|\bpreprocess|\bvisualiz|\bpipeline\b/i, 2.5]]),
-                P('programming', 69, ['💻','🧩','⌨️'], [[/개발자|프로그래밍|코딩|코드|함수|정규표현식|스크립트|\bdeveloper\b|\bprogramming\b|\bcoding\b|\bcode\b|\bfunction\b|\bregex\b|\bregular expression\b|\bscript\b|\bjavascript\b|\btypescript\b|\bpython\b|\breact\b|\bnode\.?js\b|\bAPI\b|\bdebug/i, 5.5]]),
-                P('automation', 67, ['⚙️','🤖','⚡'], [[/자동화|워크플로|반복 작업|효율|최적화|생산성|\bautomation\b|\bautomate|\bworkflow\b|\befficien|\boptimiz|\bproductiv|\bstreamline|\bsave time\b|\bmanual process\b|\brepetitive task\b/i, 5]]),
-                P('security', 68, ['🔐','🛡️','🔒'], [[/보안|개인정보|암호|인증|권한|해킹|취약점|보호|\bsecurity\b|\bprivacy\b|\bpassword\b|\bauth|\bpermission\b|\bhack|\bvulnerab|\bprotect|\bencryption\b|\bdata breach\b|\bphishing\b|\bmalware\b|\b2FA\b/i, 5]]),
-                P('legal', 66, ['⚖️','📜','🏛️'], [[/법률|법적|법원|판결|소송|계약|규정|정책|약관|권리|의무|동의 절차|\blegal\b|\blaw\b|\bcourt\b|\blawsuit\b|\bcontract\b|\bregulation\b|\bpolicy\b|\bcompliance\b|\bcopyright\b|\btrademark\b|\bprivacy policy\b|\bterms of service\b|\bconsent\b|\bthird parties\b/i, 5.5], [/\bprivacy policy\b|\bpersonal information\b|\buser consent\b|개인정보처리방침/i, 3]]),
-                P('medical', 67, ['🩺','🏥','💊'], [[/의료|의학|진료|치료|증상|환자|약물|검사|병원|의사|\bmedical\b|\bmedicine\b|\btreatment\b|\bsymptom\b|\bpatient\b|\bhospital\b|\bdoctor\b|\bdiagnosis\b|\btherapy\b|\bprescription\b|\bclinical\b|\bhealthcare\b/i, 5]]),
-                P('injury', 72, ['🩹','⚡','🩺'], [[/근육통|경련|쥐가 나|파열|염좌|통증|부상|손상|\bmuscle pain\b|\bcramp\b|\btear\b|\binjur|\bsoreness\b|\blactic acid\b|\bpain\b/i, 5.5]]),
-                P('health', 63, ['💪','🌿','🩺'], [[/운동|헬스|러닝|다이어트|근육|건강|수면|명상|\bworkout\b|\bexercise\b|\brunning\b|\bfitness\b|\bdiet\b|\bmuscle\b|\bhealth\b|\bwellness\b|\bhydrat|\bsleep\b|\brecover|\bself-care\b|\byoga\b|\bmeditation\b/i, 4.8]]),
-                P('science', 62, ['🔬','🧬','🧪'], [[/과학|연구|실험|단백질|호르몬|뇌과학|\bscience\b|\bresearch\b|\bexperiment\b|\bprotein\b|\bhormone\b|\bneuroscience\b|\bstudy found\b/i, 4.8]]),
-                P('brain', 64, ['🧠','💡','⏳'], [[/뇌|두뇌|인지|도파민|집중력|창의성|\bbrain\b|\bcognitive\b|\bdopamine\b|\bfocus\b|\battention\b|\bcreativ|\bmental\b/i, 5]]),
-                P('digital-detox', 64, ['📵','📱','🧘'], [[/스마트폰|휴대폰|알림이 울|알림을 끄|스크롤|화면에서 벗어나|디지털 디톡스|\bsmartphone\b|\bnotifications?\b|\bscrolling\b|\bscreen-free\b|\boffline break\b|\bturn off (?:your|the) phone\b|\bstep away from (?:every|the|your) screen\b|\bunplug|\bmind wander\b/i, 5.2]]),
-                P('business', 61, ['📈','🎯','💼'], [[/매출|성장률|전환율|마케팅|비즈니스|고객 확보|전략|지표|\brevenue\b|\bgrowth\b|\bmarketing\b|\bbusiness\b|\bconversion\b|\bstrategy\b|\bROI\b|\bKPI\b|\bpipeline\b|\bretention\b|\bcustomer acquisition\b|\bquarterly results\b/i, 4.8]]),
-                P('finance', 61, ['💰','📊','💸'], [[/재테크|투자|저축|월급|수익|주식|예산|비용|\bfinance\b|\binvest|\bsaving|\bsalary\b|\bprofit\b|\bstock\b|\bbudget\b|\bcash flow\b|\bportfolio\b|\binterest rate\b|\bmortgage\b|\bretirement\b/i, 4.8], [/\bmonthly budget\b|\bautomated savings\b|\bretirement contributions?\b|월 예산|자동 저축/i, 2.5]]),
-                P('idea', 60, ['💡','📝','🔎'], [[/꿀팁|노하우|비법|아이디어|가이드|튜토리얼|통찰|인사이트|\bpro tip\b|\bhow to\b|\bidea\b|\bguide\b|\btutorial\b|\binsight\b|\btakeaway\b|\bdeep dive\b|\bstep-by-step\b|\bhere['’]s why\b|\blesson learned\b/i, 4.8]]),
-                P('work', 58, ['💼','✅','🧩'], [[/업무|회의|기획|협업|팀원|프로젝트|보고서|일정|직장|\bworkplace\b|\bmeeting\b|\bproject\b|\breport\b|\bschedule\b|\bteamwork\b|\bstandup\b|\bsprint\b|\broadmap\b|\bstakeholder\b|\bdeliverable\b|\bcollaborat/i, 4]]),
-                P('productivity', 59, ['✅','⚡','📌'], [[/생산성|할 일|체크리스트|집중|시간 관리|루틴|우선순위|습관|\bproductivity\b|\bto-do\b|\bchecklist\b|\bfocus\b|\btime management\b|\broutine\b|\bpriority\b|\bdeep work\b|\bhabit\b/i, 4.5]]),
-                P('education', 57, ['📚','🎓','✏️'], [[/공부|시험|과제|수업|강의|학습|학생|교사|학교|\bstudy\b|\bexam\b|\bclass\b|\blecture\b|\blearn|\bstudent\b|\bteacher\b|\bschool\b|\bcourse\b|\bresearch paper\b|\btraining\b/i, 4.5]]),
-                P('travel', 60, ['✈️','🧳','🌍'], [[/여행|휴가|비행기|공항|호텔|관광|해외|\btrip\b|\btravel\b|\bvacation\b|\bflight\b|\bairport\b|\bhotel\b|\bitinerary\b|\bboarding pass\b|\bpassport\b|\broad trip\b|\bgetaway\b/i, 5]]),
-                P('nature', 54, ['🌿','🌊','🌸'], [[/바다|산책|공원|숲|꽃|노을|풍경|자연|힐링|\bocean\b|\bsea\b|\bpark\b|\bforest\b|\bflower\b|\bsunset\b|\bnature\b|\bhiking\b|\btrail\b|\bwaterfall\b|\blake\b|\boutdoors\b/i, 4.3]]),
-                P('weather', 55, ['☀️','🌧️','❄️'], [[/날씨|햇살|화창|비가 오|장마|눈이 오|\bweather\b|\bsunny\b|\bsunshine\b|\brain(?:y|ing)?\b|\bstorm\b|\bsnow(?:y|ing)?\b|\bblizzard\b/i, 4.5]]),
-                P('food', 58, ['😋','🍽️','🍴'], [[/맛있|맛집|먹방|식사|요리|배고프|디저트|\bfood\b|\bdelicious\b|\brestaurant\b|\blunch\b|\bdinner\b|\bbreakfast\b|\bcooking\b|\bhungry\b|\bdessert\b|\brecipe\b|\bbrunch\b|\bhomemade\b|\bcraving\b|\bpasta\b/i, 4.8]]),
-                P('coffee', 59, ['☕','🧋'], [[/커피|카페|아메리카노|라떼|\bcoffee\b|\bcafe\b|\blatte\b|\bespresso\b/i, 5]]),
-                P('pet', 66, ['🐶','🐱','🐾'], [[/반려동물|강아지|고양이|견종|래브라도|리트리버|비글|\bpet\b|\bpuppy\b|\bdog\b|\bbreed\b|\blabrador\b|\bretriever\b|\bbeagle\b|\bcat\b|\bkitten\b/i, 5.5]]),
-                P('sports', 59, ['🏆','🏃','⚽'], [[/스포츠|경기|선수|득점|승리|패배|\bsports?\b|\bgame\b|\bmatch\b|\bplayer\b|\bscore\b|\bvictory\b|\bchampionship\b|\bfootball\b|\bsoccer\b|\bbasketball\b|\bbaseball\b|\btennis\b|\bmarathon\b/i, 4.8]]),
-                P('gaming', 59, ['🎮','🕹️','🔥'], [[/게임|게이밍|레벨업|퀘스트|보스전|\bgaming\b|\bvideo game\b|\bgamer\b|\blevel up\b|\bquest\b|\bboss fight\b|\bgameplay\b|\bconsole\b|\bco-op\b|\bmultiplayer\b/i, 5]]),
-                P('creative', 56, ['📸','🎨','🎵'], [[/사진|촬영|영상|디자인|음악|노래|콘서트|\bphoto\b|\bcamera\b|\bvideo\b|\bvlog\b|\bdesign\b|\bphotoshoot\b|\bmusic\b|\bsong\b|\bplaylist\b|\bconcert\b|\bpodcast\b/i, 4.5]]),
-                P('fashion', 56, ['👗','✨','🛍️'], [[/패션|옷|스타일링|코디|신발|가방|\bfashion\b|\boutfit\b|\bstyling\b|\bclothes\b|\bshoes\b|\bhandbag\b|\bwardrobe\b|\bsilhouette\b/i, 5.2]]),
-                P('beauty', 57, ['💄','✨','🧴'], [[/뷰티|화장|메이크업|스킨케어|피부|향수|\bbeauty\b|\bmakeup\b|\bskincare\b|\bperfume\b|\bcosmetic\b|\bserum\b|\bmoisturizer\b/i, 4.7]]),
-                P('home', 54, ['🏠','🛠️','🧹'], [[/인테리어|청소|정리|수리|가구|주방|\bhome improvement\b|\binterior\b|\bcleaning\b|\bdeclutter\b|\brepair\b|\bfurniture\b|\bkitchen\b|\bDIY\b|\brenovation\b/i, 4.5]]),
-                P('parenting', 58, ['👨‍👩‍👧','🍼','💛'], [[/육아|아이|아기|부모|엄마|아빠|가족|잠자리 습관|동화책|\bparenting\b|\bparent\b|\bbaby\b|\btoddler\b|\bchild\b|\bkids?\b|\bmom\b|\bmum\b|\bdad\b|\bfamily\b|\bbedtime routine\b|\bstory time\b|\bquiet story\b/i, 4.9]]),
-                P('hiring', 67, ['🧑‍💼','📣','🤝'], [[/채용|구인|지원자|면접|입사|커리어|이력서|\bhiring\b|\bjob opening\b|\bapplicant\b|\binterview\b|\bcareer\b|\bresume\b|\bCV\b|\bjoin our team\b/i, 5.5]]),
-                P('event', 61, ['📅','🎟️','🎤'], [[/행사|세미나|컨퍼런스|워크숍|웨비나|모임|티켓|\bevent\b|\bseminar\b|\bconference\b|\bworkshop\b|\bwebinar\b|\bmeetup\b|\bticket\b|\bsave the date\b/i, 5]]),
-                P('recommendation', 63, ['⭐','👍','✅'], [[/추천|강추|필수템|가성비|\bhighly recommend\b|\bmust-have\b|\bworth it\b|\btop pick\b|\bfavou?rite\b|\bgame changer\b|\bfive stars\b|\b10\/10\b|\bbest choice\b/i, 5]])
-            ];
-
-            const positiveIds = new Set(['celebration','launch','achievement','joy','love','recommendation','promotion']);
-            
-            // 🚨 문장 기호(형태) 기반 동적 기본값 그룹 (✨ 완전 삭제 및 다양성 확보)
-            const genericProfiles = {
-                problem: P('problem', 40, ['🧩','⚠️','🔍'], []),
-                solution: P('solution', 41, ['💡','🛠️','✅'], []),
-                number: P('number', 38, ['📊','🔢','🧮'], []),
-                explanation: P('explanation', 37, ['🔎','💡','➡️'], []),
-                info_short: P('info_short', 30, ['💬','👀','📌','✏️','🔖'], []),
-                info_long: P('info_long', 31, ['📝','💡','🔍','✅','🗂️'], []),
-                exclamation: P('exclamation', 32, ['🔥','🙌','❗','💥'], []),
-                question_generic: P('question_generic', 33, ['🤔','💭','👀','❓'], [])
-            };
-
-            function hasEmoji(text) { EMOJI_RE.lastIndex = 0; return EMOJI_RE.test(text); }
-            function countEmojis(text) { EMOJI_RE.lastIndex = 0; return (text.match(EMOJI_RE) || []).length; }
-
-            function protectText(text) {
-                const values = [];
-                return {
-                    text: text.replace(PROTECTED_RE, value => {
-                        values.push(value);
-                        return `\uE000${values.length - 1}\uE001`;
-                    }),
-                    restore(value) {
-                        return value.replace(/\uE000(\d+)\uE001/g, (_, index) => values[Number(index)]);
-                    }
-                };
-            }
-
-            function splitLine(line) {
-                if (!line) return [''];
-                const parts = [];
-                let start = 0;
-
-                for (let index = 0; index < line.length; index++) {
-                    if (!/[.!?。！？…]/u.test(line[index])) continue;
-                    if (index + 1 < line.length && !/\s/u.test(line[index + 1])) continue;
-
-                    let end = index + 1;
-                    let cursor = end;
-                    while (cursor < line.length && /\s/u.test(line[cursor])) cursor += 1;
-
-                    let foundTrailingEmoji = false;
-                    while (cursor < line.length) {
-                        const match = line.slice(cursor).match(EMOJI_AT_START_RE);
-                        if (!match) break;
-                        foundTrailingEmoji = true;
-                        cursor += match[0].length;
-                        while (cursor < line.length && /\s/u.test(line[cursor])) cursor += 1;
-                    }
-
-                    if (foundTrailingEmoji) end = cursor;
-                    parts.push(line.slice(start, end));
-                    start = end;
-                    index = Math.max(index, end - 1);
-                }
-
-                if (start < line.length) parts.push(line.slice(start));
-                return parts.length ? parts : [line];
-            }
-
-            function scoreProfile(profile, sentence) {
-                let score = 0;
-                for (const [pattern, weight] of profile.patterns) {
-                    pattern.lastIndex = 0;
-                    if (pattern.test(sentence)) score += weight;
-                }
-                return score;
-            }
-
-            function isEnglishDominant(text) {
-                const latin = (text.match(/[A-Za-z]/g) || []).length;
-                const hangul = (text.match(/[가-힣]/g) || []).length;
-                return latin >= 8 && latin > hangul * 1.5;
-            }
-
-            function isNegated(text) {
-                if (KO_NEGATION_RE.test(text)) return true;
-                return isEnglishDominant(text) && !FALSE_NEGATIVE_RE.test(text) && EN_NEGATION_RE.test(text);
-            }
-
-            function analyzeSentence(rawSentence, documentIsCritical) {
-                const sentence = rawSentence.trim();
-                if (sentence.length < 3 || hasEmoji(sentence)) return null;
-
-                const sentenceCritical = CRITICAL_RE.test(sentence);
-                if (documentIsCritical || sentenceCritical) {
-                    if (CONDOLENCE_RE.test(sentence)) return { profile: profiles[0], score: 12 };
-                    return null;
-                }
-
-                const scored = profiles.map(profile => ({ profile, score: scoreProfile(profile, sentence) }));
-                
-                if (isNegated(sentence)) {
-                    for (const candidate of scored) {
-                        if (positiveIds.has(candidate.profile.id)) candidate.score -= 7;
-                    }
-                }
-
-                if (isEnglishDominant(sentence)) {
-                    for (const candidate of scored) {
-                        if (/\bsurprisingly (?:easy|simple|affordable|good|effective|light|quick)\b/i.test(sentence) && candidate.profile.id === 'surprise') candidate.score -= 4;
-                        if (/\b(?:boss fight|gameplay|co-op|multiplayer)\b/i.test(sentence) && candidate.profile.id === 'announcement') candidate.score -= 3;
-                        if (/\b(?:can['’]t wait|over the moon|made my day)\b/i.test(sentence) && candidate.profile.id === 'joy') candidate.score += 2;
-                        if (/\b(?:now live|just launched|just dropped|introducing)\b/i.test(sentence) && candidate.profile.id === 'launch') candidate.score += 2;
-                    }
-                }
-
-                if (FORMAL_RE.test(sentence)) {
-                    for (const candidate of scored) {
-                        if (['announcement','deadline','warning','apology'].includes(candidate.profile.id)) candidate.score += 1;
-                        if (['humor','love'].includes(candidate.profile.id)) candidate.score -= 2;
-                    }
-                }
-
-                if (/[!！]/.test(sentence)) {
-                    for (const candidate of scored) {
-                        if (['celebration','launch','joy','warning','encouragement'].includes(candidate.profile.id)) candidate.score += 0.5;
-                    }
-                }
-
-                scored.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
-                const best = scored[0];
-                if (best && best.score >= 3.4) return best;
-
-                if (/에러|오류|문제|한계|복잡|뒤엉|비효율|실패|불편|\berror\b|\bissue\b|\bproblem\b|\blimit\b|\bcomplex\b|\binefficien|\bfail|\bchallenge\b|\bpain point\b|\bbottleneck\b/i.test(sentence)) {
-                    return { profile: genericProfiles.problem, score: 3.9 };
-                }
-                if (/해결|해법|방법|기술|도구|핵심|자동화|공유|소개|\bsolution\b|\bmethod\b|\btechnique\b|\btool\b|\bkey\b|\bautomate\b|\bapproach\b|\bfix\b|\bbest practice\b/i.test(sentence)) {
-                    return { profile: genericProfiles.solution, score: 3.8 };
-                }
-                if (/\d|%|통계|비율|수치|\bpercent\b|\bstatistics?\b|\bcalculate\b|\bmetrics?\b/i.test(sentence)) {
-                    return { profile: genericProfiles.number, score: 3.65 };
-                }
-                if (/즉,|따라서|결국|때문|반면|\bhowever\b|\btherefore\b|\bbecause\b|\bas a result\b|\bthis means\b|\bin other words\b|\bon the other hand\b/i.test(sentence)) {
-                    return { profile: genericProfiles.explanation, score: 3.55 };
-                }
-                
-                // 🚨 기계적 ✨ 출력을 막고 문장 형태와 길이에 따라 맞춤형 그룹 배정
-                if (/[!！]/.test(sentence)) return { profile: genericProfiles.exclamation, score: 3.45 };
-                if (/[?？]/.test(sentence)) return { profile: genericProfiles.question_generic, score: 3.45 };
-                if (sentence.length >= 25) return { profile: genericProfiles.info_long, score: 3.42 };
-                if (sentence.length >= 8) return { profile: genericProfiles.info_short, score: 3.40 };
-                
-                return null;
-            }
-
-            function titleThemes(text) {
-                const scored = profiles
-                    .map(profile => ({ profile, score: scoreProfile(profile, text) }))
-                    .filter(item => item.score >= 3.4 && !['social-cta','question','condolence'].includes(item.profile.id))
-                    .sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority);
-                
-                // 🚨 제목에서도 ✨ 제거하고 전문적인 기호 배치
-                if (!scored.length) return /[?？]/.test(text) ? ['🤔','👀'] : ['💡','📝'];
-                
-                const first = scored[0].profile.emojis[0];
-                const secondItem = scored.find(item => item.profile.id !== scored[0].profile.id);
-                const second = secondItem ? secondItem.profile.emojis[0] : scored[0].profile.emojis[1] || '💡';
-                return [...new Set([first, second])].slice(0, 2);
-            }
-
-            function headingEmoji(text) {
-                if (/알람|기상|생체 시계|\balarm\b|\bwake up\b/i.test(text)) return '⏰';
-                if (/결론|핵심|해답|이유|인사이트|\bkey takeaway\b|\bsolution\b|\bconclusion\b|\bwhy it matters\b/i.test(text)) return '💡';
-                if (/단계|방법|\bstep \d+\b|\bhow to\b|\bquick guide\b|\bgetting started\b/i.test(text)) return '📝';
-                if (/결과|성과|수치|\bresults?\b|\bperformance\b|\bmetrics?\b/i.test(text)) return '📊';
-                if (/주의|피해야|\bwarning\b|\bimportant\b|\bwhat to avoid\b/i.test(text)) return '⚠️';
-                if (/심심|고요|아무것도 안|\bdoing nothing\b|\bmental reset\b|\bquiet mind\b/i.test(text)) return '🧘';
-                if (/초기화|리셋|스마트폰|화면|\breset\b|\boffline\b|\bphone\b|\bscreen\b/i.test(text)) return '🔌';
-                const analysis = analyzeSentence(text, false);
-                return analysis ? analysis.profile.emojis[0] : '💡';
-            }
-
-            function classifyLine(text, first, structured) {
-                const value = text.trim();
-                if (!value) return 'blank';
-                if (HASH_ONLY_RE.test(value)) return 'hashtags';
-                const sentenceCount = splitLine(value).filter(part => part.trim()).length;
-                if (CTA_RE.test(value) && value.length <= 230 && sentenceCount === 1) return 'cta';
-                const explicit = /^(?:\d{1,2}[.)]\s*|[①-⑳]\s*|[-*•▪▫]\s+|#{1,4}\s+|\*\*)/u.test(value);
-                const englishHeading = /^[A-Z][A-Za-z0-9'’:&-]*(?:\s+[A-Za-z0-9'’:&-]+){2,11}$/.test(value) && !/[.!?]$/.test(value);
-                if (!first && value.length <= 80 && (explicit || englishHeading || (!/[.!?。！？]$/.test(value) && analyzeSentence(value, false)?.score >= 4.5))) return 'heading';
-                const framed = /^[\[【〈《"'“‘].+[\]】〉》"'”’]$/u.test(value);
-                if (first && value.length <= 140 && (framed || (structured && !/[.!。]$/.test(value)))) return 'title';
-                return 'body';
-            }
-
-            function append(raw, emojis) {
-                if (!emojis.length) return raw;
-                const trailing = raw.match(/\s*$/)?.[0] || '';
-                const core = raw.slice(0, raw.length - trailing.length);
-                return `${core} ${emojis.join('')}${trailing}`;
-            }
-
-            function prefix(raw, emoji) {
-                const leading = raw.match(/^\s*/)?.[0] || '';
-                const core = raw.slice(leading.length);
-                const bullet = core.match(/^((?:\d{1,2}[.)]|[①-⑳]|[-*•▪▫]|#{1,4})\s*)/u);
-                if (bullet) return `${leading}${bullet[1]}${emoji} ${core.slice(bullet[1].length)}`;
-                return `${leading}${emoji} ${core}`;
-            }
-
-            function ctaEmojis(text) {
-                // 🚨 CTA(Call to Action)에서도 무분별한 ✨ 제거
-                if (SAVE_RE.test(text) && FOLLOW_RE.test(text)) return ['🔖','👉'];
-                if (SAVE_RE.test(text) && /공유|\bshare\b/i.test(text)) return ['🔖','👉'];
-                if (FOLLOW_RE.test(text)) return ['👀','👉'];
-                if (/지원|신청|\bapply\b|\bsign up\b|\bjoin us\b/i.test(text)) return ['📝','👉'];
-                if (/구매|\bshop now\b|\bbuy now\b|\bcheckout\b/i.test(text)) return ['🛍️','👉'];
-                if (/링크|클릭|\b(?:tap|click|visit) the link\b|\blink in bio\b|\blearn more\b|\bread more\b/i.test(text)) return ['🔗','👉'];
-                if (/댓글|의견|\bcomment\b|\blet (?:me|us) know\b|\btell us\b/i.test(text)) return ['💬'];
-                if (/태그|\btag (?:a|your)\b/i.test(text)) return ['👀','👉'];
-                return ['👉'];
-            }
-
-            function chooseEmoji(profile, sentence, usage, recent) {
-                let candidates = profile.emojis.slice();
-                const id = profile.id;
-
-                if (id === 'pet' && /강아지|견종|\bpuppy\b|\bdog\b|\bbreed\b/i.test(sentence)) candidates = ['🐶','🐾'];
-                else if (id === 'pet' && /고양이|\bcat\b|\bkitten\b/i.test(sentence)) candidates = ['🐱','🐾'];
-                else if (id === 'social-cta') candidates = [ctaEmojis(sentence).join('')];
-                else if (id === 'travel' && /비행기|공항|여권|\bflight\b|\bairport\b|\bpassport\b/i.test(sentence)) candidates = ['✈️','🧳','🌍'];
-                else if (id === 'travel' && /호텔|숙소|\bhotel\b|\bresort\b/i.test(sentence)) candidates = ['🏨','🧳','🌍'];
-                else if (id === 'weather' && /비가|장마|\brain(?:y|ing)?\b|\bstorm\b/i.test(sentence)) candidates = ['🌧️','☔'];
-                else if (id === 'weather' && /눈이|\bsnow(?:y|ing)?\b|\bblizzard\b/i.test(sentence)) candidates = ['❄️','☃️'];
-                else if (id === 'injury' && /경련|쥐가 나|\bcramp\b/i.test(sentence)) candidates = ['⚡','🩹','🩺'];
-                else if (id === 'data' && /정규표현식|\bregex\b|\bregular expression\b|자동화|\bautomate/i.test(sentence)) candidates = ['⚙️','💻','🗂️'];
-                else if (id === 'negative-review' && /추천하지|비추천|wouldn['’]t recommend|don['’]t recommend|not worth/i.test(sentence)) candidates = ['👎'];
-                else if (id === 'negative-review' && /고객 ?센터|답변|\bsupport\b|\breplied\b|\bresponded\b/i.test(sentence)) candidates = ['😕','👎'];
-                else if (id === 'sports' && /\bwhat a game\b|\bcomeback\b/i.test(sentence)) candidates = ['🔥','🙌','🏆'];
-                else if (id === 'achievement' && /매출|전환율|성장률|\brevenue\b|\bconversion\b|\bgrowth\b|\bquarterly\b/i.test(sentence)) candidates = ['📈','🏆','🎯'];
-                else if (id === 'achievement' && /반응|피드백|\bfeedback\b|\bcustomer reactions?\b/i.test(sentence)) candidates = ['🎉','🙌','✨'];
-                else if (id === 'health' && /수분|회복|수면|\bhydrat|\brecover|\bsleep\b/i.test(sentence)) candidates = ['🌿','🩺','💪'];
-                else if (id === 'digital-detox' && /오프라인|화면에서 벗어나|\boffline\b|\bscreen-free\b|\bstep away from\b/i.test(sentence)) candidates = ['🔌','📵','🧘'];
-                else if (id === 'joy' && /can['’]t wait|looking forward|thrilled|over the moon/i.test(sentence)) candidates = ['🤩','😊','✨'];
-                else if (id === 'question' && /\bwhich\b|어떤|몇 번/i.test(sentence)) candidates = ['👀','🤔','❓'];
-
-                return candidates.sort((a, b) => {
-                    const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
-                    const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
-                    
-                    // 🚨 사용 횟수가 같을 때 기계적으로 순서대로 찍히는 것을 방지하는 랜덤 셔플
-                    if (aPenalty === bPenalty) return Math.random() - 0.5;
-                    
-                    return aPenalty - bPenalty;
-                })[0];
-            }
-
-            function chooseSecondaryEmoji(profile, sentence, primary, usage, recent) {
-                if (['condolence','negative-review','apology','question','social-cta'].includes(profile.id)) return null;
-
-                let contextual = [];
-                if (profile.id === 'pet' && /물속|물살|수영|헤엄|\bswim|\bunderwater\b/i.test(sentence)) contextual = ['🌊','🏊'];
-                else if (profile.id === 'injury' && /근육|경련|통증|\bmuscle\b|\bcramp\b|\bpain\b/i.test(sentence)) contextual = ['🩹','🩺'];
-                else if (profile.id === 'data' && /정규표현식|자동화|\bregex\b|\bregular expression\b|\bautomate/i.test(sentence)) contextual = ['💻','⚙️'];
-                else if (profile.id === 'programming' && /데이터|분석|\bdata\b|\banalytics?\b/i.test(sentence)) contextual = ['📊','⚙️'];
-                else if (profile.id === 'travel' && /비행기|공항|여권|\bflight\b|\bairport\b|\bpassport\b/i.test(sentence)) contextual = ['🧳','🌍'];
-                else if (profile.id === 'business' && /\d|%|매출|전환율|\brevenue\b|\bconversion\b|\bmetrics?\b/i.test(sentence)) contextual = ['📊','🎯'];
-                else if (profile.id === 'finance' && /저축|투자|예산|\bsaving|\binvest|\bbudget\b/i.test(sentence)) contextual = ['📈','💰'];
-                else if (profile.id === 'health' || profile.id === 'medical') contextual = ['🩺','🌿'];
-                else if (profile.id === 'security' && /비밀번호|암호|\bpassword\b|\bpasscode\b|\bcredential/i.test(sentence)) contextual = ['🔑','🛡️'];
-                else if (profile.id === 'security' && /피싱|\bphishing\b|\bmalware\b|\bdata breach\b/i.test(sentence)) contextual = ['⚠️','🛡️'];
-                else if (profile.id === 'security') contextual = ['🛡️','🔒'];
-                else if (profile.id === 'legal') contextual = ['📜','⚖️'];
-                else if (profile.id === 'food' && /기분(?:이|은|도)?\s*좋|행복|즐겁|\bhappy\b|\bglad\b|\bdelighted\b/i.test(sentence)) contextual = ['😊','😋'];
-                else if (profile.id === 'food') contextual = ['🍴','😋'];
-                else if (profile.id === 'coffee' && /기분(?:이|은|도)?\s*좋|행복|즐겁|\bhappy\b|\bglad\b|\bdelighted\b/i.test(sentence)) contextual = ['😊','☕'];
-                else if (profile.id === 'coffee') contextual = ['☕','🧋'];
-                else if (profile.id === 'launch') contextual = ['✨','🎉'];
-                else if (profile.id === 'achievement') contextual = ['🎯','🙌'];
-                else if (profile.id === 'brain') contextual = ['💡','🧠'];
-                else if (profile.id === 'digital-detox') contextual = ['🧘','📵'];
-                else if (profile.id === 'productivity') contextual = ['⚡','✅'];
-                else if (profile.id === 'fashion' || profile.id === 'beauty') contextual = ['✨','🛍️'];
-                else if (profile.id === 'parenting') contextual = ['💛','🍼'];
-
-                const pool = [...contextual, ...profile.emojis].filter(emoji =>
-                    emoji &&
-                    emoji !== primary &&
-                    !primary.includes(emoji)
-                );
-                if (!pool.length) return null;
-
-                return [...new Set(pool)].sort((a, b) => {
-                    const aPenalty = (usage.get(a) || 0) + (recent.includes(a) ? 3 : 0);
-                    const bPenalty = (usage.get(b) || 0) + (recent.includes(b) ? 3 : 0);
-                    
-                    if (aPenalty === bPenalty) return Math.random() - 0.5;
-                    
-                    return aPenalty - bPenalty;
-                })[0];
-            }
-
-            function bodyBudget(sentences, chars, structural, existing, critical) {
-                if (critical) return 0;
-                let target;
-                
-                if (sentences <= 1) target = chars >= 100 ? 3 : chars >= 15 ? 2 : 1;
-                else if (sentences === 2) target = chars >= 120 ? 4 : 3;
-                else if (sentences === 3) target = 5;
-                else if (sentences === 4) target = 6;
-                else if (sentences <= 7) target = Math.ceil(sentences * 0.9) + 1;
-                else if (sentences <= 12) target = Math.ceil(sentences * 0.82) + 1;
-                else if (sentences <= 20) target = Math.ceil(sentences * 0.72) + 2;
-                else target = Math.ceil(sentences * 0.6) + 3;
-                
-                if (chars > 900) target = Math.max(target, Math.ceil(chars / 112));
-                const structuralWeight = Math.ceil(structural * 0.3);
-                return Math.max(0, Math.min(30, target) - structuralWeight - existing);
-            }
-
-            function transform(originalText) {
-                const protectedText = protectText(originalText);
-                const lineParts = protectedText.text.split(/(\r?\n)/);
-                const meaningful = lineParts.map((line, index) => ({ line, index })).filter(item => !/^\r?\n$/.test(item.line) && item.line.trim());
-                const firstIndex = meaningful[0]?.index ?? -1;
-                const structured = meaningful.length >= 3;
-                const critical = CRITICAL_RE.test(protectedText.text);
-                let structuralCount = 0;
-                let logicalLine = 0;
-                const decoratedLines = new Set();
-
-                const lines = lineParts.map((safeLine, index) => {
-                    if (/^\r?\n$/.test(safeLine)) {
-                        logicalLine += 1;
-                        return safeLine;
-                    }
-                    if (!safeLine.trim()) return safeLine;
-
-                    const restored = protectedText.restore(safeLine);
-                    const role = classifyLine(restored, index === firstIndex, structured);
-                    const existing = countEmojis(restored);
-                    let result = safeLine;
-                    let added = 0;
-
-                    if (role === 'hashtags' || role === 'blank') return safeLine;
-                    if (critical) {
-                        if (!existing && CONDOLENCE_RE.test(restored)) {
-                            result = append(safeLine, ['🕯️']);
-                            added = 1;
-                        }
-                    } else if (role === 'title' && !existing) {
-                        const emojis = titleThemes(restored);
-                        result = append(safeLine, emojis);
-                        added = emojis.length;
-                    } else if (role === 'heading' && !existing) {
-                        result = prefix(safeLine, headingEmoji(restored));
-                        added = 1;
-                    } else if (role === 'cta') {
-                        const desired = ctaEmojis(restored);
-                        const emojis = desired.slice(0, Math.max(0, desired.length - existing));
-                        result = append(safeLine, emojis);
-                        added = emojis.length;
-                    }
-
-                    if (added) decoratedLines.add(logicalLine);
-                    structuralCount += added;
-                    return result;
-                });
-
-                const pieces = [];
-                let sentenceIndex = 0;
-                let lineIndex = 0;
-                for (const line of lines.join('').split(/(\r?\n)/)) {
-                    if (/^\r?\n$/.test(line)) {
-                        pieces.push({ text: line, newline: true });
-                        lineIndex += 1;
-                        continue;
-                    }
-                    for (const sentence of splitLine(line)) {
-                        pieces.push({
-                            text: sentence,
-                            newline: false,
-                            lineIndex,
-                            sentenceIndex: sentence.trim() ? sentenceIndex++ : -1
-                        });
-                    }
-                }
-
-                const budget = bodyBudget(sentenceIndex, originalText.length, structuralCount, countEmojis(originalText), critical);
-                if (budget <= 0) return protectedText.restore(pieces.map(piece => piece.text).join(''));
-
-                const candidates = [];
-                pieces.forEach((piece, index) => {
-                    if (piece.newline || piece.sentenceIndex < 0 || decoratedLines.has(piece.lineIndex)) return;
-                    const restored = protectedText.restore(piece.text);
-                    if (HASH_ONLY_RE.test(restored.trim())) return;
-                    const analysis = analyzeSentence(restored, critical);
-                    if (!analysis) return;
-                    candidates.push({
-                        index,
-                        lineIndex: piece.lineIndex,
-                        sentenceIndex: piece.sentenceIndex,
-                        profile: analysis.profile,
-                        score: analysis.score + (/[!?！？]$/.test(restored.trim()) ? 0.2 : 0)
-                    });
-                });
-
-                candidates.sort((a, b) => b.score - a.score || b.profile.priority - a.profile.priority || a.sentenceIndex - b.sentenceIndex);
-                const selected = [];
-                const lineUsage = new Map();
-                const profileUsage = new Map();
-                const maxPerLine = structured ? 2 : Math.min(6, budget);
-                
-                const coverageTarget = Math.min(
-                    candidates.length,
-                    Math.max(1, Math.ceil(budget * 0.85))
-                );
-
-                for (const candidate of candidates) {
-                    if (selected.length >= coverageTarget) break;
-                    const onLine = lineUsage.get(candidate.lineIndex) || 0;
-                    if (onLine >= maxPerLine) continue;
-                    const sameProfile = profileUsage.get(candidate.profile.id) || 0;
-                    if (sameProfile >= 3 && candidate.score < 5) continue;
-                    selected.push(candidate);
-                    lineUsage.set(candidate.lineIndex, onLine + 1);
-                    profileUsage.set(candidate.profile.id, sameProfile + 1);
-                }
-
-                const usage = new Map();
-                const recent = [];
-                let secondaryBudget = Math.max(0, budget - selected.length);
-                let secondaryCount = 0;
-                const maxSecondaryCount = Math.min(
-                    secondaryBudget,
-                    Math.max(1, Math.ceil(sentenceIndex * 0.38))
-                );
-                selected.sort((a, b) => a.sentenceIndex - b.sentenceIndex);
-                for (const candidate of selected) {
-                    const sentence = protectedText.restore(pieces[candidate.index].text);
-                    const emoji = chooseEmoji(candidate.profile, sentence, usage, recent);
-                    const emojis = [emoji];
-                    const pairMinLength = [
-                        'promotion','launch','celebration','gratitude','health',
-                        'medical','security','pet','injury'
-                    ].includes(candidate.profile.id) ? 24 : 32;
-                    const canUsePair =
-                        secondaryCount < maxSecondaryCount &&
-                        secondaryBudget > 0 &&
-                        candidate.score >= 4.7 &&
-                        sentence.trim().length >= pairMinLength &&
-                        !/[?？]\s*$/.test(sentence.trim());
-
-                    if (canUsePair) {
-                        const secondary = chooseSecondaryEmoji(candidate.profile, sentence, emoji, usage, recent);
-                        if (secondary) {
-                            emojis.push(secondary);
-                            secondaryBudget -= 1;
-                            secondaryCount += 1;
-                        }
-                    }
-
-                    pieces[candidate.index].text = append(pieces[candidate.index].text, emojis);
-                    usage.set(emoji, (usage.get(emoji) || 0) + 1);
-                    if (emojis[1]) usage.set(emojis[1], (usage.get(emojis[1]) || 0) + 1);
-                    recent.push(...emojis);
-                    while (recent.length > 4) recent.shift();
-                }
-
-                return protectedText.restore(pieces.map(piece => piece.text).join(''));
-            }
-
-            return { transform };
-        })();
-
         function addEmojis() {
+            clipboardActionId++;
             const editor = document.getElementById('mainEditor');
-            const text = editor.value;
-            if (!text.trim()) { showToast('Please enter text to convert!'); return; }
-            
             const button = document.querySelector('.btn-action');
+            if (!editor || !button) return;
+            if (!editor.value.trim()) { showToast('Please enter text to convert!'); return; }
             const originalHTML = button.innerHTML;
-            button.disabled = true; button.innerHTML = '⏳ Processing...';
-            
-            editor.value = smartEmojiEngine.transform(text);
-            
-            button.disabled = false; button.innerHTML = originalHTML;
-            showToast('✨ Magic applied! Edit freely.');
+            button.disabled = true;
+            button.textContent = 'Processing…';
+            try {
+                if (!window.smartEmojiEngine) throw new Error('Engine unavailable');
+                const result = window.smartEmojiEngine.analyze(editor.value);
+                editor.value = result.text;
+                showToast(result.added ? 'Added ' + result.added + ' emoji suggestion' + (result.added === 1 ? '' : 's') + '. Review and edit freely.' : 'No extra suggestions. Your text is unchanged.');
+            } catch (error) {
+                showToast('Suggestions could not load. Your text is unchanged. Please refresh and try again.');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalHTML;
+            }
         }
 
         function clearText() {
-            document.getElementById('mainEditor').value = '';
-            document.getElementById('mainEditor').focus();
-            showToast('🗑️ Cleared.');
+            clipboardActionId++;
+            const editor = document.getElementById('mainEditor');
+            if (!editor) return;
+            editor.value = '';
+            editor.focus();
+            showToast('Cleared.');
+        }
+
+        let clipboardActionId = 0;
+        async function writeClipboardText(text) {
+            if (window.isSecureContext && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                try { await navigator.clipboard.writeText(text); return true; }
+                catch (error) { /* Try a user-gesture fallback, then report failure. */ }
+            }
+            const active = document.activeElement;
+            const start = active && typeof active.selectionStart === 'number' ? active.selectionStart : null;
+            const end = active && typeof active.selectionEnd === 'number' ? active.selectionEnd : null;
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            temp.setAttribute('readonly', '');
+            temp.style.cssText = 'position:fixed;left:-9999px;top:0;font-size:16px;';
+            document.body.appendChild(temp);
+            try {
+                temp.focus({preventScroll:true});
+                temp.select();
+                temp.setSelectionRange(0, temp.value.length);
+                return typeof document.execCommand === 'function' && document.execCommand('copy');
+            } catch (error) { return false; }
+            finally {
+                temp.remove();
+                if (active && active.isConnected && typeof active.focus === 'function') {
+                    active.focus({preventScroll:true});
+                    if (start !== null && typeof active.setSelectionRange === 'function') active.setSelectionRange(start,end);
+                }
+            }
         }
 
         async function copySingleEmoji(emoji) {
             const target = document.getElementById('mainEditor');
-            const start = target.selectionStart;
-            const end = target.selectionEnd;
-
-            target.value =
-                target.value.substring(0, start) +
-                emoji +
-                target.value.substring(end);
-
+            if (!target) return;
+            const operation = ++clipboardActionId;
+            const start = target.selectionStart, end = target.selectionEnd;
+            target.value = target.value.slice(0,start) + emoji + target.value.slice(end);
             target.selectionStart = target.selectionEnd = start + emoji.length;
-            target.focus();
-
-            try {
-                if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(emoji);
-                } else {
-                    const temp = document.createElement('textarea');
-                    temp.value = emoji;
-                    temp.setAttribute('readonly', '');
-                    temp.style.position = 'fixed';
-                    temp.style.opacity = '0';
-                    document.body.appendChild(temp);
-                    temp.select();
-
-                    const copied = document.execCommand('copy');
-                    document.body.removeChild(temp);
-
-                    if (!copied) {
-                        throw new Error('Emoji copy command failed');
-                    }
-                }
-            } catch (error) {
-                console.warn('Emoji clipboard copy failed:', error);
-            }
-
-            showToast(`${emoji} Inserted!`);
+            target.focus({preventScroll:true});
+            showToast((emojiNames[emoji] || emoji) + ' inserted.');
+            const copied = await writeClipboardText(emoji);
+            if (!copied && operation === clipboardActionId) showToast('Emoji inserted. Clipboard copying was blocked; use Copy All or copy manually.');
         }
 
         async function copyText(elementId) {
             const output = document.getElementById(elementId);
-
-            if (!output.value) {
-                showToast('Nothing to copy.');
-                return;
-            }
-
-            try {
-                if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(output.value);
-                } else {
-                    output.focus();
-                    output.select();
-
-                    const copied = document.execCommand('copy');
-
-                    if (!copied) {
-                        throw new Error('Copy command failed');
-                    }
-                }
-
-                showToast('📋 Copied!');
-            } catch (error) {
-                output.focus();
-                output.select();
-
-                showToast('Copy failed. Please copy the selected text manually.');
+            if (!output || !output.value) { showToast('Nothing to copy.'); return; }
+            const operation = ++clipboardActionId;
+            const copied = await writeClipboardText(output.value);
+            if (operation !== clipboardActionId) return;
+            if (copied) showToast('Copied!');
+            else {
+                output.focus(); output.select();
+                showToast('Copy failed. Copy the selected text manually.');
             }
         }
-    </script>
+
+</script>
 </body>
 </html>
+
