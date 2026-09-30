@@ -1,4 +1,4 @@
-/* Mojitap local emoji suggestion engine — version 2026-09-17.31
+/* Mojitap local emoji suggestion engine — version 2026-09-30.1
  * Browser-only English/Korean rules.
  * Design goals:
  * 1) always provide a useful suggestion for ordinary text,
@@ -10,7 +10,7 @@
 (function (root) {
     'use strict';
 
-    const VERSION = '2026-09-17.64';
+    const VERSION = '2026-09-30.1';
 
     const EMOJI = /(?:\p{Regional_Indicator}{2}|[#*0-9]\uFE0F?\u20E3|\p{Extended_Pictographic}(?:[\uFE0E\uFE0F]|\p{Emoji_Modifier})*(?:\u200D\p{Extended_Pictographic}(?:[\uFE0E\uFE0F]|\p{Emoji_Modifier})*)*(?:[\u{E0020}-\u{E007E}]+\u{E007F})?)/gu;
     const PROTECTED = /```[\s\S]*?(?:```|(?![\s\S]))|~~~[\s\S]*?(?:~~~|(?![\s\S]))|`[^`\r\n]*`|!?\[[^\]\r\n]*\]\([^\r\n)]*\)|https?:\/\/[^\s<>]+|www\.[^\s<>]+|[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|(?:^|\s)[#@][\p{L}\p{N}_][\p{L}\p{N}_.-]*|<[^>\r\n]+>/gimu;
@@ -432,6 +432,20 @@
         const t = stripLeadLabel ? stripLeadLabel(text) : text;
         const has = re => re.test(t);
         const ret=(id,emojis,group='topic',confidence=76)=>special(id,emojis,group,confidence);
+
+        // v2026-09-30: high-priority polarity and intent guards found in fresh
+        // mixed English/Korean regression testing. Keep these narrow so they
+        // correct meaning reversals without changing unrelated recommendations.
+        if (has(/(?:payment|charge|card).{0,30}(?:processed|completed|went through|charged).{0,40}(?:order).{0,24}(?:not|isn['’]t|hasn['’]t|has not).{0,14}(?:approved|confirmed)|(?:결제|카드).{0,20}(?:됐|완료|처리).{0,35}(?:주문).{0,18}(?:아직).{0,12}(?:승인|확정).{0,10}(?:아니|안 됐|되지 않)/i)) return ret('v630-payment-done-order-not-approved',['⏳'],'commerce',90);
+        if (has(/(?:upload|file upload).{0,24}(?:failed|failure|error)|(?:failed|failure|error).{0,24}(?:upload)|(?:업로드).{0,18}(?:실패|오류|에러)/i)) return ret('v630-upload-failed',['❌','📤'],'tech',88);
+        if (has(/(?:avoid|do not|don['’]t|never).{0,20}(?:open|download|tap).{0,24}(?:attachment|file).{0,30}(?:unknown|unrecognized|unrecognised|sender)|(?:unknown|unrecognized|unrecognised).{0,20}(?:sender).{0,24}(?:attachment|file)|(?:모르는|알 수 없는|낯선).{0,16}(?:발신자|보낸 사람).{0,24}(?:첨부|파일).{0,12}(?:열지|다운로드하지|누르지)/i)) return ret('v630-unknown-attachment-warning',['⚠️','🛡️'],'status',90);
+        if (has(/(?:watch|watched|watching|see|saw).{0,18}(?:movie|film).{0,28}(?:after|before).{0,16}(?:dinner|meal)|(?:movie|film).{0,18}(?:after|before).{0,16}(?:dinner|meal)|(?:영화).{0,18}(?:보고|본|봤).{0,24}(?:저녁|식사)/i)) return ret('v630-movie-primary',['🎬','🍿'],'creative',84);
+        if (has(/(?:headphones?|earbuds?).{0,24}(?:listen|listened|listening).{0,20}(?:album|music|song)|(?:listen|listened|listening).{0,20}(?:album|music|song).{0,30}(?:walk|walking)|(?:헤드폰|이어폰).{0,20}(?:앨범|음악|노래).{0,16}(?:듣|들)/i)) return ret('v630-listen-headphones',['🎧','🎵'],'creative',86);
+        if (has(/(?:cannot|can['’]t|couldn['’]t|do not|don['’]t).{0,18}(?:remember|know).{0,20}(?:emoji).{0,16}(?:name).{0,35}(?:search|find|description)|(?:search|find).{0,22}(?:emoji).{0,20}(?:description|appearance)|(?:이모지).{0,18}(?:이름).{0,12}(?:모르|기억 안).{0,24}(?:설명|모양).{0,16}(?:검색|찾)/i)) return ret('v630-find-emoji-description',['🔎','😀'],'emoji',88);
+        if (has(/(?:chair|seat).{0,18}(?:next to|beside|by).{0,12}(?:window)|(?:window).{0,12}(?:next to|beside).{0,16}(?:chair|seat)|(?:의자|좌석).{0,14}(?:창문|창가).{0,10}(?:옆|곁)/i)) return ret('v630-chair-window',['🪑','🪟'],'life',82);
+        if (has(/(?:draw|drawing|drawn).{0,10}(?:a |the )?(?:stronger |firm |final )?(?:conclusion|conclusions)|(?:conclusion|conclusions).{0,18}(?:draw|drawing)|(?:결론).{0,16}(?:내리|도출)/i)) return ret('v630-draw-conclusion',['📝','🔎'],'report',86);
+        if (has(/(?:delivery|package|parcel).{0,24}(?:marked|shows?|status).{0,12}(?:delivered|complete|completed).{0,38}(?:not|never|haven['’]t|have not|didn['’]t|did not).{0,16}(?:receive|received|arrive|get)|(?:delivered|complete|completed).{0,28}(?:but|yet).{0,20}(?:not|haven['’]t|didn['’]t).{0,14}(?:receive|get)|(?:배송|택배).{0,18}(?:완료|배달 완료|배송됨).{0,30}(?:아직|그런데|하지만).{0,18}(?:못 받|받지 못|도착하지 않)/i)) return ret('v630-delivered-not-received',['⚠️'],'commerce',94);
+        if (has(/(?:친구|친구들).{0,10}(?:랑|와|하고).{0,22}(?:영화).{0,16}(?:보고|봤|본).{0,22}(?:저녁|밥|식사)/i)) return ret('v630-friends-movie-dinner',['🎬','🍽️'],'social',82);
 
         if (has(/(?:feel like myself|back to myself|myself again).{0,28}(?:exhaust|rough|hard|long week)|(?:힘든|지친).{0,16}(?:주|시간).{0,20}(?:다시 나답|제자리|회복)/i)) return ret('v62-recover-self',['😮‍💨','🌿','😊'],'mood');
         if (has(/(?:chapters?|pages?).{0,18}(?:left|remaining).{0,20}(?:no motivation|unmotivated|can['’]t focus)|(?:no motivation|unmotivated).{0,18}(?:chapters?|pages?)|(?:챕터|장|페이지).{0,12}(?:남았|남아).{0,16}(?:의욕|집중).{0,10}(?:없|안)/i)) return ret('v62-study-no-motivation',['📚','😩','🌙'],'education');
