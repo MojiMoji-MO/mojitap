@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="google-site-verification" content="leZ6xmA2crFi0ka5h8ABX1-SNSozPAnFPs584rkqLz8"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8R7T1JEFVL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8R7T1JEFVL');</script>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<title>Emojis Broken in Excel or CSV? UTF-8 Fixes | Mojitap</title>
+<meta name="description" content="Fix emoji characters that become strange text, boxes, or separate symbols in Excel and CSV files. Follow a UTF-8 import and export workflow with a sample CSV."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://mojitap.com/48-emojis-not-showing-in-excel-csv"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://mojitap.com/48-emojis-not-showing-in-excel-csv"/>
+<meta property="og:title" content="Emojis Broken in Excel or CSV? UTF-8 Fixes"/>
+<meta property="og:description" content="Find out whether an emoji was misread during CSV import, lost during export, or is simply rendered differently. Includes a small UTF-8 CSV test file."/>
+<meta property="og:image" content="https://mojitap.com/mojitap-og.png"/>
+<meta property="og:image:alt" content="Mojitap: practical guides for Unicode emoji"/>
+<meta property="og:site_name" content="Mojitap"/>
+<meta property="article:published_time" content="2026-10-26"/>
+<meta property="article:modified_time" content="2026-10-26"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Emojis Broken in Excel or CSV? UTF-8 Fixes"/>
+<meta name="twitter:description" content="A clear way to separate CSV encoding errors from emoji display problems, with a UTF-8 sample file."/>
+<meta name="twitter:image" content="https://mojitap.com/mojitap-og.png"/>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "headline":"Emojis Broken in Excel or CSV? UTF-8 Fixes",
+  "description":"A step-by-step guide to preserving emoji characters when entering text in Excel, importing or exporting CSV data, and diagnosing broken emoji sequences.",
+  "url":"https://mojitap.com/48-emojis-not-showing-in-excel-csv",
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://mojitap.com/48-emojis-not-showing-in-excel-csv"},
+  "datePublished":"2026-10-26",
+  "dateModified":"2026-10-26",
+  "inLanguage":"en",
+  "articleSection":"Emoji Display and Copying",
+  "author":{"@type":"Person","name":"Bavum","jobTitle":"Builder and Editor at Mojitap","url":"https://mojitap.com/about"},
+  "publisher":{"@type":"Organization","name":"Mojitap","url":"https://mojitap.com/","logo":{"@type":"ImageObject","url":"https://mojitap.com/mojitap-logo.png"}},
+  "image":{"@type":"ImageObject","url":"https://mojitap.com/mojitap-og.png"}
+}
+</script>
+<link rel="icon" href="/mojitap-favicon.png" type="image/png"/>
+<link rel="stylesheet" href="/style.css"/>
+<style>
+.article-meta{margin:-8px 0 28px;font-size:14px;line-height:1.75;color:var(--text-muted,#667085)}
+.article-lede{font-size:1.06rem;line-height:1.85}
+.answer-panel,.sample-panel,.warning-panel{margin:24px 0;padding:20px 22px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:#fff}
+.answer-panel{border-left:5px solid #2563eb;background:#eff6ff}.warning-panel{border-left:4px solid #b45309;background:#fffbeb}
+.answer-panel p:last-child,.sample-panel p:last-child,.warning-panel p:last-child{margin-bottom:0}
+.steps{margin:14px 0 25px;padding-left:25px}.steps li{padding-left:4px;margin:13px 0;line-height:1.8}
+.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0;border:1px solid var(--border-color,#e5e7eb);border-radius:12px}
+.triage-table{width:100%;border-collapse:collapse;min-width:680px;background:#fff}.triage-table th,.triage-table td{padding:13px 15px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border-color,#e5e7eb);line-height:1.65}.triage-table th{background:#f8fafc}.triage-table tr:last-child td{border-bottom:none}
+.code-inline{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f1f5f9;padding:2px 6px;border-radius:6px;overflow-wrap:anywhere}
+.sample-data{max-width:100%;overflow-x:auto;padding:17px 19px;border-radius:10px;background:#0f172a;color:#f8fafc;font-size:14px;line-height:1.8}
+.sample-panel a.sample-download{display:inline-block;background:#2563eb;color:#fff;text-decoration:none;border-radius:9px;font-weight:700;padding:12px 16px;margin:5px 0 8px}
+.sample-panel a.sample-download:hover,.sample-panel a.sample-download:focus{background:#1d4ed8}
+.tool-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.tool-compare section{background:#fff;border:1px solid var(--border-color,#e5e7eb);border-radius:12px;padding:18px;min-width:0}.tool-compare h3{margin-top:0}
+.reference-list li,.related-links li{margin:9px 0;overflow-wrap:anywhere}
+.article-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:42px}.article-actions .back-btn{margin:0;text-align:center}
+@media(max-width:720px){.answer-panel,.sample-panel,.warning-panel{padding:16px}.tool-compare{grid-template-columns:1fr}.article-actions{flex-direction:column}.article-actions .back-btn{width:100%;box-sizing:border-box}.sample-data{font-size:12px}}
+</style>
+<link rel="stylesheet" href="/ui-enhancements.css?v=20260916"/>
+</head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><div aria-atomic="true" aria-live="polite" class="sr-only" id="site-status" role="status"></div>
+<div id="toast"></div><div class="app-container">
+<div id="header-placeholder"><header class="main-header"><div class="header-top-row"><a class="logo-link" href="/"><img src="/mojitap-logo.png" alt="Mojitap" height="36" width="128"/></a><button class="bookmark-btn" data-bookmark hidden type="button">Bookmark</button></div><nav aria-label="Main navigation" class="top-nav"><a class="nav-item" data-menu="home" href="/"><span aria-hidden="true">✨</span> Emoji Tool</a><a class="nav-item" data-menu="all-emojis" href="/all-emojis"><span aria-hidden="true">🌍</span> All Emojis</a><a aria-current="page" class="nav-item active" data-menu="blog" href="/blog"><span aria-hidden="true">💡</span> Emoji Tips</a></nav></header></div>
+<main class="content-box" id="main-content"><article>
+<h1>Emojis Broken in Excel or CSV? Fix Imports, Exports, and Display</h1>
+<p class="article-meta">Written by <a href="/about">Bavum</a>, Builder and Editor at Mojitap · Published October 26, 2026 · Based on Microsoft Excel and Unicode documentation</p>
+<p class="article-lede">If an emoji looks fine in an Excel workbook but turns into strange letters after you open a CSV, <strong>check how Excel read the file before changing the emoji or its font</strong>. An emoji such as 📦 can survive a UTF-8 CSV export perfectly and still appear as <span class="code-inline">ðŸ“¦</span> when its bytes are interpreted using the wrong character encoding.</p>
+<p>A square, a missing character, and a combined emoji that splits into two are different failures. The fix depends on <em>when</em> the text changed. This guide starts with that distinction instead of asking you to reinstall fonts or replace every emoji.</p>
+<section class="answer-panel" aria-label="Short answer">
+<h2>What to do first</h2>
+<p><strong>Do not save over the original file yet.</strong> Keep the source CSV and an <span class="code-inline">.xlsx</span> working copy. In desktop Excel, use <strong>Data → From Text/CSV</strong>, choose <strong>UTF-8</strong> as the file origin or encoding when that control appears, verify the preview, and only then load the data. If the preview is already wrong, importing it repeatedly will not recreate characters that are missing from the source file.</p>
+</section>
+<h2>Identify what actually broke</h2>
+<div class="table-scroll" role="region" aria-label="Symptoms and first actions" tabindex="0"><table class="triage-table">
+<thead><tr><th scope="col">What you see</th><th scope="col">Most useful first check</th><th scope="col">Why that check matters</th></tr></thead><tbody>
+<tr><td><strong>📦 becomes ðŸ“¦</strong> or <strong>✅ becomes âœ…</strong></td><td>Import the original CSV explicitly as UTF-8.</td><td>These patterns are consistent with UTF-8 bytes read using a different encoding. They are not replacement emoji artwork.</td></tr>
+<tr><td><strong>□</strong> or an empty box, but text still copies as an emoji</td><td>Inspect the text in another supported app; then check fonts and platform support.</td><td>The character may still be present even if this renderer cannot draw it.</td></tr>
+<tr><td><strong>?</strong> is actually stored in the file instead of the emoji</td><td>Check the original export before trying a new import.</td><td>A replacement question mark may mean an earlier conversion discarded the original character.</td></tr>
+<tr><td><strong>👩‍💻</strong> shows as <strong>👩💻</strong></td><td>Inspect the copied text for <span class="code-inline">U+200D</span>.</td><td>A missing joiner and a display engine that cannot combine a valid sequence require different fixes.</td></tr>
+<tr><td>Only the colors or appearance differ</td><td>Compare the same text in another app before changing data.</td><td>Emoji artwork is rendered by software and fonts; CSV does not carry color styling.</td></tr>
+</tbody></table></div>
+<p>Start with the original text rather than the cell's appearance. For example, a file can store a correct Unicode sequence even when Excel or the operating system chooses an unexpected symbol or monochrome design.</p>
+<h2>Insert an emoji into an Excel cell</h2>
+<p>For an ordinary Unicode emoji, you do not need to insert a picture. Put the cell in edit mode, then use the system character picker:</p>
+<div class="tool-compare">
+<section><h3>Windows</h3><p>Select the cell, enter edit mode (for example, double-click it), and press <strong>Windows + .</strong> (period). Choose or search for an emoji in the Windows panel. You can also type it in a plain-text field and paste the resulting characters into the cell.</p></section>
+<section><h3>Mac</h3><p>Place the insertion point in the cell and open Character Viewer using <strong>Control + Command + Space</strong> or <strong>Fn + E</strong> where supported. Pick an emoji, then check it in the cell and formula bar. The available shortcuts and picker layout depend on macOS settings.</p></section>
+</div>
+<p>If the emoji is already in the cell and only changes after a CSV round trip, the keyboard shortcut is not the problem. Move to the import steps below. If you inserted a picture, icon, or sticker, that object is not the same as Unicode text and should not be expected to survive a plain-text CSV export.</p>
+<h2>Open an emoji-containing CSV without guessing its encoding</h2>
+<ol class="steps">
+<li><strong>Preserve the source file.</strong> Save a copy before opening it in Excel. Do not overwrite it if the first view contains garbled characters.</li>
+<li><strong>Open Excel and use the import command.</strong> On supported desktop versions, choose <strong>Data → From Text/CSV</strong> (sometimes under <strong>Get Data → From File</strong>) and select the copied file.</li>
+<li><strong>Check the preview before loading.</strong> Choose <strong>UTF-8</strong> for the file origin or encoding where the option is shown. Confirm that both letters and emoji look sensible. In some versions, Excel detects UTF-8 automatically; the available controls vary.</li>
+<li><strong>Confirm the delimiter separately.</strong> If the file has comma-separated columns, check that the preview uses commas as separators. An encoding problem and a delimiter problem can happen together, but changing a separator will not repair broken Unicode.</li>
+<li><strong>Load the table, then save an .xlsx copy.</strong> Inspect a few representative values. Keep the original CSV for comparison if you need to identify where the text changed.</li>
+</ol>
+<p>Microsoft explains that UTF-8 CSV files with a byte order mark (<strong>BOM</strong>) can typically be opened normally, while files without that mark may need the text/CSV import flow. A BOM helps identify an encoding; it is not an emoji character and it does not repair text that was already lost.</p>
+<h2>Try a known UTF-8 CSV instead of guessing</h2>
+<section class="sample-panel" aria-labelledby="sample-title"><h3 id="sample-title">Download a small CSV with real emoji characters</h3>
+<p>This file contains <strong>UTF-8 text with a BOM</strong>, a few single-code-point emoji, a joined emoji, and Korean text. The content is deliberately small so you can compare the raw file, the import preview, and the resulting cells without using your own data.</p>
+<a class="sample-download" href="/emoji-excel-utf8-test.csv" download="emoji-excel-utf8-test.csv">Download UTF-8 sample CSV</a>
+<pre class="sample-data"><code>Label,Message,Emoji
+Delivery,"Packed, ready to ship",📦
+Status,Approved,✅
+Role,Developer,👩‍💻
+Language,서울,🌏</code></pre>
+<p>Open the downloaded file through <strong>Data → From Text/CSV</strong>. Check the <em>Emoji</em> column and the word <strong>서울</strong>. If the single emoji and Korean word both become strange letters, investigate decoding first. If only the joined developer emoji separates, investigate sequence support before changing the entire CSV encoding.</p>
+<p>This is a demonstration file with known text and encoding, <strong>not</strong> a claim that Mojitap has tested every Excel, operating system, or font version.</p>
+</section>
+<h2>Save your Excel work without losing characters or sheets</h2>
+<p>Keep the main working file in <span class="code-inline">.xlsx</span> format. It preserves workbook features that CSV cannot represent. If another application requires a CSV, export a separate copy using <strong>File → Save As</strong> (or the applicable export command) and choose <strong>CSV UTF-8 (Comma delimited)</strong> when that option is available. Do not silently substitute an older or unspecified CSV encoding for a Unicode-heavy file.</p>
+<p>Microsoft notes that saving as CSV exports <strong>only the active worksheet</strong> and discards formatting and many workbook features. A CSV also carries plain text values rather than embedded emoji images, cell color choices, or workbook formulas as formulas. Keep your original <span class="code-inline">.xlsx</span> file; do not treat a CSV copy as a backup of the whole workbook.</p>
+<p>After exporting, <strong>import the newly saved CSV back into a fresh workbook</strong> and compare the text with the original. If a value is already wrong in the export, change the export settings or return to the good workbook. If the exported text is correct but only looks wrong on reopening, focus on import settings and display support.</p>
+<section class="warning-panel"><p><strong>When a character has already been replaced:</strong> if the raw source file contains a literal <span class="code-inline">?</span> where an emoji should be, changing the import encoding generally cannot reconstruct the missing character. Recover it from an earlier workbook, the original app, or a known-good export. Do not overwrite the only good copy while experimenting.</p></section>
+<h2>A split emoji is not always a CSV problem</h2>
+<p>A single-looking emoji may contain multiple Unicode code points. The developer sequence <strong>👩‍💻</strong> consists of <span class="code-inline">U+1F469</span> (woman), <span class="code-inline">U+200D</span> (zero width joiner), and <span class="code-inline">U+1F4BB</span> (laptop). The joiner is invisible. If it is removed during editing, the parts can appear separately. Even with the joiner present, a system without support for that sequence may display separate components.</p>
+<p>Paste the intact version and the exported version separately into the <a href="/emoji-inspector">Mojitap Emoji Inspector</a>. If one lacks <span class="code-inline">U+200D</span>, look for a step that removed or altered the text. If both have the same code points, check the receiving app or font instead. The Inspector shows code points in the pasted text; it cannot guarantee how every application will draw them.</p>
+<p>The distinction matters because setting a CSV to UTF-8 cannot make an older emoji font support every combined symbol. Likewise, changing fonts cannot restore bytes that were misdecoded and then saved as different characters.</p>
+<h2>Choose the fix that matches your file</h2>
+<ul>
+<li><strong>Editing a workbook:</strong> use a Unicode emoji character in an ordinary cell, keep an <span class="code-inline">.xlsx</span> copy, and check the formula bar if rendering looks strange.</li>
+<li><strong>Receiving a CSV:</strong> preserve the original file, import as UTF-8, review the preview, and confirm the delimiter separately.</li>
+<li><strong>Sending a CSV:</strong> export as UTF-8 where supported, then independently reopen the output and inspect representative cells. Keep the Excel source file.</li>
+<li><strong>Working with a joined sequence:</strong> compare the complete Unicode sequence before assuming the emoji data was lost.</li>
+</ul>
+<p>If a document or message fails in a way unrelated to Excel or CSV encoding, use the wider <a href="/32-how-to-copy-and-paste-emojis-without-formatting-problems">emoji copy-and-paste troubleshooting guide</a>. For missing glyphs rather than garbled text, see <a href="/34-why-does-an-emoji-show-as-a-box-or-question-mark">why an emoji appears as a box or question mark</a>.</p>
+<h2>Documentation used for the steps above</h2>
+<ul class="reference-list">
+<li><a href="https://support.microsoft.com/en-au/excel/opening-csv-utf-8-files-correctly-in-excel" rel="noopener noreferrer">Microsoft Support — Opening CSV UTF-8 files correctly in Excel</a></li>
+<li><a href="https://support.microsoft.com/en-us/excel/get-started/import-or-export-text-txt-or-csv-files" rel="noopener noreferrer">Microsoft Support — Import or export text (.txt or .csv) files</a></li>
+<li><a href="https://support.microsoft.com/en-us/excel/file-formats-that-are-supported-in-excel" rel="noopener noreferrer">Microsoft Support — File formats supported in Excel</a></li>
+<li><a href="https://support.microsoft.com/en-us/windows/hardware/input-devices/windows-keyboard-tips-and-tricks" rel="noopener noreferrer">Microsoft Support — Windows keyboard and emoji panel</a></li>
+<li><a href="https://support.apple.com/en-us/102650" rel="noopener noreferrer">Apple Support — Mac keyboard shortcuts</a></li>
+<li><a href="https://www.unicode.org/reports/tr51/" rel="noopener noreferrer">Unicode Technical Standard #51 — Emoji sequences and rendering</a></li>
+</ul>
+<div class="article-actions"><a class="back-btn" href="/emoji-inspector">Inspect an Emoji</a><a class="back-btn" href="/all-emojis" style="background-color:var(--palette-bg,#f8fafc);color:var(--text-main,#1f2937);">Find an Emoji</a><a class="back-btn" href="/blog" style="background-color:var(--palette-bg,#f8fafc);color:var(--text-main,#1f2937);">Back to Emoji Tips</a></div>
+</article></main>
+<div id="footer-placeholder"><footer><nav aria-label="Site information" class="footer-links"><a href="/about">About Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact Us</a></nav><p class="copyright" style="margin-top:15px;color:var(--text-muted);font-size:13px;">© 2026 Mojitap. All rights reserved.</p></footer></div>
+</div>
+<script src="/layout.js?v=20260916"></script><script>window.addEventListener('load',function(){if(typeof initLayout==='function'){initLayout('blog');}});</script>
+</body></html>
